@@ -4,7 +4,7 @@ const mongoose = require('mongoose')
 const RuleSchema = new mongoose.Schema({
 	type: {
 		type: String,
-		enum: ['Comm', 'Assignment', 'Special'],
+		enum: ['Comm', 'Assignment', 'Special', 'Ask & assign'],
 		required: true,
 	},
 	description: {
@@ -42,14 +42,12 @@ const MissionSchema = new mongoose.Schema({
 	},
 	tasks: {
 		type: Number,
-		required: true,
 	},
 	tiles: {
 		type: [TileSchema],
 	},
 	rule: {
 		type: RuleSchema,
-		required: true,
 	},
 })
 
