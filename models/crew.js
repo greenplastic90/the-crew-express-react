@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const missionTracker = require('./missionTracker')
 
 const crewSchema = new mongoose.Schema({
 	user: {
@@ -21,6 +22,13 @@ const crewSchema = new mongoose.Schema({
 	finishDate: {
 		type: Date,
 	},
+})
+
+crewSchema.pre('remove', async function (next) {
+	// Remove all MissionTracker documents that reference the removed Crew
+	await missionTracker.deleteMany({ crew: this._id })
+
+	next()
 })
 
 // Validation function to limit array size
