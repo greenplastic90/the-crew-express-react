@@ -17,7 +17,7 @@ const RuleSchema = new mongoose.Schema({
 const TileSchema = new mongoose.Schema({
 	value: {
 		type: String,
-		enum: ['1', '2', '3', '4', '5', '>', '>>', '>>>', 'Ω'],
+		enum: ['1', '2', '3', '4', '5', '>', '>>', '>>>', '>>>>', 'Ω'],
 		required: true,
 	},
 })
@@ -32,22 +32,14 @@ const MissionSchema = new mongoose.Schema({
 		type: Boolean,
 		default: false,
 	},
-	attempts: {
-		type: Number,
-		default: 0,
-	},
-	distressSignal: {
-		type: Boolean,
-		default: false,
-	},
 	tasks: {
 		type: Number,
 	},
 	tiles: {
 		type: [TileSchema],
 	},
-	rule: {
-		type: RuleSchema,
+	rules: {
+		type: [RuleSchema],
 	},
 })
 

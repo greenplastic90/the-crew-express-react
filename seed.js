@@ -24,19 +24,23 @@ async function seedMissions() {
 		},
 		{
 			number: 5,
-			rule: {
-				type: 'Ask & assign',
-				description: 'Avoid taking any tricks',
-			},
+			rules: [
+				{
+					type: 'Ask & assign',
+					description: 'Avoid taking any tricks',
+				},
+			],
 		},
 		{
 			number: 6,
 			tasks: 3,
 			tiles: [{ value: '>' }, { value: '>>' }],
-			rule: {
-				type: 'Comm',
-				description: 'Interference',
-			},
+			rules: [
+				{
+					type: 'Comm',
+					description: 'Interference',
+				},
+			],
 		},
 		{
 			number: 7,
@@ -50,10 +54,12 @@ async function seedMissions() {
 		},
 		{
 			number: 9,
-			rule: {
-				type: 'Special',
-				description: 'A non-rocket, 1-card must win a trick',
-			},
+			rules: [
+				{
+					type: 'Special',
+					description: 'A non-rocket, 1-card must win a trick',
+				},
+			],
 		},
 		{
 			number: 10,
@@ -63,37 +69,45 @@ async function seedMissions() {
 			number: 11,
 			tasks: 4,
 			tiles: [{ value: '1' }],
-			rule: {
-				type: 'Special',
-				description: 'Commander selects 1 crew who cannot communicate',
-			},
+			rules: [
+				{
+					type: 'Special',
+					description: 'Commander selects 1 crew who cannot communicate',
+				},
+			],
 		},
 		{
 			number: 12,
 			tasks: 4,
 			tiles: [{ value: 'Ω' }],
-			rule: {
-				type: 'Special',
-				description:
-					'After the 1st trick, each player takes a random card from the player to their right',
-			},
+			rules: [
+				{
+					type: 'Special',
+					description:
+						'After the 1st trick, each player takes a random card from the player to their right',
+				},
+			],
 		},
 		{
 			number: 13,
 
-			rule: {
-				type: 'Special',
-				description: 'A trick must be won with each of the rocket cards',
-			},
+			rules: [
+				{
+					type: 'Special',
+					description: 'A trick must be won with each of the rocket cards',
+				},
+			],
 		},
 		{
 			number: 14,
 			tasks: 4,
 			tiles: [{ value: '>' }, { value: '>>' }, { value: '>>>' }],
-			rule: {
-				type: 'Comm',
-				description: 'Interference',
-			},
+			rules: [
+				{
+					type: 'Comm',
+					description: 'Interference',
+				},
+			],
 		},
 		{
 			number: 15,
@@ -102,40 +116,344 @@ async function seedMissions() {
 		},
 		{
 			number: 16,
-			rule: {
-				type: 'Special',
-				description: 'A trick may not be won with any 9-card',
-			},
+			rules: [
+				{
+					type: 'Special',
+					description: 'A trick may not be won with any 9-card',
+				},
+			],
 		},
 		{
 			number: 17,
 			tasks: 2,
 			tiles: [{ value: '>' }],
-			rule: {
-				type: 'Special',
-				description: 'A trick may not be won with any 9-card',
-			},
+			rules: [
+				{
+					type: 'Special',
+					description: 'A trick may not be won with any 9-card',
+				},
+			],
 		},
 		{
 			number: 18,
 			tasks: 5,
-			tiles: [{ value: '>' }],
-			rule: {
-				type: 'Comm',
-				description: 'Disrupted till 2nd trick',
-			},
+			rules: [
+				{
+					type: 'Comm',
+					description: 'Disrupted till 2nd trick',
+				},
+			],
+		},
+		{
+			number: 19,
+			tasks: 5,
+			tiles: [{ value: '1' }],
+			rules: [
+				{
+					type: 'Comm',
+					description: 'Disrupted till 3rd trick',
+				},
+			],
+		},
+		{
+			number: 20,
+			tasks: 2,
+			rules: [
+				{
+					type: 'Assignment',
+					description: 'Solo',
+				},
+			],
+		},
+		{
+			number: 21,
+			tasks: 5,
+			tiles: [{ value: '1' }, { value: '2' }],
+			rules: [
+				{
+					type: 'Comm',
+					description: 'Interference',
+				},
+			],
+		},
+		{
+			number: 22,
+			tasks: 5,
+			tiles: [{ value: '>' }, { value: '>>' }, { value: '>>>' }, { value: '>>>>' }],
+		},
+		{
+			number: 23,
+			tasks: 5,
+			tiles: [{ value: '1' }, { value: '2' }, { value: '3' }, { value: '4' }, { value: '5' }],
+			rules: [
+				{
+					type: 'Special',
+					description: 'Before selecting tasks, the positions of 2 tiles may be swapped',
+				},
+			],
+		},
+		{
+			number: 24,
+			tasks: 6,
+			rules: [
+				{
+					type: 'Assignment',
+					description: 'Group',
+				},
+			],
+		},
+		{
+			number: 25,
+			fivePlayerRules: true,
+			tasks: 6,
+			tiles: [{ value: '>' }, { value: '>>' }],
+			rules: [
+				{
+					type: 'Comm',
+					description: 'Interference',
+				},
+			],
+		},
+		{
+			number: 26,
+			rules: [
+				{
+					type: 'Special',
+					description: '2 non-rocket, 1-cards must win a trick each',
+				},
+			],
+		},
+		{
+			number: 27,
+			fivePlayerRules: true,
+			tasks: 3,
+			rules: [
+				{
+					type: 'Assignment',
+					description: 'Solo',
+				},
+			],
+		},
+		{
+			number: 28,
+			fivePlayerRules: true,
+			tasks: 6,
+			tiles: [{ value: '1' }, { value: 'Ω' }],
+			rules: [
+				{
+					type: 'Comm',
+					description: 'Disrupted till 3rd trick',
+				},
+			],
+		},
+		{
+			number: 29,
+			rules: [
+				{ type: 'Comm', description: 'Interference' },
+				{
+					type: 'Special',
+					description: ' At no point may a player have won 2 tricks more than any other player',
+				},
+			],
+		},
+		{
+			number: 30,
+			fivePlayerRules: true,
+			tasks: 6,
+			tiles: [{ value: '>' }, { value: '>>' }, { value: '>>>' }],
+			rules: [
+				{
+					type: 'Comm',
+					description: 'Disrupted till 2nd trick',
+				},
+			],
+		},
+		{
+			number: 31,
+			fivePlayerRules: true,
+			tasks: 6,
+			tiles: [{ value: '1' }, { value: '2' }, { value: '3' }],
+		},
+		{
+			number: 32,
+			fivePlayerRules: true,
+			tasks: 7,
+			rules: [
+				{
+					type: 'Assignment',
+					description: 'Group',
+				},
+			],
+		},
+		{
+			number: 33,
+			rules: [
+				{
+					type: 'Ask & assign',
+					description: 'Win exactly 1 trick; trick cannot be won using a rocket card',
+				},
+			],
+		},
+		{
+			number: 34,
+			rules: [
+				{
+					type: 'Special',
+					description:
+						'Commander must win the 1st and last tricks. At no point may any player have won 2 tricks more than any other player.',
+				},
+			],
+		},
+		{
+			number: 35,
+			fivePlayerRules: true,
+			tasks: 7,
+			tiles: [{ value: '>' }, { value: '>>' }, { value: '>>>' }],
+		},
+		{
+			number: 36,
+			fivePlayerRules: true,
+			tasks: 7,
+			tiles: [{ value: '1' }, { value: '2' }],
+			rules: [
+				{
+					type: 'Assignment',
+					description: 'Group',
+				},
+			],
+		},
+		{
+			number: 37,
+			fivePlayerRules: true,
+			tasks: 4,
+			rules: [
+				{
+					type: 'Assignment',
+					description: 'Solo',
+				},
+			],
+		},
+		{
+			number: 38,
+			fivePlayerRules: true,
+			tasks: 8,
+			rules: [
+				{
+					type: 'Comm',
+					description: 'Disrupted till 3rd trick',
+				},
+			],
+		},
+		{
+			number: 39,
+			fivePlayerRules: true,
+			tasks: 8,
+			tiles: [{ value: '>' }, { value: '>>' }, { value: '>>>' }],
+			rules: [
+				{
+					type: 'Comm',
+					description: 'Interference',
+				},
+			],
+		},
+		{
+			number: 40,
+			fivePlayerRules: true,
+			tasks: 8,
+			tiles: [{ value: '1' }, { value: '2' }, { value: '3' }],
+			rules: [
+				{
+					type: 'Special',
+					description:
+						'Before selecting tasks, 1 tile may be moved to a task that does not have a tile',
+				},
+			],
+		},
+		{
+			number: 41,
+			rules: [
+				{
+					type: 'Ask & assign',
+					description:
+						'Win only the 1st and last tricks; these tricks cannot be won using rocket cards',
+				},
+			],
+		},
+		{
+			number: 42,
+			fivePlayerRules: true,
+			tasks: 9,
+		},
+		{
+			number: 43,
+			fivePlayerRules: true,
+			tasks: 9,
+			rules: [
+				{
+					type: 'Assignment',
+					description: 'Group',
+				},
+			],
+		},
+		{
+			number: 44,
+			rules: [
+				{
+					type: 'Special',
+					description: 'Each rocket card must win a trick in ascending order',
+				},
+			],
+		},
+		{
+			number: 45,
+			fivePlayerRules: true,
+			tasks: 9,
+			tiles: [{ value: '>' }, { value: '>>' }, { value: '>>>' }],
+		},
+		{
+			number: 46,
+			rules: [
+				{
+					type: 'Special',
+					description:
+						'The player with the red 9 identifies themselves; the player to their left must win every red card',
+				},
+			],
+		},
+		{
+			number: 47,
+			fivePlayerRules: true,
+			tasks: 10,
+		},
+		{
+			number: 48,
+			fivePlayerRules: true,
+			tasks: 3,
+			tiles: [{ value: 'Ω' }],
+			rules: [
+				{
+					type: 'Special',
+					description: 'The Ω task must be completed on the final trick',
+				},
+			],
+		},
+		{
+			number: 49,
+			fivePlayerRules: true,
+			tasks: 10,
+			tiles: [{ value: '>' }, { value: '>>' }, { value: '>>>' }],
+		},
+		{
+			number: 50,
+			rules: [
+				{
+					type: 'Special',
+					description:
+						'1 player must win the first 4 tricks, another must win the final trick, and the others must win the rest of the tricks. Decide roles as a group before play begins.',
+				},
+			],
 		},
 	]
-
-	const temp = {
-		number: 0,
-		tasks: 0,
-		tiles: [{ value: '>' }],
-		rule: {
-			type: 'Special',
-			description: 'Each',
-		},
-	}
 
 	// Delete existing missions
 	await Mission.deleteMany({})
