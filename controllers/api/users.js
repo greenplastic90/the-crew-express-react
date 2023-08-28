@@ -20,7 +20,7 @@ async function login(req, res) {
 		const match = await bcrypt.compare(req.body.password, user.password)
 		if (!match) throw new Error()
 		const token = createJWT(user)
-		res.json(token)
+		res.json({ token, user })
 	} catch {
 		res.status(400).json('Bad Credentials')
 	}
@@ -32,7 +32,7 @@ async function create(req, res) {
 		const token = createJWT(user)
 		// The token is a string, but yes, we can
 		// res.json a string
-		res.json(token)
+		res.json({ token, user })
 	} catch (err) {
 		res.status(400).json(err)
 	}

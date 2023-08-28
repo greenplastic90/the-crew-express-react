@@ -26,6 +26,8 @@ app.use('/api/users', require('./routes/api/users'))
 
 app.use('/api/crews', ensureLoggedIn, require('./routes/api/crews'))
 
+app.use('/api/mission-tracker', ensureLoggedIn, require('./routes/api/missionTracker'))
+
 //! uncomment bellow if you want to allow users to create their own missions
 //! mission model will need to be updated so that it has the id of the user creating it and possibly an id of a campaine (if user can create full campaine)
 // app.use('/api/missions', ensureLoggedIn, require('./routes/api/missions'))

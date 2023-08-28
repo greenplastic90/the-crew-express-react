@@ -3,7 +3,7 @@ const Crew = require('./../../models/crew')
 // Create a new Crew
 const createCrew = async (req, res) => {
 	try {
-		const crew = new Crew(req.body)
+		const crew = new Crew({ ...req.body, user: req.user._id })
 		await crew.save()
 		res.status(201).json({ crew })
 	} catch (error) {
