@@ -9,7 +9,7 @@ import * as usersAPI from './users-api'
 export async function signUp(userData) {
 	// Delegate the AJAX request to the users-api.js
 	// module.
-	const token = await usersAPI.signUp(userData)
+	const { token } = await usersAPI.signUp(userData)
 	localStorage.setItem(process.env.REACT_APP_TOKEN_NAME, token)
 	return getUser()
 }
@@ -41,7 +41,7 @@ export function logOut() {
 export async function login(credentials) {
 	// Delegate the AJAX request to the users-api.js
 	// module.
-	const token = await usersAPI.login(credentials)
+	const { token } = await usersAPI.login(credentials)
 	localStorage.setItem(process.env.REACT_APP_TOKEN_NAME, token)
 	return getUser()
 }

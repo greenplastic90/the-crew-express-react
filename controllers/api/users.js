@@ -22,18 +22,39 @@ async function login(req, res) {
 		const token = createJWT(user)
 		res.json({ token, user })
 	} catch {
-		res.status(400).json('Bad Credentials')
+		res.status(400).json({ error: 'Bad Credentials' })
 	}
 }
 
 async function create(req, res) {
+	const { username, email, password } = req.body
+	const errors = {}
+
 	try {
+		const existingUsername = await User.findOne({ username })
+		if (existingUsername) {
+			errors.username = 'Username already in use'
+		}
+
+		const existingEmail = await User.findOne({ email })
+		if (existingEmail) {
+			errors.email = 'Email already in use'
+		}
+
+		if (password.length < 3) {
+			errors.password = 'Password must be at least 3 characters long'
+		}
+
+		if (Object.keys(errors).length > 0) {
+			return res.status(400).json({ errors })
+		}
+
+		// Create the new user since all checks passed
 		const user = await User.create(req.body)
 		const token = createJWT(user)
-		// The token is a string, but yes, we can
-		// res.json a string
 		res.json({ token, user })
 	} catch (err) {
+		console.error(err)
 		res.status(400).json(err)
 	}
 }
