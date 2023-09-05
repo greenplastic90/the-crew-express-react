@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { signUp } from '../../utilities/users-service'
+import { getUser, signUp } from '../../utilities/users-service'
 
 export default function SignUpForm({ setUser }) {
 	//! fix confirmed disabled button
@@ -18,15 +18,16 @@ export default function SignUpForm({ setUser }) {
 			const formData = { ...formInputs }
 			delete formData.confirm
 			delete formData.error
-			// The promise returned by the signUp service method
-			// will resolve to the user object included in the
-			// payload of the JSON Web Token (JWT)
-			const user = await signUp(formData)
-			// Update user state with user
-			setUser(user)
+			const res = await signUp(formData)
+			const resJSON = await res.json()
+			if (res.ok) {
+				localStorage.setItem(process.env.REACT_APP_TOKEN_NAME, resJSON.token)
+				setUser(getUser())
+			} else {
+				setErrors({ ...errors, ...resJSON.errors })
+			}
 		} catch (error) {
-			// Invalid signup
-			setErrors(error.errors)
+			console.log({ error })
 		}
 	}
 
@@ -74,12 +75,7 @@ export default function SignUpForm({ setUser }) {
 						onChange={handleChange}
 						required
 					/>
-					<button
-						type='submit'
-						// disabled={disable}
-					>
-						SIGN UP
-					</button>
+					<button type='submit'>SIGN UP</button>
 				</form>
 			</div>
 			{/* <p className='error-message'>&nbsp;{this.state.error}</p> */}
