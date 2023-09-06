@@ -1,8 +1,12 @@
 import React, { useState } from 'react'
 import { Stack, Heading, FormLabel, Input, Button, HStack } from '@chakra-ui/react'
+import { createCrew } from '../../utilities/crew-api'
+import { useNavigate } from 'react-router-dom'
 
 function NewCrew() {
 	const [crew, setCrew] = useState({ name: '', memberNames: ['', ''] })
+
+	const navigate = useNavigate()
 
 	function handleNameChange(e) {
 		setCrew({ ...crew, name: e.target.value })
@@ -25,8 +29,21 @@ function NewCrew() {
 		setCrew({ ...crew, memberNames: newMembersInput })
 	}
 
+	async function handelSubmit(evt) {
+		evt.preventDefault()
+		try {
+			const res = await createCrew(crew)
+			if (res.ok) {
+				const { crew } = await res.json()
+				navigate(`/crew/${crew._id}`)
+			}
+		} catch (error) {
+			console.log(error)
+		}
+	}
+
 	return (
-		<form>
+		<form autoComplete='off' onSubmit={handelSubmit}>
 			<Stack>
 				<Heading as={'h1'} size={'2xl'}>
 					New Crew
