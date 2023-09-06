@@ -1,5 +1,14 @@
 import { useState } from 'react'
 import { getUser, login } from '../../utilities/users-service'
+import {
+	Button,
+	FormControl,
+	FormErrorMessage,
+	FormHelperText,
+	FormLabel,
+	Input,
+	InputGroup,
+} from '@chakra-ui/react'
 
 export default function LoginForm({ setUser }) {
 	const [credentials, setCredentials] = useState({
@@ -30,29 +39,31 @@ export default function LoginForm({ setUser }) {
 	}
 
 	return (
-		<div>
-			<div className='form-container'>
-				<form autoComplete='off' onSubmit={handleSubmit}>
-					<label>Email</label>
-					<input
-						type='text'
+		<form onSubmit={handleSubmit}>
+			<FormControl isInvalid={errors}>
+				<InputGroup>
+					<FormLabel>Email</FormLabel>
+					<Input
+						type='email'
 						name='email'
 						value={credentials.email}
 						onChange={handleChange}
 						required
 					/>
-					<label>Password</label>
-					<input
+				</InputGroup>
+				<InputGroup>
+					<FormLabel>Password</FormLabel>
+					<Input
 						type='password'
 						name='password'
 						value={credentials.password}
 						onChange={handleChange}
 						required
 					/>
-					<button type='submit'>LOG IN</button>
-				</form>
-			</div>
-			<p className='error-message'>&nbsp;{errors}</p>
-		</div>
+				</InputGroup>
+				<FormErrorMessage>{errors}</FormErrorMessage>
+				<Button type='submit'>LOG IN</Button>
+			</FormControl>
+		</form>
 	)
 }

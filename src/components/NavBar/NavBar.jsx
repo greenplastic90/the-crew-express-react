@@ -1,21 +1,20 @@
 import { Link } from 'react-router-dom'
-import * as userService from '../../utilities/users-service'
+import { logOut } from '../../utilities/users-service'
+import { HStack, Text } from '@chakra-ui/react'
 
 export default function NavBar({ user, setUser }) {
 	function handleLogOut() {
-		// Remove token using the user service
-		userService.logOut()
-		// Update user state in App
+		logOut()
+
 		setUser(null)
 	}
 
 	return (
-		<nav>
-			<span>Welcome, {user.username}</span>
-			&nbsp; | &nbsp;
+		<HStack justify={'space-between'}>
+			<Text>NavBar</Text>
 			<Link to='' onClick={handleLogOut}>
 				Log Out
 			</Link>
-		</nav>
+		</HStack>
 	)
 }
