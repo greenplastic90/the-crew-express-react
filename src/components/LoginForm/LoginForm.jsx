@@ -39,28 +39,26 @@ export default function LoginForm({ setUser }) {
 	}
 
 	return (
-		<form onSubmit={handleSubmit}>
+		<form autoComplete='off' onSubmit={handleSubmit}>
 			<FormControl isInvalid={errors}>
-				<InputGroup>
-					<FormLabel>Email</FormLabel>
-					<Input
-						type='email'
-						name='email'
-						value={credentials.email}
-						onChange={handleChange}
-						required
-					/>
-				</InputGroup>
-				<InputGroup>
-					<FormLabel>Password</FormLabel>
-					<Input
-						type='password'
-						name='password'
-						value={credentials.password}
-						onChange={handleChange}
-						required
-					/>
-				</InputGroup>
+				<FormLabel>Email</FormLabel>
+				<Input
+					type='email'
+					name='email'
+					value={credentials.email}
+					onChange={handleChange}
+					required
+				/>
+
+				<FormLabel>Password</FormLabel>
+				<Input
+					type='password'
+					name='password'
+					value={credentials.password}
+					onChange={handleChange}
+					required
+				/>
+
 				<FormErrorMessage>{errors}</FormErrorMessage>
 				<Button type='submit'>LOG IN</Button>
 			</FormControl>

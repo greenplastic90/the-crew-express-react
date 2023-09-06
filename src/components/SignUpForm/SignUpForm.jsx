@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { getUser, signUp } from '../../utilities/users-service'
+import { Button, FormControl, FormErrorMessage, FormLabel, Input } from '@chakra-ui/react'
 
 export default function SignUpForm({ setUser }) {
 	//! fix confirmed disabled button
@@ -10,10 +11,14 @@ export default function SignUpForm({ setUser }) {
 		password: '',
 		confirm: '',
 	})
-	const [errors, setErrors] = useState({ email: '', username: '', password: '' })
+	const [errors, setErrors] = useState({ email: '', username: '', password: '', confirm: '' })
 
 	const handleSubmit = async (evt) => {
 		evt.preventDefault()
+		if (formInputs.password !== formInputs.confirm) {
+			setErrors({ ...errors, confirm: 'Does not match password' })
+			return
+		}
 		try {
 			const formData = { ...formInputs }
 			delete formData.confirm
@@ -36,49 +41,56 @@ export default function SignUpForm({ setUser }) {
 			...formInputs,
 			[evt.target.name]: evt.target.value,
 		})
+		setErrors({ ...errors, [evt.target.name]: '' })
 	}
-	//const disable = this.state.password !== this.state.confirm
 
 	return (
-		<div>
-			<div className='form-container'>
-				<form autoComplete='off' onSubmit={handleSubmit}>
-					<label>Username</label>
-					<input
-						type='text'
-						name='username'
-						value={formInputs.username}
-						onChange={handleChange}
-						required
-					/>
-					<label>Email</label>
-					<input
-						type='email'
-						name='email'
-						value={formInputs.email}
-						onChange={handleChange}
-						required
-					/>
-					<label>Password</label>
-					<input
-						type='password'
-						name='password'
-						value={formInputs.password}
-						onChange={handleChange}
-						required
-					/>
-					<label>Confirm</label>
-					<input
-						type='password'
-						name='confirm'
-						value={formInputs.confirm}
-						onChange={handleChange}
-						required
-					/>
-					<button type='submit'>SIGN UP</button>
-				</form>
-			</div>
-			{/* <p className='error-message'>&nbsp;{this.state.error}</p> */}
-		</div>
+		<form autoComplete='off' onSubmit={handleSubmit}>
+			<FormControl isInvalid={errors.username}>
+				<FormLabel>Username</FormLabel>
+				<Input
+					type='text'
+					name='username'
+					value={formInputs.username}
+					onChange={handleChange}
+					required
+				/>
+				<FormErrorMessage>{errors.username}</FormErrorMessage>
+			</FormControl>
+			<FormControl isInvalid={errors.email}>
+				<FormLabel>Email</FormLabel>
+				<Input
+					type='email'
+					name='email'
+					value={formInputs.email}
+					onChange={handleChange}
+					required
+				/>
+				<FormErrorMessage>{errors.email}</FormErrorMessage>
+			</FormControl>
+			<FormControl isInvalid={errors.password}>
+				<FormLabel>Password</FormLabel>
+				<Input
+					type='password'
+					name='password'
+					value={formInputs.password}
+					onChange={handleChange}
+					required
+				/>
+				<FormErrorMessage>{errors.password}</FormErrorMessage>
+			</FormControl>
+			<FormControl isInvalid={errors.confirm}>
+				<FormLabel>Confirm</FormLabel>
+				<Input
+					type='password'
+					name='confirm'
+					value={formInputs.confirm}
+					onChange={handleChange}
+					required
+				/>
+				<FormErrorMessage>{errors.confirm}</FormErrorMessage>
+			</FormControl>
+			<Button type='submit'>SIGN UP</Button>
+		</form>
 	)
 }
