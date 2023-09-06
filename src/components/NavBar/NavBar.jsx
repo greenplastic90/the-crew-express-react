@@ -5,16 +5,22 @@ import { HStack, Text } from '@chakra-ui/react'
 export default function NavBar({ user, setUser }) {
 	function handleLogOut() {
 		logOut()
-
 		setUser(null)
 	}
 
 	return (
 		<HStack justify={'space-between'}>
-			<Text>NavBar</Text>
-			<Link to='' onClick={handleLogOut}>
-				Log Out
-			</Link>
+			<Text>The Crew Logbook</Text>
+			{user ? (
+				<HStack>
+					<Link to='/crew'>Crew</Link>
+					<Link to='' onClick={handleLogOut}>
+						Log Out
+					</Link>
+				</HStack>
+			) : (
+				<Link to=''>Login</Link>
+			)}
 		</HStack>
 	)
 }
