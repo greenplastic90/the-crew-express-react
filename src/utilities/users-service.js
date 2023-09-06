@@ -25,6 +25,7 @@ export async function login(credentials) {
 export function getToken() {
 	// getItem will return null if the key does not exist
 	const token = localStorage.getItem(process.env.REACT_APP_TOKEN_NAME)
+
 	if (!token) return null
 	// Let's check if token has expired...
 	const payload = JSON.parse(atob(token.split('.')[1]))
@@ -34,6 +35,7 @@ export function getToken() {
 		localStorage.removeItem(process.env.REACT_APP_TOKEN_NAME)
 		return null
 	}
+
 	return token
 }
 

@@ -13,7 +13,7 @@ export default function NavBar({ user, setUser }) {
 			<Text>The Crew Logbook</Text>
 			{user ? (
 				<HStack>
-					<Link to='/crew'>Crew</Link>
+					<Link to='/crews'>Crews</Link>
 					<Link to='' onClick={handleLogOut}>
 						Log Out
 					</Link>
