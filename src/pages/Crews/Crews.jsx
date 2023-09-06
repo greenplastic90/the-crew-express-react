@@ -1,7 +1,7 @@
 import { Button, Heading, Stack, Text } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
 import Crew from '../../components/Crew/Crew'
-import { getallCrews } from '../../utilities/crew-api'
+import { getAllCrews } from '../../utilities/crew-api'
 import { useNavigate } from 'react-router-dom'
 
 function Crews({ user }) {
@@ -13,7 +13,7 @@ function Crews({ user }) {
 	useEffect(() => {
 		async function getUserCrews() {
 			try {
-				const res = await getallCrews()
+				const res = await getAllCrews()
 				const { crews } = await res.json()
 
 				if (crews) {
@@ -37,7 +37,7 @@ function Crews({ user }) {
 			<Button onClick={() => navigate('/crews/new')}>+ New Crew</Button>
 
 			{crews.map((crew) => (
-				<Crew key={crew._id} crew={crew} />
+				<Crew key={crew._id} crew={crew} setCrews={setCrews} />
 			))}
 
 			{error && <Text color={'red.500'}>{error}</Text>}

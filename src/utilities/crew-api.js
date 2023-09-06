@@ -1,10 +1,14 @@
 import sendRequest from './send-request'
 const BASE_URL = '/api/crews'
 
-export function getallCrews() {
+export function getAllCrews() {
 	return sendRequest(BASE_URL)
 }
 
 export function createCrew(crew) {
 	return sendRequest(BASE_URL, 'POST', crew)
+}
+
+export function deleteCrewById(id) {
+	return sendRequest(`${BASE_URL}/${id}`, 'DELETE')
 }
