@@ -1,11 +1,14 @@
-import { Heading, Stack, Text } from '@chakra-ui/react'
+import { Button, Heading, Stack, Text } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
 import Crew from '../../components/Crew/Crew'
 import { getallCrews } from '../../utilities/crew-api'
+import { useNavigate } from 'react-router-dom'
 
 function Crews({ user }) {
 	const [crews, setCrews] = useState([])
 	const [error, setError] = useState('')
+
+	const navigate = useNavigate()
 
 	useEffect(() => {
 		async function getUserCrews() {
@@ -25,11 +28,13 @@ function Crews({ user }) {
 		}
 		getUserCrews()
 	}, [])
+
 	return (
 		<Stack>
-			<Heading as={'h1'} size={'4xl'}>
+			<Heading as={'h1'} size={'2xl'}>
 				{`${user.username}'s Crew List`}
 			</Heading>
+			<Button onClick={() => navigate('/crews/new')}>+ New Crew</Button>
 
 			{crews.map((crew) => (
 				<Crew key={crew._id} crew={crew} />

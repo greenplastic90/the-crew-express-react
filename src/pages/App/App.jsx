@@ -5,6 +5,7 @@ import AuthPage from '../AuthPage/AuthPage'
 import NavBar from '../../components/NavBar/NavBar'
 import { Box, Container } from '@chakra-ui/react'
 import Crews from '../Crews/Crews'
+import NewCrew from '../Crews/NewCrew'
 
 function App() {
 	const [user, setUser] = useState(getUser())
@@ -16,6 +17,7 @@ function App() {
 				{user ? (
 					<Routes>
 						<Route path='/crews' element={<Crews user={user} />} />
+						<Route path='/crews/new' element={<NewCrew />} />
 					</Routes>
 				) : (
 					<AuthPage setUser={setUser} />
