@@ -1,7 +1,6 @@
 import {
 	Button,
 	HStack,
-	Heading,
 	Modal,
 	ModalBody,
 	ModalCloseButton,
@@ -9,7 +8,6 @@ import {
 	ModalFooter,
 	ModalHeader,
 	ModalOverlay,
-	Stack,
 	Text,
 	useDisclosure,
 } from '@chakra-ui/react'
@@ -17,44 +15,34 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { deleteCrewById } from '../../utilities/crew-api'
 
-function Crew({ crew, setCrews }) {
+function CrewNavButtons({ crew, setCrews }) {
 	const { isOpen, onOpen, onClose } = useDisclosure()
-
-	const { _id, name, memberNames } = crew
-
 	const navigate = useNavigate()
 
-	async function deleteCrew(id) {
+	const { _id, name } = crew
+
+	async function deleteCrew() {
 		try {
-			const res = await deleteCrewById(id)
+			const res = await deleteCrewById(_id)
 			const { message } = await res.json()
 
 			if (message) {
 				onClose()
 				setCrews((crews) => {
-					return crews.filter((c) => c._id !== id)
+					return crews.filter((c) => c._id !== _id)
 				})
 			}
 		} catch (error) {
 			console.log(error)
 		}
 	}
-
 	return (
-		<Stack border={'1px'}>
-			<Heading as={'h2'} size={'lg'}>
-				{name}
-			</Heading>
+		<>
 			<HStack>
-				{memberNames.map((member, i) => (
-					<Text key={i}>{member}</Text>
-				))}
-			</HStack>
-			<HStack>
-				<Button onClick={() => navigate(`/crew/${_id}`)}>Details</Button>
+				<Button onClick={() => navigate(`/crew/${_id}`)}>Missions</Button>
+				<Button>Update</Button>
 				<Button onClick={onOpen}>Delete</Button>
 			</HStack>
-
 			<Modal isOpen={isOpen} onClose={onClose}>
 				<ModalOverlay />
 				<ModalContent>
@@ -68,14 +56,14 @@ function Crew({ crew, setCrews }) {
 						<Button colorScheme='gray' mr={3} onClick={onClose}>
 							Cancel
 						</Button>
-						<Button colorScheme='red' onClick={() => deleteCrew(_id)}>
+						<Button colorScheme='red' onClick={() => deleteCrew()}>
 							Delete
 						</Button>
 					</ModalFooter>
 				</ModalContent>
 			</Modal>
-		</Stack>
+		</>
 	)
 }
 
-export default Crew
+export default CrewNavButtons

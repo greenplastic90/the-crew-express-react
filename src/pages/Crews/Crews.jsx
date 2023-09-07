@@ -1,6 +1,6 @@
 import { Button, Heading, Stack, Text } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
-import Crew from '../../components/Crew/Crew'
+import CrewDetails from '../../components/Crew/CrewDetails'
 import { getAllCrews } from '../../utilities/crew-api'
 import { useNavigate } from 'react-router-dom'
 
@@ -37,7 +37,7 @@ function Crews({ user }) {
 			<Button onClick={() => navigate('/crews/new')}>+ New Crew</Button>
 
 			{crews.map((crew) => (
-				<Crew key={crew._id} crew={crew} setCrews={setCrews} />
+				<CrewDetails key={crew._id} crew={crew} setCrews={setCrews} />
 			))}
 
 			{error && <Text color={'red.500'}>{error}</Text>}
