@@ -13,6 +13,10 @@ export function createCrew(crew) {
 	return sendRequest(BASE_URL, 'POST', crew)
 }
 
+export function updateCrew(crew, crewId) {
+	return sendRequest(`${BASE_URL}/${crewId}`, 'PUT', crew)
+}
+
 export function deleteCrewById(id) {
 	return sendRequest(`${BASE_URL}/${id}`, 'DELETE')
 }

@@ -2,15 +2,15 @@ import React from 'react'
 import { Stack, Heading } from '@chakra-ui/react'
 import CrewForm from '../../components/Crew/CrewForm'
 
-function NewCrew() {
+function UpdateCrew() {
 	return (
 		<Stack>
 			<Heading as={'h1'} size={'4xl'}>
-				New Crew
+				Edit Crew Name
 			</Heading>
 			<CrewForm />
 		</Stack>
 	)
 }
 
-export default NewCrew
+export default UpdateCrew

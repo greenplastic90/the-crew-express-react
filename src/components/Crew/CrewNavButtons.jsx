@@ -40,7 +40,7 @@ function CrewNavButtons({ crew, setCrews }) {
 		<>
 			<HStack>
 				<Button onClick={() => navigate(`/crew/${_id}`)}>Missions</Button>
-				<Button>Update</Button>
+				<Button onClick={() => navigate(`/crew/${_id}/edit`)}>Edit</Button>
 				<Button onClick={onOpen}>Delete</Button>
 			</HStack>
 			<Modal isOpen={isOpen} onClose={onClose}>

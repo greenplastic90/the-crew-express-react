@@ -34,7 +34,7 @@ function Crews({ user }) {
 			<Heading as={'h1'} size={'2xl'}>
 				{`${user.username}'s Crew List`}
 			</Heading>
-			<Button onClick={() => navigate('/crews/new')}>+ New Crew</Button>
+			<Button onClick={() => navigate('/crew/new')}>+ New Crew</Button>
 
 			{crews.map((crew) => (
 				<CrewDetails key={crew._id} crew={crew} setCrews={setCrews} />
