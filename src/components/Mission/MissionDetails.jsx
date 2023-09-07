@@ -1,11 +1,17 @@
 import { Box, HStack, Heading, Stack, StackDivider, Text } from '@chakra-ui/react'
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
-function Mission({ mission, tracker }) {
+function MissionDetails({ mission, tracker }) {
 	const { number, fivePlayerRule, tasks, tiles, rules } = mission
 	const { attempts, distressSignalUsed, completed } = tracker
+
+	const navigate = useNavigate()
 	return (
-		<Stack border={'1px'} divider={<StackDivider />}>
+		<Stack
+			onClick={() => navigate(`/mission/${tracker._id}`)}
+			border={'1px'}
+			divider={<StackDivider />}>
 			<Stack>
 				<Heading as={'h4'} size={'md'}>
 					Info:
@@ -51,4 +57,4 @@ function Mission({ mission, tracker }) {
 	)
 }
 
-export default Mission
+export default MissionDetails

@@ -8,6 +8,7 @@ import Crews from '../Crews/Crews'
 import NewCrew from '../Crews/NewCrew'
 import Crew from '../Crews/Crew'
 import UpdateCrew from '../Crews/UpdateCrew'
+import Mission from '../Missions/Mission'
 
 function App() {
 	const [user, setUser] = useState(getUser())
@@ -22,6 +23,7 @@ function App() {
 						<Route path='/crew/new' element={<NewCrew />} />
 						<Route path='/crew/:crewId/edit' element={<UpdateCrew />} />
 						<Route path='/crew/:crewId' element={<Crew />} />
+						<Route path='/mission/:missionTrackerId' element={<Mission />} />
 					</Routes>
 				) : (
 					<AuthPage setUser={setUser} />

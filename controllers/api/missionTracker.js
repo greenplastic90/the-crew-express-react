@@ -1,5 +1,6 @@
 const MissionTracker = require('../../models/missionTracker')
 const Crew = require('../../models/crew')
+const Mission = require('../../models/mission')
 
 // Get all MissionTrackers by Crew ID
 const getAllByCrewId = async (req, res) => {
@@ -17,16 +18,23 @@ const getById = async (req, res) => {
 		const missionTracker = await MissionTracker.findById(req.params.id)
 
 		if (!missionTracker) {
-			return res.status(404).send()
+			return res.status(404).send({ error: 'MissionTracker not found' })
 		}
 
 		// Check if the user is the owner of the Crew
 		const crew = await Crew.findById(missionTracker.crew)
-		if (String(crew.owner) !== String(req.user._id)) {
+		if (String(crew.user) !== String(req.user._id)) {
 			return res.status(403).send({ error: 'Not authorized to access this resource' })
 		}
 
-		res.status(200).send({ missionTracker })
+		// Fetch the mission related to the mission tracker
+		const mission = await Mission.findById(missionTracker.mission)
+
+		if (!mission) {
+			return res.status(404).send({ error: 'Mission not found' })
+		}
+
+		res.status(200).send({ tracker: missionTracker, mission })
 	} catch (error) {
 		res.status(500).send(error)
 	}
