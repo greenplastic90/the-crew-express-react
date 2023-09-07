@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Stack, FormLabel, Input, Button, HStack } from '@chakra-ui/react'
+import { Stack, FormLabel, Input, Button, HStack, Heading } from '@chakra-ui/react'
 import { createCrew, getCrewById, updateCrew } from '../../utilities/crew-api'
 import { useNavigate, useParams } from 'react-router-dom'
 
@@ -75,7 +75,9 @@ function CrewForm() {
 	return (
 		<form autoComplete='off' onSubmit={crewId ? handelUpdate : handelCreate}>
 			<Stack>
-				{/*//! Bring back heading and add terneray */}
+				<Heading as={'h1'} size={'4xl'}>
+					{crewId ? `Edit ${crew.name}` : 'New Crew'}
+				</Heading>
 				<FormLabel>Name</FormLabel>
 				<Input type='text' name='name' value={crew.name} onChange={handleNameChange} required />
 
