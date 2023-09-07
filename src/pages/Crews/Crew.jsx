@@ -2,19 +2,21 @@ import { HStack, Heading, Stack, Text } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
 import { getCrewById } from '../../utilities/crew-api'
 import { useParams } from 'react-router-dom'
+import Missions from '../../components/Mission/Missions'
 
 function Crew() {
 	const [crew, setCrew] = useState(null)
+	const [missions, setMissions] = useState([])
 
 	const { crewId } = useParams()
 
 	useEffect(() => {
 		async function getCrew() {
 			const res = await getCrewById(crewId)
-			const { crew } = await res.json()
-			if (crew) {
-				setCrew(crew)
-			}
+			const { crew, missionData } = await res.json()
+
+			if (crew) setCrew(crew)
+			if (missionData) setMissions(missionData)
 		}
 		getCrew()
 	}, [crewId])
@@ -30,6 +32,7 @@ function Crew() {
 							<Text key={i}>{name}</Text>
 						))}
 					</HStack>
+					<Missions missions={missions} />
 				</Stack>
 			)}
 		</>
