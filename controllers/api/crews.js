@@ -46,7 +46,27 @@ const getCrewById = async (req, res) => {
 		if (!crew) {
 			return res.status(404).json({ error: 'Crew not found' })
 		}
-		res.status(200).json({ crew })
+
+		// Fetch all missions
+		const missions = await Mission.find({})
+
+		// Fetch all MissionTrackers for the crew
+		const trackers = await MissionTracker.find({ crew: id })
+
+		// Create an array to hold the combined mission and tracker data
+		const missionData = missions.map((mission) => {
+			const tracker = trackers.find((t) => t.mission.toString() === mission._id.toString())
+
+			return {
+				mission: mission,
+				tracker: tracker || null, // if no tracker is found, return null
+			}
+		})
+
+		res.status(200).json({
+			crew,
+			missionData,
+		})
 	} catch (error) {
 		res.status(400).json({ error: error.message })
 	}
