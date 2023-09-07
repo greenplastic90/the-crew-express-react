@@ -76,10 +76,12 @@ const updateCrewById = async (req, res) => {
 const deleteCrewById = async (req, res) => {
 	try {
 		const { id } = req.params
-		const crew = await Crew.findOneAndDelete({ _id: id, user: req.user._id })
+		const crew = await Crew.findOne({ _id: id, user: req.user._id })
 		if (!crew) {
 			return res.status(404).json({ error: 'Crew not found' })
 		}
+
+		await crew.remove() // This should trigger the pre('remove') middleware
 		res.status(200).json({ message: 'Crew deleted successfully' })
 	} catch (error) {
 		res.status(400).json({ error: error.message })
