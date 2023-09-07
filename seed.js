@@ -204,7 +204,7 @@ async function seedMissions() {
 		},
 		{
 			number: 25,
-			fivePlayerRules: true,
+			fivePlayerRule: true,
 			tasks: 6,
 			tiles: [{ value: '>' }, { value: '>>' }],
 			rules: [
@@ -225,7 +225,7 @@ async function seedMissions() {
 		},
 		{
 			number: 27,
-			fivePlayerRules: true,
+			fivePlayerRule: true,
 			tasks: 3,
 			rules: [
 				{
@@ -236,7 +236,7 @@ async function seedMissions() {
 		},
 		{
 			number: 28,
-			fivePlayerRules: true,
+			fivePlayerRule: true,
 			tasks: 6,
 			tiles: [{ value: '1' }, { value: 'Ω' }],
 			rules: [
@@ -258,7 +258,7 @@ async function seedMissions() {
 		},
 		{
 			number: 30,
-			fivePlayerRules: true,
+			fivePlayerRule: true,
 			tasks: 6,
 			tiles: [{ value: '>' }, { value: '>>' }, { value: '>>>' }],
 			rules: [
@@ -270,13 +270,13 @@ async function seedMissions() {
 		},
 		{
 			number: 31,
-			fivePlayerRules: true,
+			fivePlayerRule: true,
 			tasks: 6,
 			tiles: [{ value: '1' }, { value: '2' }, { value: '3' }],
 		},
 		{
 			number: 32,
-			fivePlayerRules: true,
+			fivePlayerRule: true,
 			tasks: 7,
 			rules: [
 				{
@@ -306,13 +306,13 @@ async function seedMissions() {
 		},
 		{
 			number: 35,
-			fivePlayerRules: true,
+			fivePlayerRule: true,
 			tasks: 7,
 			tiles: [{ value: '>' }, { value: '>>' }, { value: '>>>' }],
 		},
 		{
 			number: 36,
-			fivePlayerRules: true,
+			fivePlayerRule: true,
 			tasks: 7,
 			tiles: [{ value: '1' }, { value: '2' }],
 			rules: [
@@ -324,7 +324,7 @@ async function seedMissions() {
 		},
 		{
 			number: 37,
-			fivePlayerRules: true,
+			fivePlayerRule: true,
 			tasks: 4,
 			rules: [
 				{
@@ -335,7 +335,7 @@ async function seedMissions() {
 		},
 		{
 			number: 38,
-			fivePlayerRules: true,
+			fivePlayerRule: true,
 			tasks: 8,
 			rules: [
 				{
@@ -346,7 +346,7 @@ async function seedMissions() {
 		},
 		{
 			number: 39,
-			fivePlayerRules: true,
+			fivePlayerRule: true,
 			tasks: 8,
 			tiles: [{ value: '>' }, { value: '>>' }, { value: '>>>' }],
 			rules: [
@@ -358,7 +358,7 @@ async function seedMissions() {
 		},
 		{
 			number: 40,
-			fivePlayerRules: true,
+			fivePlayerRule: true,
 			tasks: 8,
 			tiles: [{ value: '1' }, { value: '2' }, { value: '3' }],
 			rules: [
@@ -381,12 +381,12 @@ async function seedMissions() {
 		},
 		{
 			number: 42,
-			fivePlayerRules: true,
+			fivePlayerRule: true,
 			tasks: 9,
 		},
 		{
 			number: 43,
-			fivePlayerRules: true,
+			fivePlayerRule: true,
 			tasks: 9,
 			rules: [
 				{
@@ -406,7 +406,7 @@ async function seedMissions() {
 		},
 		{
 			number: 45,
-			fivePlayerRules: true,
+			fivePlayerRule: true,
 			tasks: 9,
 			tiles: [{ value: '>' }, { value: '>>' }, { value: '>>>' }],
 		},
@@ -422,12 +422,12 @@ async function seedMissions() {
 		},
 		{
 			number: 47,
-			fivePlayerRules: true,
+			fivePlayerRule: true,
 			tasks: 10,
 		},
 		{
 			number: 48,
-			fivePlayerRules: true,
+			fivePlayerRule: true,
 			tasks: 3,
 			tiles: [{ value: 'Ω' }],
 			rules: [
@@ -439,7 +439,7 @@ async function seedMissions() {
 		},
 		{
 			number: 49,
-			fivePlayerRules: true,
+			fivePlayerRule: true,
 			tasks: 10,
 			tiles: [{ value: '>' }, { value: '>>' }, { value: '>>>' }],
 		},
