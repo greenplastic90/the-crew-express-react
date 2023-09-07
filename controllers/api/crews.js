@@ -1,11 +1,28 @@
 const Crew = require('./../../models/crew')
+const Mission = require('./../../models/mission')
+const MissionTracker = require('./../../models/missionTracker')
 
 // Create a new Crew
 const createCrew = async (req, res) => {
 	try {
 		const crew = new Crew({ ...req.body, user: req.user._id })
 		await crew.save()
-		res.status(201).json({ crew })
+
+		// Fetch all the available missions
+		const missions = await Mission.find()
+
+		// Create a mission tracker for each mission
+		const trackers = missions.map((mission) => {
+			return {
+				crew: crew._id,
+				mission: mission._id,
+			}
+		})
+
+		// Save all mission trackers
+		await MissionTracker.insertMany(trackers)
+
+		res.status(201).json({ crew, trackers })
 	} catch (error) {
 		res.status(400).json({ error: error.message })
 	}
