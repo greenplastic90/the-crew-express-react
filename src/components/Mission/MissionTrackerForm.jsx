@@ -37,6 +37,12 @@ function MissionTrackerForm({ tracker }) {
 				: {}
 		}
 
+		if (name === 'completed') {
+			if (trackerInput.attempts <= 0) {
+				updateAttempts = { attempts: 1 }
+			}
+		}
+
 		setTrackerInput({ ...trackerInput, [name]: checked, ...updateAttempts })
 	}
 
