@@ -32,6 +32,7 @@ function Crew() {
 							<Text key={i}>{name}</Text>
 						))}
 					</HStack>
+					<Text>Attempts: {crew.totalAttempts}</Text>
 					<Missions missions={missions} />
 				</Stack>
 			)}

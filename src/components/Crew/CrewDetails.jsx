@@ -5,7 +5,7 @@ import { formatDate } from '../../utilities/miscellaneous'
 import CrewNavButtons from './CrewNavButtons'
 
 function CrewDetails({ crew, setCrews }) {
-	const { name, memberNames, startDate, finishDate } = crew
+	const { name, memberNames, startDate, finishDate, totalAttempts } = crew
 
 	return (
 		<Stack border={'1px'}>
@@ -21,7 +21,7 @@ function CrewDetails({ crew, setCrews }) {
 				<Text>Start: {formatDate(startDate)}</Text>
 				<Text>Finish: {finishDate ? formatDate(finishDate) : 'Not Completed'}</Text>
 			</HStack>
-			<Text>Attemps: ???</Text>
+			<Text>Attemps: {totalAttempts}</Text>
 			<CrewNavButtons crew={crew} setCrews={setCrews} />
 		</Stack>
 	)
