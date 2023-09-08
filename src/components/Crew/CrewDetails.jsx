@@ -1,26 +1,11 @@
-import {
-	Button,
-	HStack,
-	Heading,
-	Modal,
-	ModalBody,
-	ModalCloseButton,
-	ModalContent,
-	ModalFooter,
-	ModalHeader,
-	ModalOverlay,
-	Stack,
-	Text,
-	useDisclosure,
-} from '@chakra-ui/react'
+import { HStack, Heading, Stack, Text } from '@chakra-ui/react'
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
-import { deleteCrewById } from '../../utilities/crew-api'
+
 import { formatDate } from '../../utilities/miscellaneous'
 import CrewNavButtons from './CrewNavButtons'
 
 function CrewDetails({ crew, setCrews }) {
-	const { _id, name, memberNames, startDate, finishDate } = crew
+	const { name, memberNames, startDate, finishDate } = crew
 
 	return (
 		<Stack border={'1px'}>
