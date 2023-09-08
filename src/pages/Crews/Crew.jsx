@@ -12,11 +12,15 @@ function Crew() {
 
 	useEffect(() => {
 		async function getCrew() {
-			const res = await getCrewById(crewId)
-			const { crew, missionData } = await res.json()
+			try {
+				const res = await getCrewById(crewId)
+				const { crew, missionData } = await res.json()
 
-			if (crew) setCrew(crew)
-			if (missionData) setMissions(missionData)
+				if (crew) setCrew(crew)
+				if (missionData) setMissions(missionData)
+			} catch (error) {
+				console.log(error)
+			}
 		}
 		getCrew()
 	}, [crewId])

@@ -42,6 +42,7 @@ function Mission() {
 						onClick={() => naviage(`/mission/${adjacentMissions.nextMissionTracker}`)}>
 						Next
 					</Button>
+					<Button onClick={() => naviage(`/crew/${tracker.crew}`)}>All Missions</Button>
 				</HStack>
 			)}
 		</Stack>
