@@ -67,7 +67,8 @@ function MissionTrackerForm({ tracker }) {
 					<NumberInput
 						onChange={(valueAsString, valueAsNumber) => handleAttemptsChange(valueAsNumber)}
 						name='attempts'
-						value={trackerInput.attempts}>
+						value={trackerInput.attempts}
+						isDisabled={trackerInput.completed}>
 						<NumberInputField />
 						<NumberInputStepper>
 							<NumberIncrementStepper />
@@ -85,6 +86,7 @@ function MissionTrackerForm({ tracker }) {
 							name='distressSignalUsed'
 							isChecked={trackerInput.distressSignalUsed}
 							onChange={handleCheckboxChange}
+							isDisabled={trackerInput.completed}
 						/>
 					</FormControl>
 
