@@ -14,6 +14,13 @@ const MissionTrackerSchema = new mongoose.Schema({
 	attempts: {
 		type: Number,
 		default: 0,
+		required: true,
+		validate: {
+			validator: function (v) {
+				return v !== null
+			},
+			message: 'attempts cannot be null',
+		},
 	},
 	distressSignalUsed: {
 		type: Boolean,

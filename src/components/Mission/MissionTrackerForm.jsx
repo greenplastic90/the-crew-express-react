@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import debounce from 'lodash.debounce'
 
 import {
 	FormControl,
@@ -19,7 +18,8 @@ function MissionTrackerForm({ tracker }) {
 	const [trackerInput, setTrackerInput] = useState(tracker)
 
 	const handleAttemptsChange = (value) => {
-		setTrackerInput({ ...trackerInput, attempts: value })
+		const validValue = isNaN(value) || value < 0 ? 0 : value
+		setTrackerInput({ ...trackerInput, attempts: validValue })
 	}
 
 	const handleCheckboxChange = (e) => {
