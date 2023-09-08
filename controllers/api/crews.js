@@ -32,7 +32,16 @@ const createCrew = async (req, res) => {
 const getAllCrews = async (req, res) => {
 	try {
 		const crews = await Crew.find({ user: req.user._id })
-		res.status(200).json({ crews })
+
+		// Map through the crews to calculate the total attempts for each
+		const crewsWithAttempts = await Promise.all(
+			crews.map(async (crew) => {
+				const totalAttempts = await crew.getTotalAttempts()
+				return { ...crew.toObject(), totalAttempts }
+			})
+		)
+
+		res.status(200).json({ crews: crewsWithAttempts })
 	} catch (error) {
 		res.status(400).json({ error: error.message })
 	}
@@ -46,6 +55,9 @@ const getCrewById = async (req, res) => {
 		if (!crew) {
 			return res.status(404).json({ error: 'Crew not found' })
 		}
+
+		// Calculate the total attempts for this crew
+		const totalAttempts = await crew.getTotalAttempts()
 
 		// Fetch all missions
 		const missions = await Mission.find({})
@@ -64,7 +76,7 @@ const getCrewById = async (req, res) => {
 		})
 
 		res.status(200).json({
-			crew,
+			crew: { ...crew.toObject(), totalAttempts },
 			missionData,
 		})
 	} catch (error) {

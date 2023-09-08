@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const missionTracker = require('./missionTracker')
+const MissionTracker = require('./missionTracker')
 
 const crewSchema = new mongoose.Schema({
 	user: {
@@ -26,7 +26,7 @@ const crewSchema = new mongoose.Schema({
 
 crewSchema.pre('remove', async function (next) {
 	// Remove all MissionTracker documents that reference the removed Crew
-	await missionTracker.deleteMany({ crew: this._id })
+	await MissionTracker.deleteMany({ crew: this._id })
 
 	next()
 })
@@ -34,6 +34,16 @@ crewSchema.pre('remove', async function (next) {
 // Validation function to limit array size
 function arrayLimit(val) {
 	return val.length <= 5
+}
+
+crewSchema.methods.getTotalAttempts = async function () {
+	const trackers = await MissionTracker.find({ crew: this._id })
+
+	const totalAttempts = trackers.reduce((acc, tracker) => {
+		return acc + (tracker.attempts || 0)
+	}, 0)
+
+	return totalAttempts
 }
 
 module.exports = mongoose.model('Crew', crewSchema)
