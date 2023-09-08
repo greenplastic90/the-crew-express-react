@@ -1,4 +1,6 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import debounce from 'lodash.debounce'
+
 import {
 	FormControl,
 	FormLabel,
@@ -11,6 +13,7 @@ import {
 	Stack,
 	Checkbox,
 } from '@chakra-ui/react'
+import { editTracker } from '../../utilities/mission-api'
 
 function MissionTrackerForm({ tracker }) {
 	const [trackerInput, setTrackerInput] = useState(tracker)
@@ -34,6 +37,19 @@ function MissionTrackerForm({ tracker }) {
 
 		setTrackerInput({ ...trackerInput, [name]: checked, ...updateAttempts })
 	}
+
+	useEffect(() => {
+		async function updateMissionTracker() {
+			const { attempts, distressSignalUsed, completed } = trackerInput
+			try {
+				const res = await editTracker({ attempts, distressSignalUsed, completed }, tracker._id)
+				const { missionTracker } = await res.json()
+			} catch (error) {
+				console.log(error)
+			}
+		}
+		updateMissionTracker()
+	}, [trackerInput, tracker])
 
 	return (
 		<Stack>
