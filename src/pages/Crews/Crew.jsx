@@ -9,7 +9,8 @@ function Crew() {
 	const [missions, setMissions] = useState([])
 	const [filteredMissions, setFilteredMissions] = useState([])
 
-	const [showFiltered, setShowFiltered] = useState(false)
+	const [hideCompleted, setHideCompleted] = useState(false)
+	const [showDistress, setShowDistress] = useState(false)
 
 	const { crewId } = useParams()
 
@@ -31,14 +32,14 @@ function Crew() {
 
 	//* Filter missions
 	useEffect(() => {
-		const filtered = missions.filter((mission) => {
-			if (!mission.tracker) {
-				return false
-			}
-			return !mission.tracker.completed
+		const filtered = missions.filter(({ tracker }) => {
+			if (!tracker) return false
+			if (hideCompleted && tracker.completed) return false
+			if (showDistress && !tracker.distressSignalUsed) return false
+			return true
 		})
 		setFilteredMissions(filtered)
-	}, [missions, showFiltered])
+	}, [missions, hideCompleted, showDistress])
 
 	return (
 		<>
@@ -46,18 +47,22 @@ function Crew() {
 				<Stack>
 					<Heading as={'h1'} size={'4xl'}>
 						{crew.name}
-					</Heading>
-					<FormControl>
-						<FormLabel>Hide Completed</FormLabel>
-						<Checkbox checked={showFiltered} onChange={() => setShowFiltered(!showFiltered)} />
-					</FormControl>
+					</Heading>{' '}
 					<HStack>
 						{crew.memberNames.map((name, i) => (
 							<Text key={i}>{name}</Text>
 						))}
 					</HStack>
+					<FormControl>
+						<FormLabel>Hide Completed</FormLabel>
+						<Checkbox checked={hideCompleted} onChange={() => setHideCompleted(!hideCompleted)} />
+					</FormControl>
+					<FormControl>
+						<FormLabel>Show Distress Signals</FormLabel>
+						<Checkbox isChecked={showDistress} onChange={() => setShowDistress(!showDistress)} />
+					</FormControl>
 					<Text>Attempts: {crew.totalAttempts}</Text>
-					<Missions missions={showFiltered ? filteredMissions : missions} />
+					<Missions missions={filteredMissions} />
 				</Stack>
 			)}
 		</>

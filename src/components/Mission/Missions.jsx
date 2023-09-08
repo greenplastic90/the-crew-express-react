@@ -3,7 +3,6 @@ import React from 'react'
 import MissionDetails from './MissionDetails'
 
 function Missions({ missions }) {
-	//! Sort- by ALL, Hide Completed, Active?,
 	return (
 		<Stack>
 			<Heading as={'h2'} size={'2xl'}>
