@@ -39,7 +39,6 @@ const getById = async (req, res) => {
 		// Find the previous mission based on mission number (assuming mission has a 'number' field)
 		if (mission.number > 1) {
 			const prevMission = await Mission.findOne({ number: mission.number - 1 })
-			console.log({ prevMission })
 			if (prevMission) {
 				prevMissionTracker = await MissionTracker.findOne({
 					mission: prevMission._id,
@@ -57,12 +56,13 @@ const getById = async (req, res) => {
 			})
 		}
 
-		console.log({ mission, nextMission })
 		res.status(200).send({
 			tracker: missionTracker,
 			mission,
-			prevMissionTracker: prevMissionTracker ? prevMissionTracker._id : null,
-			nextMissionTracker: nextMissionTracker ? nextMissionTracker._id : null,
+			adjacentMissions: {
+				prevMissionTracker: prevMissionTracker ? prevMissionTracker._id : null,
+				nextMissionTracker: nextMissionTracker ? nextMissionTracker._id : null,
+			},
 		})
 	} catch (error) {
 		res.status(500).send(error)
