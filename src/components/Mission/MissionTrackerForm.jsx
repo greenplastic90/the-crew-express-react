@@ -44,7 +44,7 @@ function MissionTrackerForm({ tracker }) {
 		async function updateMissionTracker() {
 			const { attempts, distressSignalUsed, completed } = trackerInput
 			try {
-				const res = await editTracker({ attempts, distressSignalUsed, completed }, tracker._id)
+				const res = await editTracker({ attempts, distressSignalUsed, completed }, trackerInput._id)
 				const { missionTracker } = await res.json()
 				if (!missionTracker) {
 					setError("Something went wrong, Can't save your progress right now!")
@@ -56,7 +56,7 @@ function MissionTrackerForm({ tracker }) {
 			}
 		}
 		updateMissionTracker()
-	}, [trackerInput, tracker])
+	}, [trackerInput])
 
 	return (
 		<Stack>
