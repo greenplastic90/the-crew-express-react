@@ -11,11 +11,13 @@ import {
 	NumberInputStepper,
 	Stack,
 	Checkbox,
+	Text,
 } from '@chakra-ui/react'
 import { editTracker } from '../../utilities/mission-api'
 
 function MissionTrackerForm({ tracker }) {
 	const [trackerInput, setTrackerInput] = useState(tracker)
+	const [error, setError] = useState('')
 
 	const handleAttemptsChange = (value) => {
 		const validValue = isNaN(value) || value < 0 ? 0 : value
@@ -44,6 +46,11 @@ function MissionTrackerForm({ tracker }) {
 			try {
 				const res = await editTracker({ attempts, distressSignalUsed, completed }, tracker._id)
 				const { missionTracker } = await res.json()
+				if (!missionTracker) {
+					setError("Something went wrong, Can't save your progress right now!")
+					return
+				}
+				setError('')
 			} catch (error) {
 				console.log(error)
 			}
@@ -95,6 +102,7 @@ function MissionTrackerForm({ tracker }) {
 					</FormControl>
 				</FormControl>
 			</form>
+			{error && <Text color={'red.500'}>{error}</Text>}
 		</Stack>
 	)
 }
