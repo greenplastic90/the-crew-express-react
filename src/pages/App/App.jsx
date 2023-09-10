@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import { getUser } from '../../utilities/users-service'
 import AuthPage from '../AuthPage/AuthPage'
 import NavBar from '../../components/NavBar/NavBar'
@@ -19,6 +19,7 @@ function App() {
 			<Container>
 				{user ? (
 					<Routes>
+						<Route path='/' element={<Navigate to='/crews' />} />
 						<Route path='/crews' element={<Crews user={user} />} />
 						<Route path='/crew/new' element={<NewCrew />} />
 						<Route path='/crew/:crewId/edit' element={<UpdateCrew />} />
