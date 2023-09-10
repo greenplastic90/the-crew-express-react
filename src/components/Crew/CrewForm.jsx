@@ -5,13 +5,17 @@ import { useNavigate, useParams } from 'react-router-dom'
 
 function CrewForm() {
 	const [crew, setCrew] = useState({ name: '', memberNames: ['', ''] })
+	const [isLoading, setIsLoading] = useState(true)
 	//* if crewId is truthy, this page edits, else it creates
 	const { crewId } = useParams()
 
 	const navigate = useNavigate()
 
 	useEffect(() => {
-		if (!crewId) return
+		if (!crewId) {
+			setIsLoading(false)
+			return
+		}
 
 		async function getCrew() {
 			try {
@@ -23,6 +27,7 @@ function CrewForm() {
 			}
 		}
 		getCrew()
+		setIsLoading(false)
 	}, [crewId])
 
 	function handleNameChange(e) {
@@ -47,6 +52,7 @@ function CrewForm() {
 	}
 
 	async function handelCreate(evt) {
+		setIsLoading(true)
 		evt.preventDefault()
 		try {
 			const res = await createCrew(crew)
@@ -95,8 +101,14 @@ function CrewForm() {
 					</HStack>
 				))}
 
-				{crew.memberNames.length < 5 && <Button onClick={addMemberInput}>Add Member</Button>}
-				<Button type='submit'>Done</Button>
+				{crew.memberNames.length < 5 && (
+					<Button onClick={addMemberInput} isDisabled={isLoading}>
+						Add Member
+					</Button>
+				)}
+				<Button type='submit' isDisabled={isLoading}>
+					Done
+				</Button>
 			</Stack>
 		</form>
 	)
