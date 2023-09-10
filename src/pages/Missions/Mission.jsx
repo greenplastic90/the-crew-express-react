@@ -23,9 +23,6 @@ function Mission() {
 					setAdjacentMissions(adjacentMissions)
 					setIsLoading(false)
 				}
-				if (tracker) setTracker(tracker)
-				if (mission) setMission(mission)
-				if (adjacentMissions) setAdjacentMissions(adjacentMissions)
 			} catch (error) {
 				console.log(error)
 			}
