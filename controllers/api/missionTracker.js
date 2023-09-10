@@ -112,6 +112,17 @@ const update = async (req, res) => {
 
 		updates.forEach((update) => (missionTracker[update] = req.body[update]))
 		await missionTracker.save()
+
+		// After updating the MissionTracker, check if all are completed for the same crew
+		const allTrackers = await MissionTracker.find({ crew: missionTracker.crew })
+
+		const allCompleted = allTrackers.every((tracker) => tracker.completed)
+
+		if (allCompleted) {
+			// Update finishDate in the Crew model to the current date
+			await Crew.findByIdAndUpdate(missionTracker.crew, { finishDate: new Date() }, { new: true })
+		}
+
 		res.status(200).send({ missionTracker })
 	} catch (error) {
 		res.status(400).send(error)
