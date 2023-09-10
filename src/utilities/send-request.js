@@ -16,5 +16,10 @@ export default async function sendRequest(url, method = 'GET', payload = null) {
 	}
 	const res = await fetch(url, options)
 
+	if (res.status === 401) {
+		window.location.href = '/'
+		return
+	}
+
 	return res
 }
