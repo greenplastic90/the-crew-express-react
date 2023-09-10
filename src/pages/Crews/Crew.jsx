@@ -1,4 +1,13 @@
-import { Checkbox, FormControl, FormLabel, HStack, Heading, Stack, Text } from '@chakra-ui/react'
+import {
+	Checkbox,
+	FormControl,
+	FormLabel,
+	HStack,
+	Heading,
+	Spinner,
+	Stack,
+	Text,
+} from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
 import { getCrewById } from '../../utilities/crew-api'
 import { useParams } from 'react-router-dom'
@@ -8,7 +17,7 @@ function Crew() {
 	const [crew, setCrew] = useState(null)
 	const [missions, setMissions] = useState([])
 	const [filteredMissions, setFilteredMissions] = useState([])
-
+	const [isLoading, setIsLoading] = useState(true)
 	const [hideCompleted, setHideCompleted] = useState(false)
 	const [showDistress, setShowDistress] = useState(false)
 
@@ -28,6 +37,7 @@ function Crew() {
 			}
 		}
 		getCrew()
+		setIsLoading(false)
 	}, [crewId])
 
 	//* Filter missions
@@ -41,7 +51,7 @@ function Crew() {
 		setFilteredMissions(filtered)
 	}, [missions, hideCompleted, showDistress])
 
-	return (
+	return !isLoading ? (
 		<>
 			{crew && (
 				<Stack>
@@ -66,6 +76,8 @@ function Crew() {
 				</Stack>
 			)}
 		</>
+	) : (
+		<Spinner />
 	)
 }
 

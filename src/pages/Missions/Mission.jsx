@@ -1,4 +1,4 @@
-import { Button, HStack, Heading, Spinner, Stack } from '@chakra-ui/react'
+import { Button, HStack, Heading, Spinner, Stack, Text } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { getMissionTrackerById } from '../../utilities/mission-api'
@@ -10,6 +10,7 @@ function Mission() {
 	const [isLoading, setIsLoading] = useState(true)
 	const [adjacentMissions, setAdjacentMissions] = useState(null)
 	const { missionTrackerId } = useParams()
+	const [error, setError] = useState('')
 	const navigate = useNavigate()
 
 	useEffect(() => {
@@ -21,11 +22,13 @@ function Mission() {
 					setTracker(tracker)
 					setMission(mission)
 					setAdjacentMissions(adjacentMissions)
-					setIsLoading(false)
+				} else {
+					setError('Could not retrive mission')
 				}
 			} catch (error) {
 				console.log(error)
 			}
+			setIsLoading(false)
 		}
 		getTracker()
 	}, [missionTrackerId])
@@ -52,6 +55,7 @@ function Mission() {
 					<Button onClick={() => navigate(`/crew/${tracker.crew}`)}>All Missions</Button>
 				</HStack>
 			)}
+			{error && <Text color={'red.500'}>{error}</Text>}
 		</Stack>
 	) : (
 		<Spinner />
