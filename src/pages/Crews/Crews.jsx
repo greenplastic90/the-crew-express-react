@@ -1,4 +1,4 @@
-import { Button, Heading, Stack, Text } from '@chakra-ui/react'
+import { Button, Heading, Spinner, Stack, Text } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
 import CrewDetails from '../../components/Crew/CrewDetails'
 import { getAllCrews } from '../../utilities/crew-api'
@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom'
 function Crews({ user }) {
 	const [crews, setCrews] = useState([])
 	const [error, setError] = useState('')
+	const [isLoading, setIsLoading] = useState(true)
 
 	const navigate = useNavigate()
 
@@ -25,6 +26,7 @@ function Crews({ user }) {
 			} catch (error) {
 				console.log(error)
 			}
+			setIsLoading(false)
 		}
 		getUserCrews()
 	}, [])
@@ -36,9 +38,11 @@ function Crews({ user }) {
 			</Heading>
 			<Button onClick={() => navigate('/crew/new')}>+ New Crew</Button>
 
-			{crews.map((crew) => (
-				<CrewDetails key={crew._id} crew={crew} setCrews={setCrews} />
-			))}
+			{!isLoading ? (
+				crews.map((crew) => <CrewDetails key={crew._id} crew={crew} setCrews={setCrews} />)
+			) : (
+				<Spinner />
+			)}
 
 			{error && <Text color={'red.500'}>{error}</Text>}
 		</Stack>
