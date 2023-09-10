@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { debounce } from 'lodash'
 
 import {
 	FormControl,
@@ -45,24 +46,23 @@ function MissionTrackerForm({ tracker }) {
 
 		setTrackerInput({ ...trackerInput, [name]: checked, ...updateAttempts })
 	}
-
-	useEffect(() => {
-		async function updateMissionTracker() {
-			const { attempts, distressSignalUsed, completed } = trackerInput
-			try {
-				const res = await editTracker({ attempts, distressSignalUsed, completed }, trackerInput._id)
-				const { missionTracker } = await res.json()
-				if (!missionTracker) {
-					setError("Something went wrong, Can't save your progress right now!")
-					return
-				}
-				setError('')
-			} catch (error) {
-				console.log(error)
+	const debouncedUpdateMissionTracker = debounce(async () => {
+		const { attempts, distressSignalUsed, completed } = trackerInput
+		try {
+			const res = await editTracker({ attempts, distressSignalUsed, completed }, trackerInput._id)
+			const { missionTracker } = await res.json()
+			if (!missionTracker) {
+				setError("Something went wrong, Can't save your progress right now!")
+				return
 			}
+			setError('')
+		} catch (error) {
+			console.log(error)
 		}
-		updateMissionTracker()
-	}, [trackerInput])
+	}, 300)
+	useEffect(() => {
+		debouncedUpdateMissionTracker()
+	}, [debouncedUpdateMissionTracker, trackerInput])
 
 	return (
 		<Stack>
