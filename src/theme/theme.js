@@ -19,16 +19,19 @@ const fonts = {
 	body: 'system-ui, sans-serif',
 }
 
-const textStyles = {
-	textOutline: {
-		textShadow: '-2px -2px 0 #ffffff, 2px -2px 0 #ffffff, -2px 2px 0 #ffffff, 2px 2px 0 #ffffff',
+const components = {
+	Heading: {
+		baseStyle: {
+			color: 'brand.blueDark',
+			textShadow: '-2px -2px 0 #ffffff, 2px -2px 0 #ffffff, -2px 2px 0 #ffffff, 2px 2px 0 #ffffff',
+		},
 	},
 }
 
 const theme = extendTheme({
 	colors,
 	fonts,
-	textStyles,
+	components,
 })
 
 export default theme
