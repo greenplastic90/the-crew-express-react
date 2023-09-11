@@ -57,7 +57,7 @@ function Crew() {
 				<Stack>
 					<Heading as={'h1'} size={'4xl'}>
 						{crew.name}
-					</Heading>{' '}
+					</Heading>
 					<HStack>
 						{crew.memberNames.map((name, i) => (
 							<Text key={i}>{name}</Text>

@@ -3,20 +3,13 @@ import { extendTheme } from '@chakra-ui/react'
 
 const colors = {
 	brand: {
-		fade: '#868686',
-		primary: '#9E28B5',
-		secondary: '#ffffff',
-		accent: '#FFA400',
-		blue: '#00C1DE',
-		green: '#CDDE00',
-		red: '#E50695',
-		light_gray: '#EFEEE6',
-		dark_gray: '#868686',
-		cancel: '#F04352',
-		border: '#EFEEE6',
-		shadow: '#00000029',
-		terms: '#424242',
-		dotted: '#E4E4E4',
+		red: 'rgba(245, 80,45, 1)',
+		green: 'rgba(100, 190, 110, 1)',
+		yellow: 'rgba(225, 175, 70, 1)',
+		pink: 'rgba(235, 125, 175, 1)',
+		blue: 'rgba(0, 140, 205, 1)',
+		peach: 'rgba(225, 215, 176, 1)',
+		purple: 'rgba(90, 5, 130, 1)',
 	},
 }
 

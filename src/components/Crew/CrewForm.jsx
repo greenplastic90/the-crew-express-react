@@ -51,7 +51,7 @@ function CrewForm() {
 		setCrew({ ...crew, memberNames: newMembersInput })
 	}
 
-	async function handelCreate(evt) {
+	async function handleCreate(evt) {
 		setIsLoading(true)
 		evt.preventDefault()
 		try {
@@ -65,7 +65,7 @@ function CrewForm() {
 		}
 	}
 
-	async function handelUpdate(evt) {
+	async function handleUpdate(evt) {
 		evt.preventDefault()
 		try {
 			const res = await updateCrew(crew, crewId)
@@ -79,7 +79,7 @@ function CrewForm() {
 	}
 
 	return (
-		<form autoComplete='off' onSubmit={crewId ? handelUpdate : handelCreate}>
+		<form autoComplete='off' onSubmit={crewId ? handleUpdate : handleCreate}>
 			<Stack>
 				<Heading as={'h1'} size={'4xl'}>
 					{crewId ? `Edit ${crew.name}` : 'New Crew'}
