@@ -1,22 +1,21 @@
-import { HStack, Heading, Stack, Text } from '@chakra-ui/react'
+import { Center, Circle, HStack, Heading, Stack, Text, Wrap, WrapItem } from '@chakra-ui/react'
 import React from 'react'
+import { GiAstronautHelmet } from 'react-icons/gi'
 
-import { formatDate } from '../../utilities/miscellaneous'
+import { astroColorPicker, formatDate } from '../../utilities/miscellaneous'
 import CrewNavButtons from './CrewNavButtons'
+import Memebers from '../../pages/Crews/Memebers'
 
 function CrewDetails({ crew, setCrews }) {
 	const { name, memberNames, startDate, finishDate, totalAttempts } = crew
 
 	return (
-		<Stack border={'1px'}>
+		<Stack>
 			<Heading as={'h2'} size={'lg'}>
 				{name}
 			</Heading>
-			<HStack>
-				{memberNames.map((member, i) => (
-					<Text key={i}>{member}</Text>
-				))}
-			</HStack>
+
+			<Memebers members={memberNames} />
 			<HStack>
 				<Text>Start: {formatDate(startDate)}</Text>
 				<Text>Finish: {finishDate ? formatDate(finishDate) : 'Not Completed'}</Text>

@@ -6,3 +6,18 @@ export function formatDate(dateString) {
 
 	return `${day}-${month}-${year}`
 }
+
+export function astroColorPicker(index) {
+	switch (index) {
+		case 0:
+			return 'brand.green'
+		case 1:
+			return 'brand.yellow'
+		case 2:
+			return 'brand.blue'
+		case 3:
+			return 'brand.pink'
+		default:
+			return 'black'
+	}
+}

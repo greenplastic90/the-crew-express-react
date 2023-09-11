@@ -12,6 +12,7 @@ const colors = {
 		peach: 'rgba(225, 215, 176, 1)',
 		purple: 'rgba(90, 5, 130, 1)',
 		beige: 'rgba(210, 190, 175, 1)',
+		beigeLight: 'rgba(230, 220, 215, 1)',
 	},
 }
 const fonts = {

@@ -14,22 +14,21 @@ function App() {
 	const [user, setUser] = useState(getUser())
 
 	return (
-		<Box bg={'brand.beige'} display='grid' gridTemplateRows='auto 1fr auto' minHeight='100vh'>
+		<Box bg={'brand.beigeLight'} display='grid' gridTemplateRows='auto 1fr auto' minHeight='100vh'>
 			<NavBar user={user} setUser={setUser} />
-			<Container>
-				{user ? (
-					<Routes>
-						<Route path='/' element={<Navigate to='/crews' />} />
-						<Route path='/crews' element={<Crews user={user} />} />
-						<Route path='/crew/new' element={<NewCrew />} />
-						<Route path='/crew/:crewId/edit' element={<UpdateCrew />} />
-						<Route path='/crew/:crewId' element={<Crew />} />
-						<Route path='/mission/:missionTrackerId' element={<Mission />} />
-					</Routes>
-				) : (
-					<AuthPage setUser={setUser} />
-				)}
-			</Container>
+
+			{user ? (
+				<Routes>
+					<Route path='/' element={<Navigate to='/crews' />} />
+					<Route path='/crews' element={<Crews user={user} />} />
+					<Route path='/crew/new' element={<NewCrew />} />
+					<Route path='/crew/:crewId/edit' element={<UpdateCrew />} />
+					<Route path='/crew/:crewId' element={<Crew />} />
+					<Route path='/mission/:missionTrackerId' element={<Mission />} />
+				</Routes>
+			) : (
+				<AuthPage setUser={setUser} />
+			)}
 		</Box>
 	)
 }
