@@ -4,6 +4,7 @@ import { getCrewById } from '../../utilities/crew-api'
 import { useParams } from 'react-router-dom'
 import Missions from '../../components/Mission/Missions'
 import PageWrapper from '../../components/PageWrapper/PageWrapper'
+import Members from './Memebers'
 
 function Crew() {
 	const [crew, setCrew] = useState(null)
@@ -47,11 +48,7 @@ function Crew() {
 		<>
 			{crew && (
 				<PageWrapper title={crew.name}>
-					<HStack>
-						{crew.memberNames.map((name, i) => (
-							<Text key={i}>{name}</Text>
-						))}
-					</HStack>
+					<Members members={crew.memberNames} />
 					<FormControl>
 						<FormLabel>Hide Completed</FormLabel>
 						<Checkbox checked={hideCompleted} onChange={() => setHideCompleted(!hideCompleted)} />

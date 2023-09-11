@@ -81,10 +81,9 @@ function CrewForm() {
 
 	return (
 		<form autoComplete='off' onSubmit={crewId ? handleUpdate : handleCreate}>
-			<PageWrapper title={crewId ? `upadte ${crew.name}` : 'New Crew'}>
+			<PageWrapper title={crewId ? `upadte ${crew.name}` : 'Crew Assembly'}>
 				<FormLabel>Name</FormLabel>
 				<Input type='text' name='name' value={crew.name} onChange={handleNameChange} required />
-
 				<FormLabel>Members</FormLabel>
 				{crew.memberNames.map((member, index) => (
 					<HStack key={index}>
