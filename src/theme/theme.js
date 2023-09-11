@@ -23,8 +23,18 @@ const fonts = {
 const components = {
 	Heading: {
 		baseStyle: {
-			color: 'brand.blueDark',
 			textShadow: '-2px -2px 0 #ffffff, 2px -2px 0 #ffffff, -2px 2px 0 #ffffff, 2px 2px 0 #ffffff',
+			color: 'brand.blueDark',
+			letterSpacing: '3px',
+		},
+		variants: {},
+	},
+	Text: {
+		variants: {
+			outline: {
+				textShadow:
+					'-1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff, 1px 1px 0 #ffffff',
+			},
 		},
 	},
 }

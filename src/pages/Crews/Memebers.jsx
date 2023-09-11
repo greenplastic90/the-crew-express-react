@@ -13,12 +13,14 @@ function Members({ members }) {
 							size={10}
 							bg={astroColorPicker(i)}
 							color='white'
+							border={'1px'}
+							borderColor={'white'}
 							display='flex'
 							alignItems='center'
 							justifyContent='center'>
 							<GiAstronautHelmet size={24} />
 						</Circle>
-						<Text color={astroColorPicker(i)} fontWeight='bold'>
+						<Text variant={'outline'} color={astroColorPicker(i)} fontWeight='bold'>
 							{member}
 						</Text>
 					</HStack>

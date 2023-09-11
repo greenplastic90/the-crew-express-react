@@ -1,4 +1,4 @@
-import { Button, Spinner, Text } from '@chakra-ui/react'
+import { Button, Spinner, Stack, Text } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
 import CrewDetails from '../../components/Crew/CrewDetails'
 import { getAllCrews } from '../../utilities/crew-api'
@@ -34,15 +34,18 @@ function Crews({ user }) {
 
 	return (
 		<PageWrapper title={`${user.username}'s Crews`}>
-			<Button onClick={() => navigate('/crew/new')}>+ New Crew</Button>
+			<Stack>
+				<Button onClick={() => navigate('/crew/new')}>+ New Crew</Button>
+				<Stack>
+					{!isLoading ? (
+						crews.map((crew) => <CrewDetails key={crew._id} crew={crew} setCrews={setCrews} />)
+					) : (
+						<Spinner />
+					)}
+				</Stack>
 
-			{!isLoading ? (
-				crews.map((crew) => <CrewDetails key={crew._id} crew={crew} setCrews={setCrews} />)
-			) : (
-				<Spinner />
-			)}
-
-			{error && <Text color={'red.500'}>{error}</Text>}
+				{error && <Text color={'red.500'}>{error}</Text>}
+			</Stack>
 		</PageWrapper>
 	)
 }

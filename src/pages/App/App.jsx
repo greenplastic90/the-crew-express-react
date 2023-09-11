@@ -14,7 +14,7 @@ function App() {
 	const [user, setUser] = useState(getUser())
 
 	return (
-		<Box bg={'brand.beigeLight'} display='grid' gridTemplateRows='auto 1fr auto' minHeight='100vh'>
+		<Box bg={'brand.beige'} display='grid' gridTemplateRows='auto 1fr auto' minHeight='100vh'>
 			<NavBar user={user} setUser={setUser} />
 
 			{user ? (

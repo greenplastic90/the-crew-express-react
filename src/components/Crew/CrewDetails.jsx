@@ -9,7 +9,7 @@ function CrewDetails({ crew, setCrews }) {
 	const { name, memberNames, startDate, finishDate, totalAttempts } = crew
 
 	return (
-		<Stack>
+		<Stack bg={'brand.beigeLight'} p={2} border={'2px'} borderColor={'white'} borderRadius={10}>
 			<Heading as={'h2'} size={'lg'}>
 				{name}
 			</Heading>
