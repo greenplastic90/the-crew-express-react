@@ -1,31 +1,31 @@
-import { Center, Circle, HStack, Text, Wrap, WrapItem } from '@chakra-ui/react'
+import { Circle, Text, Grid, GridItem, HStack } from '@chakra-ui/react'
 import React from 'react'
 import { astroColorPicker } from '../../utilities/miscellaneous'
 import { GiAstronautHelmet } from 'react-icons/gi'
 
-function Memebers({ members }) {
+function Members({ members }) {
 	return (
-		<HStack>
+		<Grid templateColumns='repeat(3, 1fr)' rowGap={2}>
 			{members.map((member, i) => (
-				<Wrap key={i} bg={'brand.peach'} borderRadius={10}>
-					<WrapItem>
-						<Center>
-							<Circle
-								size='40px' // Adjust the size as needed
-								bg={astroColorPicker(i)} // replace with your desired background color
-								color='white' // Icon color
-								display='flex'
-								alignItems='center'
-								justifyContent='center'>
-								<GiAstronautHelmet size={24} />
-							</Circle>
-							<Text>{member}</Text>
-						</Center>
-					</WrapItem>
-				</Wrap>
+				<GridItem key={i}>
+					<HStack justifyItems={'start'}>
+						<Circle
+							size={10}
+							bg={astroColorPicker(i)}
+							color='white'
+							display='flex'
+							alignItems='center'
+							justifyContent='center'>
+							<GiAstronautHelmet size={24} />
+						</Circle>
+						<Text color={astroColorPicker(i)} fontWeight='bold'>
+							{member}
+						</Text>
+					</HStack>
+				</GridItem>
 			))}
-		</HStack>
+		</Grid>
 	)
 }
 
-export default Memebers
+export default Members

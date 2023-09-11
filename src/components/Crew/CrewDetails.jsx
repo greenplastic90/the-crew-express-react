@@ -1,8 +1,7 @@
-import { Center, Circle, HStack, Heading, Stack, Text, Wrap, WrapItem } from '@chakra-ui/react'
+import { HStack, Heading, Stack, Text } from '@chakra-ui/react'
 import React from 'react'
-import { GiAstronautHelmet } from 'react-icons/gi'
 
-import { astroColorPicker, formatDate } from '../../utilities/miscellaneous'
+import { formatDate } from '../../utilities/miscellaneous'
 import CrewNavButtons from './CrewNavButtons'
 import Memebers from '../../pages/Crews/Memebers'
 
