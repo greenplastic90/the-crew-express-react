@@ -33,8 +33,13 @@ function Crews({ user }) {
 
 	return (
 		<Stack>
-			<Heading as={'h1'} size={'2xl'}>
-				{`${user.username}'s Crew List`}
+			<Heading
+				as={'h1'}
+				size={'2xl'}
+				color={'brand.blueDark'}
+				textStyle='textOutline'
+				letterSpacing={3}>
+				{`${user.username}'s Crews`}
 			</Heading>
 			<Button onClick={() => navigate('/crew/new')}>+ New Crew</Button>
 

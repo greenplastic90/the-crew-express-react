@@ -8,7 +8,7 @@ const colors = {
 		yellow: 'rgba(225, 175, 70, 1)',
 		pink: 'rgba(235, 125, 175, 1)',
 		blue: 'rgba(0, 140, 205, 1)',
-		blueDark: 'rgba(0, 140, 205, 1)',
+		blueDark: 'rgba(10, 80, 150, 1)',
 		peach: 'rgba(225, 215, 176, 1)',
 		purple: 'rgba(90, 5, 130, 1)',
 		beige: 'rgba(210, 190, 175, 1)',
@@ -19,9 +19,16 @@ const fonts = {
 	body: 'system-ui, sans-serif',
 }
 
+const textStyles = {
+	textOutline: {
+		textShadow: '-2px -2px 0 #ffffff, 2px -2px 0 #ffffff, -2px 2px 0 #ffffff, 2px 2px 0 #ffffff',
+	},
+}
+
 const theme = extendTheme({
 	colors,
 	fonts,
+	textStyles,
 })
 
 export default theme
