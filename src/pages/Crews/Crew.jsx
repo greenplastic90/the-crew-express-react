@@ -1,17 +1,9 @@
-import {
-	Checkbox,
-	FormControl,
-	FormLabel,
-	HStack,
-	Heading,
-	Spinner,
-	Stack,
-	Text,
-} from '@chakra-ui/react'
+import { Checkbox, FormControl, FormLabel, HStack, Spinner, Text } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
 import { getCrewById } from '../../utilities/crew-api'
 import { useParams } from 'react-router-dom'
 import Missions from '../../components/Mission/Missions'
+import PageWrapper from '../../components/PageWrapper/PageWrapper'
 
 function Crew() {
 	const [crew, setCrew] = useState(null)
@@ -54,10 +46,7 @@ function Crew() {
 	return !isLoading ? (
 		<>
 			{crew && (
-				<Stack>
-					<Heading as={'h1'} size={'4xl'}>
-						{crew.name}
-					</Heading>
+				<PageWrapper title={crew.name}>
 					<HStack>
 						{crew.memberNames.map((name, i) => (
 							<Text key={i}>{name}</Text>
@@ -73,7 +62,7 @@ function Crew() {
 					</FormControl>
 					<Text>Attempts: {crew.totalAttempts}</Text>
 					<Missions missions={filteredMissions} />
-				</Stack>
+				</PageWrapper>
 			)}
 		</>
 	) : (

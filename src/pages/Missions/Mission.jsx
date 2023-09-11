@@ -1,8 +1,9 @@
-import { Button, HStack, Heading, Spinner, Stack, Text } from '@chakra-ui/react'
+import { Button, HStack, Spinner, Text } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { getMissionTrackerById } from '../../utilities/mission-api'
 import MissionTrackerForm from '../../components/Mission/MissionTrackerForm'
+import PageWrapper from '../../components/PageWrapper/PageWrapper'
 
 function Mission() {
 	const [mission, setMission] = useState(null)
@@ -33,12 +34,7 @@ function Mission() {
 		getTracker()
 	}, [missionTrackerId])
 	return !isLoading ? (
-		<Stack>
-			{mission && (
-				<Heading as={'h1'} size={'4xl'}>
-					Mission {mission.number}
-				</Heading>
-			)}
+		<PageWrapper title={`Mission ${mission && mission.number}`}>
 			{tracker && <MissionTrackerForm key={tracker._id} tracker={tracker} />}
 			{adjacentMissions && (
 				<HStack>
@@ -56,7 +52,7 @@ function Mission() {
 				</HStack>
 			)}
 			{error && <Text color={'red.500'}>{error}</Text>}
-		</Stack>
+		</PageWrapper>
 	) : (
 		<Spinner />
 	)

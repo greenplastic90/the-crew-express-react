@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { Stack, FormLabel, Input, Button, HStack, Heading } from '@chakra-ui/react'
+import { FormLabel, Input, Button, HStack } from '@chakra-ui/react'
 import { createCrew, getCrewById, updateCrew } from '../../utilities/crew-api'
 import { useNavigate, useParams } from 'react-router-dom'
+import PageWrapper from '../PageWrapper/PageWrapper'
 
 function CrewForm() {
 	const [crew, setCrew] = useState({ name: '', memberNames: ['', ''] })
@@ -80,10 +81,7 @@ function CrewForm() {
 
 	return (
 		<form autoComplete='off' onSubmit={crewId ? handleUpdate : handleCreate}>
-			<Stack>
-				<Heading as={'h1'} size={'4xl'}>
-					{crewId ? `Edit ${crew.name}` : 'New Crew'}
-				</Heading>
+			<PageWrapper title={crewId ? `upadte ${crew.name}` : 'New Crew'}>
 				<FormLabel>Name</FormLabel>
 				<Input type='text' name='name' value={crew.name} onChange={handleNameChange} required />
 
@@ -109,7 +107,7 @@ function CrewForm() {
 				<Button type='submit' isDisabled={isLoading}>
 					Done
 				</Button>
-			</Stack>
+			</PageWrapper>
 		</form>
 	)
 }

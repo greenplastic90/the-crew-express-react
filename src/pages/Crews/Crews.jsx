@@ -1,4 +1,4 @@
-import { Button, Heading, Spinner, Stack, Text } from '@chakra-ui/react'
+import { Button, Spinner, Text } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
 import CrewDetails from '../../components/Crew/CrewDetails'
 import { getAllCrews } from '../../utilities/crew-api'
@@ -33,10 +33,7 @@ function Crews({ user }) {
 	}, [])
 
 	return (
-		<PageWrapper title={`${user.username}'s Crews`.toUpperCase()}>
-			{/* <Heading variant='h1' size={'2xl'}>
-				{`${user.username}'s Crews`.toUpperCase()}
-			</Heading> */}
+		<PageWrapper title={`${user.username}'s Crews`}>
 			<Button onClick={() => navigate('/crew/new')}>+ New Crew</Button>
 
 			{!isLoading ? (

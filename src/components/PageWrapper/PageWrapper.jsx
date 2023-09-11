@@ -3,9 +3,9 @@ import React from 'react'
 
 function PageWrapper({ title, children }) {
 	return (
-		<Stack spacing={4} pt={10}>
-			<Heading as='h1' size='3xl'>
-				{title}
+		<Stack pt={8}>
+			<Heading as='h1' size='3xl' pb={5}>
+				{title.toUpperCase()}
 			</Heading>
 			{children}
 		</Stack>
