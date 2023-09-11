@@ -15,7 +15,7 @@ function CrewDetails({ crew, setCrews }) {
 			</Heading>
 
 			<Memebers members={memberNames} />
-			<HStack>
+			<HStack justify={'space-around'}>
 				<Text>Start: {formatDate(startDate)}</Text>
 				<Text>Finish: {finishDate ? formatDate(finishDate) : 'Not Completed'}</Text>
 			</HStack>

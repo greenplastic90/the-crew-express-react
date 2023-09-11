@@ -1,50 +1,17 @@
-import { Button, Spinner, Stack, Text } from '@chakra-ui/react'
-import React, { useEffect, useState } from 'react'
-import CrewDetails from '../../components/Crew/CrewDetails'
-import { getAllCrews } from '../../utilities/crew-api'
+import { Button, Stack } from '@chakra-ui/react'
+import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import PageWrapper from '../../components/PageWrapper/PageWrapper'
+import CrewsDisplay from '../../components/Crew/CrewsDisplay'
 
 function Crews({ user }) {
-	const [crews, setCrews] = useState([])
-	const [error, setError] = useState('')
-	const [isLoading, setIsLoading] = useState(true)
-
 	const navigate = useNavigate()
-
-	useEffect(() => {
-		async function getUserCrews() {
-			try {
-				const res = await getAllCrews()
-				const { crews } = await res.json()
-
-				if (crews) {
-					setCrews(crews)
-					setError('')
-				} else {
-					setError('Something went wrong! Please try again later.')
-				}
-			} catch (error) {
-				console.log(error)
-			}
-			setIsLoading(false)
-		}
-		getUserCrews()
-	}, [])
 
 	return (
 		<PageWrapper title={`${user.username}'s Crews`}>
 			<Stack>
-				<Button onClick={() => navigate('/crew/new')}>+ New Crew</Button>
-				<Stack>
-					{!isLoading ? (
-						crews.map((crew) => <CrewDetails key={crew._id} crew={crew} setCrews={setCrews} />)
-					) : (
-						<Spinner />
-					)}
-				</Stack>
-
-				{error && <Text color={'red.500'}>{error}</Text>}
+				<Button onClick={() => navigate('/crew/new')}>Assemble Crew</Button>
+				<CrewsDisplay />
 			</Stack>
 		</PageWrapper>
 	)
