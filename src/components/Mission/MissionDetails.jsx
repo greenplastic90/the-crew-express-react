@@ -13,7 +13,7 @@ function MissionDetails({ mission, tracker }) {
 
 	const navigate = useNavigate()
 	return (
-		<Stack bg={'brand.beigeLight'} borderRadius={'md'} p={4}>
+		<Stack bg={'brand.beigeLight'} borderRadius={'md'} p={4} border={'2px'} borderColor={'white'}>
 			<HStack justify={'space-between'}>
 				<Box alignSelf={'start'}>
 					<Pentagon number={number} fivePlayerRule={fivePlayerRule} />
@@ -29,9 +29,10 @@ function MissionDetails({ mission, tracker }) {
 				</VStack>
 			</HStack>
 
-			<VStack>{description && <Text>{parseBoldText(description)}</Text>}</VStack>
+			<VStack>
+				{description && <Text variant={'missionDesc'}>{parseBoldText(description)}</Text>}
+			</VStack>
 
-			{/* //! Don't forget the Rules */}
 			<Stack>
 				<HStack>
 					<Text>Attempts: {attempts}</Text>

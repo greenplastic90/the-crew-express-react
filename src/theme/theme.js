@@ -16,8 +16,8 @@ const colors = {
 	},
 }
 const fonts = {
-	heading: 'Russo One, sans-serif',
-	body: 'system-ui, sans-serif',
+	heading: 'Roboto Slab, sans-serif',
+	body: 'Roboto, sans-serif',
 }
 
 const components = {
@@ -34,6 +34,10 @@ const components = {
 			outline: {
 				textShadow:
 					'-1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff, 1px 1px 0 #ffffff',
+			},
+			missionDesc: {
+				fontFamily: 'PT Sans Narrow, sans-serif',
+				fontSize: 'lg',
 			},
 		},
 	},
