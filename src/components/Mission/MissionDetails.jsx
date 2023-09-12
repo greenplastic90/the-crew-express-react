@@ -1,4 +1,4 @@
-import { HStack, Stack, StackDivider, Text, VStack, Button } from '@chakra-ui/react'
+import { HStack, Stack, StackDivider, Text, VStack, Button, Box } from '@chakra-ui/react'
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import Pentagon from './Pentagon'
@@ -13,23 +13,23 @@ function MissionDetails({ mission, tracker }) {
 
 	const navigate = useNavigate()
 	return (
-		<Stack bg={'brand.beigeLight'} borderRadius={'md'} p={4} divider={<StackDivider />}>
+		<Stack bg={'brand.beigeLight'} borderRadius={'md'} p={4}>
 			<HStack justify={'space-between'}>
-				<Stack as='div' justifyContent='space-between'>
-					{description && <Text>{parseBoldText(description)}</Text>}
-
+				<Box alignSelf={'start'}>
 					<Pentagon number={number} fivePlayerRule={fivePlayerRule} />
-					{fivePlayerRule && (
-						<Text variant={'outline'} fontWeight={'bold'} color='gold'>
-							5 player rule
-						</Text>
-					)}
-				</Stack>
+				</Box>
+
 				<VStack alignSelf={'start'}>
-					<Tasks tasks={tasks} />
-					<TaskTokens tokens={taskTokens} />
+					<HStack>
+						<Box alignSelf={'start'}>
+							<Tasks tasks={tasks} />
+						</Box>
+						<TaskTokens tokens={taskTokens} />
+					</HStack>
 				</VStack>
 			</HStack>
+
+			<VStack>{description && <Text>{parseBoldText(description)}</Text>}</VStack>
 
 			{/* //! Don't forget the Rules */}
 			<Stack>

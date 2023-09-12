@@ -5,18 +5,18 @@ function TaskTokens({ tokens }) {
 	const tokenCount = tokens.length
 
 	const renderLayout = () => {
-		if (tokenCount <= 2) {
+		if (tokenCount <= 3) {
 			return <Flex>{tokens.map((t) => renderToken(t))}</Flex>
 		}
 
-		if (tokenCount === 3) {
-			return (
-				<Flex flexDirection='column' alignItems='center'>
-					<Flex>{tokens.slice(0, 2).map((t) => renderToken(t))}</Flex>
-					{renderToken(tokens[2])}
-				</Flex>
-			)
-		}
+		// if (tokenCount === 3) {
+		// 	return (
+		// 		<Flex flexDirection='column' alignItems='center'>
+		// 			<Flex>{tokens.slice(0, 2).map((t) => renderToken(t))}</Flex>
+		// 			{renderToken(tokens[2])}
+		// 		</Flex>
+		// 	)
+		// }
 
 		if (tokenCount === 4) {
 			return (
