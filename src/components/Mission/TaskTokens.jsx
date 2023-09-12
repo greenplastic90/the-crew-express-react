@@ -38,7 +38,7 @@ function TaskTokens({ tokens }) {
 	}
 
 	const renderToken = (t) => (
-		<Box key={t._id} w='45px' h='45px' bgColor='black' m={1}>
+		<Box key={t._id} w='45px' h='45px' bgColor='black' m={1} borderRadius={'sm'}>
 			<Center h='100%'>
 				<Text variant='outline' fontSize={'lg'} fontWeight={'bold'} color='brand.purple'>
 					{t.value}
@@ -47,7 +47,7 @@ function TaskTokens({ tokens }) {
 		</Box>
 	)
 
-	return tokenCount !== 0 && <Flex>{renderLayout()}</Flex>
+	return tokenCount > 0 && <Flex>{renderLayout()}</Flex>
 }
 
 export default TaskTokens
