@@ -7,7 +7,7 @@ import TaskTokens from './TaskTokens'
 import SpecialRules from './SpecialRules'
 
 function MissionDetails({ mission, tracker }) {
-	const { number, fivePlayerRule, tasks, tiles, rules } = mission
+	const { number, fivePlayerRule, tasks, taskTokens, rules } = mission
 	const { attempts, distressSignalUsed, completed } = tracker
 
 	const navigate = useNavigate()
@@ -20,7 +20,7 @@ function MissionDetails({ mission, tracker }) {
 				</Stack>
 				<VStack alignSelf={'center'}>
 					<Tasks tasks={tasks} />
-					<TaskTokens tokens={tiles} />
+					<TaskTokens tokens={taskTokens} />
 				</VStack>
 			</HStack>
 

@@ -35,7 +35,7 @@ const MissionSchema = new mongoose.Schema({
 	tasks: {
 		type: Number,
 	},
-	tiles: {
+	taskTokens: {
 		type: [TileSchema],
 	},
 	rules: {

@@ -16,7 +16,7 @@ async function seedMissions() {
 		{
 			number: 3,
 			tasks: 2,
-			tiles: [{ value: '1' }, { value: '2' }],
+			taskTokens: [{ value: '1' }, { value: '2' }],
 		},
 		{
 			number: 4,
@@ -34,7 +34,7 @@ async function seedMissions() {
 		{
 			number: 6,
 			tasks: 3,
-			tiles: [{ value: '>' }, { value: '>>' }],
+			taskTokens: [{ value: '>' }, { value: '>>' }],
 			rules: [
 				{
 					type: 'Comm',
@@ -45,12 +45,12 @@ async function seedMissions() {
 		{
 			number: 7,
 			tasks: 3,
-			tiles: [{ value: 'Ω' }],
+			taskTokens: [{ value: 'Ω' }],
 		},
 		{
 			number: 8,
 			tasks: 3,
-			tiles: [{ value: '1' }, { value: '2' }, { value: '3' }],
+			taskTokens: [{ value: '1' }, { value: '2' }, { value: '3' }],
 		},
 		{
 			number: 9,
@@ -68,7 +68,7 @@ async function seedMissions() {
 		{
 			number: 11,
 			tasks: 4,
-			tiles: [{ value: '1' }],
+			taskTokens: [{ value: '1' }],
 			rules: [
 				{
 					type: 'Special',
@@ -79,7 +79,7 @@ async function seedMissions() {
 		{
 			number: 12,
 			tasks: 4,
-			tiles: [{ value: 'Ω' }],
+			taskTokens: [{ value: 'Ω' }],
 			rules: [
 				{
 					type: 'Special',
@@ -101,7 +101,7 @@ async function seedMissions() {
 		{
 			number: 14,
 			tasks: 4,
-			tiles: [{ value: '>' }, { value: '>>' }, { value: '>>>' }],
+			taskTokens: [{ value: '>' }, { value: '>>' }, { value: '>>>' }],
 			rules: [
 				{
 					type: 'Comm',
@@ -112,7 +112,7 @@ async function seedMissions() {
 		{
 			number: 15,
 			tasks: 4,
-			tiles: [{ value: '1' }, { value: '2' }, { value: '3' }, { value: '4' }],
+			taskTokens: [{ value: '1' }, { value: '2' }, { value: '3' }, { value: '4' }],
 		},
 		{
 			number: 16,
@@ -126,7 +126,7 @@ async function seedMissions() {
 		{
 			number: 17,
 			tasks: 2,
-			tiles: [{ value: '>' }],
+			taskTokens: [{ value: '>' }],
 			rules: [
 				{
 					type: 'Special',
@@ -147,7 +147,7 @@ async function seedMissions() {
 		{
 			number: 19,
 			tasks: 5,
-			tiles: [{ value: '1' }],
+			taskTokens: [{ value: '1' }],
 			rules: [
 				{
 					type: 'Comm',
@@ -168,7 +168,7 @@ async function seedMissions() {
 		{
 			number: 21,
 			tasks: 5,
-			tiles: [{ value: '1' }, { value: '2' }],
+			taskTokens: [{ value: '1' }, { value: '2' }],
 			rules: [
 				{
 					type: 'Comm',
@@ -179,16 +179,16 @@ async function seedMissions() {
 		{
 			number: 22,
 			tasks: 5,
-			tiles: [{ value: '>' }, { value: '>>' }, { value: '>>>' }, { value: '>>>>' }],
+			taskTokens: [{ value: '>' }, { value: '>>' }, { value: '>>>' }, { value: '>>>>' }],
 		},
 		{
 			number: 23,
 			tasks: 5,
-			tiles: [{ value: '1' }, { value: '2' }, { value: '3' }, { value: '4' }, { value: '5' }],
+			taskTokens: [{ value: '1' }, { value: '2' }, { value: '3' }, { value: '4' }, { value: '5' }],
 			rules: [
 				{
 					type: 'Special',
-					description: 'Before selecting tasks, the positions of 2 tiles may be swapped',
+					description: 'Before selecting tasks, the positions of 2 taskTokens may be swapped',
 				},
 			],
 		},
@@ -206,7 +206,7 @@ async function seedMissions() {
 			number: 25,
 			fivePlayerRule: true,
 			tasks: 6,
-			tiles: [{ value: '>' }, { value: '>>' }],
+			taskTokens: [{ value: '>' }, { value: '>>' }],
 			rules: [
 				{
 					type: 'Comm',
@@ -238,7 +238,7 @@ async function seedMissions() {
 			number: 28,
 			fivePlayerRule: true,
 			tasks: 6,
-			tiles: [{ value: '1' }, { value: 'Ω' }],
+			taskTokens: [{ value: '1' }, { value: 'Ω' }],
 			rules: [
 				{
 					type: 'Comm',
@@ -260,7 +260,7 @@ async function seedMissions() {
 			number: 30,
 			fivePlayerRule: true,
 			tasks: 6,
-			tiles: [{ value: '>' }, { value: '>>' }, { value: '>>>' }],
+			taskTokens: [{ value: '>' }, { value: '>>' }, { value: '>>>' }],
 			rules: [
 				{
 					type: 'Comm',
@@ -272,7 +272,7 @@ async function seedMissions() {
 			number: 31,
 			fivePlayerRule: true,
 			tasks: 6,
-			tiles: [{ value: '1' }, { value: '2' }, { value: '3' }],
+			taskTokens: [{ value: '1' }, { value: '2' }, { value: '3' }],
 		},
 		{
 			number: 32,
@@ -308,13 +308,13 @@ async function seedMissions() {
 			number: 35,
 			fivePlayerRule: true,
 			tasks: 7,
-			tiles: [{ value: '>' }, { value: '>>' }, { value: '>>>' }],
+			taskTokens: [{ value: '>' }, { value: '>>' }, { value: '>>>' }],
 		},
 		{
 			number: 36,
 			fivePlayerRule: true,
 			tasks: 7,
-			tiles: [{ value: '1' }, { value: '2' }],
+			taskTokens: [{ value: '1' }, { value: '2' }],
 			rules: [
 				{
 					type: 'Assignment',
@@ -348,7 +348,7 @@ async function seedMissions() {
 			number: 39,
 			fivePlayerRule: true,
 			tasks: 8,
-			tiles: [{ value: '>' }, { value: '>>' }, { value: '>>>' }],
+			taskTokens: [{ value: '>' }, { value: '>>' }, { value: '>>>' }],
 			rules: [
 				{
 					type: 'Comm',
@@ -360,7 +360,7 @@ async function seedMissions() {
 			number: 40,
 			fivePlayerRule: true,
 			tasks: 8,
-			tiles: [{ value: '1' }, { value: '2' }, { value: '3' }],
+			taskTokens: [{ value: '1' }, { value: '2' }, { value: '3' }],
 			rules: [
 				{
 					type: 'Special',
@@ -408,7 +408,7 @@ async function seedMissions() {
 			number: 45,
 			fivePlayerRule: true,
 			tasks: 9,
-			tiles: [{ value: '>' }, { value: '>>' }, { value: '>>>' }],
+			taskTokens: [{ value: '>' }, { value: '>>' }, { value: '>>>' }],
 		},
 		{
 			number: 46,
@@ -429,7 +429,7 @@ async function seedMissions() {
 			number: 48,
 			fivePlayerRule: true,
 			tasks: 3,
-			tiles: [{ value: 'Ω' }],
+			taskTokens: [{ value: 'Ω' }],
 			rules: [
 				{
 					type: 'Special',
@@ -441,7 +441,7 @@ async function seedMissions() {
 			number: 49,
 			fivePlayerRule: true,
 			tasks: 10,
-			tiles: [{ value: '>' }, { value: '>>' }, { value: '>>>' }],
+			taskTokens: [{ value: '>' }, { value: '>>' }, { value: '>>>' }],
 		},
 		{
 			number: 50,
