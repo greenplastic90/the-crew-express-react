@@ -1,18 +1,5 @@
 const mongoose = require('mongoose')
 
-// Rule subdocument schema
-const RuleSchema = new mongoose.Schema({
-	type: {
-		type: String,
-		enum: ['Comm', 'Assignment', 'Special', 'Ask & assign'],
-		required: true,
-	},
-	description: {
-		type: String,
-		required: true,
-	},
-})
-
 // Tile subdocument schema
 const TileSchema = new mongoose.Schema({
 	value: {
@@ -38,8 +25,8 @@ const MissionSchema = new mongoose.Schema({
 	taskTokens: {
 		type: [TileSchema],
 	},
-	rules: {
-		type: [RuleSchema],
+	description: {
+		type: String,
 	},
 })
 

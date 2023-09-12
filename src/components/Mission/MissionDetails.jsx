@@ -1,13 +1,13 @@
-import { HStack, Box, Stack, StackDivider, Text, VStack, Button } from '@chakra-ui/react'
+import { HStack, Stack, StackDivider, Text, VStack, Button } from '@chakra-ui/react'
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import Pentagon from './Pentagon'
 import Tasks from './Tasks'
 import TaskTokens from './TaskTokens'
-import SpecialRules from './SpecialRules'
+import { parseBoldText } from '../../utilities/miscellaneous'
 
 function MissionDetails({ mission, tracker }) {
-	const { number, fivePlayerRule, tasks, taskTokens, rules } = mission
+	const { number, fivePlayerRule, tasks, taskTokens, description } = mission
 	const { attempts, distressSignalUsed, completed } = tracker
 
 	const navigate = useNavigate()
@@ -15,7 +15,8 @@ function MissionDetails({ mission, tracker }) {
 		<Stack bg={'brand.peach'} borderRadius={'md'} p={4} divider={<StackDivider />}>
 			<HStack minH={40} h='40px' justify={'space-between'}>
 				<Stack as='div' h='100%' justifyContent='space-between'>
-					<SpecialRules rules={rules} number={number} />
+					{description && <Text>{parseBoldText(description)}</Text>}
+
 					<Pentagon number={number} fivePlayerRule={fivePlayerRule} />
 				</Stack>
 				<VStack alignSelf={'center'}>
