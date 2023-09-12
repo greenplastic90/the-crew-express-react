@@ -43,7 +43,7 @@ function CrewNavButtons({ crew, setCrews }) {
 				<Button onClick={() => navigate(`/crew/${_id}/edit`)}>Edit</Button>
 				<Button onClick={onOpen}>Delete</Button>
 			</HStack>
-			<Modal isOpen={isOpen} onClose={onClose}>
+			<Modal isOpen={isOpen} onClose={onClose} isCentered>
 				<ModalOverlay />
 				<ModalContent>
 					<ModalHeader>{`Delete ${name}`}</ModalHeader>
