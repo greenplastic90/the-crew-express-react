@@ -1,4 +1,4 @@
-import { HStack, Heading, Stack, StackDivider, Text, VStack } from '@chakra-ui/react'
+import { HStack, Box, Stack, StackDivider, Text, VStack } from '@chakra-ui/react'
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import Pentagon from './Pentagon'
@@ -13,15 +13,19 @@ function MissionDetails({ mission, tracker }) {
 	return (
 		<Stack
 			onClick={() => navigate(`/mission/${tracker._id}`)}
-			border={'1px'}
+			bg={'brand.peach'}
+			borderRadius={'md'}
 			divider={<StackDivider />}>
-			<HStack justify={'space-between'}>
-				<Pentagon number={number} fivePlayerRule={fivePlayerRule} />
-				<VStack border={'1px solid red'}>
+			<HStack minH={40} justify={'space-between'}>
+				<Box alignSelf={'end'} border={'1px solid red'}>
+					<Pentagon number={number} fivePlayerRule={fivePlayerRule} />
+				</Box>
+				<VStack alignSelf={'start'} border={'1px solid red'}>
 					<Tasks tasks={tasks} />
 					<TaskTokens tokens={tiles} />
 				</VStack>
 			</HStack>
+			{/* //! Don't forget the Rules */}
 			<Stack>
 				<HStack>
 					<Text>Attempts: {attempts}</Text>
