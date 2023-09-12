@@ -2,6 +2,7 @@ import { HStack, Heading, Stack, StackDivider, Text } from '@chakra-ui/react'
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import Pentagon from './Pentagon'
+import Tasks from './Tasks'
 
 function MissionDetails({ mission, tracker }) {
 	const { number, fivePlayerRule, tasks, tiles, rules } = mission
@@ -15,8 +16,9 @@ function MissionDetails({ mission, tracker }) {
 			divider={<StackDivider />}>
 			<Stack>
 				<Pentagon number={number} fivePlayerRule={fivePlayerRule} />
+				<Tasks tasks={tasks} />
 
-				{tasks && <Text color={'blue.500'}>Tasks: {tasks}</Text>}
+				{/* {tasks && <Text color={'blue.500'}>Tasks: {tasks}</Text>} */}
 				{tiles.length && (
 					<HStack>
 						<Text>Tiles</Text>

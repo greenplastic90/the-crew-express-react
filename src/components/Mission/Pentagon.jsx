@@ -12,7 +12,7 @@ function Pentagon({ number, fivePlayerRule }) {
 					left='0'
 					w='60px'
 					h='60px'
-					bgColor={'gold'}
+					bgColor='gold'
 					clipPath='polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%)'></Box>
 			)}
 			<Box
@@ -24,8 +24,8 @@ function Pentagon({ number, fivePlayerRule }) {
 				transform='scale(0.9)' // scale the inner pentagon
 				bgColor='black'
 				clipPath='polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%)'>
-				<Center position='absolute' top='0' left='0' right='0' bottom='0'>
-					<Text fontSize={25} fontWeight={'bold'} color={'white'}>
+				<Center position='absolute' top='2' left='0' right='0' bottom='0'>
+					<Text fontSize={'3xl'} fontWeight={'bold'} color={'white'}>
 						{number}
 					</Text>
 				</Center>
