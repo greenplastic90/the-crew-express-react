@@ -1,4 +1,4 @@
-import { Circle, Text, Grid, GridItem, HStack } from '@chakra-ui/react'
+import { Text, Grid, GridItem, HStack } from '@chakra-ui/react'
 import React from 'react'
 import { astroColorPicker } from '../../utilities/miscellaneous'
 import HelmetIcon from '../../components/Crew/HelmetIcon'

@@ -4,7 +4,6 @@ import Pentagon from './Pentagon'
 import Tasks from './Tasks'
 import TaskTokens from './TaskTokens'
 import { parseBoldText } from '../../utilities/miscellaneous'
-import { MdOutlineSatelliteAlt } from 'react-icons/md'
 import MissionTrackerForm from './MissionTrackerForm'
 import DisstressSignal from './DisstressSignal'
 
