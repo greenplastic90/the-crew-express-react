@@ -14,10 +14,13 @@ import {
 } from '@chakra-ui/react'
 import { editTracker } from '../../utilities/mission-api'
 import DisstressSignal from './DisstressSignal'
+import { useNavigate } from 'react-router-dom'
 
 function MissionTrackerForm({ tracker, updateMissionTracker }) {
 	const [error, setError] = useState('')
 	const { _id, attempts, completed, distressSignalUsed } = tracker
+
+	const navigate = useNavigate()
 
 	const handleDisstressSignal = () => {
 		// When distress singnal is used, increate attemps by 1!
@@ -37,6 +40,10 @@ function MissionTrackerForm({ tracker, updateMissionTracker }) {
 		const { attempts, distressSignalUsed, completed } = updatedTrackerValues
 		try {
 			const res = await editTracker({ attempts, distressSignalUsed, completed }, _id)
+			if (res.status === 404) {
+				navigate('/')
+				return
+			}
 			const { missionTracker } = await res.json()
 			if (missionTracker) {
 				updateMissionTracker(missionTracker)

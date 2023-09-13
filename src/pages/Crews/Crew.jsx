@@ -46,7 +46,7 @@ function Crew() {
 		}
 		getCrew()
 		setIsLoading(false)
-	}, [crewId])
+	}, [crewId, navigate])
 
 	//* Filter missions
 	useEffect(() => {
