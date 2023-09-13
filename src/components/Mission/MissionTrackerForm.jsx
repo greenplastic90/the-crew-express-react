@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-
+import { MdOutlineSatelliteAlt } from 'react-icons/md'
 import {
 	FormControl,
 	FormLabel,
@@ -11,7 +11,8 @@ import {
 	Stack,
 	Checkbox,
 	Text,
-	Button,
+	Circle,
+	Center,
 } from '@chakra-ui/react'
 import { editTracker } from '../../utilities/mission-api'
 
@@ -51,10 +52,10 @@ function MissionTrackerForm({ tracker, updateMissionTracker }) {
 			const { missionTracker } = await res.json()
 			if (missionTracker) {
 				updateMissionTracker(missionTracker)
+				setError('')
 			} else {
 				setError("Something went wrong, Can't save your progress right now!")
 			}
-			setError('')
 		} catch (error) {
 			console.log(error)
 		}
@@ -75,7 +76,18 @@ function MissionTrackerForm({ tracker, updateMissionTracker }) {
 						{tracker.attempts > 0 && <NumberDecrementStepper />}
 					</NumberInputStepper>
 				</NumberInput>
+				{/* //! */}
+				<Center>
+					<Circle bgColor={'black'} border={'1px'} borderColor={'orange'} size={10}>
+						<MdOutlineSatelliteAlt
+							color='orange'
+							size={20}
+							style={{ transform: 'rotate(-90deg)' }}
+						/>
+					</Circle>
+				</Center>
 
+				{/* //! */}
 				{/* Checkbox for distressSignalUsed */}
 				<FormControl display='flex' alignItems='center'>
 					<FormLabel htmlFor='distressSignalUsed' mb='0'>
@@ -103,7 +115,6 @@ function MissionTrackerForm({ tracker, updateMissionTracker }) {
 					/>
 				</FormControl>
 			</FormControl>
-			<Button onClick={updateTracker}>update</Button>
 
 			{error && <Text color={'red.500'}>{error}</Text>}
 		</Stack>
