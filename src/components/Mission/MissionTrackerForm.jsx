@@ -18,6 +18,7 @@ import { editTracker } from '../../utilities/mission-api'
 
 function MissionTrackerForm({ tracker, updateMissionTracker }) {
 	const [error, setError] = useState('')
+	const { _id, attempts, completed, distressSignalUsed } = tracker
 
 	const handleAttemptsChange = (value) => {
 		const validValue = isNaN(value) || value < 0 ? 0 : value
@@ -30,15 +31,15 @@ function MissionTrackerForm({ tracker, updateMissionTracker }) {
 		// When distress singnal is used, increate attemps by 1!
 		if (name === 'distressSignalUsed') {
 			updateAttempts = checked
-				? { attempts: tracker.attempts + 1 }
+				? { attempts: attempts + 1 }
 				: // Will not reduce attempts unless its more than 0
-				tracker.attempts > 0
-				? { attempts: tracker.attempts - 1 }
+				attempts > 0
+				? { attempts: attempts - 1 }
 				: {}
 		}
 
 		if (name === 'completed') {
-			if (tracker.attempts <= 0) {
+			if (attempts <= 0) {
 				updateAttempts = { attempts: 1 }
 			}
 		}
@@ -48,7 +49,7 @@ function MissionTrackerForm({ tracker, updateMissionTracker }) {
 	async function updateTracker(updatedTrackerValues) {
 		const { attempts, distressSignalUsed, completed } = updatedTrackerValues
 		try {
-			const res = await editTracker({ attempts, distressSignalUsed, completed }, tracker._id)
+			const res = await editTracker({ attempts, distressSignalUsed, completed }, _id)
 			const { missionTracker } = await res.json()
 			if (missionTracker) {
 				updateMissionTracker(missionTracker)
@@ -68,12 +69,12 @@ function MissionTrackerForm({ tracker, updateMissionTracker }) {
 				<NumberInput
 					onChange={(valueAsString, valueAsNumber) => handleAttemptsChange(valueAsNumber)}
 					name='attempts'
-					value={tracker.attempts}
-					isDisabled={tracker.completed}>
+					value={attempts}
+					isDisabled={completed}>
 					<NumberInputField />
 					<NumberInputStepper>
 						<NumberIncrementStepper />
-						{tracker.attempts > 0 && <NumberDecrementStepper />}
+						{attempts > 0 && <NumberDecrementStepper />}
 					</NumberInputStepper>
 				</NumberInput>
 				{/* //! */}
@@ -96,9 +97,9 @@ function MissionTrackerForm({ tracker, updateMissionTracker }) {
 					<Checkbox
 						id='distressSignalUsed'
 						name='distressSignalUsed'
-						isChecked={tracker.distressSignalUsed}
+						isChecked={distressSignalUsed}
 						onChange={handleCheckboxChange}
-						isDisabled={tracker.completed}
+						isDisabled={completed}
 					/>
 				</FormControl>
 
@@ -110,7 +111,7 @@ function MissionTrackerForm({ tracker, updateMissionTracker }) {
 					<Checkbox
 						id='completed'
 						name='completed'
-						isChecked={tracker.completed}
+						isChecked={completed}
 						onChange={handleCheckboxChange}
 					/>
 				</FormControl>
