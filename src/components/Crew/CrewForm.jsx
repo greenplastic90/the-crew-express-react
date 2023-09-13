@@ -102,7 +102,7 @@ function CrewForm() {
 							<Stack>
 								{crew.memberNames.map((member, index) => (
 									<HStack key={index}>
-										<HelmetIcon index={index} spacing={2} />
+										<HelmetIcon index={index} />
 										<Input
 											type='text'
 											value={member}
@@ -116,9 +116,11 @@ function CrewForm() {
 									</HStack>
 								))}
 								{crew.memberNames.length < 5 && (
-									<Button onClick={addMemberInput} isDisabled={isLoading}>
-										Add Member
-									</Button>
+									<>
+										<Button p={6} onClick={addMemberInput} isDisabled={isLoading}>
+											<HelmetIcon index={crew.memberNames.length} />
+										</Button>
+									</>
 								)}
 							</Stack>
 						</FormControl>
