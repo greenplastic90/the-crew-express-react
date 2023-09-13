@@ -1,17 +1,18 @@
-import { Checkbox, FormControl, FormLabel, Spinner, Text } from '@chakra-ui/react'
+import { Checkbox, FormControl, FormLabel, HStack, Spinner, Text } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
 import { getCrewById } from '../../utilities/crew-api'
 import { useNavigate, useParams } from 'react-router-dom'
 import Missions from '../../components/Mission/Missions'
 import Members from './Memebers'
 import PageWrapper from '../../components/Miscellaneous/PageWrapper'
+import ElementCard from '../../components/Miscellaneous/ElementCard'
 
 function Crew() {
 	const [crew, setCrew] = useState(null)
 	const [missions, setMissions] = useState([])
 	const [filteredMissions, setFilteredMissions] = useState([])
 	const [isLoading, setIsLoading] = useState(true)
-	const [hideCompleted, setHideCompleted] = useState(false)
+	const [hideCompleted, setHideCompleted] = useState(true)
 	const [showDistress, setShowDistress] = useState(false)
 
 	const navigate = useNavigate()
@@ -63,16 +64,26 @@ function Crew() {
 		<>
 			{crew && (
 				<PageWrapper title={crew.name}>
-					<Members members={crew.memberNames} />
-					<FormControl>
-						<FormLabel>Hide Completed</FormLabel>
-						<Checkbox checked={hideCompleted} onChange={() => setHideCompleted(!hideCompleted)} />
-					</FormControl>
-					<FormControl>
-						<FormLabel>Show Distress Signals</FormLabel>
-						<Checkbox isChecked={showDistress} onChange={() => setShowDistress(!showDistress)} />
-					</FormControl>
-					<Text>Attempts: {crew.totalAttempts}</Text>
+					<ElementCard>
+						<Members members={crew.memberNames} />
+						<HStack>
+							<FormControl>
+								<FormLabel>Hide Completed</FormLabel>
+								<Checkbox
+									defaultChecked
+									checked={hideCompleted}
+									onChange={() => setHideCompleted(!hideCompleted)}
+								/>
+							</FormControl>
+							<FormControl>
+								<FormLabel>Show Distress Signals</FormLabel>
+								<Checkbox
+									isChecked={showDistress}
+									onChange={() => setShowDistress(!showDistress)}
+								/>
+							</FormControl>
+						</HStack>
+					</ElementCard>
 					<Missions missions={filteredMissions} updateMissionTracker={updateMissionTracker} />
 				</PageWrapper>
 			)}
