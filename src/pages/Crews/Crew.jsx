@@ -16,6 +16,16 @@ function Crew() {
 
 	const { crewId } = useParams()
 
+	const updateMissionTracker = (updatedTracker) => {
+		const updatedMissions = missions.map((mission) => {
+			if (mission.tracker._id === updatedTracker._id) {
+				return { ...mission, tracker: updatedTracker }
+			}
+			return mission
+		})
+		setMissions(updatedMissions)
+	}
+
 	//* getCrew
 	useEffect(() => {
 		async function getCrew() {
@@ -58,7 +68,7 @@ function Crew() {
 						<Checkbox isChecked={showDistress} onChange={() => setShowDistress(!showDistress)} />
 					</FormControl>
 					<Text>Attempts: {crew.totalAttempts}</Text>
-					<Missions missions={filteredMissions} />
+					<Missions missions={filteredMissions} updateMissionTracker={updateMissionTracker} />
 				</PageWrapper>
 			)}
 		</>

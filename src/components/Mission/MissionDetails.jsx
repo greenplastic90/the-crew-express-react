@@ -6,8 +6,9 @@ import Tasks from './Tasks'
 import TaskTokens from './TaskTokens'
 import { parseBoldText } from '../../utilities/miscellaneous'
 import { MdOutlineSatelliteAlt } from 'react-icons/md'
+import MissionTrackerForm from './MissionTrackerForm'
 
-function MissionDetails({ mission, tracker }) {
+function MissionDetails({ mission, tracker, updateMissionTracker }) {
 	const { number, fivePlayerRule, tasks, taskTokens, description } = mission
 	const { attempts, distressSignalUsed, completed } = tracker
 
@@ -41,7 +42,7 @@ function MissionDetails({ mission, tracker }) {
 					<Text>Status: {completed ? 'Completed' : attempts ? 'Active' : 'Standby'}</Text>
 				</HStack>
 			</Stack>
-			<Button onClick={() => navigate(`/mission/${tracker._id}`)}>Launch Mission</Button>
+			<MissionTrackerForm tracker={tracker} updateMissionTracker={updateMissionTracker} />
 		</Stack>
 	)
 }
