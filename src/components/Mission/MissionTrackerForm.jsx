@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { MdOutlineSatelliteAlt } from 'react-icons/md'
 import {
 	FormControl,
 	FormLabel,
@@ -11,10 +10,9 @@ import {
 	Stack,
 	Checkbox,
 	Text,
-	Circle,
-	Center,
 } from '@chakra-ui/react'
 import { editTracker } from '../../utilities/mission-api'
+import DisstressSignal from './DisstressSignal'
 
 function MissionTrackerForm({ tracker, updateMissionTracker }) {
 	const [error, setError] = useState('')
@@ -25,27 +23,29 @@ function MissionTrackerForm({ tracker, updateMissionTracker }) {
 		updateTracker({ ...tracker, attempts: validValue })
 	}
 
-	const handleCheckboxChange = (e) => {
-		const { name, checked } = e.target
+	const handleDisstressSignal = (e) => {
 		let updateAttempts = {}
 		// When distress singnal is used, increate attemps by 1!
-		if (name === 'distressSignalUsed') {
-			updateAttempts = checked
-				? { attempts: attempts + 1 }
-				: // Will not reduce attempts unless its more than 0
-				attempts > 0
-				? { attempts: attempts - 1 }
-				: {}
-		}
 
-		if (name === 'completed') {
-			if (attempts <= 0) {
-				updateAttempts = { attempts: 1 }
-			}
-		}
+		updateAttempts = !distressSignalUsed
+			? { attempts: attempts + 1 }
+			: // Will not reduce attempts unless its more than 0
+			attempts > 0
+			? { attempts: attempts - 1 }
+			: {}
+		updateTracker({
+			...tracker,
+			distressSignalUsed: !distressSignalUsed,
+			...updateAttempts,
+		})
 
-		updateTracker({ ...tracker, [name]: checked, ...updateAttempts })
+		// if (name === 'completed') {
+		// 	if (attempts <= 0) {
+		// 		updateAttempts = { attempts: 1 }
+		// 	}
+		// }
 	}
+
 	async function updateTracker(updatedTrackerValues) {
 		const { attempts, distressSignalUsed, completed } = updatedTrackerValues
 		try {
@@ -64,33 +64,27 @@ function MissionTrackerForm({ tracker, updateMissionTracker }) {
 
 	return (
 		<Stack flexDir={'row'}>
-			<FormControl>
-				<FormLabel>Attempts</FormLabel>
-				<NumberInput
-					onChange={(valueAsString, valueAsNumber) => handleAttemptsChange(valueAsNumber)}
-					name='attempts'
-					value={attempts}
-					isDisabled={completed}>
-					<NumberInputField />
-					<NumberInputStepper>
-						<NumberIncrementStepper />
-						{attempts > 0 && <NumberDecrementStepper />}
-					</NumberInputStepper>
-				</NumberInput>
-				{/* //! */}
-				<Center>
-					<Circle bgColor={'black'} border={'1px'} borderColor={'orange'} size={10}>
-						<MdOutlineSatelliteAlt
-							color='orange'
-							size={20}
-							style={{ transform: 'rotate(-90deg)' }}
-						/>
-					</Circle>
-				</Center>
+			<FormLabel>Attempts</FormLabel>
+			<NumberInput
+				onChange={(valueAsString, valueAsNumber) => handleAttemptsChange(valueAsNumber)}
+				name='attempts'
+				value={attempts}
+				isDisabled={completed}>
+				<NumberInputField />
+				<NumberInputStepper>
+					<NumberIncrementStepper />
+					{attempts > 0 && <NumberDecrementStepper />}
+				</NumberInputStepper>
+			</NumberInput>
+			{/* //! */}
+			<DisstressSignal
+				distressSignalUsed={distressSignalUsed}
+				handleDisstressSignal={handleDisstressSignal}
+			/>
 
-				{/* //! */}
-				{/* Checkbox for distressSignalUsed */}
-				<FormControl display='flex' alignItems='center'>
+			{/* //! */}
+			{/* Checkbox for distressSignalUsed */}
+			{/* <FormControl display='flex' alignItems='center'>
 					<FormLabel htmlFor='distressSignalUsed' mb='0'>
 						Distress Signal Used
 					</FormLabel>
@@ -101,10 +95,10 @@ function MissionTrackerForm({ tracker, updateMissionTracker }) {
 						onChange={handleCheckboxChange}
 						isDisabled={completed}
 					/>
-				</FormControl>
+				</FormControl> */}
 
-				{/* Checkbox for completed */}
-				<FormControl display='flex' alignItems='center'>
+			{/* Checkbox for completed */}
+			{/* <FormControl display='flex' alignItems='center'>
 					<FormLabel htmlFor='completed' mb='0'>
 						Completed
 					</FormLabel>
@@ -114,8 +108,7 @@ function MissionTrackerForm({ tracker, updateMissionTracker }) {
 						isChecked={completed}
 						onChange={handleCheckboxChange}
 					/>
-				</FormControl>
-			</FormControl>
+				</FormControl> */}
 
 			{error && <Text color={'red.500'}>{error}</Text>}
 		</Stack>
