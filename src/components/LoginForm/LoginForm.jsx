@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { getUser, login } from '../../utilities/users-service'
-import { Button, FormControl, FormErrorMessage, FormLabel, Input } from '@chakra-ui/react'
+import { Button, FormControl, FormLabel, Input, Text } from '@chakra-ui/react'
 
 export default function LoginForm({ setUser }) {
 	const [credentials, setCredentials] = useState({
@@ -32,7 +32,7 @@ export default function LoginForm({ setUser }) {
 
 	return (
 		<form autoComplete='off' onSubmit={handleSubmit}>
-			<FormControl isInvalid={errors}>
+			<FormControl>
 				<FormLabel>Email</FormLabel>
 				<Input
 					type='email'
@@ -41,19 +41,19 @@ export default function LoginForm({ setUser }) {
 					onChange={handleChange}
 					required
 				/>
-
-				<FormLabel>Password</FormLabel>
-				<Input
-					type='password'
-					name='password'
-					value={credentials.password}
-					onChange={handleChange}
-					required
-				/>
-
-				<FormErrorMessage>{errors}</FormErrorMessage>
-				<Button type='submit'>LOG IN</Button>
 			</FormControl>
+
+			<FormLabel>Password</FormLabel>
+			<Input
+				type='password'
+				name='password'
+				value={credentials.password}
+				onChange={handleChange}
+				required
+			/>
+
+			{errors && <Text color={'red'}>{errors}</Text>}
+			<Button type='submit'>LOG IN</Button>
 		</form>
 	)
 }

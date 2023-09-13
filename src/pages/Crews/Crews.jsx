@@ -1,8 +1,8 @@
 import { Button, Stack } from '@chakra-ui/react'
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import PageWrapper from '../../components/PageWrapper/PageWrapper'
 import CrewsDisplay from '../../components/Crew/CrewsDisplay'
+import PageWrapper from '../../components/Miscellaneous/PageWrapper'
 
 function Crews({ user }) {
 	const navigate = useNavigate()

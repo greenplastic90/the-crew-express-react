@@ -3,7 +3,7 @@ import { FormLabel, Input, Button, HStack, FormControl, Stack } from '@chakra-ui
 import { createCrew, getCrewById, updateCrew } from '../../utilities/crew-api'
 import HelmetIcon from './HelmetIcon'
 import { useNavigate, useParams } from 'react-router-dom'
-import PageWrapper from '../PageWrapper/PageWrapper'
+import PageWrapper from '../Miscellaneous/PageWrapper'
 
 function CrewForm() {
 	const [crew, setCrew] = useState({ name: '', memberNames: ['', ''] })

@@ -3,8 +3,8 @@ import React, { useEffect, useState } from 'react'
 import { getCrewById } from '../../utilities/crew-api'
 import { useNavigate, useParams } from 'react-router-dom'
 import Missions from '../../components/Mission/Missions'
-import PageWrapper from '../../components/PageWrapper/PageWrapper'
 import Members from './Memebers'
+import PageWrapper from '../../components/Miscellaneous/PageWrapper'
 
 function Crew() {
 	const [crew, setCrew] = useState(null)

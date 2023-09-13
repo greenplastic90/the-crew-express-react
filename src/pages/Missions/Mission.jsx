@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { getMissionTrackerById } from '../../utilities/mission-api'
 import MissionTrackerForm from '../../components/Mission/MissionTrackerForm'
-import PageWrapper from '../../components/PageWrapper/PageWrapper'
+import PageWrapper from '../../components/Miscellaneous/PageWrapper'
 
 function Mission() {
 	const [mission, setMission] = useState(null)

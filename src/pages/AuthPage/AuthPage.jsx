@@ -2,7 +2,7 @@ import { useState } from 'react'
 import SignUpForm from '../../components/SignUpForm/SignUpForm'
 import LoginForm from '../../components/LoginForm/LoginForm'
 import { Link } from '@chakra-ui/react'
-import PageWrapper from '../../components/PageWrapper/PageWrapper'
+import PageWrapper from '../../components/Miscellaneous/PageWrapper'
 
 export default function AuthPage({ setUser }) {
 	const [showSignUp, setShowSignUp] = useState(false)
