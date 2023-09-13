@@ -10,6 +10,7 @@ import {
 	Stack,
 	Checkbox,
 	Text,
+	Button,
 } from '@chakra-ui/react'
 import { editTracker } from '../../utilities/mission-api'
 import DisstressSignal from './DisstressSignal'
@@ -18,32 +19,18 @@ function MissionTrackerForm({ tracker, updateMissionTracker }) {
 	const [error, setError] = useState('')
 	const { _id, attempts, completed, distressSignalUsed } = tracker
 
-	const handleAttemptsChange = (value) => {
-		const validValue = isNaN(value) || value < 0 ? 0 : value
-		updateTracker({ ...tracker, attempts: validValue })
+	const handleDisstressSignal = () => {
+		// When distress singnal is used, increate attemps by 1!
+		if (!distressSignalUsed)
+			updateTracker({
+				...tracker,
+				distressSignalUsed: true,
+				attempts: attempts + 1,
+			})
 	}
 
-	const handleDisstressSignal = (e) => {
-		let updateAttempts = {}
-		// When distress singnal is used, increate attemps by 1!
-
-		updateAttempts = !distressSignalUsed
-			? { attempts: attempts + 1 }
-			: // Will not reduce attempts unless its more than 0
-			attempts > 0
-			? { attempts: attempts - 1 }
-			: {}
-		updateTracker({
-			...tracker,
-			distressSignalUsed: !distressSignalUsed,
-			...updateAttempts,
-		})
-
-		// if (name === 'completed') {
-		// 	if (attempts <= 0) {
-		// 		updateAttempts = { attempts: 1 }
-		// 	}
-		// }
+	function incrementAttempt() {
+		updateTracker({ ...tracker, attempts: attempts + 1 })
 	}
 
 	async function updateTracker(updatedTrackerValues) {
@@ -64,51 +51,17 @@ function MissionTrackerForm({ tracker, updateMissionTracker }) {
 
 	return (
 		<Stack flexDir={'row'}>
-			<FormLabel>Attempts</FormLabel>
-			<NumberInput
-				onChange={(valueAsString, valueAsNumber) => handleAttemptsChange(valueAsNumber)}
-				name='attempts'
-				value={attempts}
-				isDisabled={completed}>
-				<NumberInputField />
-				<NumberInputStepper>
-					<NumberIncrementStepper />
-					{attempts > 0 && <NumberDecrementStepper />}
-				</NumberInputStepper>
-			</NumberInput>
-			{/* //! */}
-			<DisstressSignal
-				distressSignalUsed={distressSignalUsed}
-				handleDisstressSignal={handleDisstressSignal}
-			/>
+			<Button onClick={incrementAttempt}>{attempts <= 0 ? 'Start Mission' : 'Add Attempt'}</Button>
 
-			{/* //! */}
-			{/* Checkbox for distressSignalUsed */}
-			{/* <FormControl display='flex' alignItems='center'>
-					<FormLabel htmlFor='distressSignalUsed' mb='0'>
-						Distress Signal Used
-					</FormLabel>
-					<Checkbox
-						id='distressSignalUsed'
-						name='distressSignalUsed'
-						isChecked={distressSignalUsed}
-						onChange={handleCheckboxChange}
-						isDisabled={completed}
+			{attempts > 0 && !completed && (
+				<>
+					<DisstressSignal
+						distressSignalUsed={distressSignalUsed}
+						handleDisstressSignal={handleDisstressSignal}
 					/>
-				</FormControl> */}
-
-			{/* Checkbox for completed */}
-			{/* <FormControl display='flex' alignItems='center'>
-					<FormLabel htmlFor='completed' mb='0'>
-						Completed
-					</FormLabel>
-					<Checkbox
-						id='completed'
-						name='completed'
-						isChecked={completed}
-						onChange={handleCheckboxChange}
-					/>
-				</FormControl> */}
+					<Button>Completed</Button>
+				</>
+			)}
 
 			{error && <Text color={'red.500'}>{error}</Text>}
 		</Stack>
