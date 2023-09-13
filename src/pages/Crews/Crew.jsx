@@ -1,4 +1,4 @@
-import { Checkbox, FormControl, FormLabel, HStack, Spinner, Text } from '@chakra-ui/react'
+import { Checkbox, FormControl, FormLabel, Spinner, Text } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
 import { getCrewById } from '../../utilities/crew-api'
 import { useParams } from 'react-router-dom'

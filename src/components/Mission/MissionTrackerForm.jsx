@@ -1,10 +1,8 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react'
-import { debounce } from 'lodash'
+import React, { useState } from 'react'
 
 import {
 	FormControl,
 	FormLabel,
-	Heading,
 	NumberDecrementStepper,
 	NumberIncrementStepper,
 	NumberInput,
@@ -18,7 +16,6 @@ import {
 import { editTracker } from '../../utilities/mission-api'
 
 function MissionTrackerForm({ tracker, updateMissionTracker }) {
-	const isFirstRender = useRef(true)
 	const [trackerInput, setTrackerInput] = useState(tracker)
 	const [error, setError] = useState('')
 
@@ -63,33 +60,6 @@ function MissionTrackerForm({ tracker, updateMissionTracker }) {
 			console.log(error)
 		}
 	}
-	// const debouncedUpdateMissionTracker = useCallback(
-	// 	debounce(async () => {
-	// 		const { attempts, distressSignalUsed, completed } = trackerInput
-	// 		try {
-	// 			const res = await editTracker({ attempts, distressSignalUsed, completed }, trackerInput._id)
-	// 			const { missionTracker } = await res.json()
-	// 			if (!missionTracker) {
-	// 				setError("Something went wrong, Can't save your progress right now!")
-	// 				return
-	// 			}
-	// 			setError('')
-	// 		} catch (error) {
-	// 			console.log(error)
-	// 		}
-	// 	}, 300),
-	// 	[trackerInput]
-	// )
-	// useEffect(() => {
-	// 	if (isFirstRender.current) {
-	// 		isFirstRender.current = false
-	// 		return
-	// 	}
-	// 	debouncedUpdateMissionTracker()
-	// 	return () => {
-	// 		debouncedUpdateMissionTracker.cancel()
-	// 	}
-	// }, [debouncedUpdateMissionTracker, trackerInput])
 
 	return (
 		<Stack flexDir={'row'}>

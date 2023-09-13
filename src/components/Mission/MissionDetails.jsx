@@ -1,6 +1,5 @@
-import { HStack, Stack, StackDivider, Text, VStack, Button, Box } from '@chakra-ui/react'
+import { HStack, Stack, Text, VStack, Box } from '@chakra-ui/react'
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
 import Pentagon from './Pentagon'
 import Tasks from './Tasks'
 import TaskTokens from './TaskTokens'
@@ -12,7 +11,6 @@ function MissionDetails({ mission, tracker, updateMissionTracker }) {
 	const { number, fivePlayerRule, tasks, taskTokens, description } = mission
 	const { attempts, distressSignalUsed, completed } = tracker
 
-	const navigate = useNavigate()
 	return (
 		<Stack bg={'brand.beigeLight'} borderRadius={'md'} p={4} border={'2px'} borderColor={'white'}>
 			<HStack justify={'space-between'}>
