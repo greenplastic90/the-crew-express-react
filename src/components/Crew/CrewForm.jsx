@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { FormLabel, Input, Button, HStack } from '@chakra-ui/react'
+import { FormLabel, Input, Button, HStack, FormControl, Stack } from '@chakra-ui/react'
 import { createCrew, getCrewById, updateCrew } from '../../utilities/crew-api'
 import HelmetIcon from './HelmetIcon'
 import { useNavigate, useParams } from 'react-router-dom'
@@ -83,31 +83,47 @@ function CrewForm() {
 	return (
 		<form autoComplete='off' onSubmit={crewId ? handleUpdate : handleCreate}>
 			<PageWrapper title={crewId ? `upadte ${crew.name}` : 'Crew Assembly'}>
-				<FormLabel>Name</FormLabel>
-				<Input type='text' name='name' value={crew.name} onChange={handleNameChange} required />
-				<FormLabel>Members</FormLabel>
-				{crew.memberNames.map((member, index) => (
-					<HStack key={index}>
-						<HelmetIcon index={index} />
-						<Input
-							type='text'
-							value={member}
-							onChange={(e) => handleMemberChange(e, index)}
-							placeholder={`Member ${index + 1}`}
-							required
-						/>
-						{crew.memberNames.length > 2 && <Button onClick={() => deleteMember(index)}>X</Button>}
-					</HStack>
-				))}
+				<Stack
+					spacing={10}
+					bg={'brand.beigeLight'}
+					p={5}
+					borderRadius={'md'}
+					border={'2px'}
+					borderColor={'white'}>
+					<FormControl>
+						<FormLabel>Name</FormLabel>
+						<Input type='text' name='name' value={crew.name} onChange={handleNameChange} required />
+					</FormControl>
+					<FormControl>
+						<FormLabel>Members</FormLabel>
+						<Stack>
+							{crew.memberNames.map((member, index) => (
+								<HStack key={index}>
+									<HelmetIcon index={index} spacing={2} />
+									<Input
+										type='text'
+										value={member}
+										onChange={(e) => handleMemberChange(e, index)}
+										placeholder={`Member ${index + 1}`}
+										required
+									/>
+									{crew.memberNames.length > 2 && (
+										<Button onClick={() => deleteMember(index)}>X</Button>
+									)}
+								</HStack>
+							))}
+							{crew.memberNames.length < 5 && (
+								<Button onClick={addMemberInput} isDisabled={isLoading}>
+									Add Member
+								</Button>
+							)}
+						</Stack>
+					</FormControl>
 
-				{crew.memberNames.length < 5 && (
-					<Button onClick={addMemberInput} isDisabled={isLoading}>
-						Add Member
+					<Button type='submit' isDisabled={isLoading}>
+						Done
 					</Button>
-				)}
-				<Button type='submit' isDisabled={isLoading}>
-					Done
-				</Button>
+				</Stack>
 			</PageWrapper>
 		</form>
 	)
