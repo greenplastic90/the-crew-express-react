@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { getUser, signUp } from '../../utilities/users-service'
 import { Button, FormControl, FormErrorMessage, FormLabel, Input } from '@chakra-ui/react'
+import FormWrapper from '../Miscellaneous/FormWrapper'
 
 export default function SignUpForm({ setUser }) {
 	//! fix confirmed disabled button
@@ -46,51 +47,53 @@ export default function SignUpForm({ setUser }) {
 
 	return (
 		<form autoComplete='off' onSubmit={handleSubmit}>
-			<FormControl isInvalid={errors.username}>
-				<FormLabel>Username</FormLabel>
-				<Input
-					type='text'
-					name='username'
-					value={formInputs.username}
-					onChange={handleChange}
-					required
-				/>
-				<FormErrorMessage>{errors.username}</FormErrorMessage>
-			</FormControl>
-			<FormControl isInvalid={errors.email}>
-				<FormLabel>Email</FormLabel>
-				<Input
-					type='email'
-					name='email'
-					value={formInputs.email}
-					onChange={handleChange}
-					required
-				/>
-				<FormErrorMessage>{errors.email}</FormErrorMessage>
-			</FormControl>
-			<FormControl isInvalid={errors.password}>
-				<FormLabel>Password</FormLabel>
-				<Input
-					type='password'
-					name='password'
-					value={formInputs.password}
-					onChange={handleChange}
-					required
-				/>
-				<FormErrorMessage>{errors.password}</FormErrorMessage>
-			</FormControl>
-			<FormControl isInvalid={errors.confirm}>
-				<FormLabel>Confirm</FormLabel>
-				<Input
-					type='password'
-					name='confirm'
-					value={formInputs.confirm}
-					onChange={handleChange}
-					required
-				/>
-				<FormErrorMessage>{errors.confirm}</FormErrorMessage>
-			</FormControl>
-			<Button type='submit'>SIGN UP</Button>
+			<FormWrapper>
+				<FormControl isInvalid={errors.username}>
+					<FormLabel>Username</FormLabel>
+					<Input
+						type='text'
+						name='username'
+						value={formInputs.username}
+						onChange={handleChange}
+						required
+					/>
+					<FormErrorMessage>{errors.username}</FormErrorMessage>
+				</FormControl>
+				<FormControl isInvalid={errors.email}>
+					<FormLabel>Email</FormLabel>
+					<Input
+						type='email'
+						name='email'
+						value={formInputs.email}
+						onChange={handleChange}
+						required
+					/>
+					<FormErrorMessage>{errors.email}</FormErrorMessage>
+				</FormControl>
+				<FormControl isInvalid={errors.password}>
+					<FormLabel>Password</FormLabel>
+					<Input
+						type='password'
+						name='password'
+						value={formInputs.password}
+						onChange={handleChange}
+						required
+					/>
+					<FormErrorMessage>{errors.password}</FormErrorMessage>
+				</FormControl>
+				<FormControl isInvalid={errors.confirm}>
+					<FormLabel>Confirm</FormLabel>
+					<Input
+						type='password'
+						name='confirm'
+						value={formInputs.confirm}
+						onChange={handleChange}
+						required
+					/>
+					<FormErrorMessage>{errors.confirm}</FormErrorMessage>
+				</FormControl>
+				<Button type='submit'>SIGN UP</Button>
+			</FormWrapper>
 		</form>
 	)
 }
