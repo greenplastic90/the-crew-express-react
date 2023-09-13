@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { FormLabel, Input, Button, HStack } from '@chakra-ui/react'
 import { createCrew, getCrewById, updateCrew } from '../../utilities/crew-api'
+import HelmetIcon from './HelmetIcon'
 import { useNavigate, useParams } from 'react-router-dom'
 import PageWrapper from '../PageWrapper/PageWrapper'
 
@@ -87,6 +88,7 @@ function CrewForm() {
 				<FormLabel>Members</FormLabel>
 				{crew.memberNames.map((member, index) => (
 					<HStack key={index}>
+						<HelmetIcon index={index} />
 						<Input
 							type='text'
 							value={member}
