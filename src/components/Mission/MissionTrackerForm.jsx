@@ -1,17 +1,5 @@
 import React, { useState } from 'react'
-import {
-	FormControl,
-	FormLabel,
-	NumberDecrementStepper,
-	NumberIncrementStepper,
-	NumberInput,
-	NumberInputField,
-	NumberInputStepper,
-	Stack,
-	Checkbox,
-	Text,
-	Button,
-} from '@chakra-ui/react'
+import { Stack, Text, Button } from '@chakra-ui/react'
 import { editTracker } from '../../utilities/mission-api'
 import DisstressSignal from './DisstressSignal'
 import { useNavigate } from 'react-router-dom'
@@ -24,7 +12,7 @@ function MissionTrackerForm({ tracker, updateMissionTracker }) {
 
 	const handleDisstressSignal = () => {
 		// When distress singnal is used, increate attemps by 1!
-		if (!distressSignalUsed)
+		if (!distressSignalUsed && !completed)
 			updateTracker({
 				...tracker,
 				distressSignalUsed: true,
@@ -34,6 +22,10 @@ function MissionTrackerForm({ tracker, updateMissionTracker }) {
 
 	function incrementAttempt() {
 		updateTracker({ ...tracker, attempts: attempts + 1 })
+	}
+
+	function handleMissionComplete() {
+		updateTracker({ ...tracker, completed: true })
 	}
 
 	async function updateTracker(updatedTrackerValues) {
@@ -58,7 +50,11 @@ function MissionTrackerForm({ tracker, updateMissionTracker }) {
 
 	return (
 		<Stack flexDir={'row'}>
-			<Button onClick={incrementAttempt}>{attempts <= 0 ? 'Start Mission' : 'Add Attempt'}</Button>
+			{!completed && (
+				<Button onClick={incrementAttempt}>
+					{attempts <= 0 ? 'Start Mission' : 'Add Attempt'}
+				</Button>
+			)}
 
 			{attempts > 0 && !completed && (
 				<>
@@ -66,7 +62,7 @@ function MissionTrackerForm({ tracker, updateMissionTracker }) {
 						distressSignalUsed={distressSignalUsed}
 						handleDisstressSignal={handleDisstressSignal}
 					/>
-					<Button>Completed</Button>
+					<Button onClick={handleMissionComplete}>Completed</Button>
 				</>
 			)}
 

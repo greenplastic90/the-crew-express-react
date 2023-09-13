@@ -2,9 +2,9 @@ import { Center, Circle } from '@chakra-ui/react'
 import { MdOutlineSatelliteAlt } from 'react-icons/md'
 import React from 'react'
 
-function DisstressSignal({ distressSignalUsed, handleDisstressSignal }) {
+function DisstressSignal({ distressSignalUsed, handleDisstressSignal = () => {} }) {
 	return (
-		<Center onClick={handleDisstressSignal}>
+		<Center cursor={'pointer'} onClick={handleDisstressSignal}>
 			<Circle
 				bgColor={distressSignalUsed ? 'black' : 'white'}
 				border={'1px'}

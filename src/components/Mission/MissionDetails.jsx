@@ -6,6 +6,7 @@ import TaskTokens from './TaskTokens'
 import { parseBoldText } from '../../utilities/miscellaneous'
 import { MdOutlineSatelliteAlt } from 'react-icons/md'
 import MissionTrackerForm from './MissionTrackerForm'
+import DisstressSignal from './DisstressSignal'
 
 function MissionDetails({ mission, tracker, updateMissionTracker }) {
 	const { number, fivePlayerRule, tasks, taskTokens, description } = mission
@@ -35,9 +36,9 @@ function MissionDetails({ mission, tracker, updateMissionTracker }) {
 			<Stack>
 				<HStack>
 					<Text>Attempts: {attempts}</Text>
-					<MdOutlineSatelliteAlt />
-					<Text>Disstress Signal: {distressSignalUsed ? 'Active' : 'Off'}</Text>
-					<Text>Status: {completed ? 'Completed' : attempts ? 'Active' : 'Standby'}</Text>
+					{completed && distressSignalUsed && (
+						<DisstressSignal distressSignalUsed={distressSignalUsed} />
+					)}
 				</HStack>
 			</Stack>
 			<MissionTrackerForm tracker={tracker} updateMissionTracker={updateMissionTracker} />
