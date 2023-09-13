@@ -41,6 +41,29 @@ const components = {
 			},
 		},
 	},
+	FormControl: {
+		baseStyle: {
+			marginBottom: 4,
+		},
+	},
+	FormLabel: {
+		baseStyle: {
+			// styles for the FormLabel component
+			fontSize: 'lg',
+			fontWeight: 'bold',
+			fontFamily: 'Roboto Slab, sans-serif',
+			color: 'brand.blueDark',
+			textShadow: '-1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff, 1px 1px 0 #ffffff',
+		},
+	},
+	Input: {
+		baseStyle: {
+			// styles for the Input component
+			focusBorderColor: 'brand.beige',
+			borderColor: 'brand.blueDark',
+			// Add more styling here
+		},
+	},
 }
 
 const theme = extendTheme({

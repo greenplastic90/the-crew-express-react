@@ -122,11 +122,10 @@ function CrewForm() {
 								)}
 							</Stack>
 						</FormControl>
-
-						<Button type='submit' isDisabled={isLoading}>
-							Done
-						</Button>
 					</FormWrapper>
+					<Button type='submit' isDisabled={isLoading}>
+						Done
+					</Button>
 				</ElementCard>
 			</PageWrapper>
 		</form>
