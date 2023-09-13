@@ -1,15 +1,16 @@
-import { HStack, Heading, Stack, Text } from '@chakra-ui/react'
+import { HStack, Heading, Text } from '@chakra-ui/react'
 import React from 'react'
 
 import { formatDate } from '../../utilities/miscellaneous'
 import CrewNavButtons from './CrewNavButtons'
 import Memebers from '../../pages/Crews/Memebers'
+import ElementCard from '../Miscellaneous/ElementCard'
 
 function CrewDetails({ crew, setCrews }) {
 	const { name, memberNames, startDate, finishDate, totalAttempts } = crew
 
 	return (
-		<Stack bg={'brand.beigeLight'} p={2} border={'2px'} borderColor={'white'} borderRadius={10}>
+		<ElementCard>
 			<Heading as={'h2'} size={'lg'}>
 				{name}
 			</Heading>
@@ -21,7 +22,7 @@ function CrewDetails({ crew, setCrews }) {
 			</HStack>
 			<Text>Attemps: {totalAttempts}</Text>
 			<CrewNavButtons crew={crew} setCrews={setCrews} />
-		</Stack>
+		</ElementCard>
 	)
 }
 

@@ -4,6 +4,7 @@ import { createCrew, getCrewById, updateCrew } from '../../utilities/crew-api'
 import HelmetIcon from './HelmetIcon'
 import { useNavigate, useParams } from 'react-router-dom'
 import PageWrapper from '../Miscellaneous/PageWrapper'
+import ElementCard from '../Miscellaneous/ElementCard'
 
 function CrewForm() {
 	const [crew, setCrew] = useState({ name: '', memberNames: ['', ''] })
@@ -83,13 +84,7 @@ function CrewForm() {
 	return (
 		<form autoComplete='off' onSubmit={crewId ? handleUpdate : handleCreate}>
 			<PageWrapper title={crewId ? `upadte ${crew.name}` : 'Crew Assembly'}>
-				<Stack
-					spacing={10}
-					bg={'brand.beigeLight'}
-					p={5}
-					borderRadius={'md'}
-					border={'2px'}
-					borderColor={'white'}>
+				<ElementCard>
 					<FormControl>
 						<FormLabel>Name</FormLabel>
 						<Input type='text' name='name' value={crew.name} onChange={handleNameChange} required />
@@ -123,7 +118,7 @@ function CrewForm() {
 					<Button type='submit' isDisabled={isLoading}>
 						Done
 					</Button>
-				</Stack>
+				</ElementCard>
 			</PageWrapper>
 		</form>
 	)

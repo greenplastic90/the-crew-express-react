@@ -6,13 +6,14 @@ import TaskTokens from './TaskTokens'
 import { parseBoldText } from '../../utilities/miscellaneous'
 import MissionTrackerForm from './MissionTrackerForm'
 import DisstressSignal from './DisstressSignal'
+import ElementCard from '../Miscellaneous/ElementCard'
 
 function MissionDetails({ mission, tracker, updateMissionTracker }) {
 	const { number, fivePlayerRule, tasks, taskTokens, description } = mission
 	const { attempts, distressSignalUsed, completed } = tracker
 
 	return (
-		<Stack bg={'brand.beigeLight'} borderRadius={'md'} p={4} border={'2px'} borderColor={'white'}>
+		<ElementCard>
 			<HStack justify={'space-between'}>
 				<Box alignSelf={'start'}>
 					<Pentagon number={number} fivePlayerRule={fivePlayerRule} />
@@ -48,7 +49,7 @@ function MissionDetails({ mission, tracker, updateMissionTracker }) {
 				</HStack>
 			</Stack>
 			<MissionTrackerForm tracker={tracker} updateMissionTracker={updateMissionTracker} />
-		</Stack>
+		</ElementCard>
 	)
 }
 
