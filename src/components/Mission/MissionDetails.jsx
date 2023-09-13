@@ -33,8 +33,15 @@ function MissionDetails({ mission, tracker, updateMissionTracker }) {
 			</VStack>
 
 			<Stack>
-				<HStack>
-					<Text>Attempts: {attempts}</Text>
+				<HStack fontFamily={'Roboto Slab'}>
+					{attempts > 0 && (
+						<>
+							<Text fontSize={'md'}>Attempts:</Text>
+							<Text fontSize={'xl'} fontWeight={'bold'}>
+								{attempts}
+							</Text>
+						</>
+					)}
 					{completed && distressSignalUsed && (
 						<DisstressSignal distressSignalUsed={distressSignalUsed} />
 					)}
