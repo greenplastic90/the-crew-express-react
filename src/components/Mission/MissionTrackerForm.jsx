@@ -66,7 +66,9 @@ function MissionTrackerForm({ tracker, updateMissionTracker }) {
 					/>
 				)}
 			</HStack>
-			{attempts > 0 && !completed && <Button onClick={handleMissionComplete}>Completed</Button>}
+			{attempts > 0 && !completed && (
+				<Button onClick={handleMissionComplete}>Mission Accomplished</Button>
+			)}
 			{error && <Text color={'red.500'}>{error}</Text>}
 		</Stack>
 	)

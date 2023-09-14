@@ -8,14 +8,17 @@ function Missions({ missions, updateMissionTracker }) {
 			<Heading as={'h2'} size={'2xl'}>
 				Missions
 			</Heading>
-			{missions.map(({ mission, tracker }) => (
-				<MissionDetails
-					key={tracker._id}
-					mission={mission}
-					tracker={tracker}
-					updateMissionTracker={updateMissionTracker}
-				/>
-			))}
+			<Stack spacing={0}>
+				{missions.map(({ mission, tracker }, i) => (
+					<MissionDetails
+						key={tracker._id}
+						mission={mission}
+						tracker={tracker}
+						updateMissionTracker={updateMissionTracker}
+						index={i}
+					/>
+				))}
+			</Stack>
 		</Stack>
 	)
 }

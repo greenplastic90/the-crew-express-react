@@ -1,14 +1,9 @@
 import { Stack } from '@chakra-ui/react'
 import React from 'react'
 
-function ElementCard({ children }) {
+function ElementCard({ bgColor = 'brand.beigeLight', children }) {
 	return (
-		<Stack
-			bg={'brand.beigeLight'}
-			borderRadius={'md'}
-			p={4}
-			border={'4px'}
-			borderColor={'brand.blueDark'}>
+		<Stack bg={bgColor} p={4}>
 			{children}
 		</Stack>
 	)

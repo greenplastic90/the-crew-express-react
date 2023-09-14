@@ -8,12 +8,12 @@ import MissionTrackerForm from './MissionTrackerForm'
 import DisstressSignal from './DisstressSignal'
 import ElementCard from '../Miscellaneous/ElementCard'
 
-function MissionDetails({ mission, tracker, updateMissionTracker }) {
+function MissionDetails({ mission, tracker, updateMissionTracker, index }) {
 	const { number, fivePlayerRule, tasks, taskTokens, description } = mission
 	const { attempts, distressSignalUsed, completed } = tracker
 
 	return (
-		<ElementCard>
+		<ElementCard bgColor={index % 2 === 0 ? 'brand.beigeLight' : 'brand.beige'}>
 			<HStack justify={'space-between'}>
 				<Box alignSelf={'start'}>
 					<Pentagon number={number} fivePlayerRule={fivePlayerRule} />
