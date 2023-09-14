@@ -13,7 +13,7 @@ function MissionDetails({ mission, tracker, updateMissionTracker, index }) {
 	const { attempts, distressSignalUsed, completed } = tracker
 
 	return (
-		<ElementCard bgColor={index % 2 === 0 ? 'brand.beigeLight' : 'brand.beige'}>
+		<ElementCard index={index}>
 			<HStack justify={'space-between'}>
 				<Box alignSelf={'start'}>
 					<Pentagon number={number} fivePlayerRule={fivePlayerRule} />

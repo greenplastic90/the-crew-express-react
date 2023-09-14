@@ -30,7 +30,11 @@ function CrewsDisplay() {
 	return (
 		<Stack>
 			{!isLoading ? (
-				crews.map((crew) => <CrewDetails key={crew._id} crew={crew} setCrews={setCrews} />)
+				<Stack>
+					{crews.map((crew, i) => (
+						<CrewDetails key={crew._id} crew={crew} setCrews={setCrews} index={i} />
+					))}
+				</Stack>
 			) : (
 				<Spinner />
 			)}
