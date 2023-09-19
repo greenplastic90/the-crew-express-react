@@ -5,7 +5,7 @@ import React from 'react'
 function DisstressSignal({ distressSignalUsed, handleDisstressSignal = () => {}, large }) {
 	const { circle, icon } = large ? { circle: 14, icon: 25 } : { circle: 10, icon: 20 }
 	return (
-		<Center cursor={'pointer'} onClick={handleDisstressSignal}>
+		<Center cursor={distressSignalUsed ? '' : 'pointer'} onClick={handleDisstressSignal}>
 			<Circle
 				bgColor={distressSignalUsed ? 'black' : 'white'}
 				border={'1px'}

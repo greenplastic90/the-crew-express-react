@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Stack, HStack, Text, Button, Box } from '@chakra-ui/react'
+import { VStack, HStack, Text, Button, Box } from '@chakra-ui/react'
 import { editTracker } from '../../utilities/mission-api'
 import DisstressSignal from './DisstressSignal'
 import { useNavigate } from 'react-router-dom'
@@ -49,14 +49,12 @@ function MissionTrackerForm({ tracker, updateMissionTracker }) {
 	}
 
 	return (
-		<Stack>
-			<HStack spacing={5}>
+		<VStack>
+			<HStack justify={'center'} spacing={5}>
 				{!completed && (
-					<Box ml={attempts > 0 ? '' : 'auto'}>
-						<Button onClick={incrementAttempt}>
-							{attempts <= 0 ? 'Start Mission' : 'Add Attempt'}
-						</Button>
-					</Box>
+					<Button variant={'missionStart'} onClick={incrementAttempt}>
+						{attempts <= 0 ? 'Mission Start' : 'Add Attempt'}
+					</Button>
 				)}
 				{attempts > 0 && !completed && (
 					<DisstressSignal
@@ -70,7 +68,7 @@ function MissionTrackerForm({ tracker, updateMissionTracker }) {
 				<Button onClick={handleMissionComplete}>Mission Accomplished</Button>
 			)}
 			{error && <Text color={'red.500'}>{error}</Text>}
-		</Stack>
+		</VStack>
 	)
 }
 
