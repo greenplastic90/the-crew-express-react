@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import { getUser } from '../../utilities/users-service'
 import AuthPage from '../AuthPage/AuthPage'
@@ -9,12 +9,37 @@ import NewCrew from '../Crews/NewCrew'
 import Crew from '../Crews/Crew'
 import UpdateCrew from '../Crews/UpdateCrew'
 import Mission from '../Missions/Mission'
+import spaceBg from '../../images/space.jpg'
 
 function App() {
 	const [user, setUser] = useState(getUser())
 
+	useEffect(() => {
+		const handleScroll = () => {
+			const offset = window.pageYOffset
+			document.documentElement.style.setProperty('--offset', `${offset * 1}px`)
+		}
+
+		window.addEventListener('scroll', handleScroll)
+
+		return () => window.removeEventListener('scroll', handleScroll)
+	}, [])
+
 	return (
-		<Box bg={'brand.beigeMedium'} display='grid' gridTemplateRows='auto 1fr auto' minHeight='100vh'>
+		<Box
+			bg={'brand.beigeMedium'}
+			style={{
+				backgroundImage: `url(${spaceBg})`,
+				backgroundPosition: 'var(--offset)',
+				// backgroundSize: 'cover',
+				// backgroundImage: `url(${spaceBg})`,
+				backgroundAttachment: '',
+				// backgroundPosition: 'center',
+				// backgroundSize: 'cover',
+			}}
+			display='grid'
+			gridTemplateRows='auto 1fr auto'
+			minHeight='100vh'>
 			<NavBar user={user} setUser={setUser} />
 
 			{user ? (
