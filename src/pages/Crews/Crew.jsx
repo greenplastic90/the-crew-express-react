@@ -64,7 +64,7 @@ function Crew() {
 		<>
 			{crew && (
 				<PageWrapper title={crew.name}>
-					<ElementCard>
+					{/* <ElementCard>
 						<Members members={crew.memberNames} />
 						<HStack>
 							<FormControl>
@@ -83,7 +83,7 @@ function Crew() {
 								/>
 							</FormControl>
 						</HStack>
-					</ElementCard>
+					</ElementCard> */}
 					<Missions missions={filteredMissions} updateMissionTracker={updateMissionTracker} />
 				</PageWrapper>
 			)}
