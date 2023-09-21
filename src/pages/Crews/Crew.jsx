@@ -1,20 +1,10 @@
-import {
-	Box,
-	Checkbox,
-	FormControl,
-	FormLabel,
-	HStack,
-	Heading,
-	Spinner,
-	Text,
-} from '@chakra-ui/react'
-import React, { useEffect, useRef, useState } from 'react'
+import { Spinner } from '@chakra-ui/react'
+import React, { useEffect, useState } from 'react'
 import { getCrewById } from '../../utilities/crew-api'
 import { useNavigate, useParams } from 'react-router-dom'
 import Missions from '../../components/Mission/Missions'
 import Members from './Memebers'
 import PageWrapper from '../../components/Miscellaneous/PageWrapper'
-import ElementCard from '../../components/Miscellaneous/ElementCard'
 
 function Crew() {
 	const [crew, setCrew] = useState(null)
