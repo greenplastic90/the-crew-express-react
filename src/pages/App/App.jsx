@@ -17,7 +17,7 @@ function App() {
 	useEffect(() => {
 		const handleScroll = () => {
 			const offset = window.pageYOffset
-			document.documentElement.style.setProperty('--offset', `${offset * 1}px`)
+			document.documentElement.style.setProperty('--offset', `${offset * 2}px`)
 		}
 
 		window.addEventListener('scroll', handleScroll)
@@ -31,11 +31,6 @@ function App() {
 			style={{
 				backgroundImage: `url(${spaceBg})`,
 				backgroundPosition: 'var(--offset)',
-				// backgroundSize: 'cover',
-				// backgroundImage: `url(${spaceBg})`,
-				backgroundAttachment: '',
-				// backgroundPosition: 'center',
-				// backgroundSize: 'cover',
 			}}
 			display='grid'
 			gridTemplateRows='auto 1fr auto'
