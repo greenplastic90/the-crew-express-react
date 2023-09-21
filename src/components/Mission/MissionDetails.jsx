@@ -15,7 +15,7 @@ function MissionDetails({ mission, tracker, updateMissionTracker, index }) {
 
 	return (
 		<MissionDetailsWrapper>
-			<ElementCard index={index}>
+			<ElementCard>
 				<HStack justify={'space-between'}>
 					<Box alignSelf={'start'}>
 						<Pentagon number={number} fivePlayerRule={fivePlayerRule} />

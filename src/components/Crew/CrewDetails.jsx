@@ -6,11 +6,11 @@ import CrewNavButtons from './CrewNavButtons'
 import Memebers from '../../pages/Crews/Memebers'
 import ElementCard from '../Miscellaneous/ElementCard'
 
-function CrewDetails({ crew, setCrews, index }) {
+function CrewDetails({ crew, setCrews }) {
 	const { name, memberNames, startDate, finishDate, totalAttempts } = crew
 
 	return (
-		<ElementCard index={index}>
+		<ElementCard>
 			<Heading as={'h2'} size={'lg'}>
 				{name}
 			</Heading>
