@@ -6,7 +6,6 @@ function PageWrapper({ title, children }) {
 	const [headingHeight, setHeadingHeight] = useState(0)
 
 	const updateHeadingHeight = () => {
-		console.log(headingRef.current.offsetHeight)
 		if (headingRef.current) {
 			setHeadingHeight(headingRef.current.offsetHeight)
 		}
@@ -24,10 +23,15 @@ function PageWrapper({ title, children }) {
 
 	return (
 		<Stack py={8} px={[null, 8, 16, 32, 64, 256]}>
-			<Heading ref={headingRef} position={'fixed'} variant={'h1'} as='h1' size='3xl' pb={5}>
-				{title.toUpperCase()}
-			</Heading>
-			<Box pt={headingHeight + 20}>{children}</Box>
+			<Box ref={headingRef} position={'fixed'}>
+				<Heading variant={'h1'} as='h1' size='3xl' pb={5}>
+					{title.toUpperCase()}
+				</Heading>
+			</Box>
+
+			<Box pt={headingHeight + 20} zIndex={1}>
+				{children}
+			</Box>
 		</Stack>
 	)
 }
