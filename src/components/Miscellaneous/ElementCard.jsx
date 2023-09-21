@@ -3,7 +3,7 @@ import React from 'react'
 
 function ElementCard({ index = 2, children }) {
 	return (
-		<Stack p={4} bg={index % 2 === 0 ? 'brand.beigeLight' : 'brand.beige'}>
+		<Stack p={4} bg={index % 2 === 0 ? 'brand.beigeLight' : 'brand.beige'} borderRadius={'sm'}>
 			{children}
 		</Stack>
 	)

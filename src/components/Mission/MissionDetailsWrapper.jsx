@@ -3,7 +3,7 @@ import { motion, useAnimation } from 'framer-motion'
 import React, { useEffect, useRef } from 'react'
 import { useInView } from 'react-intersection-observer'
 
-function MissionDetailsWrapper({ index = 2, children }) {
+function MissionDetailsWrapper({ children }) {
 	const controls = useAnimation()
 	const [ref, inView] = useInView({
 		rootMargin: '-50% 0px',
@@ -14,7 +14,7 @@ function MissionDetailsWrapper({ index = 2, children }) {
 	useEffect(() => {
 		if (inView) {
 			controls.start({ opacity: [0, 0.25, 1] })
-			// Optionally, bring into view smoothly.
+			// Bring into view smoothly.
 			elementRef.current.scrollIntoView({
 				behavior: 'smooth',
 				block: 'center',
@@ -40,15 +40,7 @@ function MissionDetailsWrapper({ index = 2, children }) {
 	const mergedRef = useMergedRef(ref, elementRef)
 
 	return (
-		<Stack
-			ref={mergedRef}
-			as={motion.div}
-			initial={{ opacity: 1 }}
-			animate={controls}
-			// style={{ opacity: inView ? 1 : 0 }}
-			p={4}
-			my={5}
-			bg={index % 2 === 0 ? 'brand.beigeLight' : 'brand.beige'}>
+		<Stack ref={mergedRef} as={motion.div} initial={{ opacity: 1 }} animate={controls}>
 			{children}
 		</Stack>
 	)
