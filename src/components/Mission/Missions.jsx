@@ -1,13 +1,13 @@
-import { Heading, Stack } from '@chakra-ui/react'
+import { Stack } from '@chakra-ui/react'
 import React from 'react'
 import MissionDetails from './MissionDetails'
 
 function Missions({ missions, updateMissionTracker }) {
 	return (
 		<Stack>
-			<Heading as={'h2'} size={'2xl'}>
+			{/* <Heading as={'h2'} size={'2xl'}>
 				Missions
-			</Heading>
+			</Heading> */}
 			<Stack spacing={4}>
 				{missions.map(({ mission, tracker }, i) => (
 					<MissionDetails
