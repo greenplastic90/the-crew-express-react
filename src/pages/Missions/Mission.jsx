@@ -1,6 +1,6 @@
-import { Box, Button, HStack, Spinner, Stack, Text, VStack } from '@chakra-ui/react'
+import { Box, HStack, Spinner, Stack, Text, VStack } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { getMissionTrackerById } from '../../utilities/mission-api'
 import MissionTrackerForm from '../../components/Mission/MissionTrackerForm'
 import PageWrapper from '../../components/Miscellaneous/PageWrapper'
@@ -19,7 +19,6 @@ function Mission() {
 	const [adjacentMissions, setAdjacentMissions] = useState(null)
 	const { missionTrackerId } = useParams()
 	const [error, setError] = useState('')
-	const navigate = useNavigate()
 
 	useEffect(() => {
 		async function getTracker() {
