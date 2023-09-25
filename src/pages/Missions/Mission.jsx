@@ -39,6 +39,11 @@ function Mission() {
 		}
 		getTracker()
 	}, [missionTrackerId])
+
+	function updateMissionTracker(updatedTracker) {
+		setTracker(updatedTracker)
+	}
+
 	return !isLoading ? (
 		<PageWrapper title={`Mission ${mission && mission.number}`}>
 			<ElementCard>
@@ -76,7 +81,7 @@ function Mission() {
 						)}
 					</HStack>
 				</Stack>
-				<MissionTrackerForm tracker={tracker} />
+				<MissionTrackerForm tracker={tracker} updateMissionTracker={updateMissionTracker} />
 				{adjacentMissions && (
 					<HStack>
 						<Button
