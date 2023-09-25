@@ -44,52 +44,54 @@ function Mission() {
 		setTracker(updatedTracker)
 	}
 
-	return !isLoading ? (
+	return (
 		<PageWrapper title={`Mission ${mission && mission.number}`}>
-			<ElementCard>
-				<HStack justify={'space-between'}>
-					<Box alignSelf={'start'}>
-						<Pentagon number={mission.number} fivePlayerRule={tracker.fivePlayerRule} />
-					</Box>
+			{!isLoading ? (
+				<ElementCard>
+					<HStack justify={'space-between'}>
+						<Box alignSelf={'start'}>
+							<Pentagon number={mission.number} fivePlayerRule={tracker.fivePlayerRule} />
+						</Box>
 
-					<VStack alignSelf={'start'}>
-						<HStack>
-							<Box alignSelf={'start'}>
-								<Tasks tasks={mission.tasks} />
-							</Box>
-							<TaskTokens tokens={mission.taskTokens} />
-						</HStack>
-					</VStack>
-				</HStack>
-				<VStack>
-					{mission.description && (
-						<Text variant={'missionDesc'}>{parseBoldText(mission.description)}</Text>
-					)}
-				</VStack>
-				<Stack>
-					<HStack fontFamily={'Roboto Slab'}>
-						{tracker.attempts > 0 && (
-							<>
-								<Text fontSize={'md'}>Attempts:</Text>
-								<Text fontSize={'xl'} fontWeight={'bold'}>
-									{tracker.attempts}
-								</Text>
-							</>
-						)}
-						{tracker.completed && tracker.distressSignalUsed && (
-							<DisstressSignal distressSignalUsed={tracker.distressSignalUsed} />
-						)}
+						<VStack alignSelf={'start'}>
+							<HStack>
+								<Box alignSelf={'start'}>
+									<Tasks tasks={mission.tasks} />
+								</Box>
+								<TaskTokens tokens={mission.taskTokens} />
+							</HStack>
+						</VStack>
 					</HStack>
-				</Stack>
-				<MissionTrackerForm tracker={tracker} updateMissionTracker={updateMissionTracker} />
-				{adjacentMissions && (
-					<AdjacentMissions adjacentMissions={adjacentMissions} crewId={tracker.crew} />
-				)}
-				{error && <Text color={'red.500'}>{error}</Text>}
-			</ElementCard>
+					<VStack>
+						{mission.description && (
+							<Text variant={'missionDesc'}>{parseBoldText(mission.description)}</Text>
+						)}
+					</VStack>
+					<Stack>
+						<HStack fontFamily={'Roboto Slab'}>
+							{tracker.attempts > 0 && (
+								<>
+									<Text fontSize={'md'}>Attempts:</Text>
+									<Text fontSize={'xl'} fontWeight={'bold'}>
+										{tracker.attempts}
+									</Text>
+								</>
+							)}
+							{tracker.completed && tracker.distressSignalUsed && (
+								<DisstressSignal distressSignalUsed={tracker.distressSignalUsed} />
+							)}
+						</HStack>
+					</Stack>
+					<MissionTrackerForm tracker={tracker} updateMissionTracker={updateMissionTracker} />
+					{adjacentMissions && (
+						<AdjacentMissions adjacentMissions={adjacentMissions} crewId={tracker.crew} />
+					)}
+					{error && <Text color={'red.500'}>{error}</Text>}
+				</ElementCard>
+			) : (
+				<Spinner />
+			)}
 		</PageWrapper>
-	) : (
-		<Spinner />
 	)
 }
 
