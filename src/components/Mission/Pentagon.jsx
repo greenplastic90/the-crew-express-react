@@ -32,11 +32,11 @@ function Pentagon({ number, fivePlayerRule }) {
 					</Center>
 				</Box>
 			</Box>
-			{fivePlayerRule && (
+			{/* {fivePlayerRule && (
 				<Text variant={'outline'} fontWeight={'bold'} color='gold'>
 					5 PLAYER RULE
 				</Text>
-			)}
+			)} */}
 		</Stack>
 	)
 }
