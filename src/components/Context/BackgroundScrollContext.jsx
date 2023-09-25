@@ -13,7 +13,7 @@ export const useBackgroundScroll = () => {
 export const BackgroundScrollProvider = ({ children }) => {
 	const [offset, setOffset] = useState({ x: 0, y: 0 })
 
-	const handleBackgroundScroll = (direction, distance = 500) => {
+	const handleBackgroundScroll = (direction, distance = 100) => {
 		let newXOffset = offset.x
 		let newYOffset = offset.y
 

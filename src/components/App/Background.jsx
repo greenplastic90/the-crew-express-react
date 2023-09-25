@@ -22,7 +22,7 @@ function Background({ children }) {
 				backgroundPosition: `${offset.x}px ${offset.y}px`,
 				filter: 'blur(2px)',
 				zIndex: -1,
-				transition: 'background-position 4s ease-in-out',
+				transition: 'background-position 2s ease-in-out',
 			}}>
 			{children}
 		</Box>

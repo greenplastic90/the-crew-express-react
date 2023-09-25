@@ -14,10 +14,12 @@ import {
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { deleteCrewById } from '../../utilities/crew-api'
+import { useBackgroundScroll } from '../Context/BackgroundScrollContext'
 
 function CrewNavButtons({ crew, setCrews }) {
 	const { isOpen, onOpen, onClose } = useDisclosure()
 	const navigate = useNavigate()
+	const { handleBackgroundScroll } = useBackgroundScroll()
 
 	const { _id, name } = crew
 
@@ -36,11 +38,20 @@ function CrewNavButtons({ crew, setCrews }) {
 			console.log(error)
 		}
 	}
+	function handleEditNavigation() {
+		navigate(`/crew/${_id}/edit`)
+		handleBackgroundScroll('south')
+	}
+
+	function handleMissionNavigation() {
+		navigate(`/crew/${_id}`)
+		handleBackgroundScroll('east')
+	}
 	return (
 		<>
 			<HStack>
-				<Button onClick={() => navigate(`/crew/${_id}`)}>Missions</Button>
-				<Button onClick={() => navigate(`/crew/${_id}/edit`)}>Edit</Button>
+				<Button onClick={handleMissionNavigation}>Missions</Button>
+				<Button onClick={handleEditNavigation}>Edit</Button>
 				<Button onClick={onOpen}>Delete</Button>
 			</HStack>
 			<Modal isOpen={isOpen} onClose={onClose} isCentered>

@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { getUser, login } from '../../utilities/users-service'
 import { Button, FormControl, FormLabel, Input, Text } from '@chakra-ui/react'
 import FormWrapper from '../Miscellaneous/FormWrapper'
+import { useBackgroundScroll } from '../Context/BackgroundScrollContext'
 
 export default function LoginForm({ setUser }) {
 	const [credentials, setCredentials] = useState({
@@ -9,6 +10,8 @@ export default function LoginForm({ setUser }) {
 		password: '',
 	})
 	const [errors, setErrors] = useState('')
+
+	const { handleBackgroundScroll } = useBackgroundScroll()
 
 	function handleChange(evt) {
 		setCredentials({ ...credentials, [evt.target.name]: evt.target.value })
@@ -23,6 +26,7 @@ export default function LoginForm({ setUser }) {
 			if (res.ok) {
 				localStorage.setItem(process.env.REACT_APP_TOKEN_NAME, resJSON.token)
 				setUser(getUser())
+				handleBackgroundScroll('north-east')
 			} else {
 				setErrors('Login Failed - Try Again')
 			}

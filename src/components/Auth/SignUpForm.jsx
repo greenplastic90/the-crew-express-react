@@ -14,7 +14,9 @@ export default function SignUpForm({ setUser }) {
 		confirm: '',
 	})
 	const [errors, setErrors] = useState({ email: '', username: '', password: '', confirm: '' })
+
 	const { handleBackgroundScroll } = useBackgroundScroll()
+
 	const handleSubmit = async (evt) => {
 		evt.preventDefault()
 		if (formInputs.password !== formInputs.confirm) {
@@ -30,7 +32,7 @@ export default function SignUpForm({ setUser }) {
 			if (res.ok) {
 				localStorage.setItem(process.env.REACT_APP_TOKEN_NAME, resJSON.token)
 				setUser(getUser())
-				handleBackgroundScroll()
+				handleBackgroundScroll('north-east')
 			} else {
 				setErrors({ ...errors, ...resJSON.errors })
 			}

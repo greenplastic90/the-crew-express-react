@@ -6,6 +6,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import PageWrapper from '../Miscellaneous/PageWrapper'
 import ElementCard from '../Miscellaneous/ElementCard'
 import FormWrapper from '../Miscellaneous/FormWrapper'
+import { useBackgroundScroll } from '../Context/BackgroundScrollContext'
 
 function CrewForm() {
 	const [crew, setCrew] = useState({ name: '', memberNames: ['', ''] })
@@ -14,6 +15,7 @@ function CrewForm() {
 	const { crewId } = useParams()
 
 	const navigate = useNavigate()
+	const { handleBackgroundScroll } = useBackgroundScroll()
 
 	useEffect(() => {
 		if (!crewId) {
@@ -63,6 +65,7 @@ function CrewForm() {
 			if (res.ok) {
 				const { crew } = await res.json()
 				navigate(`/crew/${crew._id}`)
+				handleBackgroundScroll('south-east')
 			}
 		} catch (error) {
 			console.log(error)
@@ -76,6 +79,7 @@ function CrewForm() {
 			if (res.ok) {
 				const { crew } = await res.json()
 				navigate(`/crew/${crew._id}`)
+				handleBackgroundScroll('south-east')
 			}
 		} catch (error) {
 			console.log(error)

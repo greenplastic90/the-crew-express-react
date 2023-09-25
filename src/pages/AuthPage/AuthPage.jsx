@@ -10,9 +10,9 @@ export default function AuthPage({ setUser }) {
 	const [showSignUp, setShowSignUp] = useState(false)
 	const { handleBackgroundScroll } = useBackgroundScroll()
 
-	function handlePageSwitch() {
+	async function handlePageSwitch() {
 		setShowSignUp(!showSignUp)
-		handleBackgroundScroll(showSignUp ? 'north-west' : 'south-east', 100)
+		handleBackgroundScroll(showSignUp ? 'west' : 'east')
 	}
 	return (
 		<PageWrapper title={showSignUp ? 'Sign Up' : 'Login'}>
