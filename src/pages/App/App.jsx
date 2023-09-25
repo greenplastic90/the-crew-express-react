@@ -3,7 +3,7 @@ import { Routes, Route, Navigate } from 'react-router-dom'
 import { getUser } from '../../utilities/users-service'
 import AuthPage from '../AuthPage/AuthPage'
 import NavBar from '../../components/NavBar/NavBar'
-import { Box } from '@chakra-ui/react'
+import { Box, Button } from '@chakra-ui/react'
 import Crews from '../Crews/Crews'
 import NewCrew from '../Crews/NewCrew'
 import Crew from '../Crews/Crew'
@@ -13,17 +13,27 @@ import spaceBg from '../../images/space.jpg'
 
 function App() {
 	const [user, setUser] = useState(getUser())
+	const [offset, setOffset] = useState({ x: 0, y: 0 })
 
-	useEffect(() => {
-		const handleScroll = () => {
-			const offset = window.pageYOffset
-			document.documentElement.style.setProperty('--offset', `${offset * 2}px`)
-		}
+	// useEffect(() => {
+	// 	const handleScroll = () => {
+	// 		const newOffset = window.pageYOffset + 100
+	// 		setOffset({ x: newOffset, y: newOffset })
+	// 	}
 
-		window.addEventListener('scroll', handleScroll)
+	// 	window.addEventListener('scroll', handleScroll)
 
-		return () => window.removeEventListener('scroll', handleScroll)
-	}, [])
+	// 	return () => window.removeEventListener('scroll', handleScroll)
+	// }, [])
+	// const handleScroll = () => {
+	// 	const newOffset = window.pageYOffset * 2
+	// 	setOffset({ x: newOffset, y: newOffset })
+	// }
+
+	const handleClick = () => {
+		const newOffset = offset.x + 500
+		setOffset({ x: newOffset, y: newOffset })
+	}
 
 	return (
 		<Box
@@ -39,12 +49,13 @@ function App() {
 				bottom: 0,
 				left: 0,
 				backgroundImage: `url(${spaceBg})`,
-				backgroundPosition: 'var(--offset)',
+				backgroundPosition: `${offset.x}px ${offset.y}px`,
 				filter: 'blur(2px)',
 				zIndex: -1,
+				transition: 'background-position 4s ease-in-out',
 			}}>
 			<NavBar user={user} setUser={setUser} />
-
+			<Button onClick={handleClick}>Change Offset</Button>
 			{user ? (
 				<Routes>
 					<Route path='/' element={<Navigate to='/crews' />} />
