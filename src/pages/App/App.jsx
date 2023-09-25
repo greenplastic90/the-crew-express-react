@@ -27,14 +27,22 @@ function App() {
 
 	return (
 		<Box
-			bg={'brand.beigeMedium'}
-			style={{
-				backgroundImage: `url(${spaceBg})`,
-				backgroundPosition: 'var(--offset)',
-			}}
+			position='relative'
 			display='grid'
 			gridTemplateRows='auto 1fr auto'
-			minHeight='100vh'>
+			minHeight='100vh'
+			_before={{
+				content: '""',
+				position: 'absolute',
+				top: 0,
+				right: 0,
+				bottom: 0,
+				left: 0,
+				backgroundImage: `url(${spaceBg})`,
+				backgroundPosition: 'var(--offset)',
+				filter: 'blur(2px)',
+				zIndex: -1,
+			}}>
 			<NavBar user={user} setUser={setUser} />
 
 			{user ? (
