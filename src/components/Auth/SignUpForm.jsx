@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { getUser, signUp } from '../../utilities/users-service'
 import { Button, FormControl, FormErrorMessage, FormLabel, Input } from '@chakra-ui/react'
 import FormWrapper from '../Miscellaneous/FormWrapper'
+import { useBackgroundScroll } from '../Context/BackgroundScrollContext'
 
 export default function SignUpForm({ setUser }) {
 	//! fix confirmed disabled button
@@ -13,7 +14,7 @@ export default function SignUpForm({ setUser }) {
 		confirm: '',
 	})
 	const [errors, setErrors] = useState({ email: '', username: '', password: '', confirm: '' })
-
+	const { handleBackgroundScroll } = useBackgroundScroll()
 	const handleSubmit = async (evt) => {
 		evt.preventDefault()
 		if (formInputs.password !== formInputs.confirm) {
@@ -29,6 +30,7 @@ export default function SignUpForm({ setUser }) {
 			if (res.ok) {
 				localStorage.setItem(process.env.REACT_APP_TOKEN_NAME, resJSON.token)
 				setUser(getUser())
+				handleBackgroundScroll()
 			} else {
 				setErrors({ ...errors, ...resJSON.errors })
 			}

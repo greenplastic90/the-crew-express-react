@@ -12,7 +12,7 @@ export default function AuthPage({ setUser }) {
 
 	function handlePageSwitch() {
 		setShowSignUp(!showSignUp)
-		handleBackgroundScroll(showSignUp)
+		handleBackgroundScroll(showSignUp ? 'north-west' : 'south-east', 100)
 	}
 	return (
 		<PageWrapper title={showSignUp ? 'Sign Up' : 'Login'}>
