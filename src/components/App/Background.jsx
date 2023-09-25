@@ -1,8 +1,10 @@
 import { Box } from '@chakra-ui/react'
 import React from 'react'
 import spaceBg from '../../images/space.jpg'
+import { useBackgroundScroll } from '../Context/BackgroundScrollContext'
 
-function Background({ offset, children }) {
+function Background({ children }) {
+	const { offset } = useBackgroundScroll()
 	return (
 		<Box
 			position='relative'

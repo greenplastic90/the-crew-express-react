@@ -12,16 +12,11 @@ import Background from '../../components/App/Background'
 
 function App() {
 	const [user, setUser] = useState(getUser())
-	const [offset, setOffset] = useState({ x: 0, y: 0 })
-
-	const handleClick = () => {
-		const newOffset = offset.x + 500
-		setOffset({ x: newOffset, y: newOffset })
-	}
 
 	return (
-		<Background offset={offset}>
+		<Background>
 			<NavBar user={user} setUser={setUser} />
+
 			{user ? (
 				<Routes>
 					<Route path='/' element={<Navigate to='/crews' />} />
