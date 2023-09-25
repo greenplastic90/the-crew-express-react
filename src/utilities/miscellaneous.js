@@ -23,6 +23,11 @@ export function astroColorPicker(index) {
 }
 
 export const parseBoldText = (text) => {
+	// Check if the input text is not a string
+	if (typeof text !== 'string') {
+		return ''
+	}
+
 	const reg = /\[b\](.*?)\[\/b\]/g // Regular expression to find [b]...[/b] in the text
 	const splitText = text.split(reg) // Split the text into an array
 	let key = 0 // React list key
