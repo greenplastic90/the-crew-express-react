@@ -10,6 +10,7 @@ import Tasks from '../../components/Mission/Tasks'
 import TaskTokens from '../../components/Mission/TaskTokens'
 import { parseBoldText } from '../../utilities/miscellaneous'
 import DisstressSignal from '../../components/Mission/DisstressSignal'
+import AdjacentMissions from '../../components/Mission/AdjacentMissions'
 
 function Mission() {
 	const [mission, setMission] = useState(null)
@@ -83,19 +84,7 @@ function Mission() {
 				</Stack>
 				<MissionTrackerForm tracker={tracker} updateMissionTracker={updateMissionTracker} />
 				{adjacentMissions && (
-					<HStack>
-						<Button
-							isDisabled={!adjacentMissions.prevMissionTracker}
-							onClick={() => navigate(`/mission/${adjacentMissions.prevMissionTracker}`)}>
-							Previous
-						</Button>
-						<Button
-							isDisabled={!adjacentMissions.nextMissionTracker}
-							onClick={() => navigate(`/mission/${adjacentMissions.nextMissionTracker}`)}>
-							Next
-						</Button>
-						<Button onClick={() => navigate(`/crew/${tracker.crew}`)}>All Missions</Button>
-					</HStack>
+					<AdjacentMissions adjacentMissions={adjacentMissions} crewId={tracker.crew} />
 				)}
 				{error && <Text color={'red.500'}>{error}</Text>}
 			</ElementCard>
