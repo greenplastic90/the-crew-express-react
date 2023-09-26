@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 
 const MotionVStack = motion(VStack)
 
-function DisstressSignal({ distressSignalUsed, handleDisstressSignal = () => {} }) {
+function DisstressSignal({ distressSignalUsed, handleDisstressSignal, completed }) {
 	const animations = {
 		animate: distressSignalUsed
 			? {
@@ -21,11 +21,11 @@ function DisstressSignal({ distressSignalUsed, handleDisstressSignal = () => {} 
 	}
 
 	return (
-		<Center cursor={'pointer'} onClick={handleDisstressSignal}>
+		<Center cursor={completed ? '' : 'pointer'} onClick={handleDisstressSignal}>
 			<Circle
-				bgColor={distressSignalUsed ? 'black' : 'white'}
-				border={'1px'}
-				borderColor={distressSignalUsed ? 'orange' : 'black'}
+				bgColor={completed ? 'grey' : distressSignalUsed ? 'black' : 'white'}
+				border={'2px'}
+				borderColor={distressSignalUsed ? (completed ? 'grey' : 'orange') : 'black'}
 				size={14}>
 				<MotionVStack {...animations} spacing={0}>
 					<MdOutlineSatelliteAlt

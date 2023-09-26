@@ -13,7 +13,7 @@ function MissionTrackerForm({ tracker, updateMissionTracker }) {
 
 	const handleDisstressSignal = () => {
 		// When distress singnal is used, increate attemps by 1!
-		if (distressSignalUsed && attempts <= 0) return
+		if ((distressSignalUsed && attempts <= 0) || completed) return
 		updateTracker({
 			...tracker,
 			distressSignalUsed: !distressSignalUsed,
@@ -37,7 +37,7 @@ function MissionTrackerForm({ tracker, updateMissionTracker }) {
 	}
 
 	function handleMissionComplete() {
-		updateTracker({ ...tracker, completed: true })
+		updateTracker({ ...tracker, completed: !completed })
 	}
 
 	async function updateTracker(updatedTrackerValues) {
@@ -62,36 +62,38 @@ function MissionTrackerForm({ tracker, updateMissionTracker }) {
 
 	return (
 		<Stack spacing={4}>
-			<HStack spacing={5}>
+			<HStack spacing={5} w={'100%'} justify={'space-between'}>
 				<HStack>
-					<Attempts attempts={attempts} />
-					<VStack>
-						<Button variant='attempts' onClick={incrementAttempt}>
-							+
-						</Button>
-						<Button
-							variant='attempts'
-							onClick={decrementAttempt}
-							isDisabled={attempts <= 0 || (distressSignalUsed && attempts === 1)}>
-							-
-						</Button>
-					</VStack>
+					<HStack>
+						<Attempts attempts={attempts} />
+						<VStack>
+							<Button variant='attempts' onClick={incrementAttempt} isDisabled={completed}>
+								+
+							</Button>
+							<Button
+								variant='attempts'
+								onClick={decrementAttempt}
+								isDisabled={attempts <= 0 || (distressSignalUsed && attempts === 1) || completed}>
+								-
+							</Button>
+						</VStack>
+					</HStack>
+
+					<DisstressSignal
+						distressSignalUsed={distressSignalUsed}
+						handleDisstressSignal={handleDisstressSignal}
+						completed={completed}
+						attempts={attempts}
+					/>
 				</HStack>
-				{/* {!completed && (
-					<Button variant={'missionStart'} onClick={incrementAttempt}>
-						{attempts <= 0 ? 'Mission Start' : 'Add Attempt'}
+
+				{attempts > 0 && (
+					<Button onClick={handleMissionComplete}>
+						{completed ? 'Resume Mission' : 'Mark Completed'}
 					</Button>
-				)} */}
-				<DisstressSignal
-					distressSignalUsed={distressSignalUsed}
-					handleDisstressSignal={handleDisstressSignal}
-					large={true}
-					attempts={attempts}
-				/>
+				)}
 			</HStack>
-			{attempts > 0 && !completed && (
-				<Button onClick={handleMissionComplete}>Mission Accomplished</Button>
-			)}
+
 			{error && <Text color={'red.500'}>{error}</Text>}
 		</Stack>
 	)

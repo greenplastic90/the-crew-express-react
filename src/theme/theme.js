@@ -68,7 +68,7 @@ const components = {
 	},
 	Button: {
 		variants: {
-			attempts: { height: '20px', width: '50px', bg: 'grey' },
+			attempts: { height: '20px', width: '50px', bg: 'white' },
 			missionStart: {
 				// bg: 'brand.blueDark',
 				// color: 'white',
