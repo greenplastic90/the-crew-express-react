@@ -22,18 +22,16 @@ function PageWrapper({ title, children }) {
 	}, [title])
 
 	return (
-		<Stack pt={16} pb={8} px={[null, 8, 16, 32, 64, 256]}>
-			{title && (
+		<Stack h={'100%'} pt={16} pb={8} px={[4, 8, 16, 32, 64, 256]}>
+			{/* {title && (
 				<Box ref={headingRef}>
 					<Heading variant={'h1'} as='h1' size='3xl' pb={5}>
 						{title.toUpperCase()}
 					</Heading>
 				</Box>
-			)}
+			)} */}
 
-			<Box pt={4} zIndex={1}>
-				{children}
-			</Box>
+			{children}
 		</Stack>
 	)
 }
