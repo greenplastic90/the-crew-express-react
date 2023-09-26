@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { getMissionTrackerById } from '../../utilities/mission-api'
 import MissionTrackerForm from '../../components/Mission/MissionTrackerForm'
-import PageWrapper from '../../components/Miscellaneous/PageWrapper'
 import ElementCard from '../../components/Miscellaneous/ElementCard'
 import Pentagon from '../../components/Mission/Pentagon'
 import Tasks from '../../components/Mission/Tasks'
@@ -46,14 +45,13 @@ function Mission() {
 	}
 
 	return (
-		<PageWrapper>
+		<>
 			{!isLoading ? (
 				<ElementCard>
 					<HStack justify={'space-between'}>
 						<Box alignSelf={'start'}>
 							<Pentagon number={mission.number} fivePlayerRule={tracker.fivePlayerRule} />
 						</Box>
-
 						<VStack alignSelf={'start'}>
 							<HStack>
 								<Box alignSelf={'start'}>
@@ -85,7 +83,7 @@ function Mission() {
 			) : (
 				<Spinner />
 			)}
-		</PageWrapper>
+		</>
 	)
 }
 

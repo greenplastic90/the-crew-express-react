@@ -3,7 +3,6 @@ import { FormLabel, Input, Button, HStack, FormControl, Stack } from '@chakra-ui
 import { createCrew, getCrewById, updateCrew } from '../../utilities/crew-api'
 import HelmetIcon from './HelmetIcon'
 import { useNavigate, useParams } from 'react-router-dom'
-import PageWrapper from '../Miscellaneous/PageWrapper'
 import ElementCard from '../Miscellaneous/ElementCard'
 import FormWrapper from '../Miscellaneous/FormWrapper'
 import { useBackgroundScroll } from '../Context/BackgroundScrollContext'
@@ -88,52 +87,44 @@ function CrewForm() {
 
 	return (
 		<form autoComplete='off' onSubmit={crewId ? handleUpdate : handleCreate}>
-			<PageWrapper title={crewId ? `upadte ${crew.name}` : 'Crew Assembly'}>
-				<ElementCard>
-					<FormWrapper>
-						<FormControl>
-							<FormLabel>Name</FormLabel>
-							<Input
-								type='text'
-								name='name'
-								value={crew.name}
-								onChange={handleNameChange}
-								required
-							/>
-						</FormControl>
-						<FormControl>
-							<FormLabel>Members</FormLabel>
-							<Stack>
-								{crew.memberNames.map((member, index) => (
-									<HStack key={index}>
-										<HelmetIcon index={index} />
-										<Input
-											type='text'
-											value={member}
-											onChange={(e) => handleMemberChange(e, index)}
-											placeholder={`Member ${index + 1}`}
-											required
-										/>
-										{crew.memberNames.length > 2 && (
-											<Button onClick={() => deleteMember(index)}>X</Button>
-										)}
-									</HStack>
-								))}
-								{crew.memberNames.length < 5 && (
-									<>
-										<Button p={6} onClick={addMemberInput} isDisabled={isLoading}>
-											<HelmetIcon index={crew.memberNames.length} />
-										</Button>
-									</>
-								)}
-							</Stack>
-						</FormControl>
-					</FormWrapper>
-					<Button type='submit' isDisabled={isLoading}>
-						Done
-					</Button>
-				</ElementCard>
-			</PageWrapper>
+			<ElementCard>
+				<FormWrapper>
+					<FormControl>
+						<FormLabel>Name</FormLabel>
+						<Input type='text' name='name' value={crew.name} onChange={handleNameChange} required />
+					</FormControl>
+					<FormControl>
+						<FormLabel>Members</FormLabel>
+						<Stack>
+							{crew.memberNames.map((member, index) => (
+								<HStack key={index}>
+									<HelmetIcon index={index} />
+									<Input
+										type='text'
+										value={member}
+										onChange={(e) => handleMemberChange(e, index)}
+										placeholder={`Member ${index + 1}`}
+										required
+									/>
+									{crew.memberNames.length > 2 && (
+										<Button onClick={() => deleteMember(index)}>X</Button>
+									)}
+								</HStack>
+							))}
+							{crew.memberNames.length < 5 && (
+								<>
+									<Button p={6} onClick={addMemberInput} isDisabled={isLoading}>
+										<HelmetIcon index={crew.memberNames.length} />
+									</Button>
+								</>
+							)}
+						</Stack>
+					</FormControl>
+				</FormWrapper>
+				<Button type='submit' isDisabled={isLoading}>
+					Done
+				</Button>
+			</ElementCard>
 		</form>
 	)
 }

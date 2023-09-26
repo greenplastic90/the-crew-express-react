@@ -4,7 +4,6 @@ import { getCrewById } from '../../utilities/crew-api'
 import { useNavigate, useParams } from 'react-router-dom'
 import Missions from '../../components/Mission/Missions'
 import Members from './Memebers'
-import PageWrapper from '../../components/Miscellaneous/PageWrapper'
 
 function Crew() {
 	const [crew, setCrew] = useState(null)
@@ -61,11 +60,7 @@ function Crew() {
 
 	return !isLoading ? (
 		<>
-			{crew && (
-				<PageWrapper title={crew.name} Component={<Members members={crew.memberNames} />}>
-					<Missions missions={filteredMissions} updateMissionTracker={updateMissionTracker} />
-				</PageWrapper>
-			)}
+			{crew && <Missions missions={filteredMissions} updateMissionTracker={updateMissionTracker} />}
 		</>
 	) : (
 		<Spinner />

@@ -9,7 +9,15 @@ export default function NavBar({ user, setUser }) {
 	}
 
 	return (
-		<HStack justify={'space-between'}>
+		<HStack
+			zIndex={10}
+			pos={'fixed'}
+			minW={'100%'}
+			minH={12}
+			justify={'space-between'}
+			bgColor={'brand.beige'}
+			borderBottom={'4px'}
+			borderColor={'brand.beigeLight'}>
 			<Text>The Crew Logbook</Text>
 			{user ? (
 				<HStack>

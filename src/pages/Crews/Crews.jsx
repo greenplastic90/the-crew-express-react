@@ -2,7 +2,6 @@ import { Button, Stack } from '@chakra-ui/react'
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import CrewsDisplay from '../../components/Crew/CrewsDisplay'
-import PageWrapper from '../../components/Miscellaneous/PageWrapper'
 import { useBackgroundScroll } from '../../components/Context/BackgroundScrollContext'
 
 function Crews({ user }) {
@@ -15,12 +14,10 @@ function Crews({ user }) {
 	}
 
 	return (
-		<PageWrapper title={`${user.username}'s Crews`}>
-			<Stack>
-				<Button onClick={handleNavigation}>Assemble Crew</Button>
-				<CrewsDisplay />
-			</Stack>
-		</PageWrapper>
+		<Stack>
+			<Button onClick={handleNavigation}>Assemble Crew</Button>
+			<CrewsDisplay />
+		</Stack>
 	)
 }
 

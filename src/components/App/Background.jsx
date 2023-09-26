@@ -1,4 +1,4 @@
-import { Box } from '@chakra-ui/react'
+import { Box, Stack } from '@chakra-ui/react'
 import React from 'react'
 import spaceBg from '../../images/space.jpg'
 import { useBackgroundScroll } from '../Context/BackgroundScrollContext'
@@ -6,7 +6,7 @@ import { useBackgroundScroll } from '../Context/BackgroundScrollContext'
 function Background({ children }) {
 	const { offset } = useBackgroundScroll()
 	return (
-		<Box
+		<Stack
 			position='relative'
 			display='grid'
 			gridTemplateRows='auto 1fr auto'
@@ -25,7 +25,7 @@ function Background({ children }) {
 				transition: 'background-position 2s ease-in-out',
 			}}>
 			{children}
-		</Box>
+		</Stack>
 	)
 }
 
