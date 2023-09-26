@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
-import { VStack, HStack, Text, Button, Box } from '@chakra-ui/react'
+import { VStack, HStack, Text, Button, Box, Stack } from '@chakra-ui/react'
 import { editTracker } from '../../utilities/mission-api'
 import DisstressSignal from './DisstressSignal'
 import { useNavigate } from 'react-router-dom'
+import Attempts from './Attempts'
 
 function MissionTrackerForm({ tracker, updateMissionTracker }) {
 	const [error, setError] = useState('')
@@ -22,6 +23,13 @@ function MissionTrackerForm({ tracker, updateMissionTracker }) {
 
 	function incrementAttempt() {
 		updateTracker({ ...tracker, attempts: attempts + 1 })
+	}
+	function decrementAttempt() {
+		if (attempts <= 0) {
+			updateTracker({ ...tracker, attempts: 0 })
+			return
+		}
+		updateTracker({ ...tracker, attempts: attempts - 1 })
 	}
 
 	function handleMissionComplete() {
@@ -49,13 +57,18 @@ function MissionTrackerForm({ tracker, updateMissionTracker }) {
 	}
 
 	return (
-		<VStack>
-			<HStack justify={'center'} spacing={5}>
-				{!completed && (
+		<Stack spacing={4}>
+			<HStack spacing={5}>
+				<Attempts attempts={attempts} />
+				<VStack>
+					<Button onClick={incrementAttempt}>+</Button>
+					<Button onClick={decrementAttempt}>-</Button>
+				</VStack>
+				{/* {!completed && (
 					<Button variant={'missionStart'} onClick={incrementAttempt}>
 						{attempts <= 0 ? 'Mission Start' : 'Add Attempt'}
 					</Button>
-				)}
+				)} */}
 				{attempts > 0 && !completed && (
 					<DisstressSignal
 						distressSignalUsed={distressSignalUsed}
@@ -68,7 +81,7 @@ function MissionTrackerForm({ tracker, updateMissionTracker }) {
 				<Button onClick={handleMissionComplete}>Mission Accomplished</Button>
 			)}
 			{error && <Text color={'red.500'}>{error}</Text>}
-		</VStack>
+		</Stack>
 	)
 }
 

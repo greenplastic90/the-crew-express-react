@@ -47,39 +47,40 @@ function Mission() {
 	return (
 		<>
 			{!isLoading ? (
-				<ElementCard>
-					<HStack justify={'space-between'}>
-						<Box alignSelf={'start'}>
-							<Pentagon number={mission.number} fivePlayerRule={tracker.fivePlayerRule} />
-						</Box>
-						<VStack alignSelf={'start'}>
-							<HStack>
-								<Box alignSelf={'start'}>
-									<Tasks tasks={mission.tasks} />
-								</Box>
-								<TaskTokens tokens={mission.taskTokens} />
-							</HStack>
-						</VStack>
-					</HStack>
-					<VStack>
-						{mission.description && (
-							<Text variant={'missionDesc'}>{parseBoldText(mission.description)}</Text>
+				<>
+					<ElementCard>
+						<Stack spacing={8}>
+							<Stack>
+								<HStack justify={'space-between'}>
+									<Box alignSelf={'start'}>
+										<Pentagon number={mission.number} fivePlayerRule={tracker.fivePlayerRule} />
+									</Box>
+									<VStack alignSelf={'start'}>
+										<HStack>
+											<Box alignSelf={'start'}>
+												<Tasks tasks={mission.tasks} />
+											</Box>
+											<TaskTokens tokens={mission.taskTokens} />
+										</HStack>
+									</VStack>
+								</HStack>
+								<VStack>
+									{mission.description && (
+										<Text variant={'missionDesc'}>{parseBoldText(mission.description)}</Text>
+									)}
+								</VStack>
+							</Stack>
+							<MissionTrackerForm tracker={tracker} updateMissionTracker={updateMissionTracker} />
+
+							{error && <Text color={'red.500'}>{error}</Text>}
+						</Stack>
+					</ElementCard>
+					<ElementCard>
+						{adjacentMissions && (
+							<AdjacentMissions adjacentMissions={adjacentMissions} crewId={tracker.crew} />
 						)}
-					</VStack>
-					<Stack>
-						<HStack fontFamily={'Roboto Slab'}>
-							<Attempts attempts={tracker.attempts} />
-							{tracker.completed && tracker.distressSignalUsed && (
-								<DisstressSignal distressSignalUsed={tracker.distressSignalUsed} />
-							)}
-						</HStack>
-					</Stack>
-					<MissionTrackerForm tracker={tracker} updateMissionTracker={updateMissionTracker} />
-					{adjacentMissions && (
-						<AdjacentMissions adjacentMissions={adjacentMissions} crewId={tracker.crew} />
-					)}
-					{error && <Text color={'red.500'}>{error}</Text>}
-				</ElementCard>
+					</ElementCard>
+				</>
 			) : (
 				<Spinner />
 			)}

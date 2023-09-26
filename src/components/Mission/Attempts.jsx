@@ -12,7 +12,7 @@ function Attempts({ attempts }) {
 				borderColor={'white'}
 				borderRadius={'md'}
 				bgColor={'rgba(0, 0, 255, 0.20)'}>
-				<Text>{attempts}</Text>
+				<Text fontWeight={'bold'}>{attempts}</Text>
 			</VStack>
 		</Circle>
 	)
