@@ -68,15 +68,16 @@ const components = {
 	},
 	Button: {
 		variants: {
+			attempts: { height: '20px', width: '50px', bg: 'grey' },
 			missionStart: {
-				bg: 'brand.blueDark',
-				color: 'white',
+				// bg: 'brand.blueDark',
+				// color: 'white',
 				_hover: {
-					bg: 'brand.blueDark', // Background color when hovered
+					// bg: 'brand.blueDark', // Background color when hovered
 				},
 				_active: {
-					bg: 'brand.blueDark',
-					color: 'grey',
+					// bg: 'brand.blueDark',
+					// color: 'grey',
 				},
 			},
 		},

@@ -13,15 +13,19 @@ function MissionTrackerForm({ tracker, updateMissionTracker }) {
 
 	const handleDisstressSignal = () => {
 		// When distress singnal is used, increate attemps by 1!
-		if (!distressSignalUsed && !completed)
-			updateTracker({
-				...tracker,
-				distressSignalUsed: true,
-				attempts: attempts + 1,
-			})
+		if (distressSignalUsed && attempts <= 0) return
+		updateTracker({
+			...tracker,
+			distressSignalUsed: !distressSignalUsed,
+			attempts: distressSignalUsed ? attempts - 1 : attempts + 1,
+		})
 	}
 
 	function incrementAttempt() {
+		if (attempts < 0) {
+			updateTracker({ ...tracker, attempts: 1 })
+			return
+		}
 		updateTracker({ ...tracker, attempts: attempts + 1 })
 	}
 	function decrementAttempt() {
@@ -59,23 +63,31 @@ function MissionTrackerForm({ tracker, updateMissionTracker }) {
 	return (
 		<Stack spacing={4}>
 			<HStack spacing={5}>
-				<Attempts attempts={attempts} />
-				<VStack>
-					<Button onClick={incrementAttempt}>+</Button>
-					<Button onClick={decrementAttempt}>-</Button>
-				</VStack>
+				<HStack>
+					<Attempts attempts={attempts} />
+					<VStack>
+						<Button variant='attempts' onClick={incrementAttempt}>
+							+
+						</Button>
+						<Button
+							variant='attempts'
+							onClick={decrementAttempt}
+							isDisabled={attempts <= 0 || (distressSignalUsed && attempts === 1)}>
+							-
+						</Button>
+					</VStack>
+				</HStack>
 				{/* {!completed && (
 					<Button variant={'missionStart'} onClick={incrementAttempt}>
 						{attempts <= 0 ? 'Mission Start' : 'Add Attempt'}
 					</Button>
 				)} */}
-				{attempts > 0 && !completed && (
-					<DisstressSignal
-						distressSignalUsed={distressSignalUsed}
-						handleDisstressSignal={handleDisstressSignal}
-						large={true}
-					/>
-				)}
+				<DisstressSignal
+					distressSignalUsed={distressSignalUsed}
+					handleDisstressSignal={handleDisstressSignal}
+					large={true}
+					attempts={attempts}
+				/>
 			</HStack>
 			{attempts > 0 && !completed && (
 				<Button onClick={handleMissionComplete}>Mission Accomplished</Button>

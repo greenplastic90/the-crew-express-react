@@ -50,7 +50,7 @@ function Mission() {
 				<>
 					<ElementCard>
 						<Stack spacing={8}>
-							<Stack>
+							<Stack h>
 								<HStack justify={'space-between'}>
 									<Box alignSelf={'start'}>
 										<Pentagon number={mission.number} fivePlayerRule={tracker.fivePlayerRule} />
