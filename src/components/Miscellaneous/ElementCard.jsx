@@ -7,7 +7,7 @@ function ElementCard({ children }) {
 			p={4}
 			bg={'brand.beige'}
 			borderRadius={'sm'}
-			border={'0.5em solid'}
+			border={'4px'}
 			borderColor={'brand.beigeLight'}>
 			{children}
 		</Stack>
