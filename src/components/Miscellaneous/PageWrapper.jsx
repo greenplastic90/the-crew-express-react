@@ -23,13 +23,13 @@ function PageWrapper({ title, children }) {
 
 	return (
 		<Stack py={8} px={[null, 8, 16, 32, 64, 256]}>
-			<Box ref={headingRef} position={'fixed'}>
+			<Box ref={headingRef}>
 				<Heading variant={'h1'} as='h1' size='3xl' pb={5}>
 					{title.toUpperCase()}
 				</Heading>
 			</Box>
 
-			<Box pt={headingHeight + 20} zIndex={1}>
+			<Box pt={4} zIndex={1}>
 				{children}
 			</Box>
 		</Stack>
