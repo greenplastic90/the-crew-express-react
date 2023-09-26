@@ -46,7 +46,7 @@ function Mission() {
 	}
 
 	return (
-		<PageWrapper title={`Mission ${mission && mission.number}`}>
+		<PageWrapper>
 			{!isLoading ? (
 				<ElementCard>
 					<HStack justify={'space-between'}>
