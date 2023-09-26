@@ -11,6 +11,7 @@ import TaskTokens from '../../components/Mission/TaskTokens'
 import { parseBoldText } from '../../utilities/miscellaneous'
 import DisstressSignal from '../../components/Mission/DisstressSignal'
 import AdjacentMissions from '../../components/Mission/AdjacentMissions'
+import Attempts from '../../components/Mission/Attempts'
 
 function Mission() {
 	const [mission, setMission] = useState(null)
@@ -69,14 +70,7 @@ function Mission() {
 					</VStack>
 					<Stack>
 						<HStack fontFamily={'Roboto Slab'}>
-							{tracker.attempts > 0 && (
-								<>
-									<Text fontSize={'md'}>Attempts:</Text>
-									<Text fontSize={'xl'} fontWeight={'bold'}>
-										{tracker.attempts}
-									</Text>
-								</>
-							)}
+							<Attempts attempts={tracker.attempts} />
 							{tracker.completed && tracker.distressSignalUsed && (
 								<DisstressSignal distressSignalUsed={tracker.distressSignalUsed} />
 							)}
