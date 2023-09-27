@@ -41,6 +41,24 @@ const components = {
 				fontFamily: 'Open Sans, sans-serif',
 				fontSize: 'md',
 			},
+			logo: {
+				fontFamily: 'Bree Serif, serif',
+				// textShadow:
+				// 	'-2px -2px 0 #ffffff, 2px -2px 0 #ffffff, -2px 2px 0 #ffffff, 2px 2px 0 #ffffff',
+				fontSize: ['3xl', '4xl'],
+				letterSpacing: '5px',
+				background: 'linear-gradient(to bottom, rgb(215,105,50), rgb(250,215,160))',
+				backgroundClip: 'text',
+				color: 'transparent',
+				position: 'absolute',
+			},
+			logo2: {
+				fontFamily: 'Bree Serif, serif',
+				textShadow:
+					'-1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff, 1px 1px 0 #ffffff',
+				fontSize: ['3xl', '4xl'],
+				letterSpacing: '5px',
+			},
 		},
 	},
 	FormControl: {
