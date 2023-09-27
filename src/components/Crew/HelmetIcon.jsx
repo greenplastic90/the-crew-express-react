@@ -7,14 +7,14 @@ function HelmetIcon({ index }) {
 	return (
 		<Circle
 			size={10}
-			bg={astroColorPicker(index)}
+			bg={'black'}
 			color='white'
 			border={'1px'}
-			borderColor={'white'}
+			borderColor={astroColorPicker(index)}
 			display='flex'
 			alignItems='center'
 			justifyContent='center'>
-			<GiAstronautHelmet size={24} />
+			<GiAstronautHelmet size={24} color={astroColorPicker(index)} />
 		</Circle>
 	)
 }

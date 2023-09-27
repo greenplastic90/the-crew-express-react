@@ -10,15 +10,19 @@ export function formatDate(dateString) {
 export function astroColorPicker(index) {
 	switch (index) {
 		case 0:
-			return 'brand.green'
+			// return 'brand.green'
+			return 'rgba(100, 190, 110, 1)'
 		case 1:
-			return 'brand.yellow'
+			// return 'brand.yellow'
+			return 'rgba(225, 175, 70, 1)'
 		case 2:
-			return 'brand.blue'
+			// return 'brand.blue'
+			return 'rgba(0, 140, 205, 1)'
 		case 3:
-			return 'brand.pink'
+			// return 'brand.pink'
+			return 'rgba(235, 125, 175, 1)'
 		default:
-			return 'black'
+			return 'white'
 	}
 }
 

@@ -10,9 +10,7 @@ function Members({ members }) {
 				<GridItem key={i}>
 					<HStack justifyItems={'start'}>
 						<HelmetIcon index={i} />
-						<Text variant={'outline'} color={astroColorPicker(i)} fontWeight='bold'>
-							{member}
-						</Text>
+						<Text fontWeight='bold'>{member}</Text>
 					</HStack>
 				</GridItem>
 			))}
