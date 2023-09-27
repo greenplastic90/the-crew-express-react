@@ -19,7 +19,7 @@ const colors = {
 }
 const fonts = {
 	heading: 'Roboto Slab, sans-serif',
-	body: 'Roboto, sans-serif',
+	// body: 'PT Sans Narrow, sans-serif',
 }
 
 const components = {
@@ -38,8 +38,8 @@ const components = {
 					'-1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff, 1px 1px 0 #ffffff',
 			},
 			missionDesc: {
-				fontFamily: 'PT Sans Narrow, sans-serif',
-				fontSize: 'lg',
+				fontFamily: 'Open Sans, sans-serif',
+				fontSize: 'md',
 			},
 		},
 	},
