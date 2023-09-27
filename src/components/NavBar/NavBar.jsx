@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { logOut } from '../../utilities/users-service'
 import { Box, HStack, Text } from '@chakra-ui/react'
+import DropdownMenu from './DropdownMenu'
 
 export default function NavBar({ user, setUser }) {
 	function handleLogOut() {
@@ -29,6 +30,7 @@ export default function NavBar({ user, setUser }) {
 					<Link to='' onClick={handleLogOut}>
 						Log Out
 					</Link>
+					<DropdownMenu />
 				</HStack>
 			) : (
 				<Link to=''>Login</Link>
