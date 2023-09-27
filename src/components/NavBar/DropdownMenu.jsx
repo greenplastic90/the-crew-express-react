@@ -1,15 +1,30 @@
-import { Box, HStack } from '@chakra-ui/react'
+import { Box, Divider, HStack, Text } from '@chakra-ui/react'
 import React from 'react'
-import HelmetIcon from '../Crew/HelmetIcon'
+import ElementCard from '../Miscellaneous/ElementCard'
+import { Link } from 'react-router-dom'
+import { AiOutlineLogout } from 'react-icons/ai'
 
-function DropdownMenu({ setOpenDropdown, ref }) {
+function DropDownMenu({ user, handleLogOut, navBarHeight, dropdownRef }) {
 	return (
-		<HStack ref={ref}>
-			<Box cursor={'pointer'} onClick={() => setOpenDropdown((openDropdown) => !openDropdown)}>
-				<HelmetIcon />
-			</Box>
-		</HStack>
+		<Box
+			zIndex={20}
+			position='fixed'
+			top={`${navBarHeight - 4}px`} // 2px is the height of one border border
+			right={`${dropdownRef.current?.offsetLeft - dropdownRef.current?.offsetWidth || 0}px`}>
+			<ElementCard>
+				<Text>{user.username}</Text>
+				<Text>{user.email}</Text>
+				<Divider />
+				<Divider />
+				<HStack>
+					<AiOutlineLogout />
+					<Link to='' onClick={handleLogOut}>
+						Log Out
+					</Link>
+				</HStack>
+			</ElementCard>
+		</Box>
 	)
 }
 
-export default DropdownMenu
+export default DropDownMenu

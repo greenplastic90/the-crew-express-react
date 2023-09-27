@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom'
 import { logOut } from '../../utilities/users-service'
 import { Box, HStack, Text } from '@chakra-ui/react'
-import DropdownMenu from './DropdownMenu'
+import DropdownMenuIcon from './DropdownMenuIcon'
 import { useEffect, useRef, useState } from 'react'
-import ElementCard from '../Miscellaneous/ElementCard'
+
+import DropdownMenu from './DropdownMenu'
 
 export default function NavBar({ user, setUser }) {
 	const [openDropdown, setOpenDropdown] = useState(false)
@@ -17,16 +18,19 @@ export default function NavBar({ user, setUser }) {
 		}
 	}
 
+	const handleScroll = () => {
+		setOpenDropdown(false)
+	}
+
 	useEffect(() => {
-		// Initial update of navBarHeight
 		updateNavBarHeight()
 
-		// Add resize event listener
 		window.addEventListener('resize', updateNavBarHeight)
+		window.addEventListener('scroll', handleScroll)
 
-		// Cleanup function to remove event listener
 		return () => {
 			window.removeEventListener('resize', updateNavBarHeight)
+			window.removeEventListener('scroll', handleScroll)
 		}
 	}, [])
 
@@ -54,25 +58,24 @@ export default function NavBar({ user, setUser }) {
 				</Box>
 				{user ? (
 					<HStack>
-						<Link to='/crews'>Crews</Link>
+						{/* <Link to='/crews'>Crews</Link>
 						<Link to='' onClick={handleLogOut}>
 							Log Out
-						</Link>
-						<DropdownMenu setOpenDropdown={setOpenDropdown} ref={dropdownRef} />
+						</Link> */}
+
+						<DropdownMenuIcon setOpenDropdown={setOpenDropdown} ref={dropdownRef} />
 					</HStack>
 				) : (
 					<Link to=''>Login</Link>
 				)}
 			</HStack>
 			{openDropdown && (
-				<Box
-					position='fixed'
-					top={`${navBarHeight - 4}px`} // 2px is the height of one border border
-					right={`${dropdownRef.current?.offsetLeft - dropdownRef.current?.offsetWidth || 0}px`}>
-					<ElementCard>
-						<Text>hi</Text>
-					</ElementCard>
-				</Box>
+				<DropdownMenu
+					user={user}
+					handleLogOut={handleLogOut}
+					navBarHeight={navBarHeight}
+					dropdownRef={dropdownRef}
+				/>
 			)}
 		</Box>
 	)
