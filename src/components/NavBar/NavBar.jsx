@@ -40,43 +40,45 @@ export default function NavBar({ user, setUser }) {
 	}
 
 	return (
-		<Box position='relative'>
-			<HStack
-				ref={navBarRef}
-				zIndex={10}
-				pos={'fixed'}
-				minW={'100%'}
-				minH={12}
-				justify={'space-between'}
-				px={4}
-				bgColor={'brand.beige'}
-				borderBottom={'4px'}
-				borderColor={'brand.beigeLight'}>
-				<Box position={'relative'}>
-					<Text variant={'logo'}>LOGBOOK</Text>
-					<Text variant={'logo2'}>LOGBOOK</Text>
-				</Box>
-				{user ? (
-					<HStack>
-						{/* <Link to='/crews'>Crews</Link>
+		<Box zIndex={20} position={'fixed'}>
+			<Box position='relative'>
+				<HStack
+					ref={navBarRef}
+					zIndex={10}
+					pos={'fixed'}
+					minW={'100%'}
+					minH={12}
+					justify={'space-between'}
+					px={4}
+					bgColor={'brand.beige'}
+					borderBottom={'4px'}
+					borderColor={'brand.beigeLight'}>
+					<Box position={'relative'}>
+						<Text variant={'logo'}>LOGBOOK</Text>
+						<Text variant={'logo2'}>LOGBOOK</Text>
+					</Box>
+					{user ? (
+						<HStack>
+							{/* <Link to='/crews'>Crews</Link>
 						<Link to='' onClick={handleLogOut}>
 							Log Out
 						</Link> */}
 
-						<DropdownMenuIcon setOpenDropdown={setOpenDropdown} ref={dropdownRef} />
-					</HStack>
-				) : (
-					<Link to=''>Login</Link>
+							<DropdownMenuIcon setOpenDropdown={setOpenDropdown} ref={dropdownRef} />
+						</HStack>
+					) : (
+						<Link to=''>Login</Link>
+					)}
+				</HStack>
+				{user && openDropdown && (
+					<DropdownMenu
+						user={user}
+						handleLogOut={handleLogOut}
+						navBarHeight={navBarHeight}
+						dropdownRef={dropdownRef}
+					/>
 				)}
-			</HStack>
-			{openDropdown && (
-				<DropdownMenu
-					user={user}
-					handleLogOut={handleLogOut}
-					navBarHeight={navBarHeight}
-					dropdownRef={dropdownRef}
-				/>
-			)}
+			</Box>
 		</Box>
 	)
 }
