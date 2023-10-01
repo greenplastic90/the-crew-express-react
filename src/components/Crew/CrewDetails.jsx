@@ -1,4 +1,4 @@
-import { HStack, Heading, Text } from '@chakra-ui/react'
+import { Box, HStack, Heading, Text } from '@chakra-ui/react'
 import React from 'react'
 
 import { formatDate } from '../../utilities/miscellaneous'
@@ -11,9 +11,16 @@ function CrewDetails({ crew, setCrews }) {
 
 	return (
 		<ElementCard>
-			<Heading as={'h2'} size={'lg'}>
-				{name}
-			</Heading>
+			<Box w={['300px', '370px', '600px', '800px']} border={'1px solid red'}>
+				<Heading
+					as={'h2'}
+					size={'lg'}
+					whiteSpace='nowrap'
+					overflow='hidden'
+					textOverflow='ellipsis'>
+					{name}
+				</Heading>
+			</Box>
 
 			<Memebers members={memberNames} />
 			<HStack justify={'space-around'}>
