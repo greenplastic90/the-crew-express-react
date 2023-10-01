@@ -1,7 +1,13 @@
 import { Box, Divider, HStack, Stack, Switch } from '@chakra-ui/react'
 import React from 'react'
 import ElementCard from '../Miscellaneous/ElementCard'
-import { GiAstronautHelmet, GiLetterBomb, GiExitDoor, GiMovementSensor } from 'react-icons/gi'
+import {
+	GiAstronautHelmet,
+	GiLetterBomb,
+	GiExitDoor,
+	GiMovementSensor,
+	GiDarkSquad,
+} from 'react-icons/gi'
 import MenuItem from './MenuItem'
 
 function DropDownMenu({
@@ -11,6 +17,7 @@ function DropDownMenu({
 	dropdownRef,
 	handleAnimateToggle,
 	canAnimateBg,
+	handleNavigation,
 }) {
 	return (
 		<Box
@@ -27,9 +34,21 @@ function DropDownMenu({
 
 				<Divider />
 				<Stack>
+					<MenuItem
+						text={'Crews'}
+						icon={<GiDarkSquad size={30} />}
+						func={() => handleNavigation('/crews')}
+					/>
+				</Stack>
+				<Divider />
+				<Stack>
 					<HStack justify={'space-between'}>
 						<MenuItem text={'Background scrolling'} icon={<GiMovementSensor size={30} />} />
-						<Switch isChecked={canAnimateBg} onChange={handleAnimateToggle} />
+						<Switch
+							isChecked={canAnimateBg}
+							onChange={handleAnimateToggle}
+							colorScheme={'orange'}
+						/>
 					</HStack>
 					<MenuItem text={'Sign out'} icon={<GiExitDoor size={30} />} func={handleLogOut} />
 				</Stack>

@@ -3,6 +3,8 @@ import { extendTheme } from '@chakra-ui/react'
 
 const colors = {
 	brand: {
+		primary: 'rgba(215,105,50,1)',
+		secondary: 'rgba(250,215,160,1)',
 		red: 'rgba(245, 80,45, 1)',
 		green: 'rgba(100, 190, 110, 1)',
 		yellow: 'rgba(225, 175, 70, 1)',
@@ -47,7 +49,7 @@ const components = {
 				// 	'-2px -2px 0 #ffffff, 2px -2px 0 #ffffff, -2px 2px 0 #ffffff, 2px 2px 0 #ffffff',
 				fontSize: ['3xl', '4xl'],
 				letterSpacing: '5px',
-				background: 'linear-gradient(to bottom, rgb(215,105,50), rgb(250,215,160))',
+				background: `linear-gradient(to bottom, ${colors.brand.primary}, ${colors.brand.secondary})`,
 				backgroundClip: 'text',
 				color: 'transparent',
 				position: 'absolute',

@@ -16,6 +16,10 @@ export default function NavBar({ user, setUser }) {
 	const navigate = useNavigate()
 	const { handleAnimateToggle, canAnimateBg } = useBackgroundScroll()
 
+	function handleNavigation(link) {
+		navigate(link)
+		setOpenDropdown(false)
+	}
 	const updateNavBarHeight = () => {
 		if (navBarRef.current) {
 			setNavBarHeight(navBarRef.current.offsetHeight)
@@ -41,7 +45,7 @@ export default function NavBar({ user, setUser }) {
 	function handleLogOut() {
 		logOut()
 		setUser(null)
-		navigate('/')
+		handleNavigation('/')
 	}
 
 	return (
@@ -78,6 +82,7 @@ export default function NavBar({ user, setUser }) {
 						dropdownRef={dropdownRef}
 						handleAnimateToggle={handleAnimateToggle}
 						canAnimateBg={canAnimateBg}
+						handleNavigation={handleNavigation}
 					/>
 				)}
 			</Box>
