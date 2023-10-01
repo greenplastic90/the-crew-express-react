@@ -9,6 +9,7 @@ import {
 	GiControlTower,
 } from 'react-icons/gi'
 import MenuItem from './MenuItem'
+import MenuItemsWrapper from './MenuItemsWrapper'
 
 function DropDownMenu({
 	user,
@@ -28,23 +29,23 @@ function DropDownMenu({
 			right={`${dropdownRef.current?.offsetLeft - dropdownRef.current?.offsetWidth || 0}px`}>
 			<ElementCard>
 				{/*//? User Info */}
-				<Stack>
+				<MenuItemsWrapper spacing={4}>
 					<MenuItem text={user.username} icon={<GiAstronautHelmet size={30} />} />
 					<MenuItem text={user.email} icon={<GiLetterBomb size={30} />} />
-				</Stack>
+				</MenuItemsWrapper>
 
 				<Divider />
 				{/*//? Links */}
-				<Stack>
+				<MenuItemsWrapper>
 					<MenuItem
 						text={'Crews'}
 						icon={<GiControlTower size={30} />}
 						func={() => handleNavigation('/crews')}
 					/>
-				</Stack>
+				</MenuItemsWrapper>
 				<Divider />
 				{/*//? Options */}
-				<Stack>
+				<MenuItemsWrapper>
 					<HStack justify={'space-between'}>
 						<MenuItem text={'Background scrolling'} icon={<GiMovementSensor size={30} />} />
 						<Switch
@@ -55,7 +56,7 @@ function DropDownMenu({
 						/>
 					</HStack>
 					<MenuItem text={'Sign out'} icon={<GiExitDoor size={30} />} func={handleLogOut} />
-				</Stack>
+				</MenuItemsWrapper>
 			</ElementCard>
 		</Box>
 	)
