@@ -6,7 +6,7 @@ import {
 	GiLetterBomb,
 	GiExitDoor,
 	GiMovementSensor,
-	GiDarkSquad,
+	GiControlTower,
 } from 'react-icons/gi'
 import MenuItem from './MenuItem'
 
@@ -27,24 +27,28 @@ function DropDownMenu({
 			top={`${navBarHeight - 4}px`} // 2px is the height of one border border
 			right={`${dropdownRef.current?.offsetLeft - dropdownRef.current?.offsetWidth || 0}px`}>
 			<ElementCard>
+				{/*//? User Info */}
 				<Stack>
 					<MenuItem text={user.username} icon={<GiAstronautHelmet size={30} />} />
 					<MenuItem text={user.email} icon={<GiLetterBomb size={30} />} />
 				</Stack>
 
 				<Divider />
+				{/*//? Links */}
 				<Stack>
 					<MenuItem
 						text={'Crews'}
-						icon={<GiDarkSquad size={30} />}
+						icon={<GiControlTower size={30} />}
 						func={() => handleNavigation('/crews')}
 					/>
 				</Stack>
 				<Divider />
+				{/*//? Options */}
 				<Stack>
 					<HStack justify={'space-between'}>
 						<MenuItem text={'Background scrolling'} icon={<GiMovementSensor size={30} />} />
 						<Switch
+							alignSelf={'end'}
 							isChecked={canAnimateBg}
 							onChange={handleAnimateToggle}
 							colorScheme={'orange'}
