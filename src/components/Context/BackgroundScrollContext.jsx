@@ -12,8 +12,14 @@ export const useBackgroundScroll = () => {
 
 export const BackgroundScrollProvider = ({ children }) => {
 	const [offset, setOffset] = useState({ x: 0, y: 0 })
+	const [canAnimateBg, setCanAnimateBG] = useState(true)
+
+	const handleAnimateToggle = () => {
+		setCanAnimateBG(!canAnimateBg)
+	}
 
 	const handleBackgroundScroll = (direction, distance = 100) => {
+		if (!canAnimateBg) return
 		let newXOffset = offset.x
 		let newYOffset = offset.y
 
@@ -54,7 +60,8 @@ export const BackgroundScrollProvider = ({ children }) => {
 	}
 
 	return (
-		<BackgroundScrollContext.Provider value={{ offset, handleBackgroundScroll }}>
+		<BackgroundScrollContext.Provider
+			value={{ offset, handleBackgroundScroll, handleAnimateToggle, canAnimateBg }}>
 			{children}
 		</BackgroundScrollContext.Provider>
 	)

@@ -5,6 +5,7 @@ import DropdownMenuIcon from './DropdownMenuIcon'
 import { useEffect, useRef, useState } from 'react'
 
 import DropdownMenu from './DropdownMenu'
+import { useBackgroundScroll } from '../Context/BackgroundScrollContext'
 
 export default function NavBar({ user, setUser }) {
 	const [openDropdown, setOpenDropdown] = useState(false)
@@ -13,6 +14,7 @@ export default function NavBar({ user, setUser }) {
 	const navBarRef = useRef()
 
 	const navigate = useNavigate()
+	const { handleAnimateToggle, canAnimateBg } = useBackgroundScroll()
 
 	const updateNavBarHeight = () => {
 		if (navBarRef.current) {
@@ -62,12 +64,7 @@ export default function NavBar({ user, setUser }) {
 					</Box>
 					{user ? (
 						<HStack>
-							{/* <Link to='/crews'>Crews</Link>
-						<Link to='' onClick={handleLogOut}>
-							Log Out
-						</Link> */}
-
-							<DropdownMenuIcon setOpenDropdown={setOpenDropdown} dropdownRef={dropdownRef} />
+							<DropdownMenuIcon setOpenDropdown={setOpenDropdown} ref={dropdownRef} />
 						</HStack>
 					) : (
 						<Link to=''>Login</Link>
@@ -79,6 +76,8 @@ export default function NavBar({ user, setUser }) {
 						handleLogOut={handleLogOut}
 						navBarHeight={navBarHeight}
 						dropdownRef={dropdownRef}
+						handleAnimateToggle={handleAnimateToggle}
+						canAnimateBg={canAnimateBg}
 					/>
 				)}
 			</Box>

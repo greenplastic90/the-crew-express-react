@@ -1,10 +1,17 @@
-import { Box, Divider, Stack } from '@chakra-ui/react'
+import { Box, Divider, HStack, Stack, Switch } from '@chakra-ui/react'
 import React from 'react'
 import ElementCard from '../Miscellaneous/ElementCard'
-import { GiAstronautHelmet, GiLetterBomb, GiExitDoor } from 'react-icons/gi'
+import { GiAstronautHelmet, GiLetterBomb, GiExitDoor, GiMovementSensor } from 'react-icons/gi'
 import MenuItem from './MenuItem'
 
-function DropDownMenu({ user, handleLogOut, navBarHeight, dropdownRef }) {
+function DropDownMenu({
+	user,
+	handleLogOut,
+	navBarHeight,
+	dropdownRef,
+	handleAnimateToggle,
+	canAnimateBg,
+}) {
 	return (
 		<Box
 			zIndex={20}
@@ -20,6 +27,10 @@ function DropDownMenu({ user, handleLogOut, navBarHeight, dropdownRef }) {
 
 				<Divider />
 				<Stack>
+					<HStack justify={'space-between'}>
+						<MenuItem text={'Background scrolling'} icon={<GiMovementSensor size={30} />} />
+						<Switch isChecked={canAnimateBg} onChange={handleAnimateToggle} />
+					</HStack>
 					<MenuItem text={'Sign out'} icon={<GiExitDoor size={30} />} func={handleLogOut} />
 				</Stack>
 			</ElementCard>
