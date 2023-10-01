@@ -2,10 +2,10 @@ import { Box } from '@chakra-ui/react'
 import React from 'react'
 import HelmetIcon from '../Crew/HelmetIcon'
 
-function DropdownMenuIcon({ setOpenDropdown, ref }) {
+function DropdownMenuIcon({ setOpenDropdown, dropdownRef }) {
 	return (
 		<Box
-			ref={ref}
+			ref={dropdownRef}
 			cursor={'pointer'}
 			onClick={() => setOpenDropdown((openDropdown) => !openDropdown)}>
 			<HelmetIcon />

@@ -67,7 +67,7 @@ export default function NavBar({ user, setUser }) {
 							Log Out
 						</Link> */}
 
-							<DropdownMenuIcon setOpenDropdown={setOpenDropdown} ref={dropdownRef} />
+							<DropdownMenuIcon setOpenDropdown={setOpenDropdown} dropdownRef={dropdownRef} />
 						</HStack>
 					) : (
 						<Link to=''>Login</Link>

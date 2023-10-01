@@ -1,8 +1,6 @@
-import { Box, Divider, Stack, Text } from '@chakra-ui/react'
+import { Box, Divider, Stack } from '@chakra-ui/react'
 import React from 'react'
 import ElementCard from '../Miscellaneous/ElementCard'
-import { Link } from 'react-router-dom'
-import { AiOutlineLogout, AiOutlineUser, AiOutlineMail } from 'react-icons/ai'
 import { GiAstronautHelmet, GiLetterBomb, GiExitDoor } from 'react-icons/gi'
 import MenuItem from './MenuItem'
 
