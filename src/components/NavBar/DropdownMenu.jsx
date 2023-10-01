@@ -1,8 +1,10 @@
-import { Box, Divider, HStack, Text } from '@chakra-ui/react'
+import { Box, Divider, Stack, Text } from '@chakra-ui/react'
 import React from 'react'
 import ElementCard from '../Miscellaneous/ElementCard'
 import { Link } from 'react-router-dom'
-import { AiOutlineLogout } from 'react-icons/ai'
+import { AiOutlineLogout, AiOutlineUser, AiOutlineMail } from 'react-icons/ai'
+import { GiAstronautHelmet, GiLetterBomb, GiExitDoor } from 'react-icons/gi'
+import MenuItem from './MenuItem'
 
 function DropDownMenu({ user, handleLogOut, navBarHeight, dropdownRef }) {
 	return (
@@ -13,16 +15,15 @@ function DropDownMenu({ user, handleLogOut, navBarHeight, dropdownRef }) {
 			top={`${navBarHeight - 4}px`} // 2px is the height of one border border
 			right={`${dropdownRef.current?.offsetLeft - dropdownRef.current?.offsetWidth || 0}px`}>
 			<ElementCard>
-				<Text>{user.username}</Text>
-				<Text>{user.email}</Text>
+				<Stack>
+					<MenuItem text={user.username} icon={<GiAstronautHelmet size={30} />} />
+					<MenuItem text={user.email} icon={<GiLetterBomb size={30} />} />
+				</Stack>
+
 				<Divider />
-				<Divider />
-				<HStack>
-					<AiOutlineLogout />
-					<Link to='' onClick={handleLogOut}>
-						Log Out
-					</Link>
-				</HStack>
+				<Stack>
+					<MenuItem text={'Sign out'} icon={<GiExitDoor size={30} />} func={handleLogOut} />
+				</Stack>
 			</ElementCard>
 		</Box>
 	)

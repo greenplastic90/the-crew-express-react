@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { logOut } from '../../utilities/users-service'
 import { Box, HStack, Text } from '@chakra-ui/react'
 import DropdownMenuIcon from './DropdownMenuIcon'
@@ -11,6 +11,8 @@ export default function NavBar({ user, setUser }) {
 	const [navBarHeight, setNavBarHeight] = useState(0)
 	const dropdownRef = useRef()
 	const navBarRef = useRef()
+
+	const navigate = useNavigate()
 
 	const updateNavBarHeight = () => {
 		if (navBarRef.current) {
@@ -37,6 +39,7 @@ export default function NavBar({ user, setUser }) {
 	function handleLogOut() {
 		logOut()
 		setUser(null)
+		navigate('/')
 	}
 
 	return (
