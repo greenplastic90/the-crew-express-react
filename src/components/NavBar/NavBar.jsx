@@ -59,7 +59,7 @@ export default function NavBar({ user, setUser }) {
 					minH={12}
 					justify={'space-between'}
 					px={4}
-					bgColor={'brand.beige'}
+					bg={`linear-gradient(to top, rgba(210, 190, 175, 1), rgba(230, 220, 215, 1))`}
 					borderBottom={'4px'}
 					borderColor={'brand.beigeLight'}>
 					<Box position={'relative'}>
