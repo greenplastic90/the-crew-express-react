@@ -1,4 +1,4 @@
-import { Box, Stack } from '@chakra-ui/react'
+import { Stack } from '@chakra-ui/react'
 import React from 'react'
 import spaceBg from '../../images/space.jpg'
 import { useBackgroundScroll } from '../Context/BackgroundScrollContext'

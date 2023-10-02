@@ -21,12 +21,13 @@ const colors = {
 }
 const fonts = {
 	heading: 'Roboto Slab, sans-serif',
-	// body: 'PT Sans Narrow, sans-serif',
+	body: 'PT Sans Narrow, sans-serif',
 }
 
 const components = {
 	Heading: {
 		baseStyle: {
+			textTransform: 'uppercase',
 			textShadow: '-2px -2px 0 #ffffff, 2px -2px 0 #ffffff, -2px 2px 0 #ffffff, 2px 2px 0 #ffffff',
 			color: 'brand.blueDark',
 			letterSpacing: '3px',
@@ -61,6 +62,7 @@ const components = {
 				fontSize: ['3xl', '4xl'],
 				letterSpacing: '5px',
 			},
+			handWritten: { fontFamily: 'Kaushan Script, cursive' },
 		},
 	},
 	FormControl: {

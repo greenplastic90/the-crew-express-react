@@ -15,7 +15,7 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { deleteCrewById } from '../../utilities/crew-api'
 import { useBackgroundScroll } from '../Context/BackgroundScrollContext'
-
+import { GiFountainPen, GiTrashCan } from 'react-icons/gi'
 function CrewNavButtons({ crew, setCrews }) {
 	const { isOpen, onOpen, onClose } = useDisclosure()
 	const navigate = useNavigate()
@@ -43,17 +43,17 @@ function CrewNavButtons({ crew, setCrews }) {
 		handleBackgroundScroll('south')
 	}
 
-	function handleMissionNavigation() {
-		navigate(`/crew/${_id}`)
-		handleBackgroundScroll('east')
-	}
 	return (
 		<>
 			<HStack>
-				<Button onClick={handleMissionNavigation}>Missions</Button>
-				<Button onClick={handleEditNavigation}>Edit</Button>
-				<Button onClick={onOpen}>Delete</Button>
+				<Button onClick={handleEditNavigation}>
+					<GiFountainPen style={{ transform: 'rotate(90deg)' }} />
+				</Button>
+				<Button alignContent={'center'} onClick={onOpen}>
+					<GiTrashCan size={25} />
+				</Button>
 			</HStack>
+
 			<Modal isOpen={isOpen} onClose={onClose} isCentered>
 				<ModalOverlay />
 				<ModalContent>
