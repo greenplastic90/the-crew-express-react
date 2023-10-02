@@ -25,7 +25,7 @@ function DropDownMenu({
 			zIndex={20}
 			boxShadow={'0 10px 10px 10px rgba(0, 0, 0, 0.2)'}
 			position='fixed'
-			top={`${navBarHeight - 4}px`} // 2px is the height of one border border
+			top={`${navBarHeight - 2}px`} // 1px is the height of one border border
 			right={`${dropdownRef.current?.offsetLeft - dropdownRef.current?.offsetWidth || 0}px`}>
 			<ElementCard>
 				{/*//? User Info */}

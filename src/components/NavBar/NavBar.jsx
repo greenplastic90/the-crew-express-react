@@ -59,9 +59,9 @@ export default function NavBar({ user, setUser }) {
 					minH={12}
 					justify={'space-between'}
 					px={4}
-					bg={`linear-gradient(to top, rgba(210, 190, 175, 1), rgba(230, 220, 215, 1))`}
-					borderBottom={'4px'}
-					borderColor={'brand.beigeLight'}>
+					bg={'brand.greyBg'}
+					borderBottom={'2px'}
+					borderColor={'white'}>
 					<Box position={'relative'}>
 						<Text variant={'logo'}>LOGBOOK</Text>
 						<Text variant={'logo2'}>LOGBOOK</Text>

@@ -18,40 +18,35 @@ function CrewDetails({ crew, setCrews }) {
 		handleBackgroundScroll('east')
 	}
 	return (
-		<Stack
-			p={4}
-			bgColor={'brand.greyBg'}
-			border={'2px solid'}
-			borderRadius={'md'}
-			borderColor={'white'}
-			flexGrow={1}
-			justifyContent={'space-between'}>
-			<Box w={['300px', '450px']}>
-				<Heading
-					color={'brand.redDark'}
-					textTransform={'uppercase'}
-					as={'h2'}
-					size={'md'}
-					whiteSpace='nowrap'
-					overflow='hidden'
-					textOverflow='ellipsis'>
-					{name}
-				</Heading>
-			</Box>
-			<Stack spacing={4} flexDir={['column', 'row']} justify={'space-between'}>
-				<Memebers members={memberNames} />
+		<ElementCard>
+			<Stack flexGrow={1} justifyContent={'space-between'}>
+				<Box w={['300px', '450px']}>
+					<Heading
+						color={'brand.redDark'}
+						textTransform={'uppercase'}
+						as={'h2'}
+						size={'md'}
+						whiteSpace='nowrap'
+						overflow='hidden'
+						textOverflow='ellipsis'>
+						{name}
+					</Heading>
+				</Box>
+				<Stack spacing={4} flexDir={['column', 'row']} justify={'space-between'}>
+					<Memebers members={memberNames} />
 
-				<CrewDates startDate={startDate} finishDate={finishDate} />
-			</Stack>
+					<CrewDates startDate={startDate} finishDate={finishDate} />
+				</Stack>
 
-			<Stack flexDir={['row']} justify={['space-between']} alignItems={'center'}>
-				<Attempts attempts={totalAttempts} />
-				<Button w={'full'} onClick={handleMissionNavigation}>
-					Missions
-				</Button>
-				<CrewNavButtons crew={crew} setCrews={setCrews} />
+				<Stack flexDir={['row']} justify={['space-between']} alignItems={'center'}>
+					<Attempts attempts={totalAttempts} />
+					<Button w={'full'} onClick={handleMissionNavigation}>
+						Missions
+					</Button>
+					<CrewNavButtons crew={crew} setCrews={setCrews} />
+				</Stack>
 			</Stack>
-		</Stack>
+		</ElementCard>
 	)
 }
 
