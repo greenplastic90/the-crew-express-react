@@ -10,7 +10,7 @@ function TextWrapper({ children }) {
 			justify={'center'}
 			px={2}
 			bg={'whiteAlpha.900'}
-			border={'1px solid'}
+			border={'2px solid'}
 			borderColor={'brand.greyBgBorder'}
 			borderRadius={'md'}>
 			{children}
