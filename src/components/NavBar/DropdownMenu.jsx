@@ -1,4 +1,4 @@
-import { Box, Divider, HStack, Stack, Switch } from '@chakra-ui/react'
+import { Box, Divider, HStack, Switch } from '@chakra-ui/react'
 import React from 'react'
 import ElementCard from '../Miscellaneous/ElementCard'
 import {

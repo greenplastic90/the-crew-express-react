@@ -1,7 +1,6 @@
-import { Box, Button, HStack, Heading, Stack, Text } from '@chakra-ui/react'
+import { Box, Button, Heading, Stack } from '@chakra-ui/react'
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import { formatDate } from '../../utilities/miscellaneous'
 import CrewNavButtons from './CrewNavButtons'
 import Memebers from '../../pages/Crews/Memebers'
 import ElementCard from '../Miscellaneous/ElementCard'
