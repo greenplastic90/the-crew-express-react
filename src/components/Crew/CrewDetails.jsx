@@ -19,24 +19,23 @@ function CrewDetails({ crew, setCrews }) {
 	}
 	return (
 		<ElementCard>
-			<Stack flexGrow={1} justifyContent={'space-between'} spacing={4}>
-				<Stack spacing={4}>
-					<Box w={['300px', '450px']}>
-						<Heading
-							textTransform={'uppercase'}
-							as={'h2'}
-							size={'xl'}
-							whiteSpace='nowrap'
-							overflow='hidden'
-							textOverflow='ellipsis'>
-							{name}
-						</Heading>
-					</Box>
-					<Stack spacing={4} flexDir={['column', 'row']} justify={'space-between'}>
-						<Memebers members={memberNames} />
+			<Stack flexGrow={1} justifyContent={'space-between'}>
+				<Box w={['300px', '450px']}>
+					<Heading
+						color={'brand.redDark'}
+						textTransform={'uppercase'}
+						as={'h2'}
+						size={'md'}
+						whiteSpace='nowrap'
+						overflow='hidden'
+						textOverflow='ellipsis'>
+						{name}
+					</Heading>
+				</Box>
+				<Stack spacing={4} flexDir={['column', 'row']} justify={'space-between'}>
+					<Memebers members={memberNames} />
 
-						<CrewDates startDate={startDate} finishDate={finishDate} />
-					</Stack>
+					<CrewDates startDate={startDate} finishDate={finishDate} />
 				</Stack>
 
 				<Stack flexDir={['row']} justify={['space-between']} alignItems={'center'}>

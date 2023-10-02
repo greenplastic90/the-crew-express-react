@@ -9,11 +9,11 @@ function Members({ members }) {
 		<Grid templateColumns={['repeat(2, 1fr)']} rowGap={2}>
 			{members.map((member, i) => (
 				<GridItem key={i} colSpan={isOdd && i === 0 ? 2 : 1}>
-					<HStack justifyItems={'start'} justifyContent={isOdd && i === 0 ? 'center' : 'start'}>
+					<HStack justifyItems={'start'} justifyContent={'start'}>
 						<HelmetIcon index={i} />
 						<Box w='100px'>
 							<Text
-								fontSize={'xl'}
+								fontSize={'md'}
 								whiteSpace='nowrap'
 								overflow='hidden'
 								textOverflow='ellipsis'
