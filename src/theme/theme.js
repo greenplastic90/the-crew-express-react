@@ -6,6 +6,8 @@ const colors = {
 		primary: 'rgba(215,105,50,1)',
 		secondary: 'rgba(250,215,160,1)',
 		redDark: 'rgba(175,55,51,1)',
+		greyBg: 'rgba(235,235,235,1)',
+		greyBgBorder: 'rgba(191,191,191,1)',
 		red: 'rgba(245, 80,45, 1)',
 		green: 'rgba(100, 190, 110, 1)',
 		yellow: 'rgba(225, 175, 70, 1)',

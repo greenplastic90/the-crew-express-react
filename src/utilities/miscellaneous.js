@@ -22,7 +22,7 @@ export function astroColorPicker(index) {
 			// return 'brand.pink'
 			return 'rgba(235, 125, 175, 1)'
 		default:
-			return 'white'
+			return 'black'
 	}
 }
 

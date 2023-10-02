@@ -1,17 +1,26 @@
 import { HStack, Stack, Text } from '@chakra-ui/react'
 import React from 'react'
 import { formatDate } from '../../utilities/miscellaneous'
+import TextWrapper from './TextWrapper'
 
 function CrewDates({ startDate, finishDate }) {
 	return (
 		<Stack flexDir={['row', 'column']} justify={['space-between', 'center']}>
-			<HStack>
+			<HStack justify={'space-between'}>
 				<Text fontWeight={'bold'}>Start:</Text>
-				<Text variant={'handWritten'}>{formatDate(startDate)}</Text>
+				<TextWrapper>
+					<Text variant={'handWritten'} fontSize={'sm'}>
+						{formatDate(startDate)}
+					</Text>
+				</TextWrapper>
 			</HStack>
-			<HStack>
+			<HStack justify={'space-between'}>
 				<Text fontWeight={'bold'}>Finish:</Text>
-				<Text variant={'handWritten'}>{finishDate ? formatDate(finishDate) : '---------'}</Text>
+				<TextWrapper>
+					<Text variant={'handWritten'} fontSize={'sm'}>
+						{finishDate ? formatDate(finishDate) : '---------'}
+					</Text>
+				</TextWrapper>
 			</HStack>
 		</Stack>
 	)
