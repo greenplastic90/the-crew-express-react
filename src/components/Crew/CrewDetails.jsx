@@ -19,24 +19,26 @@ function CrewDetails({ crew, setCrews }) {
 	}
 	return (
 		<ElementCard>
-			<Stack spacing={4}>
-				<Box w={['75vw', null, null, '60vw']}>
-					<Heading
-						textTransform={'uppercase'}
-						as={'h2'}
-						size={'xl'}
-						whiteSpace='nowrap'
-						overflow='hidden'
-						textOverflow='ellipsis'>
-						{name}
-					</Heading>
-				</Box>
-				<Stack spacing={4} flexDir={['column', 'row']} justify={'space-between'}>
-					<Memebers members={memberNames} />
-					<Stack spacing={4} justify={['space-between']} flexDir={['column']}>
+			<Stack flexGrow={1} justifyContent={'space-between'} spacing={4}>
+				<Stack spacing={4}>
+					<Box w={['300px', '450px']}>
+						<Heading
+							textTransform={'uppercase'}
+							as={'h2'}
+							size={'xl'}
+							whiteSpace='nowrap'
+							overflow='hidden'
+							textOverflow='ellipsis'>
+							{name}
+						</Heading>
+					</Box>
+					<Stack spacing={4} flexDir={['column', 'row']} justify={'space-between'}>
+						<Memebers members={memberNames} />
+
 						<CrewDates startDate={startDate} finishDate={finishDate} />
 					</Stack>
 				</Stack>
+
 				<Stack flexDir={['row']} justify={['space-between']} alignItems={'center'}>
 					<Attempts attempts={totalAttempts} />
 					<Button w={'full'} onClick={handleMissionNavigation}>

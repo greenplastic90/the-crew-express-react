@@ -6,7 +6,7 @@ import { astroColorPicker } from '../../utilities/miscellaneous'
 function HelmetIcon({ index }) {
 	return (
 		<Circle
-			size={10}
+			size={8}
 			bg={'black'}
 			color='white'
 			border={'1px'}
@@ -14,7 +14,7 @@ function HelmetIcon({ index }) {
 			display='flex'
 			alignItems='center'
 			justifyContent='center'>
-			<GiAstronautHelmet size={24} color={astroColorPicker(index)} />
+			<GiAstronautHelmet size={20} color={astroColorPicker(index)} />
 		</Circle>
 	)
 }
