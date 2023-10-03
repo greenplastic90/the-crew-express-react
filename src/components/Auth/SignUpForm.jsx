@@ -53,7 +53,7 @@ export default function SignUpForm({ setUser }) {
 		<form autoComplete='off' onSubmit={handleSubmit}>
 			<FormWrapper>
 				<FormControl isInvalid={errors.username}>
-					<FormLabel>Username</FormLabel>
+					<FormLabel>USERNAME</FormLabel>
 					<Input
 						type='text'
 						name='username'
@@ -64,7 +64,7 @@ export default function SignUpForm({ setUser }) {
 					<FormErrorMessage>{errors.username}</FormErrorMessage>
 				</FormControl>
 				<FormControl isInvalid={errors.email}>
-					<FormLabel>Email</FormLabel>
+					<FormLabel>EMAIL</FormLabel>
 					<Input
 						type='email'
 						name='email'
@@ -75,7 +75,7 @@ export default function SignUpForm({ setUser }) {
 					<FormErrorMessage>{errors.email}</FormErrorMessage>
 				</FormControl>
 				<FormControl isInvalid={errors.password}>
-					<FormLabel>Password</FormLabel>
+					<FormLabel>PASSWORD</FormLabel>
 					<Input
 						type='password'
 						name='password'
@@ -86,7 +86,7 @@ export default function SignUpForm({ setUser }) {
 					<FormErrorMessage>{errors.password}</FormErrorMessage>
 				</FormControl>
 				<FormControl isInvalid={errors.confirm}>
-					<FormLabel>Confirm</FormLabel>
+					<FormLabel>CONFIRM PASSWORD</FormLabel>
 					<Input
 						type='password'
 						name='confirm'

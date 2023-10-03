@@ -86,9 +86,13 @@ const components = {
 	Input: {
 		baseStyle: {
 			// styles for the Input component
-			focusBorderColor: 'brand.beige',
-			borderColor: 'brand.blueDark',
+			focusBorderColor: 'red !important',
+			borderColor: 'red !important',
+			color: 'red',
 			// Add more styling here
+		},
+		variants: {
+			forms: { focusBorderColor: 'red !important', borderColor: 'red !important' },
 		},
 	},
 	Button: {

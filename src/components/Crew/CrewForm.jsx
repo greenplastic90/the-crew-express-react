@@ -1,5 +1,14 @@
 import React, { useEffect, useState } from 'react'
-import { FormLabel, Input, Button, HStack, FormControl, Stack } from '@chakra-ui/react'
+import {
+	FormLabel,
+	Input,
+	Button,
+	HStack,
+	FormControl,
+	Stack,
+	InputLeftElement,
+	InputGroup,
+} from '@chakra-ui/react'
 import { createCrew, getCrewById, updateCrew } from '../../utilities/crew-api'
 import HelmetIcon from './HelmetIcon'
 import { useNavigate, useParams } from 'react-router-dom'
@@ -98,14 +107,19 @@ function CrewForm() {
 						<Stack>
 							{crew.memberNames.map((member, index) => (
 								<HStack key={index}>
-									<HelmetIcon index={index} />
-									<Input
-										type='text'
-										value={member}
-										onChange={(e) => handleMemberChange(e, index)}
-										placeholder={`Member ${index + 1}`}
-										required
-									/>
+									<InputGroup>
+										<InputLeftElement>
+											<HelmetIcon index={index} />
+										</InputLeftElement>
+										<Input
+											pl={12}
+											type='text'
+											value={member}
+											onChange={(e) => handleMemberChange(e, index)}
+											placeholder={`Member ${index + 1}`}
+											required
+										/>
+									</InputGroup>
 									{crew.memberNames.length > 2 && (
 										<Button onClick={() => deleteMember(index)}>X</Button>
 									)}

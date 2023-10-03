@@ -39,17 +39,19 @@ export default function LoginForm({ setUser }) {
 		<form autoComplete='off' onSubmit={handleSubmit}>
 			<FormWrapper>
 				<FormControl>
-					<FormLabel>Email</FormLabel>
+					<FormLabel>EMAIL</FormLabel>
 					<Input
 						type='email'
 						name='email'
 						value={credentials.email}
 						onChange={handleChange}
 						required
+						// borderColor='red'
+						// _focus={{ borderColor: 'red' }}
 					/>
 				</FormControl>
 				<FormControl>
-					<FormLabel>Password</FormLabel>
+					<FormLabel>PASSWORD</FormLabel>
 					<Input
 						type='password'
 						name='password'
@@ -60,7 +62,7 @@ export default function LoginForm({ setUser }) {
 				</FormControl>
 
 				{errors && <Text color={'red'}>{errors}</Text>}
-				<Button type='submit'>LOG IN</Button>
+				<Button type='submit'>SIGN IN</Button>
 			</FormWrapper>
 		</form>
 	)
