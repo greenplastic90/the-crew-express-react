@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { getAllCrews } from '../../utilities/crew-api'
 import CrewDetails from './CrewDetails'
-import { Grid, Spinner, Stack, Text } from '@chakra-ui/react'
+import { Grid, Spinner, Stack, Text, VStack } from '@chakra-ui/react'
+import ElementCard from '../Miscellaneous/ElementCard'
+import CustomSpinner from '../Miscellaneous/CustomSpinner'
 
 function CrewsDisplay() {
 	const [crews, setCrews] = useState([])
@@ -36,7 +38,7 @@ function CrewsDisplay() {
 					))}
 				</Grid>
 			) : (
-				<Spinner />
+				<CustomSpinner />
 			)}
 			{error && <Text color={'red.500'}>{error}</Text>}
 		</Stack>

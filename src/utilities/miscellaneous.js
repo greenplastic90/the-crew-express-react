@@ -7,6 +7,10 @@ export function formatDate(dateString) {
 	return `${day}-${month}-${year}`
 }
 
+export function randomBetweenZeroAndFive() {
+	return Math.floor(Math.random() * 6)
+}
+
 export function astroColorPicker(index) {
 	switch (index) {
 		case 0:
