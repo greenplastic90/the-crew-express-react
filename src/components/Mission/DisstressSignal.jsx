@@ -1,5 +1,5 @@
 import React from 'react'
-import { Center, Circle, VStack, Text } from '@chakra-ui/react'
+import { Center, Circle, VStack } from '@chakra-ui/react'
 import { MdOutlineSatelliteAlt } from 'react-icons/md'
 import { motion } from 'framer-motion'
 
