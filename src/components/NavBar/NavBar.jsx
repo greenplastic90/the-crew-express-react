@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { logOut } from '../../utilities/users-service'
 import { Box, HStack, Text } from '@chakra-ui/react'
 import DropdownMenuIcon from './DropdownMenuIcon'
@@ -97,7 +97,6 @@ export default function NavBar({ user, setUser }) {
 						user={user}
 						handleLogOut={handleLogOut}
 						navBarHeight={navBarHeight}
-						dropdownRef={dropdownRef}
 						ref={dropdownMenuRef}
 						handleAnimateToggle={handleAnimateToggle}
 						canAnimateBg={canAnimateBg}

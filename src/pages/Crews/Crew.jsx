@@ -1,9 +1,9 @@
-import { Spinner, Stack } from '@chakra-ui/react'
+import { Stack } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
 import { getCrewById } from '../../utilities/crew-api'
 import { useNavigate, useParams } from 'react-router-dom'
 import Missions from '../../components/Mission/Missions'
-import Members from './Memebers'
+import CustomSpinner from '../../components/Miscellaneous/CustomSpinner'
 
 function Crew() {
 	const [crew, setCrew] = useState(null)
@@ -63,7 +63,7 @@ function Crew() {
 			{crew && <Missions missions={filteredMissions} updateMissionTracker={updateMissionTracker} />}
 		</Stack>
 	) : (
-		<Spinner />
+		<CustomSpinner />
 	)
 }
 

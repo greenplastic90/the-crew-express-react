@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { getAllCrews } from '../../utilities/crew-api'
 import CrewDetails from './CrewDetails'
-import { Grid, Spinner, Stack, Text, VStack } from '@chakra-ui/react'
-import ElementCard from '../Miscellaneous/ElementCard'
+import { Grid, Stack, Text } from '@chakra-ui/react'
 import CustomSpinner from '../Miscellaneous/CustomSpinner'
 
 function CrewsDisplay() {

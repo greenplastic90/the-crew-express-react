@@ -1,4 +1,4 @@
-import { Box, HStack, Spinner, Stack, Text, VStack } from '@chakra-ui/react'
+import { Box, HStack, Stack, Text, VStack } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { getMissionTrackerById } from '../../utilities/mission-api'
@@ -8,9 +8,8 @@ import Pentagon from '../../components/Mission/Pentagon'
 import Tasks from '../../components/Mission/Tasks'
 import TaskTokens from '../../components/Mission/TaskTokens'
 import { parseBoldText } from '../../utilities/miscellaneous'
-import DisstressSignal from '../../components/Mission/DisstressSignal'
 import AdjacentMissions from '../../components/Mission/AdjacentMissions'
-import Attempts from '../../components/Mission/Attempts'
+import CustomSpinner from '../../components/Miscellaneous/CustomSpinner'
 
 function Mission() {
 	const [mission, setMission] = useState(null)
@@ -82,7 +81,7 @@ function Mission() {
 					</ElementCard>
 				</>
 			) : (
-				<Spinner />
+				<CustomSpinner />
 			)}
 		</>
 	)

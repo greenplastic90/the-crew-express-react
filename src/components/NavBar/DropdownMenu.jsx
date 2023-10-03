@@ -1,26 +1,12 @@
 import { Box, Divider, HStack, Switch } from '@chakra-ui/react'
 import React, { forwardRef } from 'react'
 import ElementCard from '../Miscellaneous/ElementCard'
-import {
-	GiAstronautHelmet,
-	GiLetterBomb,
-	GiExitDoor,
-	GiMovementSensor,
-	GiControlTower,
-} from 'react-icons/gi'
+import { GiAstronautHelmet, GiExitDoor, GiMovementSensor, GiControlTower } from 'react-icons/gi'
 import MenuItem from './MenuItem'
 import MenuItemsWrapper from './MenuItemsWrapper'
 
 function DropDownMenu(
-	{
-		user,
-		handleLogOut,
-		navBarHeight,
-		dropdownRef,
-		handleAnimateToggle,
-		canAnimateBg,
-		handleNavigation,
-	},
+	{ user, handleLogOut, navBarHeight, handleAnimateToggle, canAnimateBg, handleNavigation },
 	ref
 ) {
 	return (
