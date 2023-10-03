@@ -23,7 +23,7 @@ function DropDownMenu({
 	return (
 		<Box
 			zIndex={20}
-			boxShadow={'0 10px 10px 10px rgba(0, 0, 0, 0.2)'}
+			boxShadow={'0 10px 10px 10px rgba(0, 0, 0, 0.1)'}
 			position='fixed'
 			top={`${navBarHeight - 2}px`} // 1px is the height of one border border
 			right={`${dropdownRef.current?.offsetLeft - dropdownRef.current?.offsetWidth || 0}px`}>
@@ -31,14 +31,14 @@ function DropDownMenu({
 				{/*//? User Info */}
 				<MenuItemsWrapper spacing={4}>
 					<MenuItem text={user.username} icon={<GiAstronautHelmet size={30} />} />
-					<MenuItem text={user.email} icon={<GiLetterBomb size={30} />} />
+					{/* <MenuItem text={user.email} icon={<GiLetterBomb size={30} />} /> */}
 				</MenuItemsWrapper>
 
 				<Divider />
 				{/*//? Links */}
 				<MenuItemsWrapper>
 					<MenuItem
-						text={'Crews'}
+						text={'My Crews'}
 						icon={<GiControlTower size={30} />}
 						func={() => handleNavigation('/crews')}
 					/>

@@ -99,8 +99,15 @@ function CrewForm() {
 			<ElementCard>
 				<FormWrapper>
 					<FormControl>
-						<FormLabel>Name</FormLabel>
-						<Input type='text' name='name' value={crew.name} onChange={handleNameChange} required />
+						<FormLabel>Crew Name</FormLabel>
+						<Input
+							type='text'
+							name='name'
+							value={crew.name}
+							onChange={handleNameChange}
+							placeholder='eg. Space Bouncers'
+							required
+						/>
 					</FormControl>
 					<FormControl>
 						<FormLabel>Members</FormLabel>
@@ -108,7 +115,7 @@ function CrewForm() {
 							{crew.memberNames.map((member, index) => (
 								<HStack key={index}>
 									<InputGroup>
-										<InputLeftElement>
+										<InputLeftElement pointerEvents='none' justifyContent={'center'}>
 											<HelmetIcon index={index} />
 										</InputLeftElement>
 										<Input
@@ -116,7 +123,7 @@ function CrewForm() {
 											type='text'
 											value={member}
 											onChange={(e) => handleMemberChange(e, index)}
-											placeholder={`Member ${index + 1}`}
+											placeholder={`Member Name`}
 											required
 										/>
 									</InputGroup>
@@ -128,7 +135,7 @@ function CrewForm() {
 							{crew.memberNames.length < 5 && (
 								<>
 									<Button p={6} onClick={addMemberInput} isDisabled={isLoading}>
-										<HelmetIcon index={crew.memberNames.length} />
+										ADD MEMBER
 									</Button>
 								</>
 							)}
@@ -136,7 +143,7 @@ function CrewForm() {
 					</FormControl>
 				</FormWrapper>
 				<Button type='submit' isDisabled={isLoading}>
-					Done
+					DONE
 				</Button>
 			</ElementCard>
 		</form>

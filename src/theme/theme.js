@@ -84,15 +84,16 @@ const components = {
 		},
 	},
 	Input: {
-		baseStyle: {
-			// styles for the Input component
-			focusBorderColor: 'red !important',
-			borderColor: 'red !important',
-			color: 'red',
-			// Add more styling here
-		},
 		variants: {
-			forms: { focusBorderColor: 'red !important', borderColor: 'red !important' },
+			default: {
+				field: {
+					border: `2px solid ${colors.brand.greyDark}`,
+					bg: 'white',
+				},
+			},
+		},
+		defaultProps: {
+			variant: 'default',
 		},
 	},
 	Button: {
