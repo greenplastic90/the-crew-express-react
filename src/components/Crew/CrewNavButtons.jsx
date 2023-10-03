@@ -16,6 +16,8 @@ import { useNavigate } from 'react-router-dom'
 import { deleteCrewById } from '../../utilities/crew-api'
 import { useBackgroundScroll } from '../Context/BackgroundScrollContext'
 import { GiFountainPen, GiTrashCan } from 'react-icons/gi'
+import ElementCard from '../Miscellaneous/ElementCard'
+import { parseBoldText } from '../../utilities/miscellaneous'
 function CrewNavButtons({ crew, setCrews }) {
 	const { isOpen, onOpen, onClose } = useDisclosure()
 	const navigate = useNavigate()
@@ -57,20 +59,22 @@ function CrewNavButtons({ crew, setCrews }) {
 			<Modal isOpen={isOpen} onClose={onClose} isCentered>
 				<ModalOverlay />
 				<ModalContent>
-					<ModalHeader>{`Delete ${name}`}</ModalHeader>
-					<ModalCloseButton />
-					<ModalBody>
-						<Text>This action can NOT be undone</Text>
-					</ModalBody>
+					<ElementCard>
+						<ModalHeader>{`Delete ${name}?`}</ModalHeader>
+						<ModalCloseButton />
+						<ModalBody>
+							<Text>{parseBoldText('This action can [b]NOT[/b] be undone')}</Text>
+						</ModalBody>
 
-					<ModalFooter>
-						<Button colorScheme='gray' mr={3} onClick={onClose}>
-							Cancel
-						</Button>
-						<Button colorScheme='red' onClick={() => deleteCrew()}>
-							Delete
-						</Button>
-					</ModalFooter>
+						<ModalFooter>
+							<Button colorScheme='gray' mr={3} onClick={onClose}>
+								Cancel
+							</Button>
+							<Button colorScheme='red' onClick={() => deleteCrew()}>
+								Delete
+							</Button>
+						</ModalFooter>
+					</ElementCard>
 				</ModalContent>
 			</Modal>
 		</>
