@@ -66,7 +66,10 @@ function Crew() {
 	return !isLoading ? (
 		<Stack>
 			<ElementCard>
-				<Button onClick={() => setHideCompleted(!hideCompleted)}>
+				<Button
+					onClick={() => setHideCompleted(!hideCompleted)}
+					colorScheme={hideCompleted ? 'brand.platinum' : 'brand.silver'}
+					color={hideCompleted ? 'black' : 'white'}>
 					{hideCompleted ? 'Show All Missions' : 'Hide Completed Missions'}
 				</Button>
 			</ElementCard>

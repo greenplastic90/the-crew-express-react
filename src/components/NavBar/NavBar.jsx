@@ -79,9 +79,9 @@ export default function NavBar({ user, setUser }) {
 					minH={12}
 					justify={'space-between'}
 					px={4}
-					bg={'brand.greyDark'}
+					bg={'brand.grayDark'}
 					borderBottom={'2px'}
-					borderColor={'brand.grey'}>
+					borderColor={'brand.gray'}>
 					<Box position={'relative'}>
 						<Text variant={'logo'}>LOGBOOK</Text>
 						<Text variant={'logo2'}>LOGBOOK</Text>

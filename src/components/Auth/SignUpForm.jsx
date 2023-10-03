@@ -96,7 +96,9 @@ export default function SignUpForm({ setUser }) {
 					/>
 					<FormErrorMessage>{errors.confirm}</FormErrorMessage>
 				</FormControl>
-				<Button type='submit'>SIGN UP</Button>
+				<Button type='submit' colorScheme='brand.greenPine'>
+					SIGN UP
+				</Button>
 			</FormWrapper>
 		</form>
 	)

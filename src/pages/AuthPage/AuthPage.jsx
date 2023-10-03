@@ -16,7 +16,7 @@ export default function AuthPage({ setUser }) {
 	return (
 		<ElementCard>
 			{showSignUp ? <SignUpForm setUser={setUser} /> : <LoginForm setUser={setUser} />}
-			<Link ml={'auto'} color={'blue.500'} onClick={handlePageSwitch}>
+			<Link ml={'auto'} color={'brand.blueYale.300'} onClick={handlePageSwitch}>
 				{showSignUp ? 'Already signed up?' : 'Need an account?'}
 			</Link>
 		</ElementCard>

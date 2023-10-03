@@ -12,7 +12,7 @@ function CustomSpinner() {
 				thickness='4px'
 				speed='1.5s'
 				color={colorRef.current}
-				emptyColor='brand.greyDark'
+				emptyColor='brand.grayDark'
 			/>
 		</VStack>
 	)

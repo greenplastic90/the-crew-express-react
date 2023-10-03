@@ -48,10 +48,14 @@ function CrewNavButtons({ crew, setCrews }) {
 	return (
 		<>
 			<HStack>
-				<Button onClick={handleEditNavigation}>
+				<Button colorScheme='brand.platinum' color={'black'} onClick={handleEditNavigation}>
 					<GiFountainPen style={{ transform: 'rotate(90deg)' }} />
 				</Button>
-				<Button alignContent={'center'} onClick={onOpen}>
+				<Button
+					alignContent={'center'}
+					onClick={onOpen}
+					colorScheme='brand.platinum'
+					color={'black'}>
 					<GiTrashCan size={25} />
 				</Button>
 			</HStack>
@@ -67,10 +71,10 @@ function CrewNavButtons({ crew, setCrews }) {
 						</ModalBody>
 
 						<ModalFooter>
-							<Button colorScheme='gray' mr={3} onClick={onClose}>
+							<Button colorScheme='brand.platinum' color={'black'} mr={3} onClick={onClose}>
 								Cancel
 							</Button>
-							<Button colorScheme='red' onClick={() => deleteCrew()}>
+							<Button colorScheme='brand.brown' onClick={() => deleteCrew()}>
 								Delete
 							</Button>
 						</ModalFooter>

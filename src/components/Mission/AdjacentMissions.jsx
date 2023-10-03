@@ -20,14 +20,26 @@ function AdjacentMissions({ adjacentMissions, crewId }) {
 		handleBackgroundScroll('south', 200)
 	}
 	return (
-		<HStack>
-			<Button isDisabled={!adjacentMissions.prevMissionTracker} onClick={handlePreviousNavigation}>
-				Previous
+		<HStack justify={'space-between'}>
+			<HStack>
+				<Button
+					colorScheme='brand.platinum'
+					color={'black'}
+					isDisabled={!adjacentMissions.prevMissionTracker}
+					onClick={handlePreviousNavigation}>
+					Previous
+				</Button>
+				<Button
+					colorScheme='brand.platinum'
+					color={'black'}
+					isDisabled={!adjacentMissions.nextMissionTracker}
+					onClick={handleNextNavigation}>
+					Next
+				</Button>
+			</HStack>
+			<Button colorScheme='brand.platinum' color={'black'} onClick={handleCrewNavigations}>
+				All Missions
 			</Button>
-			<Button isDisabled={!adjacentMissions.nextMissionTracker} onClick={handleNextNavigation}>
-				Next
-			</Button>
-			<Button onClick={handleCrewNavigations}>All Missions</Button>
 		</HStack>
 	)
 }

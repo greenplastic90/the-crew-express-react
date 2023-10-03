@@ -39,7 +39,7 @@ function CrewDetails({ crew, setCrews }) {
 
 				<Stack flexDir={['row']} justify={['space-between']} alignItems={'center'}>
 					<Attempts attempts={totalAttempts} />
-					<Button w={'full'} onClick={handleMissionNavigation}>
+					<Button colorScheme='brand.blueYale' w={'full'} onClick={handleMissionNavigation}>
 						Missions
 					</Button>
 					<CrewNavButtons crew={crew} setCrews={setCrews} />

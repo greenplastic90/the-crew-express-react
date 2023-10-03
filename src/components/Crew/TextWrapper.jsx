@@ -11,7 +11,7 @@ function TextWrapper({ children }) {
 			px={2}
 			bg={'whiteAlpha.900'}
 			border={'2px solid'}
-			borderColor={'brand.greyDark'}
+			borderColor={'brand.grayDark'}
 			borderRadius={'md'}>
 			{children}
 		</Stack>

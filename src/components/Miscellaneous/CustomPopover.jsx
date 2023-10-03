@@ -5,7 +5,7 @@ import ElementCard from './ElementCard'
 function CustomPopover({ body }) {
 	return (
 		<PopoverContent boxShadow={'lg'}>
-			<PopoverArrow bg={'brand.greyDark'} />
+			<PopoverArrow bg={'brand.grayDark'} />
 			<PopoverCloseButton mt={1} />
 			<ElementCard>
 				<Text>{body}</Text>

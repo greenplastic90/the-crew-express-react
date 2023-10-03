@@ -25,11 +25,13 @@ function DisstressSignal({ distressSignalUsed, handleDisstressSignal, completed 
 			<Circle
 				bgColor={completed ? 'grey' : distressSignalUsed ? 'black' : 'white'}
 				border={'2px'}
-				borderColor={distressSignalUsed ? (completed ? 'grey' : 'orange') : 'black'}
+				borderColor={distressSignalUsed ? (completed ? 'grey' : 'brand.brown.400') : 'black'}
 				size={14}>
-				<MotionVStack {...animations} spacing={0}>
+				<MotionVStack
+					{...animations}
+					spacing={0}
+					color={distressSignalUsed ? 'brand.brown.400' : 'black'}>
 					<MdOutlineSatelliteAlt
-						color={distressSignalUsed ? 'orange' : 'black'}
 						size={distressSignalUsed ? 20 : 25}
 						style={{ transform: 'rotate(-90deg)' }}
 					/>

@@ -15,7 +15,9 @@ function Crews({ user }) {
 
 	return (
 		<Stack>
-			<Button onClick={handleNavigation}>Assemble Crew</Button>
+			<Button colorScheme='brand.antiFlashWhite' color={'black'} onClick={handleNavigation}>
+				+ New Crew
+			</Button>
 			<CrewsDisplay />
 		</Stack>
 	)

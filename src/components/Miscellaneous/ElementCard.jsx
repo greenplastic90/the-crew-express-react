@@ -3,8 +3,8 @@ import React from 'react'
 
 function ElementCard({ children }) {
 	return (
-		<Stack bg={'brand.greyDark'} p={2} borderRadius={'md'}>
-			<Stack h={'100%'} p={4} bg={'brand.grey'} borderRadius={'md'}>
+		<Stack bg={'brand.grayDark'} p={2} borderRadius={'md'}>
+			<Stack h={'100%'} p={4} bg={'brand.gray'} borderRadius={'md'}>
 				{children}
 			</Stack>
 		</Stack>

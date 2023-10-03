@@ -62,7 +62,9 @@ export default function LoginForm({ setUser }) {
 				</FormControl>
 
 				{errors && <Text color={'red'}>{errors}</Text>}
-				<Button type='submit'>SIGN IN</Button>
+				<Button type='submit' colorScheme='brand.greenPine'>
+					SIGN IN
+				</Button>
 			</FormWrapper>
 		</form>
 	)

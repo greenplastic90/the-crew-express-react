@@ -43,7 +43,7 @@ function DropDownMenu(
 							alignSelf={'end'}
 							isChecked={canAnimateBg}
 							onChange={handleAnimateToggle}
-							colorScheme={'orange'}
+							colorScheme={'brand.greenPine'}
 						/>
 					</HStack>
 					<MenuItem text={'Sign out'} icon={<GiExitDoor size={30} />} func={handleLogOut} />

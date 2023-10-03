@@ -111,7 +111,7 @@ function CrewForm() {
 					</FormControl>
 					<FormControl>
 						<FormLabel>Members</FormLabel>
-						<Stack>
+						<Stack pb={4}>
 							{crew.memberNames.map((member, index) => (
 								<HStack key={index}>
 									<InputGroup>
@@ -128,13 +128,22 @@ function CrewForm() {
 										/>
 									</InputGroup>
 									{crew.memberNames.length > 2 && (
-										<Button onClick={() => deleteMember(index)}>X</Button>
+										<Button
+											onClick={() => deleteMember(index)}
+											colorScheme='brand.platinum'
+											color={'brand.platinum.900'}>
+											X
+										</Button>
 									)}
 								</HStack>
 							))}
 							{crew.memberNames.length < 5 && (
 								<>
-									<Button p={6} onClick={addMemberInput} isDisabled={isLoading}>
+									<Button
+										p={6}
+										onClick={addMemberInput}
+										isDisabled={isLoading}
+										colorScheme='brand.blueYale'>
 										ADD MEMBER
 									</Button>
 								</>
@@ -142,7 +151,7 @@ function CrewForm() {
 						</Stack>
 					</FormControl>
 				</FormWrapper>
-				<Button type='submit' isDisabled={isLoading}>
+				<Button type='submit' isDisabled={isLoading} colorScheme='brand.greenPine'>
 					DONE
 				</Button>
 			</ElementCard>
