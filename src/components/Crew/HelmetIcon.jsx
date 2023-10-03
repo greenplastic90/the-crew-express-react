@@ -8,7 +8,7 @@ function HelmetIcon({ index }) {
 		<Circle
 			size={8}
 			bg={astroColorPicker(index)}
-			color='brand.greyBg'
+			color='brand.grey'
 			border={'1px'}
 			borderColor={'white'}
 			display='flex'

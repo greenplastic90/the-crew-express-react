@@ -1,4 +1,4 @@
-import { Spinner } from '@chakra-ui/react'
+import { Spinner, Stack } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
 import { getCrewById } from '../../utilities/crew-api'
 import { useNavigate, useParams } from 'react-router-dom'
@@ -59,9 +59,9 @@ function Crew() {
 	}, [missions, hideCompleted, showDistress])
 
 	return !isLoading ? (
-		<>
+		<Stack>
 			{crew && <Missions missions={filteredMissions} updateMissionTracker={updateMissionTracker} />}
-		</>
+		</Stack>
 	) : (
 		<Spinner />
 	)

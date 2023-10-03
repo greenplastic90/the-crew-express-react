@@ -59,19 +59,17 @@ export default function NavBar({ user, setUser }) {
 					minH={12}
 					justify={'space-between'}
 					px={4}
-					bg={'brand.greyBg'}
+					bg={'brand.greyDark'}
 					borderBottom={'2px'}
-					borderColor={'white'}>
+					borderColor={'brand.grey'}>
 					<Box position={'relative'}>
 						<Text variant={'logo'}>LOGBOOK</Text>
 						<Text variant={'logo2'}>LOGBOOK</Text>
 					</Box>
-					{user ? (
+					{user && (
 						<HStack>
 							<DropdownMenuIcon setOpenDropdown={setOpenDropdown} ref={dropdownRef} />
 						</HStack>
-					) : (
-						<Link to=''>Login</Link>
 					)}
 				</HStack>
 				{user && openDropdown && (
