@@ -1,21 +1,10 @@
-import {
-	Box,
-	Center,
-	Text,
-	Stack,
-	Popover,
-	PopoverTrigger,
-	PopoverContent,
-	PopoverArrow,
-	PopoverCloseButton,
-	PopoverBody,
-} from '@chakra-ui/react'
+import { Box, Center, Text, Stack, Popover, PopoverTrigger } from '@chakra-ui/react'
 import React from 'react'
-import ElementCard from '../Miscellaneous/ElementCard'
+import CustomPopover from '../Miscellaneous/CustomPopover'
 
 function Pentagon({ number, fivePlayerRule }) {
 	return (
-		<Stack>
+		<Stack cursor={'pointer'}>
 			<Popover>
 				<PopoverTrigger>
 					<Box position='relative' w='60px' h='60px'>
@@ -47,22 +36,12 @@ function Pentagon({ number, fivePlayerRule }) {
 						</Box>
 					</Box>
 				</PopoverTrigger>
-				<PopoverContent>
-					<PopoverArrow bg={'brand.greyDark'} />
-					<PopoverCloseButton mt={1} />
-					<ElementCard>
-						<Text>
-							Mission number. The golden border serves as a reminder of the additional rule in the
-							game when playing with five players, begining with mission 25
-						</Text>
-					</ElementCard>
-				</PopoverContent>
+				<CustomPopover
+					body={
+						'Mission number. The golden border serves as a reminder of the additional rule in the game when playing with five players, begining with mission 25.'
+					}
+				/>
 			</Popover>
-			{/* {fivePlayerRule && (
-				<Text variant={'outline'} fontWeight={'bold'} color='gold'>
-					5 PLAYER RULE
-				</Text>
-			)} */}
 		</Stack>
 	)
 }

@@ -4,14 +4,11 @@ import ElementCard from './ElementCard'
 
 function CustomPopover({ body }) {
 	return (
-		<PopoverContent>
+		<PopoverContent boxShadow={'lg'}>
 			<PopoverArrow bg={'brand.greyDark'} />
 			<PopoverCloseButton mt={1} />
 			<ElementCard>
-				<Text>
-					Mission number. The golden border serves as a reminder of the additional rule in the game
-					when playing with five players, begining with mission 25
-				</Text>
+				<Text>{body}</Text>
 			</ElementCard>
 		</PopoverContent>
 	)

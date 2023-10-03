@@ -1,5 +1,6 @@
-import { Box, Center, Flex, Text } from '@chakra-ui/react'
+import { Box, Center, Flex, Popover, PopoverTrigger, Text } from '@chakra-ui/react'
 import React from 'react'
+import CustomPopover from '../Miscellaneous/CustomPopover'
 
 function TaskTokens({ tokens }) {
 	const tokenCount = tokens.length
@@ -38,13 +39,18 @@ function TaskTokens({ tokens }) {
 	}
 
 	const renderToken = (t) => (
-		<Box key={t._id} w='45px' h='45px' bgColor='black' m={1} borderRadius={'sm'}>
-			<Center h='100%'>
-				<Text variant='outline' fontSize={'lg'} fontWeight={'bold'} color='brand.purple'>
-					{t.value}
-				</Text>
-			</Center>
-		</Box>
+		<Popover key={t._id}>
+			<PopoverTrigger>
+				<Box w='45px' h='45px' bgColor='black' m={1} borderRadius={'sm'}>
+					<Center h='100%'>
+						<Text variant='outline' fontSize={'lg'} fontWeight={'bold'} color='brand.purple'>
+							{t.value}
+						</Text>
+					</Center>
+				</Box>
+			</PopoverTrigger>
+			<CustomPopover body={'All task tokens nessary for the current mission are listed here.'} />
+		</Popover>
 	)
 
 	return tokenCount > 0 && <Flex>{renderLayout()}</Flex>
