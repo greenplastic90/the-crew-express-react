@@ -22,6 +22,7 @@ function DropDownMenu({
 }) {
 	return (
 		<Box
+			borderRadius={'md'}
 			zIndex={20}
 			boxShadow={'0 10px 10px 10px rgba(0, 0, 0, 0.1)'}
 			position='fixed'
