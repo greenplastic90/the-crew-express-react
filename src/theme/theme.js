@@ -65,7 +65,7 @@ const components = {
 				fontSize: ['3xl', '4xl'],
 				letterSpacing: '5px',
 			},
-			handWritten: { fontFamily: 'Kaushan Script, cursive' },
+			// handWritten: { fontFamily: 'Kaushan Script, cursive' },
 		},
 	},
 	FormControl: {

@@ -1,8 +1,8 @@
 import { Box } from '@chakra-ui/react'
-import React from 'react'
+import React, { forwardRef } from 'react'
 import HelmetIcon from '../Crew/HelmetIcon'
 
-function DropdownMenuIcon({ setOpenDropdown, ref }) {
+function DropdownMenuIcon({ setOpenDropdown }, ref) {
 	return (
 		<Box
 			ref={ref}
@@ -13,4 +13,4 @@ function DropdownMenuIcon({ setOpenDropdown, ref }) {
 	)
 }
 
-export default DropdownMenuIcon
+export default forwardRef(DropdownMenuIcon)

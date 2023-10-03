@@ -1,5 +1,5 @@
 import { Box, Divider, HStack, Switch } from '@chakra-ui/react'
-import React from 'react'
+import React, { forwardRef } from 'react'
 import ElementCard from '../Miscellaneous/ElementCard'
 import {
 	GiAstronautHelmet,
@@ -11,23 +11,27 @@ import {
 import MenuItem from './MenuItem'
 import MenuItemsWrapper from './MenuItemsWrapper'
 
-function DropDownMenu({
-	user,
-	handleLogOut,
-	navBarHeight,
-	dropdownRef,
-	handleAnimateToggle,
-	canAnimateBg,
-	handleNavigation,
-}) {
+function DropDownMenu(
+	{
+		user,
+		handleLogOut,
+		navBarHeight,
+		dropdownRef,
+		handleAnimateToggle,
+		canAnimateBg,
+		handleNavigation,
+	},
+	ref
+) {
 	return (
 		<Box
+			ref={ref}
 			borderRadius={'md'}
 			zIndex={20}
 			boxShadow={'0 10px 10px 10px rgba(0, 0, 0, 0.1)'}
 			position='fixed'
 			top={`${navBarHeight - 2}px`} // 1px is the height of one border border
-			right={`${dropdownRef.current?.offsetLeft - dropdownRef.current?.offsetWidth || 0}px`}>
+			right={0}>
 			<ElementCard>
 				{/*//? User Info */}
 				<MenuItemsWrapper spacing={4}>
@@ -63,4 +67,4 @@ function DropDownMenu({
 	)
 }
 
-export default DropDownMenu
+export default forwardRef(DropDownMenu)

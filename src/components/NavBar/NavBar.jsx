@@ -10,11 +10,23 @@ import { useBackgroundScroll } from '../Context/BackgroundScrollContext'
 export default function NavBar({ user, setUser }) {
 	const [openDropdown, setOpenDropdown] = useState(false)
 	const [navBarHeight, setNavBarHeight] = useState(0)
-	const dropdownRef = useRef()
+	const dropdownRef = useRef(null)
 	const navBarRef = useRef()
+	const dropdownMenuRef = useRef(null)
 
 	const navigate = useNavigate()
 	const { handleAnimateToggle, canAnimateBg } = useBackgroundScroll()
+
+	const handleClickOutside = (event) => {
+		if (
+			dropdownMenuRef.current &&
+			!dropdownMenuRef.current.contains(event.target) &&
+			dropdownRef.current &&
+			!dropdownRef.current.contains(event.target)
+		) {
+			setOpenDropdown(false)
+		}
+	}
 
 	function handleNavigation(link) {
 		navigate(link)
@@ -39,6 +51,14 @@ export default function NavBar({ user, setUser }) {
 		return () => {
 			window.removeEventListener('resize', updateNavBarHeight)
 			window.removeEventListener('scroll', handleScroll)
+		}
+	}, [])
+
+	useEffect(() => {
+		document.addEventListener('mousedown', handleClickOutside)
+
+		return () => {
+			document.removeEventListener('mousedown', handleClickOutside)
 		}
 	}, [])
 
@@ -78,6 +98,7 @@ export default function NavBar({ user, setUser }) {
 						handleLogOut={handleLogOut}
 						navBarHeight={navBarHeight}
 						dropdownRef={dropdownRef}
+						ref={dropdownMenuRef}
 						handleAnimateToggle={handleAnimateToggle}
 						canAnimateBg={canAnimateBg}
 						handleNavigation={handleNavigation}
