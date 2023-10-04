@@ -91,7 +91,7 @@ function MissionTrackerForm({ tracker, updateMissionTracker }) {
 					<Button
 						onClick={handleMissionComplete}
 						colorScheme={completed ? 'brand.platinum' : 'brand.greenPine'}>
-						{completed ? 'Update Mission' : 'Complete Mission'}
+						{completed ? 'Update' : 'End'}
 					</Button>
 				)}
 			</HStack>

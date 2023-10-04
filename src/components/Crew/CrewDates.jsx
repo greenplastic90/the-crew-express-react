@@ -7,19 +7,17 @@ function CrewDates({ startDate, finishDate }) {
 	return (
 		<Stack flexDir={['row', null, 'column']} justify={['start', null, 'end']}>
 			<HStack justify={'space-between'}>
-				<Text fontWeight={'bold'}>Start:</Text>
+				<Text fontSize={'10px'} fontWeight={'bold'}>
+					Start:
+				</Text>
 				<TextWrapper>
-					<Text variant={'handWritten'} fontSize={'sm'}>
-						{formatDate(startDate)}
-					</Text>
+					<Text variant={'handWritten'}>{formatDate(startDate)}</Text>
 				</TextWrapper>
 			</HStack>
-			<HStack justify={'space-between'}>
-				<Text fontWeight={'bold'}>Finish:</Text>
+			<HStack justify={'space-between'} fontWeight={'bold'}>
+				<Text fontSize={'10px'}>Finish:</Text>
 				<TextWrapper>
-					<Text variant={'handWritten'} fontSize={'sm'}>
-						{finishDate ? formatDate(finishDate) : '---------'}
-					</Text>
+					<Text variant={'handWritten'}>{finishDate ? formatDate(finishDate) : '--------'}</Text>
 				</TextWrapper>
 			</HStack>
 		</Stack>

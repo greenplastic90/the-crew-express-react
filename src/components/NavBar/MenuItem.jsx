@@ -5,9 +5,7 @@ function MenuItem({ icon, text, func }) {
 	return (
 		<HStack cursor={func ? 'pointer' : ''} onClick={func} spacing={4}>
 			<Box>{icon}</Box>
-			<Text alignSelf={'end'} fontFamily={'Open Sans, sans-serif'}>
-				{text}
-			</Text>
+			<Text alignSelf={'end'}>{text}</Text>
 		</HStack>
 	)
 }

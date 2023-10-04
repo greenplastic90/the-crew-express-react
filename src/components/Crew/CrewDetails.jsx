@@ -44,7 +44,7 @@ function CrewDetails({ crew, setCrews }) {
 						// color='brand.greenPine.500'
 						w={'full'}
 						onClick={handleMissionNavigation}>
-						Missions
+						Deploy
 					</Button>
 					<CrewNavButtons crew={crew} setCrews={setCrews} />
 				</Stack>

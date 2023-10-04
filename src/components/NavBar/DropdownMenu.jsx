@@ -29,7 +29,7 @@ function DropDownMenu(
 				{/*//? Links */}
 				<MenuItemsWrapper>
 					<MenuItem
-						text={'My crews'}
+						text={'My Crews'}
 						icon={<GiControlTower size={30} />}
 						func={() => handleNavigation('/crews')}
 					/>
@@ -38,7 +38,7 @@ function DropDownMenu(
 				{/*//? Options */}
 				<MenuItemsWrapper>
 					<HStack justify={'space-between'}>
-						<MenuItem text={'Background scrolling'} icon={<GiMovementSensor size={30} />} />
+						<MenuItem text={'Background Scrolling'} icon={<GiMovementSensor size={30} />} />
 						<Switch
 							alignSelf={'end'}
 							isChecked={canAnimateBg}
@@ -46,7 +46,7 @@ function DropDownMenu(
 							colorScheme={'brand.greenPine'}
 						/>
 					</HStack>
-					<MenuItem text={'Sign out'} icon={<GiExitDoor size={30} />} func={handleLogOut} />
+					<MenuItem text={'Sign Out'} icon={<GiExitDoor size={30} />} func={handleLogOut} />
 				</MenuItemsWrapper>
 			</ElementCard>
 		</Box>

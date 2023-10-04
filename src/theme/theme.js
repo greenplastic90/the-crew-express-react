@@ -96,7 +96,7 @@ const colors = {
 }
 const fonts = {
 	heading: 'Roboto Slab, sans-serif',
-	body: 'PT Sans Narrow, sans-serif',
+	body: 'Martian Mono, monospace',
 }
 
 const components = {
@@ -110,6 +110,7 @@ const components = {
 		variants: {},
 	},
 	Text: {
+		// baseStyle: { fontSize: '10px' },
 		variants: {
 			outline: {
 				textShadow:
@@ -117,10 +118,9 @@ const components = {
 			},
 			missionDesc: {
 				fontFamily: 'Open Sans, sans-serif',
-				fontSize: 'md',
 			},
 			logo: {
-				fontFamily: 'Bree Serif, serif',
+				fontFamily: 'Oswald, sans-serif',
 				// textShadow:
 				// 	'-2px -2px 0 #ffffff, 2px -2px 0 #ffffff, -2px 2px 0 #ffffff, 2px 2px 0 #ffffff',
 				fontSize: ['3xl', '4xl'],
@@ -131,13 +131,13 @@ const components = {
 				position: 'absolute',
 			},
 			logo2: {
-				fontFamily: 'Bree Serif, serif',
+				fontFamily: 'Oswald, sans-serif',
 				textShadow:
 					'-1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff, 1px 1px 0 #ffffff',
 				fontSize: ['3xl', '4xl'],
 				letterSpacing: '5px',
 			},
-			handWritten: { fontFamily: 'Kaushan Script, cursive' },
+			// handWritten: { fontFamily: 'Kaushan Script, cursive' },
 		},
 	},
 	FormControl: {
@@ -169,8 +169,15 @@ const components = {
 		},
 	},
 	Button: {
+		baseStyle: {
+			size: 'sm',
+		},
 		variants: {
-			attempts: { height: '20px', width: '50px', bg: `${colors.brand.platinum[500]}` },
+			attempts: {
+				height: '20px',
+				width: '50px',
+				bg: colors.brand.platinum[500],
+			},
 		},
 	},
 }
