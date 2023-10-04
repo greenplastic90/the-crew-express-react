@@ -4,8 +4,8 @@ import React from 'react'
 function TextWrapper({ children }) {
 	return (
 		<Stack
-			fontSize={'10px'}
-			w={'90px'}
+			// fontSize={'10px'}
+			// w={'90px'}
 			h={'30px'}
 			align={'center'}
 			justify={'center'}

@@ -18,7 +18,7 @@ function CrewDetails({ crew, setCrews }) {
 	}
 	return (
 		<ElementCard>
-			<Stack flexGrow={1} justifyContent={'space-between'}>
+			<Stack spacing={8} flexGrow={1} justifyContent={'space-between'}>
 				<Box w={['300px', '450px']}>
 					<Heading
 						color={'brand.redDark'}
@@ -31,7 +31,7 @@ function CrewDetails({ crew, setCrews }) {
 						{name}
 					</Heading>
 				</Box>
-				<Stack spacing={4} flexDir={['column', null, 'row']} justify={'space-between'}>
+				<Stack spacing={8}>
 					<Memebers members={memberNames} />
 
 					<CrewDates startDate={startDate} finishDate={finishDate} />

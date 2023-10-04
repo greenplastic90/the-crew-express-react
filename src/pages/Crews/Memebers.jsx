@@ -13,7 +13,9 @@ function Members({ members }) {
 				<HStack justifyItems={'start'} justifyContent={'start'}>
 					{/* <HelmetIcon index={i} /> */}
 					<TextWrapper>
-						<Box w='80px' align={'center'}>
+						<Box
+							// w='80px'
+							align={'center'}>
 							<Text whiteSpace='nowrap' overflow='hidden' textOverflow='ellipsis'>
 								{member}
 							</Text>
