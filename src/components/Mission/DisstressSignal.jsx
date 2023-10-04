@@ -23,9 +23,9 @@ function DisstressSignal({ distressSignalUsed, handleDisstressSignal, completed 
 	return (
 		<Center cursor={completed ? '' : 'pointer'} onClick={handleDisstressSignal}>
 			<Circle
-				bgColor={completed ? 'grey' : distressSignalUsed ? 'black' : 'white'}
-				border={'2px'}
-				borderColor={distressSignalUsed ? (completed ? 'grey' : 'brand.brown.400') : 'black'}
+				bgColor={completed ? 'brand.silver.500' : 'white'}
+				border={distressSignalUsed ? '4px' : '2px'}
+				borderColor={distressSignalUsed ? 'brand.brown.400' : 'black'}
 				size={14}>
 				<MotionVStack
 					{...animations}
