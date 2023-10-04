@@ -1,7 +1,7 @@
 import { Box, Divider, HStack, Switch } from '@chakra-ui/react'
 import React, { forwardRef } from 'react'
 import ElementCard from '../Miscellaneous/ElementCard'
-import { GiAstronautHelmet, GiExitDoor, GiMovementSensor, GiControlTower } from 'react-icons/gi'
+import { MdPeopleAlt, MdPerson, MdLogout, MdCamera } from 'react-icons/md'
 import MenuItem from './MenuItem'
 import MenuItemsWrapper from './MenuItemsWrapper'
 
@@ -21,7 +21,7 @@ function DropDownMenu(
 			<ElementCard>
 				{/*//? User Info */}
 				<MenuItemsWrapper spacing={4}>
-					<MenuItem text={user.username} icon={<GiAstronautHelmet size={30} />} />
+					<MenuItem text={user.username} icon={<MdPerson size={30} />} />
 					{/* <MenuItem text={user.email} icon={<GiLetterBomb size={30} />} /> */}
 				</MenuItemsWrapper>
 
@@ -30,7 +30,7 @@ function DropDownMenu(
 				<MenuItemsWrapper>
 					<MenuItem
 						text={'My Crews'}
-						icon={<GiControlTower size={30} />}
+						icon={<MdPeopleAlt size={30} />}
 						func={() => handleNavigation('/crews')}
 					/>
 				</MenuItemsWrapper>
@@ -38,7 +38,7 @@ function DropDownMenu(
 				{/*//? Options */}
 				<MenuItemsWrapper>
 					<HStack justify={'space-between'}>
-						<MenuItem text={'Background Scrolling'} icon={<GiMovementSensor size={30} />} />
+						<MenuItem text={'Background Scrolling'} icon={<MdCamera size={30} />} />
 						<Switch
 							alignSelf={'end'}
 							isChecked={canAnimateBg}
@@ -46,7 +46,7 @@ function DropDownMenu(
 							colorScheme={'brand.greenPine'}
 						/>
 					</HStack>
-					<MenuItem text={'Sign Out'} icon={<GiExitDoor size={30} />} func={handleLogOut} />
+					<MenuItem text={'Sign Out'} icon={<MdLogout size={30} />} func={handleLogOut} />
 				</MenuItemsWrapper>
 			</ElementCard>
 		</Box>

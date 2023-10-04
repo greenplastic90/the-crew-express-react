@@ -2,7 +2,7 @@ import { Button, HStack } from '@chakra-ui/react'
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useBackgroundScroll } from '../Context/BackgroundScrollContext'
-import { GiFastBackwardButton, GiFastForwardButton } from 'react-icons/gi'
+import { MdArrowBack, MdArrowForward } from 'react-icons/md'
 
 function AdjacentMissions({ adjacentMissions, crewId }) {
 	const navigate = useNavigate()
@@ -28,14 +28,14 @@ function AdjacentMissions({ adjacentMissions, crewId }) {
 					color={'black'}
 					isDisabled={!adjacentMissions.prevMissionTracker}
 					onClick={handlePreviousNavigation}>
-					<GiFastBackwardButton />
+					<MdArrowBack size={25} />
 				</Button>
 				<Button
 					colorScheme='brand.platinum'
 					color={'black'}
 					isDisabled={!adjacentMissions.nextMissionTracker}
 					onClick={handleNextNavigation}>
-					<GiFastForwardButton />
+					<MdArrowForward size={25} />
 				</Button>
 			</HStack>
 			<Button colorScheme='brand.platinum' color={'black'} onClick={handleCrewNavigations}>

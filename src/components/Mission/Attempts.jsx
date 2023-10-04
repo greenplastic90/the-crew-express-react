@@ -12,7 +12,7 @@ function Attempts({ attempts }) {
 				borderColor={'white'}
 				borderRadius={'md'}
 				bgColor={'rgba(0, 0, 255, 0.20)'}>
-				<Text fontSize={'lg'} variant={'handWritten'}>
+				<Text fontSize={'lg'} fontWeight={'bold'}>
 					{attempts}
 				</Text>
 			</VStack>

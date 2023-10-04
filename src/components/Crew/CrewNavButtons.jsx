@@ -15,7 +15,7 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { deleteCrewById } from '../../utilities/crew-api'
 import { useBackgroundScroll } from '../Context/BackgroundScrollContext'
-import { GiFountainPen, GiTrashCan } from 'react-icons/gi'
+import { MdDeleteForever, MdEditSquare } from 'react-icons/md'
 import ElementCard from '../Miscellaneous/ElementCard'
 import { parseBoldText } from '../../utilities/miscellaneous'
 function CrewNavButtons({ crew, setCrews }) {
@@ -49,14 +49,14 @@ function CrewNavButtons({ crew, setCrews }) {
 		<>
 			<HStack>
 				<Button colorScheme='brand.platinum' color={'black'} onClick={handleEditNavigation}>
-					<GiFountainPen style={{ transform: 'rotate(90deg)' }} />
+					<MdEditSquare size={20} />
 				</Button>
 				<Button
 					alignContent={'center'}
 					onClick={onOpen}
 					colorScheme='brand.platinum'
 					color={'black'}>
-					<GiTrashCan size={25} />
+					<MdDeleteForever size={24} />
 				</Button>
 			</HStack>
 
