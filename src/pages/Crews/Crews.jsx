@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import CrewsDisplay from '../../components/Crew/CrewsDisplay'
 import { useBackgroundScroll } from '../../components/Context/BackgroundScrollContext'
 
-function Crews({ user }) {
+function Crews() {
 	const navigate = useNavigate()
 	const { handleBackgroundScroll } = useBackgroundScroll()
 

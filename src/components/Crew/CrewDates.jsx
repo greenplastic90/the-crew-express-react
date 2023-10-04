@@ -5,7 +5,7 @@ import TextWrapper from './TextWrapper'
 
 function CrewDates({ startDate, finishDate }) {
 	return (
-		<Stack flexDir={['row', 'column']} justify={['space-between', 'center']}>
+		<Stack flexDir={['row', null, 'column']} justify={['start', null, 'end']}>
 			<HStack justify={'space-between'}>
 				<Text fontWeight={'bold'}>Start:</Text>
 				<TextWrapper>

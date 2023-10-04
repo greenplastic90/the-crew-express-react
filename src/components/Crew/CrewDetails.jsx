@@ -31,7 +31,7 @@ function CrewDetails({ crew, setCrews }) {
 						{name}
 					</Heading>
 				</Box>
-				<Stack spacing={4} flexDir={['column', 'row']} justify={'space-between'}>
+				<Stack spacing={4} flexDir={['column', null, 'row']} justify={'space-between'}>
 					<Memebers members={memberNames} />
 
 					<CrewDates startDate={startDate} finishDate={finishDate} />
