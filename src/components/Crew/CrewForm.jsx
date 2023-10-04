@@ -1,16 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import {
-	FormLabel,
-	Input,
-	Button,
-	HStack,
-	FormControl,
-	Stack,
-	InputLeftElement,
-	InputGroup,
-} from '@chakra-ui/react'
+import { FormLabel, Input, Button, HStack, FormControl, Stack, InputGroup } from '@chakra-ui/react'
 import { createCrew, getCrewById, updateCrew } from '../../utilities/crew-api'
-import HelmetIcon from './HelmetIcon'
 import { useNavigate, useParams } from 'react-router-dom'
 import ElementCard from '../Miscellaneous/ElementCard'
 import FormWrapper from '../Miscellaneous/FormWrapper'
@@ -19,6 +9,7 @@ import { useBackgroundScroll } from '../Context/BackgroundScrollContext'
 function CrewForm() {
 	const [crew, setCrew] = useState({ name: '', memberNames: ['', ''] })
 	const [isLoading, setIsLoading] = useState(true)
+
 	//* if crewId is truthy, this page edits, else it creates
 	const { crewId } = useParams()
 
@@ -71,8 +62,8 @@ function CrewForm() {
 		try {
 			const res = await createCrew(crew)
 			if (res.ok) {
-				const { crew } = await res.json()
-				navigate(`/crew/${crew._id}`)
+				// const { crew } = await res.json()
+				navigate('/crews')
 				handleBackgroundScroll('south-east')
 			}
 		} catch (error) {
@@ -85,8 +76,8 @@ function CrewForm() {
 		try {
 			const res = await updateCrew(crew, crewId)
 			if (res.ok) {
-				const { crew } = await res.json()
-				navigate(`/crew/${crew._id}`)
+				// const { crew } = await res.json()
+				navigate('/crews')
 				handleBackgroundScroll('south-east')
 			}
 		} catch (error) {
