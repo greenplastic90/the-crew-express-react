@@ -12,7 +12,7 @@ function Members({ members }) {
 			{members.map((member, i) => (
 				// <GridItem key={i} colSpan={isOdd && i === 0 ? 2 : 1}>
 				<HStack justifyItems={'start'} justifyContent={'start'}>
-					<HelmetIcon index={i} />
+					{/* <HelmetIcon index={i} /> */}
 					<TextWrapper>
 						<Box w='100px' align={'center'}>
 							<Text
