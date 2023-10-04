@@ -29,7 +29,7 @@ function DropDownMenu(
 				{/*//? Links */}
 				<MenuItemsWrapper>
 					<MenuItem
-						text={'My Crews'}
+						text={'My crews'}
 						icon={<GiControlTower size={30} />}
 						func={() => handleNavigation('/crews')}
 					/>

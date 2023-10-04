@@ -135,7 +135,7 @@ function CrewForm() {
 										onClick={addMemberInput}
 										isDisabled={isLoading}
 										colorScheme='brand.blueYale'>
-										ADD MEMBER
+										Add Member
 									</Button>
 								</>
 							)}
@@ -143,7 +143,7 @@ function CrewForm() {
 					</FormControl>
 				</FormWrapper>
 				<Button type='submit' isDisabled={isLoading} colorScheme='brand.greenPine'>
-					DONE
+					Done
 				</Button>
 			</ElementCard>
 		</form>
