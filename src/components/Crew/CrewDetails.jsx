@@ -24,7 +24,7 @@ function CrewDetails({ crew, setCrews }) {
 						color={'brand.redDark'}
 						textTransform={'uppercase'}
 						as={'h2'}
-						size={'md'}
+						size={'xl'}
 						whiteSpace='nowrap'
 						overflow='hidden'
 						textOverflow='ellipsis'>
