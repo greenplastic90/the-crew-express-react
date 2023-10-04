@@ -115,11 +115,11 @@ function CrewForm() {
 							{crew.memberNames.map((member, index) => (
 								<HStack key={index}>
 									<InputGroup>
-										<InputLeftElement pointerEvents='none' justifyContent={'center'}>
+										{/* <InputLeftElement pointerEvents='none' justifyContent={'center'}>
 											<HelmetIcon index={index} />
-										</InputLeftElement>
+										</InputLeftElement> */}
 										<Input
-											pl={12}
+											// pl={12}
 											type='text'
 											value={member}
 											onChange={(e) => handleMemberChange(e, index)}
