@@ -6,14 +6,13 @@ import { useNavigate } from 'react-router-dom'
 import { useBackgroundScroll } from '../Context/BackgroundScrollContext'
 
 function MissionThumbNail({ mission, tracker }) {
-	const { number, fivePlayerRule, tasks, taskTokens, description } = mission
-	const { _id, attempts, distressSignalUsed, completed } = tracker
+	const { number, fivePlayerRule } = mission
 
 	const navigate = useNavigate()
 	const { handleBackgroundScroll } = useBackgroundScroll()
 
 	function handleNavigateToMission() {
-		navigate(`/mission/${_id}`)
+		navigate(`/mission/${tracker._id}`)
 		handleBackgroundScroll('north-east', 500)
 	}
 	return (
