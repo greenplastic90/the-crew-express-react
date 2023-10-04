@@ -1,6 +1,5 @@
 import { Text, HStack, Box, Stack } from '@chakra-ui/react'
 import React from 'react'
-import HelmetIcon from '../../components/Crew/HelmetIcon'
 import TextWrapper from '../../components/Crew/TextWrapper'
 
 function Members({ members }) {

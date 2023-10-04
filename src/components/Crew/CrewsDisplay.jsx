@@ -16,7 +16,8 @@ function CrewsDisplay() {
 				const { crews } = await res.json()
 
 				if (crews) {
-					setCrews(crews)
+					const sortedCrews = crews.sort((a, b) => new Date(b.startDate) - new Date(a.startDate))
+					setCrews(sortedCrews)
 					setError('')
 				} else {
 					setError('Something went wrong! Please try again later.')
