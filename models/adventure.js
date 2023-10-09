@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const Mission = require('./mission')
 
 const adventureSchema = new mongoose.Schema(
 	{
@@ -27,5 +28,13 @@ const adventureSchema = new mongoose.Schema(
 		timestamps: true,
 	}
 )
+adventureSchema.pre('remove', async function (next) {
+	try {
+		await Mission.deleteMany({ adventure: this._id })
+		next()
+	} catch (error) {
+		next(error)
+	}
+})
 
 module.exports = mongoose.model('Adventure', adventureSchema)

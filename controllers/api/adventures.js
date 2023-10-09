@@ -57,10 +57,11 @@ const updateAdventureById = async (req, res) => {
 const deleteAdventureById = async (req, res) => {
 	try {
 		const { id } = req.params
-		const adventure = await Adventure.findOneAndRemove({ _id: id, owner: req.user._id })
+		const adventure = await Adventure.findOne({ _id: id, owner: req.user._id })
 		if (!adventure) {
 			return res.status(404).json({ error: 'Adventure not found' })
 		}
+		await adventure.remove()
 		res.status(200).json({ message: 'Adventure deleted successfully' })
 	} catch (error) {
 		res.status(400).json({ error: error.message })
