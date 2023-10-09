@@ -23,7 +23,6 @@ const crewSchema = new mongoose.Schema({
 		type: Date,
 	},
 	adventure: {
-		// New adventure field
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'Adventure',
 		required: true,

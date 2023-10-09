@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const Adventure = require('../models/adventure')
 const Mission = require('../models/mission')
+const Crew = require('../models/crew') // Import the Crew model
 
 require('dotenv').config()
 
@@ -17,16 +18,25 @@ async function seedAdventureAndMissions() {
 		const savedAdventure = await newAdventure.save()
 		console.log('Adventure saved:', savedAdventure)
 
-		// Update all missions to reference the newly created Adventure
-		await Mission.updateMany({}, { $set: { adventure: savedAdventure._id } })
-
+		// Update only those missions that don't already have an adventure set
+		await Mission.updateMany(
+			{ adventure: { $exists: false } },
+			{ $set: { adventure: savedAdventure._id } }
+		)
 		console.log('Missions updated!')
+
+		// Update only those crews that don't already have an adventure set
+		await Crew.updateMany(
+			{ adventure: { $exists: false } },
+			{ $set: { adventure: savedAdventure._id } }
+		)
+		console.log('Crews updated!')
 	} catch (error) {
 		console.error('Error occurred:', error)
 	}
 }
 
-// Connect to MongoDB and seed adventure & missions
+// Connect to MongoDB and seed adventure, missions & crews
 mongoose
 	.connect(process.env.DATABASE_URL, {
 		useNewUrlParser: true,
@@ -37,7 +47,7 @@ mongoose
 		return seedAdventureAndMissions()
 	})
 	.then(() => {
-		console.log('Adventure created and missions updated')
+		console.log('Adventure created, and missions & crews updated')
 		mongoose.disconnect()
 	})
 	.catch((err) => {
