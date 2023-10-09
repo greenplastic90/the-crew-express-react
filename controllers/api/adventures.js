@@ -13,7 +13,7 @@ const createAdventure = async (req, res) => {
 
 const getAllAdventures = async (req, res) => {
 	try {
-		const adventures = await Adventure.find()
+		const adventures = await Adventure.find().populate('owner')
 		res.status(200).json({ adventures })
 	} catch (error) {
 		res.status(400).json({ error: error.message })

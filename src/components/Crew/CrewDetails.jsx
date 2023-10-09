@@ -21,7 +21,9 @@ function CrewDetails({ crew, setCrews }) {
 			<Stack spacing={8} flexGrow={1} justifyContent={'space-between'}>
 				<Stack>
 					<Heading variant='crew'>{name}</Heading>
-					<Heading variant={'adventure'}>{adventure.name}</Heading>
+					<Heading variant={'adventure'} fontSize={'lg'}>
+						{adventure.name}
+					</Heading>
 				</Stack>
 
 				<Stack spacing={8}>

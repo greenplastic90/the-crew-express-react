@@ -109,7 +109,6 @@ const components = {
 			crew: { color: 'brand.brown.500' },
 			adventure: {
 				color: 'brand.blueYale.500',
-				fontSize: 'lg',
 			},
 		},
 	},
