@@ -17,7 +17,7 @@ const createCrew = async (req, res) => {
 		await crew.save()
 
 		// Fetch all the available missions based on the crews adventure
-		const missions = await Mission.find({ adventure: crew.adventure })
+		const missions = await Mission.find({ adventure: req.body.adventure })
 
 		// Create a mission tracker for each mission
 		const trackers = missions.map((mission) => {
@@ -30,7 +30,7 @@ const createCrew = async (req, res) => {
 		// Save all mission trackers
 		await MissionTracker.insertMany(trackers)
 
-		res.status(201).json({ crew, trackers })
+		res.status(201).json({ crew })
 	} catch (error) {
 		res.status(400).json({ error: error.message })
 	}
@@ -39,7 +39,7 @@ const createCrew = async (req, res) => {
 // Get all Crews
 const getAllCrews = async (req, res) => {
 	try {
-		const crews = await Crew.find({ user: req.user._id })
+		const crews = await Crew.find({ user: req.user._id }).populate('adventure')
 
 		// Map through the crews to calculate the total attempts for each
 		const crewsWithAttempts = await Promise.all(
@@ -59,7 +59,7 @@ const getAllCrews = async (req, res) => {
 const getCrewById = async (req, res) => {
 	try {
 		const { id } = req.params
-		const crew = await Crew.findOne({ _id: id, user: req.user._id })
+		const crew = await Crew.findOne({ _id: id, user: req.user._id }).populate('adventure')
 		if (!crew) {
 			return res.status(404).json({ error: 'Crew not found' })
 		}
