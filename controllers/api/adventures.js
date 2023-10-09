@@ -11,8 +11,15 @@ const createAdventure = async (req, res) => {
 	}
 }
 
-// Get all Adventures
 const getAllAdventures = async (req, res) => {
+	try {
+		const adventures = await Adventure.find()
+		res.status(200).json(adventures)
+	} catch (error) {
+		res.status(400).json({ error: error.message })
+	}
+}
+const getAllAdventuresForAUser = async (req, res) => {
 	try {
 		const adventures = await Adventure.find({ owner: req.user._id })
 		res.status(200).json(adventures)
@@ -71,6 +78,7 @@ const deleteAdventureById = async (req, res) => {
 module.exports = {
 	createAdventure,
 	getAllAdventures,
+	getAllAdventuresForAUser,
 	getAdventureById,
 	updateAdventureById,
 	deleteAdventureById,
