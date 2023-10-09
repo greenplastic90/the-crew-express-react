@@ -15,6 +15,7 @@ const adventureSchema = new mongoose.Schema(
 			ref: 'User',
 			required: true,
 		},
+		official: { type: Boolean, default: false },
 		likes: [
 			{
 				type: mongoose.Schema.Types.ObjectId,
