@@ -52,7 +52,8 @@ function Mission() {
 							<Stack>
 								<HStack justify={'space-between'}>
 									<Box alignSelf={'start'}>
-										<Pentagon number={mission.number} fivePlayerRule={tracker.fivePlayerRule} />
+										{console.log({ tracker })}
+										<Pentagon number={mission.number} fivePlayerRule={mission.fivePlayerRule} />
 									</Box>
 									<VStack alignSelf={'start'}>
 										<HStack>
