@@ -10,6 +10,7 @@ import UpdateCrew from '../Crews/UpdateCrew'
 import Mission from '../Missions/Mission'
 import Background from '../../components/App/Background'
 import PageWrapper from '../../components/Miscellaneous/PageWrapper'
+import Adventures from '../Adventures/Adventures'
 
 function App() {
 	const [user, setUser] = useState(getUser())
@@ -20,8 +21,9 @@ function App() {
 			<PageWrapper>
 				{user ? (
 					<Routes>
-						<Route path='/' element={<Navigate to='/crews' />} />
-						<Route path='/crews' element={<Crews user={user} />} />
+						<Route path='/' element={<Navigate to='/adventures' />} />
+						<Route path='/adventures' element={<Adventures />} />
+						<Route path='/crews' element={<Crews />} />
 						<Route path='/crew/new' element={<NewCrew />} />
 						<Route path='/crew/:crewId/edit' element={<UpdateCrew />} />
 						<Route path='/crew/:crewId' element={<Crew />} />
