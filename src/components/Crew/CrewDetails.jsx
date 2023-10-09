@@ -9,7 +9,7 @@ import CrewDates from './CrewDates'
 import { useBackgroundScroll } from '../Context/BackgroundScrollContext'
 
 function CrewDetails({ crew, setCrews }) {
-	const { name, memberNames, startDate, finishDate, totalAttempts } = crew
+	const { name, memberNames, startDate, finishDate, totalAttempts, adventure } = crew
 	const navigate = useNavigate()
 	const { handleBackgroundScroll } = useBackgroundScroll()
 	function handleMissionNavigation() {
@@ -19,18 +19,11 @@ function CrewDetails({ crew, setCrews }) {
 	return (
 		<ElementCard>
 			<Stack spacing={8} flexGrow={1} justifyContent={'space-between'}>
-				<Box w={['300px', '450px']}>
-					<Heading
-						color={'brand.redDark'}
-						textTransform={'uppercase'}
-						as={'h2'}
-						size={'xl'}
-						whiteSpace='nowrap'
-						overflow='hidden'
-						textOverflow='ellipsis'>
-						{name}
-					</Heading>
-				</Box>
+				<Stack>
+					<Heading variant='crew'>{name}</Heading>
+					<Heading variant={'adventure'}>{adventure.name}</Heading>
+				</Stack>
+
 				<Stack spacing={8}>
 					<Memebers members={memberNames} />
 

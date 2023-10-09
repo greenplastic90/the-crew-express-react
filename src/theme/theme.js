@@ -102,12 +102,16 @@ const fonts = {
 const components = {
 	Heading: {
 		baseStyle: {
-			textTransform: 'uppercase',
 			textShadow: '-1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff, 1px 1px 0 #ffffff',
 			color: 'brand.blueDark',
-			letterSpacing: '3px',
 		},
-		variants: {},
+		variants: {
+			crew: { color: 'brand.brown.500' },
+			adventure: {
+				color: 'brand.blueYale.500',
+				fontSize: 'lg',
+			},
+		},
 	},
 	Text: {
 		variants: {
