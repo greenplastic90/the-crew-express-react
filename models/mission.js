@@ -11,6 +11,11 @@ const TileSchema = new mongoose.Schema({
 
 // Mission schema
 const MissionSchema = new mongoose.Schema({
+	adventure: {
+		type: mongoose.Schema.Types.ObjectId,
+		ref: 'Adventure',
+		required: true,
+	},
 	number: {
 		type: Number,
 		required: true,
