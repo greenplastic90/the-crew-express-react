@@ -2,14 +2,22 @@ const Crew = require('./../../models/crew')
 const Mission = require('./../../models/mission')
 const MissionTracker = require('./../../models/missionTracker')
 
+const Adventure = require('./../../models/adventure')
+
 // Create a new Crew
 const createCrew = async (req, res) => {
 	try {
+		// Check if the adventure exists
+		const adventureExists = await Adventure.findById(req.body.adventure)
+		if (!adventureExists) {
+			return res.status(400).json({ error: 'Adventure not found' })
+		}
+
 		const crew = new Crew({ ...req.body, user: req.user._id })
 		await crew.save()
 
-		// Fetch all the available missions
-		const missions = await Mission.find()
+		// Fetch all the available missions based on the crews adventure
+		const missions = await Mission.find({ adventure: crew.adventure })
 
 		// Create a mission tracker for each mission
 		const trackers = missions.map((mission) => {
