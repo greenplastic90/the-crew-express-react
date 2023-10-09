@@ -22,12 +22,17 @@ const crewSchema = new mongoose.Schema({
 	finishDate: {
 		type: Date,
 	},
+	adventure: {
+		// New adventure field
+		type: mongoose.Schema.Types.ObjectId,
+		ref: 'Adventure',
+		required: true,
+	},
 })
 
 crewSchema.pre('remove', async function (next) {
 	// Remove all MissionTracker documents that reference the removed Crew
 	await MissionTracker.deleteMany({ crew: this._id })
-
 	next()
 })
 
@@ -38,11 +43,9 @@ function arrayLimit(val) {
 
 crewSchema.methods.getTotalAttempts = async function () {
 	const trackers = await MissionTracker.find({ crew: this._id })
-
 	const totalAttempts = trackers.reduce((acc, tracker) => {
 		return acc + (tracker.attempts || 0)
 	}, 0)
-
 	return totalAttempts
 }
 
