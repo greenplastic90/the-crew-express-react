@@ -14,7 +14,7 @@ const createAdventure = async (req, res) => {
 const getAllAdventures = async (req, res) => {
 	try {
 		const adventures = await Adventure.find()
-		res.status(200).json(adventures)
+		res.status(200).json({ adventures })
 	} catch (error) {
 		res.status(400).json({ error: error.message })
 	}
@@ -22,7 +22,7 @@ const getAllAdventures = async (req, res) => {
 const getAllAdventuresForAUser = async (req, res) => {
 	try {
 		const adventures = await Adventure.find({ owner: req.user._id })
-		res.status(200).json(adventures)
+		res.status(200).json({ adventures })
 	} catch (error) {
 		res.status(400).json({ error: error.message })
 	}
@@ -36,7 +36,7 @@ const getAdventureById = async (req, res) => {
 		if (!adventure) {
 			return res.status(404).json({ error: 'Adventure not found' })
 		}
-		res.status(200).json(adventure)
+		res.status(200).json({ adventure })
 	} catch (error) {
 		res.status(400).json({ error: error.message })
 	}
@@ -54,7 +54,7 @@ const updateAdventureById = async (req, res) => {
 		if (!adventure) {
 			return res.status(404).json({ error: 'Adventure not found' })
 		}
-		res.status(200).json(adventure)
+		res.status(200).json({ adventure })
 	} catch (error) {
 		res.status(400).json({ error: error.message })
 	}
