@@ -24,7 +24,7 @@ function MissionDetails({ mission }) {
 				</VStack>
 			</HStack>
 			<VStack>
-				{description && <Text variant={'missionDesc'}>{parseBoldText(description)}</Text>}
+				{description && <Text variant={'description'}>{parseBoldText(description)}</Text>}
 			</VStack>
 		</Stack>
 	)

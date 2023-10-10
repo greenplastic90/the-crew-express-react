@@ -79,7 +79,7 @@ export default function NavBar({ user, setUser }) {
 					minH={12}
 					justify={'space-between'}
 					px={4}
-					bg={'brand.grayDark'}
+					bg={'brand.gray'}
 					borderBottom={'2px'}
 					borderColor={'brand.gray'}>
 					<Box position={'relative'}>

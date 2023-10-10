@@ -118,7 +118,7 @@ const components = {
 				textShadow:
 					'-1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff, 1px 1px 0 #ffffff',
 			},
-			missionDesc: {
+			description: {
 				fontFamily: 'Open Sans, sans-serif',
 			},
 			logo: {
