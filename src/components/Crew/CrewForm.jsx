@@ -4,7 +4,7 @@ import { createCrew, getCrewById, updateCrew } from '../../utilities/crew-api'
 import { useNavigate, useParams } from 'react-router-dom'
 import ElementCard from '../Miscellaneous/ElementCard'
 import FormWrapper from '../Miscellaneous/FormWrapper'
-import { useBackgroundScroll } from '../Context/BackgroundScrollContext'
+import { useNavigation } from '../Context/NavigationContext'
 
 function CrewForm() {
 	const [crew, setCrew] = useState({ name: '', memberNames: ['', ''] })
@@ -14,7 +14,7 @@ function CrewForm() {
 	const { crewId } = useParams()
 
 	const navigate = useNavigate()
-	const { handleBackgroundScroll } = useBackgroundScroll()
+	const { handleNavigation } = useNavigation()
 
 	useEffect(() => {
 		if (!crewId) {
@@ -63,8 +63,7 @@ function CrewForm() {
 			const res = await createCrew(crew)
 			if (res.ok) {
 				// const { crew } = await res.json()
-				navigate('/crews')
-				handleBackgroundScroll('south-east')
+				handleNavigation('/crews', 'south-east')
 			}
 		} catch (error) {
 			console.log(error)
@@ -77,8 +76,8 @@ function CrewForm() {
 			const res = await updateCrew(crew, crewId)
 			if (res.ok) {
 				// const { crew } = await res.json()
-				navigate('/crews')
-				handleBackgroundScroll('south-east')
+
+				handleNavigation('/crews', 'south-east')
 			}
 		} catch (error) {
 			console.log(error)

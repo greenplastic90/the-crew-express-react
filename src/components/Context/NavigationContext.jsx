@@ -1,12 +1,12 @@
 import { createContext, useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-const BackgroundScrollContext = createContext()
+const NavigationContext = createContext()
 
-export const useBackgroundScroll = () => {
-	const context = useContext(BackgroundScrollContext)
+export const useNavigation = () => {
+	const context = useContext(NavigationContext)
 	if (!context) {
-		throw new Error('useBackgroundScroll must be used within a BackgroundScrollProvider')
+		throw new Error('useNavigation must be used within a BackgroundScrollProvider')
 	}
 	return context
 }
@@ -67,9 +67,9 @@ export const BackgroundScrollProvider = ({ children }) => {
 	}
 
 	return (
-		<BackgroundScrollContext.Provider
+		<NavigationContext.Provider
 			value={{ offset, handleNavigation, handleAnimateToggle, canAnimateBg }}>
 			{children}
-		</BackgroundScrollContext.Provider>
+		</NavigationContext.Provider>
 	)
 }

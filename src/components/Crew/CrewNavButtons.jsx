@@ -12,16 +12,15 @@ import {
 	useDisclosure,
 } from '@chakra-ui/react'
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
 import { deleteCrewById } from '../../utilities/crew-api'
-import { useBackgroundScroll } from '../Context/BackgroundScrollContext'
+import { useNavigation } from '../Context/NavigationContext'
 import { MdDeleteForever, MdEditSquare } from 'react-icons/md'
 import ElementCard from '../Miscellaneous/ElementCard'
 import { parseBoldText } from '../../utilities/miscellaneous'
 function CrewNavButtons({ crew, setCrews }) {
 	const { isOpen, onOpen, onClose } = useDisclosure()
-	const navigate = useNavigate()
-	const { handleBackgroundScroll } = useBackgroundScroll()
+
+	const { handleNavigation } = useNavigation()
 
 	const { _id, name } = crew
 
@@ -41,8 +40,7 @@ function CrewNavButtons({ crew, setCrews }) {
 		}
 	}
 	function handleEditNavigation() {
-		navigate(`/crew/${_id}/edit`)
-		handleBackgroundScroll('south')
+		handleNavigation(`/crew/${_id}/edit`, 'south')
 	}
 
 	return (

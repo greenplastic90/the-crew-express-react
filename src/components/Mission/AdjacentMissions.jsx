@@ -1,24 +1,19 @@
 import { Button, HStack } from '@chakra-ui/react'
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
-import { useBackgroundScroll } from '../Context/BackgroundScrollContext'
+import { useNavigation } from '../Context/NavigationContext'
 import { MdArrowBack, MdArrowForward } from 'react-icons/md'
 
 function AdjacentMissions({ adjacentMissions, crewId }) {
-	const navigate = useNavigate()
-	const { handleBackgroundScroll } = useBackgroundScroll()
+	const { handleNavigation } = useNavigation()
 
 	function handleNextNavigation() {
-		navigate(`/mission/${adjacentMissions.nextMissionTracker}`)
-		handleBackgroundScroll('north-east', 500)
+		handleNavigation(`/mission/${adjacentMissions.nextMissionTracker}`, 'north-east')
 	}
 	function handlePreviousNavigation() {
-		navigate(`/mission/${adjacentMissions.prevMissionTracker}`)
-		handleBackgroundScroll('south-west', 500)
+		handleNavigation(`/mission/${adjacentMissions.prevMissionTracker}`, 'south-west')
 	}
 	function handleCrewNavigations() {
-		navigate(`/crew/${crewId}`)
-		handleBackgroundScroll('south', 200)
+		handleNavigation(`/crew/${crewId}`, 'south')
 	}
 	return (
 		<HStack justify={'space-between'}>

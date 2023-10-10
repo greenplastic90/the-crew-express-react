@@ -1,21 +1,17 @@
 import { Button, Stack } from '@chakra-ui/react'
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
 import CrewsDisplay from '../../components/Crew/CrewsDisplay'
-import { useBackgroundScroll } from '../../components/Context/BackgroundScrollContext'
+import { useNavigation } from '../../components/Context/NavigationContext'
 
 function Crews() {
-	const navigate = useNavigate()
-	const { handleBackgroundScroll } = useBackgroundScroll()
-
-	function handleNavigation() {
-		navigate('/crew/new')
-		handleBackgroundScroll('south', 200)
-	}
+	const { handleNavigation } = useNavigation()
 
 	return (
 		<Stack>
-			<Button colorScheme='brand.antiFlashWhite' color={'black'} onClick={handleNavigation}>
+			<Button
+				onClick={() => handleNavigation('/crew/new', 'south')}
+				colorScheme='brand.antiFlashWhite'
+				color={'black'}>
 				+ New Crew
 			</Button>
 			<CrewsDisplay />

@@ -1,20 +1,17 @@
-import { Box, Button, Heading, Stack } from '@chakra-ui/react'
+import { Button, Heading, Stack } from '@chakra-ui/react'
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
 import CrewNavButtons from './CrewNavButtons'
 import Memebers from '../../pages/Crews/Memebers'
 import ElementCard from '../Miscellaneous/ElementCard'
 import Attempts from '../Mission/Attempts'
 import CrewDates from './CrewDates'
-import { useBackgroundScroll } from '../Context/BackgroundScrollContext'
+import { useNavigation } from '../Context/NavigationContext'
 
 function CrewDetails({ crew, setCrews }) {
 	const { name, memberNames, startDate, finishDate, totalAttempts, adventure } = crew
-	const navigate = useNavigate()
-	const { handleBackgroundScroll } = useBackgroundScroll()
+	const { handleNavigation } = useNavigation()
 	function handleMissionNavigation() {
-		navigate(`/crew/${crew._id}`)
-		handleBackgroundScroll('east')
+		handleNavigation(`/crew/${crew._id}`, 'east')
 	}
 	return (
 		<ElementCard>
@@ -34,11 +31,7 @@ function CrewDetails({ crew, setCrews }) {
 
 				<Stack flexDir={['row']} justify={['space-between']} alignItems={'center'}>
 					<Attempts attempts={totalAttempts} />
-					<Button
-						colorScheme={'brand.blueYale'}
-						// color='brand.greenPine.500'
-						w={'full'}
-						onClick={handleMissionNavigation}>
+					<Button colorScheme={'brand.blueYale'} w={'full'} onClick={handleMissionNavigation}>
 						Deploy
 					</Button>
 					<CrewNavButtons crew={crew} setCrews={setCrews} />

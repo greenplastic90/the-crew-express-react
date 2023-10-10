@@ -5,7 +5,7 @@ import DropdownMenuIcon from './DropdownMenuIcon'
 import { useEffect, useRef, useState } from 'react'
 
 import DropdownMenu from './DropdownMenu'
-import { useBackgroundScroll } from '../Context/BackgroundScrollContext'
+import { useNavigation } from '../Context/NavigationContext'
 
 export default function NavBar({ user, setUser }) {
 	const [openDropdown, setOpenDropdown] = useState(false)
@@ -15,7 +15,7 @@ export default function NavBar({ user, setUser }) {
 	const dropdownMenuRef = useRef(null)
 
 	const navigate = useNavigate()
-	const { handleAnimateToggle, canAnimateBg } = useBackgroundScroll()
+	const { handleAnimateToggle, canAnimateBg } = useNavigation()
 
 	const handleClickOutside = (event) => {
 		if (

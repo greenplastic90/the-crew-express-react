@@ -5,7 +5,7 @@ import App from './pages/App/App'
 // import reportWebVitals from './reportWebVitals';
 import { ChakraProvider } from '@chakra-ui/react'
 import theme from './theme/theme'
-import { BackgroundScrollProvider } from './components/Context/BackgroundScrollContext'
+import { BackgroundScrollProvider } from './components/Context/NavigationContext'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(

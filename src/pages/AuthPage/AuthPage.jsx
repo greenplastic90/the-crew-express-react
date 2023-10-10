@@ -3,15 +3,15 @@ import SignUpForm from '../../components/Auth/SignUpForm'
 import LoginForm from '../../components/Auth/LoginForm'
 import { Link } from '@chakra-ui/react'
 import ElementCard from '../../components/Miscellaneous/ElementCard'
-import { useBackgroundScroll } from '../../components/Context/BackgroundScrollContext'
+import { useNavigation } from '../../components/Context/NavigationContext'
 
 export default function AuthPage({ setUser }) {
 	const [showSignUp, setShowSignUp] = useState(false)
-	const { handleBackgroundScroll } = useBackgroundScroll()
+	const { handleNavigation } = useNavigation()
 
 	async function handlePageSwitch() {
 		setShowSignUp(!showSignUp)
-		handleBackgroundScroll(showSignUp ? 'west' : 'east')
+		handleNavigation('/', showSignUp ? 'west' : 'east')
 	}
 	return (
 		<ElementCard>

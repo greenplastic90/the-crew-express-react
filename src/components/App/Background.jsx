@@ -1,10 +1,10 @@
 import { Stack } from '@chakra-ui/react'
 import React from 'react'
 import spaceBg from '../../images/space.jpg'
-import { useBackgroundScroll } from '../Context/BackgroundScrollContext'
+import { useNavigation } from '../Context/NavigationContext'
 
 function Background({ children }) {
-	const { offset } = useBackgroundScroll()
+	const { offset } = useNavigation()
 	return (
 		<Stack
 			position='relative'

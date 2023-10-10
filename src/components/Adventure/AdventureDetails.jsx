@@ -1,12 +1,12 @@
 import { Button, HStack, Heading, Text } from '@chakra-ui/react'
 import React from 'react'
 import ElementCard from '../Miscellaneous/ElementCard'
-import { useBackgroundScroll } from '../Context/BackgroundScrollContext'
+import { useNavigation } from '../Context/NavigationContext'
 
 function AdventureDetails({ adventure }) {
 	const { name, description, owner, official } = adventure
 
-	const { handleNavigation } = useBackgroundScroll()
+	const { handleNavigation } = useNavigation()
 
 	return (
 		<ElementCard>
