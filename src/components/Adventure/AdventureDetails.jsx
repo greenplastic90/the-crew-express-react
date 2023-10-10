@@ -19,7 +19,9 @@ function AdventureDetails({ adventure }) {
 			)}
 			<Text>{description}</Text>
 			<HStack>
-				<Button>Create Crew</Button>
+				<Button onClick={() => handleNavigation('/crew/new', 'north', { adventureId: _id })}>
+					Create Crew
+				</Button>
 				<Button onClick={() => handleNavigation(`/adventures/${_id}/preview`, 'south')}>
 					Preview
 				</Button>

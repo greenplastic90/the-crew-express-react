@@ -8,12 +8,12 @@ function Crews() {
 
 	return (
 		<Stack>
-			<Button
+			{/* <Button
 				onClick={() => handleNavigation('/crew/new', 'south')}
 				colorScheme='brand.antiFlashWhite'
 				color={'black'}>
 				+ New Crew
-			</Button>
+			</Button> */}
 			<CrewsDisplay />
 		</Stack>
 	)

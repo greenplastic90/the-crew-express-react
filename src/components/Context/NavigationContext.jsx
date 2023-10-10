@@ -16,8 +16,8 @@ export const BackgroundScrollProvider = ({ children }) => {
 	const [canAnimateBg, setCanAnimateBG] = useState(true)
 	const navigate = useNavigate()
 
-	const handleNavigation = (path, scrollDirection) => {
-		navigate(path)
+	const handleNavigation = (path, scrollDirection, state) => {
+		navigate(path, { state: state })
 		handleBackgroundScroll(scrollDirection)
 	}
 

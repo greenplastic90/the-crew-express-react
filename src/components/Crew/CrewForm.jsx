@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { FormLabel, Input, Button, HStack, FormControl, Stack, InputGroup } from '@chakra-ui/react'
 import { createCrew, getCrewById, updateCrew } from '../../utilities/crew-api'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router-dom'
 import ElementCard from '../Miscellaneous/ElementCard'
 import FormWrapper from '../Miscellaneous/FormWrapper'
 import { useNavigation } from '../Context/NavigationContext'
@@ -12,12 +12,17 @@ function CrewForm() {
 
 	//* if crewId is truthy, this page edits, else it creates
 	const { crewId } = useParams()
+	const location = useLocation()
 
-	const navigate = useNavigate()
 	const { handleNavigation } = useNavigation()
 
 	useEffect(() => {
+		// if crewId isn't in the params - no need to make api call (we're creating a new crew not updating)
 		if (!crewId) {
+			//if the state not passed, ie the adventure id isn't passed.. we direct back to home - since the crew won't have an adventure id to create all the missions
+			if (!location.state) {
+				handleNavigation('/', 'south')
+			}
 			setIsLoading(false)
 			return
 		}
@@ -33,7 +38,7 @@ function CrewForm() {
 		}
 		getCrew()
 		setIsLoading(false)
-	}, [crewId])
+	}, [crewId, handleNavigation, location.state])
 
 	function handleNameChange(e) {
 		setCrew({ ...crew, name: e.target.value })
@@ -60,7 +65,7 @@ function CrewForm() {
 		setIsLoading(true)
 		evt.preventDefault()
 		try {
-			const res = await createCrew(crew)
+			const res = await createCrew({ ...crew, adventure: location.state.adventureId })
 			if (res.ok) {
 				// const { crew } = await res.json()
 				handleNavigation('/crews', 'south-east')
