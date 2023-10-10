@@ -4,7 +4,7 @@ import ElementCard from '../Miscellaneous/ElementCard'
 import { useNavigation } from '../Context/NavigationContext'
 
 function AdventureDetails({ adventure }) {
-	const { name, description, owner, official } = adventure
+	const { _id, name, description, owner, official } = adventure
 
 	const { handleNavigation } = useNavigation()
 
@@ -20,7 +20,9 @@ function AdventureDetails({ adventure }) {
 			<Text>{description}</Text>
 			<HStack>
 				<Button>Create Crew</Button>
-				<Button onClick={() => handleNavigation('/adventure/preview', 'south')}>Preview</Button>
+				<Button onClick={() => handleNavigation(`/adventures/${_id}/preview`, 'south')}>
+					Preview
+				</Button>
 			</HStack>
 		</ElementCard>
 	)

@@ -11,6 +11,7 @@ import Mission from '../Missions/Mission'
 import Background from '../../components/App/Background'
 import PageWrapper from '../../components/Miscellaneous/PageWrapper'
 import Adventures from '../Adventures/Adventures'
+import AdventurePreview from '../Adventures/AdventurePreview'
 
 function App() {
 	const [user, setUser] = useState(getUser())
@@ -23,7 +24,7 @@ function App() {
 					<Routes>
 						<Route path='/' element={<Navigate to='/adventures' />} />
 						<Route path='/adventures' element={<Adventures />} />
-						{/* <Route path='/adventure/preview' element={<AdventurePreview />} /> */}
+						<Route path='/adventures/:adventureId/preview' element={<AdventurePreview />} />
 						<Route path='/crews' element={<Crews />} />
 						<Route path='/crew/new' element={<NewCrew />} />
 						<Route path='/crew/:crewId/edit' element={<UpdateCrew />} />
