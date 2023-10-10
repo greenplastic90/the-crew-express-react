@@ -125,7 +125,7 @@ const components = {
 				fontFamily: 'Oswald, sans-serif',
 				fontSize: ['3xl', '4xl'],
 				letterSpacing: '5px',
-				background: `linear-gradient(to bottom, ${colors.brand.brown[500]}, ${colors.brand.secondary})`,
+				background: `linear-gradient(to bottom, ${'black'}, ${'gray'})`,
 				backgroundClip: 'text',
 				color: 'transparent',
 				position: 'absolute',
