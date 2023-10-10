@@ -1,15 +1,13 @@
-import { Box, HStack, Stack, Text, VStack } from '@chakra-ui/react'
+import { Stack, Text } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { getMissionTrackerById } from '../../utilities/mission-api'
 import MissionTrackerForm from '../../components/Mission/MissionTrackerForm'
 import ElementCard from '../../components/Miscellaneous/ElementCard'
-import Pentagon from '../../components/Mission/Pentagon'
-import Tasks from '../../components/Mission/Tasks'
-import TaskTokens from '../../components/Mission/TaskTokens'
-import { parseBoldText } from '../../utilities/miscellaneous'
+
 import AdjacentMissions from '../../components/Mission/AdjacentMissions'
 import CustomSpinner from '../../components/Miscellaneous/CustomSpinner'
+import MissionDetails from '../../components/Mission/MissionDetails'
 
 function Mission() {
 	const [mission, setMission] = useState(null)
@@ -49,30 +47,7 @@ function Mission() {
 				<>
 					<ElementCard>
 						<Stack spacing={8}>
-							<Stack>
-								<HStack justify={'space-between'}>
-									<Box alignSelf={'start'}>
-										<Pentagon
-											number={mission.number}
-											fivePlayerRule={mission.fivePlayerRule}
-											showPopover={true}
-										/>
-									</Box>
-									<VStack alignSelf={'start'}>
-										<HStack>
-											<Box alignSelf={'start'}>
-												<Tasks tasks={mission.tasks} />
-											</Box>
-											<TaskTokens tokens={mission.taskTokens} />
-										</HStack>
-									</VStack>
-								</HStack>
-								<VStack>
-									{mission.description && (
-										<Text variant={'missionDesc'}>{parseBoldText(mission.description)}</Text>
-									)}
-								</VStack>
-							</Stack>
+							<MissionDetails mission={mission} />
 							<MissionTrackerForm tracker={tracker} updateMissionTracker={updateMissionTracker} />
 
 							{error && <Text color={'red.500'}>{error}</Text>}

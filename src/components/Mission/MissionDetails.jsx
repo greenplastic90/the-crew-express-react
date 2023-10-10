@@ -4,21 +4,16 @@ import Pentagon from './Pentagon'
 import Tasks from './Tasks'
 import TaskTokens from './TaskTokens'
 import { parseBoldText } from '../../utilities/miscellaneous'
-import MissionTrackerForm from './MissionTrackerForm'
-import DisstressSignal from './DisstressSignal'
-import ElementCard from '../Miscellaneous/ElementCard'
 
-function MissionDetails({ mission, tracker, updateMissionTracker }) {
+function MissionDetails({ mission }) {
 	const { number, fivePlayerRule, tasks, taskTokens, description } = mission
-	const { attempts, distressSignalUsed, completed } = tracker
 
 	return (
-		<ElementCard>
-			{/* <HStack justify={'space-between'}>
+		<Stack>
+			<HStack justify={'space-between'}>
 				<Box alignSelf={'start'}>
-					<Pentagon number={number} fivePlayerRule={fivePlayerRule} />
+					<Pentagon number={number} fivePlayerRule={fivePlayerRule} showPopover={true} />
 				</Box>
-
 				<VStack alignSelf={'start'}>
 					<HStack>
 						<Box alignSelf={'start'}>
@@ -28,28 +23,10 @@ function MissionDetails({ mission, tracker, updateMissionTracker }) {
 					</HStack>
 				</VStack>
 			</HStack>
-
 			<VStack>
 				{description && <Text variant={'missionDesc'}>{parseBoldText(description)}</Text>}
 			</VStack>
-
-			<Stack>
-				<HStack fontFamily={'Roboto Slab'}>
-					{attempts > 0 && (
-						<>
-							<Text fontSize={'md'}>Attempts:</Text>
-							<Text fontSize={'xl'} fontWeight={'bold'}>
-								{attempts}
-							</Text>
-						</>
-					)}
-					{completed && distressSignalUsed && (
-						<DisstressSignal distressSignalUsed={distressSignalUsed} />
-					)}
-				</HStack>
-			</Stack>
-			<MissionTrackerForm tracker={tracker} updateMissionTracker={updateMissionTracker} /> */}
-		</ElementCard>
+		</Stack>
 	)
 }
 
