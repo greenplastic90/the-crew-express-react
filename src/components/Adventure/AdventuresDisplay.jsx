@@ -14,7 +14,6 @@ function AdventuresDisplay() {
 			try {
 				const res = await getAllAdventures()
 				const { adventures } = await res.json()
-				console.log({ adventures })
 
 				if (adventures) {
 					const sortedAdventures = adventures.sort(

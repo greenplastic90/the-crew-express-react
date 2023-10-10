@@ -12,6 +12,7 @@ import Background from '../../components/App/Background'
 import PageWrapper from '../../components/Miscellaneous/PageWrapper'
 import Adventures from '../Adventures/Adventures'
 import AdventurePreview from '../Adventures/AdventurePreview'
+import NotFoundPage from '../NotFoundPage/NotFoundPage'
 
 function App() {
 	const [user, setUser] = useState(getUser())
@@ -30,6 +31,8 @@ function App() {
 						<Route path='/crew/:crewId/edit' element={<UpdateCrew />} />
 						<Route path='/crew/:crewId' element={<Crew />} />
 						<Route path='/mission/:missionTrackerId' element={<Mission />} />
+						{/* This will handle undefined routes */}
+						<Route path='*' element={<NotFoundPage />} />
 					</Routes>
 				) : (
 					<AuthPage setUser={setUser} />
