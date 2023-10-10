@@ -3,7 +3,7 @@ import React from 'react'
 import ElementCard from '../Miscellaneous/ElementCard'
 import { useNavigation } from '../Context/NavigationContext'
 
-function AdventureDetails({ adventure }) {
+function AdventureDetails({ adventure, showPreviewButton = false }) {
 	const { _id, name, description, owner, official } = adventure
 
 	const { handleNavigation } = useNavigation()
@@ -19,11 +19,13 @@ function AdventureDetails({ adventure }) {
 			)}
 			<Text>{description}</Text>
 			<HStack>
+				{showPreviewButton && (
+					<Button onClick={() => handleNavigation(`/adventures/${_id}/preview`, 'south')}>
+						Preview
+					</Button>
+				)}
 				<Button onClick={() => handleNavigation('/crew/new', 'north', { adventureId: _id })}>
 					Create Crew
-				</Button>
-				<Button onClick={() => handleNavigation(`/adventures/${_id}/preview`, 'south')}>
-					Preview
 				</Button>
 			</HStack>
 		</ElementCard>

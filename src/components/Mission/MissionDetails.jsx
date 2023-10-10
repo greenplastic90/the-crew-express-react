@@ -14,7 +14,7 @@ function MissionDetails({ mission, tracker, updateMissionTracker }) {
 
 	return (
 		<ElementCard>
-			<HStack justify={'space-between'}>
+			{/* <HStack justify={'space-between'}>
 				<Box alignSelf={'start'}>
 					<Pentagon number={number} fivePlayerRule={fivePlayerRule} />
 				</Box>
@@ -48,7 +48,7 @@ function MissionDetails({ mission, tracker, updateMissionTracker }) {
 					)}
 				</HStack>
 			</Stack>
-			<MissionTrackerForm tracker={tracker} updateMissionTracker={updateMissionTracker} />
+			<MissionTrackerForm tracker={tracker} updateMissionTracker={updateMissionTracker} /> */}
 		</ElementCard>
 	)
 }

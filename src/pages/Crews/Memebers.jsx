@@ -10,7 +10,7 @@ function Members({ members }) {
 		<Stack flexDir={'row'} wrap={'wrap'}>
 			{members.map((member, i) => (
 				// <GridItem key={i} colSpan={isOdd && i === 0 ? 2 : 1}>
-				<HStack justifyItems={'start'} justifyContent={'start'}>
+				<HStack key={i} justifyItems={'start'} justifyContent={'start'}>
 					{/* <HelmetIcon index={i} /> */}
 					<TextWrapper>
 						<Box

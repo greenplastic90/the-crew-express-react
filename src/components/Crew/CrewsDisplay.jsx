@@ -35,7 +35,7 @@ function CrewsDisplay() {
 				<Grid
 					templateColumns={['repeat(1, 1fr)', null, null, null, null, 'repeat(2, 1fr)']}
 					gap={2}>
-					{crews.map((crew, i) => (
+					{crews.map((crew) => (
 						<CrewDetails key={crew._id} crew={crew} setCrews={setCrews} />
 					))}
 				</Grid>

@@ -39,7 +39,7 @@ function AdventuresDisplay() {
 					templateColumns={['repeat(1, 1fr)', null, null, null, null, 'repeat(2, 1fr)']}
 					gap={2}>
 					{adventures.map((adventure) => (
-						<AdventureDetails key={adventure._id} adventure={adventure} />
+						<AdventureDetails key={adventure._id} adventure={adventure} showPreviewButton={true} />
 					))}
 				</Grid>
 			) : (
