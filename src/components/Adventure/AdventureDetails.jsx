@@ -1,9 +1,13 @@
-import { HStack, Heading, Text } from '@chakra-ui/react'
+import { Button, HStack, Heading, Text } from '@chakra-ui/react'
 import React from 'react'
 import ElementCard from '../Miscellaneous/ElementCard'
+import { useBackgroundScroll } from '../Context/BackgroundScrollContext'
 
-function AdventureDetails({ adventure, setAdventures }) {
+function AdventureDetails({ adventure }) {
 	const { name, description, owner, official } = adventure
+
+	const { handleNavigation } = useBackgroundScroll()
+
 	return (
 		<ElementCard>
 			<Heading variant={'adventure'}>{name}</Heading>
@@ -14,6 +18,10 @@ function AdventureDetails({ adventure, setAdventures }) {
 				</HStack>
 			)}
 			<Text>{description}</Text>
+			<HStack>
+				<Button>Create Crew</Button>
+				<Button onClick={() => handleNavigation('/adventure/preview', 'south')}>Preview</Button>
+			</HStack>
 		</ElementCard>
 	)
 }

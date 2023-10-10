@@ -23,6 +23,7 @@ function App() {
 					<Routes>
 						<Route path='/' element={<Navigate to='/adventures' />} />
 						<Route path='/adventures' element={<Adventures />} />
+						{/* <Route path='/adventure/preview' element={<AdventurePreview />} /> */}
 						<Route path='/crews' element={<Crews />} />
 						<Route path='/crew/new' element={<NewCrew />} />
 						<Route path='/crew/:crewId/edit' element={<UpdateCrew />} />

@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const BackgroundScrollContext = createContext()
 
@@ -13,6 +14,12 @@ export const useBackgroundScroll = () => {
 export const BackgroundScrollProvider = ({ children }) => {
 	const [offset, setOffset] = useState({ x: 0, y: 0 })
 	const [canAnimateBg, setCanAnimateBG] = useState(true)
+	const navigate = useNavigate()
+
+	const handleNavigation = (path, scrollDirection) => {
+		navigate(path)
+		handleBackgroundScroll(scrollDirection)
+	}
 
 	const handleAnimateToggle = () => {
 		setCanAnimateBG(!canAnimateBg)
@@ -61,7 +68,7 @@ export const BackgroundScrollProvider = ({ children }) => {
 
 	return (
 		<BackgroundScrollContext.Provider
-			value={{ offset, handleBackgroundScroll, handleAnimateToggle, canAnimateBg }}>
+			value={{ offset, handleNavigation, handleAnimateToggle, canAnimateBg }}>
 			{children}
 		</BackgroundScrollContext.Provider>
 	)
