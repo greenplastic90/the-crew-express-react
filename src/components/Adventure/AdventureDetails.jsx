@@ -20,11 +20,15 @@ function AdventureDetails({ adventure, showPreviewButton = false }) {
 			<Text>{description}</Text>
 			<HStack>
 				{showPreviewButton && (
-					<Button onClick={() => handleNavigation(`/adventures/${_id}/preview`, 'south')}>
+					<Button
+						w={'100%'}
+						onClick={() => handleNavigation(`/adventures/${_id}/preview`, 'south')}>
 						Preview
 					</Button>
 				)}
-				<Button onClick={() => handleNavigation('/crew/new', 'north', { adventureId: _id })}>
+				<Button
+					w={'100%'}
+					onClick={() => handleNavigation('/crew/new', 'north', { adventureId: _id })}>
 					Create Crew
 				</Button>
 			</HStack>

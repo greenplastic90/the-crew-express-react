@@ -4,6 +4,8 @@ import { useParams } from 'react-router-dom'
 import { Stack, Text } from '@chakra-ui/react'
 import AdventureDetails from '../../components/Adventure/AdventureDetails'
 import CustomSpinner from '../../components/Miscellaneous/CustomSpinner'
+import MissionDetails from '../../components/Mission/MissionDetails'
+import ElementCard from '../../components/Miscellaneous/ElementCard'
 
 function AdventurePreview() {
 	const [adventure, setAdventure] = useState(null)
@@ -40,10 +42,18 @@ function AdventurePreview() {
 					{adventure && missions && (
 						<Stack>
 							<AdventureDetails adventure={adventure} />
-							{/* {missions.map(mission=><Mission)} */}
+							{missions.map((mission) => (
+								<ElementCard key={mission._id}>
+									<MissionDetails mission={mission} />
+								</ElementCard>
+							))}
 						</Stack>
 					)}
-					{error && <Text>{error}</Text>}
+					{error && (
+						<ElementCard>
+							<Text>{error}</Text>
+						</ElementCard>
+					)}
 				</>
 			) : (
 				<CustomSpinner />

@@ -33,7 +33,7 @@ const getAllAdventuresForAUser = async (req, res) => {
 const getAdventureById = async (req, res) => {
 	try {
 		const { id } = req.params
-		const adventure = await Adventure.findOne({ _id: id, owner: req.user._id })
+		const adventure = await Adventure.findOne({ _id: id })
 		if (!adventure) {
 			return res.status(404).json({ error: 'Adventure not found' })
 		}
