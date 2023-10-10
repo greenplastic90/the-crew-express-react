@@ -2,17 +2,14 @@ import { VStack } from '@chakra-ui/react'
 import React from 'react'
 import Pentagon from './Pentagon'
 import ElementCard from '../Miscellaneous/ElementCard'
-import { useNavigate } from 'react-router-dom'
 import { useNavigation } from '../Context/NavigationContext'
 
 function MissionThumbNail({ mission, tracker }) {
 	const { number, fivePlayerRule } = mission
 
-	const navigate = useNavigate()
 	const { handleNavigation } = useNavigation()
 
 	function handleNavigateToMission() {
-		navigate()
 		handleNavigation(`/mission/${tracker._id}`, 'north-east')
 	}
 	return (
