@@ -1,17 +1,32 @@
 import { Button, Heading, Stack } from '@chakra-ui/react'
 import React from 'react'
-import CrewUpdateDeleteButtons from './CrewUpdateDeleteButtons'
+import UpdateDeleteButtons from '../Miscellaneous/UpdateDeleteButtons'
 import Memebers from '../../pages/Crews/Memebers'
 import ElementCard from '../Miscellaneous/ElementCard'
 import Attempts from '../Mission/Attempts'
 import CrewDates from './CrewDates'
 import { useNavigation } from '../Context/NavigationContext'
+import { deleteCrewById } from '../../utilities/crew-api'
 
 function CrewDetails({ crew, setCrews }) {
-	const { name, memberNames, startDate, finishDate, totalAttempts, adventure } = crew
+	const { _id, name, memberNames, startDate, finishDate, totalAttempts, adventure } = crew
 	const { handleNavigation } = useNavigation()
 	function handleMissionNavigation() {
 		handleNavigation(`/crews/${crew._id}`, 'east')
+	}
+	async function deleteCrew() {
+		try {
+			const res = await deleteCrewById(_id)
+			const { message } = await res.json()
+
+			if (message) {
+				setCrews((crews) => {
+					return crews.filter((c) => c._id !== _id)
+				})
+			}
+		} catch (error) {
+			console.log(error)
+		}
 	}
 	return (
 		<ElementCard>
@@ -34,7 +49,11 @@ function CrewDetails({ crew, setCrews }) {
 					<Button variant={'advance'} w={'full'} onClick={handleMissionNavigation}>
 						Deploy
 					</Button>
-					<CrewUpdateDeleteButtons crew={crew} setCrews={setCrews} />
+					<UpdateDeleteButtons
+						name={crew.name}
+						updateFormPath={`/crews/${crew._id}/edit`}
+						deleteFunc={deleteCrew}
+					/>
 				</Stack>
 			</Stack>
 		</ElementCard>

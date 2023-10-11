@@ -12,42 +12,25 @@ import {
 	useDisclosure,
 } from '@chakra-ui/react'
 import React from 'react'
-import { deleteCrewById } from '../../utilities/crew-api'
 import { useNavigation } from '../Context/NavigationContext'
 import { MdDeleteForever, MdEditSquare } from 'react-icons/md'
-import ElementCard from '../Miscellaneous/ElementCard'
+import ElementCard from './ElementCard'
 import { parseBoldText } from '../../utilities/miscellaneous'
 
-function CrewUpdateDeleteButtons({ crew, setCrews }) {
+function UpdateDeleteButtons({ name, updateFormPath, deleteFunc }) {
 	const { isOpen, onOpen, onClose } = useDisclosure()
 
 	const { handleNavigation } = useNavigation()
 
-	const { _id, name } = crew
-
-	async function deleteCrew() {
-		try {
-			const res = await deleteCrewById(_id)
-			const { message } = await res.json()
-
-			if (message) {
-				onClose()
-				setCrews((crews) => {
-					return crews.filter((c) => c._id !== _id)
-				})
-			}
-		} catch (error) {
-			console.log(error)
-		}
-	}
-	function handleEditNavigation() {
-		handleNavigation(`/crews/${_id}/edit`, 'south')
+	async function deleteDocument() {
+		await deleteFunc()
+		onClose()
 	}
 
 	return (
 		<>
 			<HStack>
-				<Button variant={'default'} onClick={handleEditNavigation}>
+				<Button variant={'default'} onClick={() => handleNavigation(updateFormPath, 'south')}>
 					<MdEditSquare size={20} />
 				</Button>
 				<Button variant={'default'} alignContent={'center'} onClick={onOpen}>
@@ -69,7 +52,7 @@ function CrewUpdateDeleteButtons({ crew, setCrews }) {
 							<Button variant={'default'} mr={3} onClick={onClose}>
 								Cancel
 							</Button>
-							<Button variant={'negative'} onClick={() => deleteCrew()}>
+							<Button variant={'negative'} onClick={deleteDocument}>
 								Delete
 							</Button>
 						</ModalFooter>
@@ -80,4 +63,4 @@ function CrewUpdateDeleteButtons({ crew, setCrews }) {
 	)
 }
 
-export default CrewUpdateDeleteButtons
+export default UpdateDeleteButtons
