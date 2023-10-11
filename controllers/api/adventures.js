@@ -47,6 +47,23 @@ const getAdventureById = async (req, res) => {
 	}
 }
 
+const getAdventureByIdToUpdate = async (req, res) => {
+	try {
+		const { id } = req.params
+		const adventure = await Adventure.findOne({ _id: id, owner: req.user._id })
+		if (!adventure) {
+			return res.status(404).json({ error: 'Adventure not found' })
+		}
+		const missions = await Mission.find({ adventure: id })
+		if (!missions) {
+			return res.status(404).json({ error: 'Missions not found' })
+		}
+		res.status(200).json({ adventure, missions })
+	} catch (error) {
+		res.status(400).json({ error: error.message })
+	}
+}
+
 // Update an Adventure by ID
 const updateAdventureById = async (req, res) => {
 	try {
@@ -85,6 +102,7 @@ module.exports = {
 	getAllAdventures,
 	getAllAdventuresForAUser,
 	getAdventureById,
+	getAdventureByIdToUpdate,
 	updateAdventureById,
 	deleteAdventureById,
 }

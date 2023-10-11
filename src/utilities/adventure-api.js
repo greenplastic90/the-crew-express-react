@@ -13,6 +13,10 @@ export function getAdventureById(id) {
 	return sendRequest(`${BASE_URL}/${id}`)
 }
 
+export function getAdventureByIdToUpdate(id) {
+	return sendRequest(`${BASE_URL}/${id}/toUpdate`)
+}
+
 export function createAdventure(adventure) {
 	return sendRequest(BASE_URL, 'POST', adventure)
 }
