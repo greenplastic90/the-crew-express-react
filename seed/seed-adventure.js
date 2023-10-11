@@ -12,6 +12,7 @@ async function seedAdventureAndMissions() {
 		description: 'Official Adventure',
 		owner: '65193546861d4fa8f9642894',
 		official: true,
+		public: true,
 	})
 
 	try {
