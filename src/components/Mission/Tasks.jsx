@@ -12,7 +12,7 @@ function Tasks({ tasks }) {
 						cursor={'pointer'}
 						w='30px'
 						h='50px'
-						bg='brand.blueDark'
+						bg='brand.blueYale.500'
 						border='2px solid white'
 						borderRadius='md'>
 						<Center h='100%'>
