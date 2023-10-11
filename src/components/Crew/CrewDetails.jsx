@@ -1,6 +1,6 @@
 import { Button, Heading, Stack } from '@chakra-ui/react'
 import React from 'react'
-import CrewNavButtons from './CrewNavButtons'
+import CrewUpdateDeleteButtons from './CrewUpdateDeleteButtons'
 import Memebers from '../../pages/Crews/Memebers'
 import ElementCard from '../Miscellaneous/ElementCard'
 import Attempts from '../Mission/Attempts'
@@ -34,7 +34,7 @@ function CrewDetails({ crew, setCrews }) {
 					<Button colorScheme={'brand.blueYale'} w={'full'} onClick={handleMissionNavigation}>
 						Deploy
 					</Button>
-					<CrewNavButtons crew={crew} setCrews={setCrews} />
+					<CrewUpdateDeleteButtons crew={crew} setCrews={setCrews} />
 				</Stack>
 			</Stack>
 		</ElementCard>

@@ -17,7 +17,8 @@ import { useNavigation } from '../Context/NavigationContext'
 import { MdDeleteForever, MdEditSquare } from 'react-icons/md'
 import ElementCard from '../Miscellaneous/ElementCard'
 import { parseBoldText } from '../../utilities/miscellaneous'
-function CrewNavButtons({ crew, setCrews }) {
+
+function CrewUpdateDeleteButtons({ crew, setCrews }) {
 	const { isOpen, onOpen, onClose } = useDisclosure()
 
 	const { handleNavigation } = useNavigation()
@@ -83,4 +84,4 @@ function CrewNavButtons({ crew, setCrews }) {
 	)
 }
 
-export default CrewNavButtons
+export default CrewUpdateDeleteButtons
