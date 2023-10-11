@@ -1,7 +1,7 @@
 import { Box, Divider, HStack, Switch } from '@chakra-ui/react'
 import React, { forwardRef } from 'react'
 import ElementCard from '../Miscellaneous/ElementCard'
-import { MdPeopleAlt, MdPerson, MdLogout, MdCamera } from 'react-icons/md'
+import { MdPeopleAlt, MdPerson, MdLogout, MdCamera, MdViewList } from 'react-icons/md'
 import MenuItem from './MenuItem'
 import MenuItemsWrapper from './MenuItemsWrapper'
 
@@ -32,6 +32,12 @@ function DropDownMenu(
 						text={'My Crews'}
 						icon={<MdPeopleAlt size={30} />}
 						func={() => handleNavigation('/crews')}
+					/>
+					{/* Browse Adventures */}
+					<MenuItem
+						text={'Adventures'}
+						icon={<MdViewList size={30} />}
+						func={() => handleNavigation('/adventures')}
 					/>
 				</MenuItemsWrapper>
 				<Divider />
