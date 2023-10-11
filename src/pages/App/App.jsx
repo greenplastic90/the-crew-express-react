@@ -13,6 +13,8 @@ import PageWrapper from '../../components/Miscellaneous/PageWrapper'
 import Adventures from '../Adventures/Adventures'
 import AdventurePreview from '../Adventures/AdventurePreview'
 import NotFoundPage from '../NotFoundPage/NotFoundPage'
+import NewAdventure from '../Adventures/NewAdventure'
+import UpdateAdventure from '../Adventures/UpdateAdventure'
 
 function App() {
 	const [user, setUser] = useState(getUser())
@@ -26,6 +28,8 @@ function App() {
 						<Route path='/' element={<Navigate to='/adventures' />} />
 						<Route path='/adventures' element={<Adventures />} />
 						<Route path='/adventures/:adventureId/preview' element={<AdventurePreview />} />
+						<Route path='/adventures/new' element={<NewAdventure />} />
+						<Route path='/adventures/:adventureId/edit' element={<UpdateAdventure />} />
 						<Route path='/crews' element={<Crews />} />
 						<Route path='/crews/new' element={<NewCrew />} />
 						<Route path='/crews/:crewId/edit' element={<UpdateCrew />} />
