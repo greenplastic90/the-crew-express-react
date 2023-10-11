@@ -7,10 +7,10 @@ function AdjacentMissions({ adjacentMissions, crewId }) {
 	const { handleNavigation } = useNavigation()
 
 	function handleNextNavigation() {
-		handleNavigation(`/mission/${adjacentMissions.nextMissionTracker}`, 'north-east')
+		handleNavigation(`/missions/${adjacentMissions.nextMissionTracker}`, 'north-east')
 	}
 	function handlePreviousNavigation() {
-		handleNavigation(`/mission/${adjacentMissions.prevMissionTracker}`, 'south-west')
+		handleNavigation(`/missions/${adjacentMissions.prevMissionTracker}`, 'south-west')
 	}
 	function handleCrewNavigations() {
 		handleNavigation(`/crews/${crewId}`, 'south')

@@ -10,7 +10,7 @@ function MissionThumbNail({ mission, tracker }) {
 	const { handleNavigation } = useNavigation()
 
 	function handleNavigateToMission() {
-		handleNavigation(`/mission/${tracker._id}`, 'north-east')
+		handleNavigation(`/missions/${tracker._id}`, 'north-east')
 	}
 	return (
 		<ElementCard>
