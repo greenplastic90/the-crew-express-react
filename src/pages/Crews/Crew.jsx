@@ -68,8 +68,7 @@ function Crew() {
 			<ElementCard>
 				<Button
 					onClick={() => setHideCompleted(!hideCompleted)}
-					colorScheme={hideCompleted ? 'brand.platinum' : 'brand.silver'}
-					color={'black'}>
+					variant={hideCompleted ? 'default' : 'advance'}>
 					{hideCompleted ? 'Show All Missions' : 'Hide Completed Missions'}
 				</Button>
 			</ElementCard>

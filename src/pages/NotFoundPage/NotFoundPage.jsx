@@ -8,7 +8,9 @@ function NotFoundPage() {
 	return (
 		<ElementCard>
 			<Heading>Page Not Found</Heading>
-			<Button onClick={() => handleNavigation('/', 'south')}>Back to Home</Button>
+			<Button variant={'default'} onClick={() => handleNavigation('/', 'south')}>
+				Back to Home
+			</Button>
 		</ElementCard>
 	)
 }

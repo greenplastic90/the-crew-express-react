@@ -134,11 +134,7 @@ function CrewForm() {
 							))}
 							{crew.memberNames.length < 5 && (
 								<>
-									<Button
-										p={6}
-										onClick={addMemberInput}
-										isDisabled={isLoading}
-										colorScheme='brand.blueYale'>
+									<Button p={6} onClick={addMemberInput} isDisabled={isLoading} variant={'advance'}>
 										Add Member
 									</Button>
 								</>
@@ -146,7 +142,7 @@ function CrewForm() {
 						</Stack>
 					</FormControl>
 				</FormWrapper>
-				<Button type='submit' isDisabled={isLoading} colorScheme='brand.greenPine'>
+				<Button type='submit' isDisabled={isLoading} variant={'confirm'}>
 					Done
 				</Button>
 			</ElementCard>

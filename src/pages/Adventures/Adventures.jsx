@@ -8,7 +8,9 @@ function Adventures() {
 	const { handleNavigation } = useNavigation()
 	return (
 		<Stack>
-			<Button onClick={() => handleNavigation('/adventures/new', 'north')}>Create Adventure</Button>
+			<Button variant={'advance'} onClick={() => handleNavigation('/adventures/new', 'north')}>
+				Create Adventure
+			</Button>
 			<AdventuresDisplay />
 		</Stack>
 	)

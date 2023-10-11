@@ -47,14 +47,10 @@ function CrewUpdateDeleteButtons({ crew, setCrews }) {
 	return (
 		<>
 			<HStack>
-				<Button colorScheme='brand.platinum' color={'black'} onClick={handleEditNavigation}>
+				<Button variant={'default'} onClick={handleEditNavigation}>
 					<MdEditSquare size={20} />
 				</Button>
-				<Button
-					alignContent={'center'}
-					onClick={onOpen}
-					colorScheme='brand.platinum'
-					color={'black'}>
+				<Button variant={'default'} alignContent={'center'} onClick={onOpen}>
 					<MdDeleteForever size={24} />
 				</Button>
 			</HStack>

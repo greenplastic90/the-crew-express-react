@@ -19,21 +19,21 @@ function AdjacentMissions({ adjacentMissions, crewId }) {
 		<HStack justify={'space-between'}>
 			<HStack>
 				<Button
-					colorScheme='brand.platinum'
+					variant={'default'}
 					color={'black'}
 					isDisabled={!adjacentMissions.prevMissionTracker}
 					onClick={handlePreviousNavigation}>
 					<MdArrowBack size={25} />
 				</Button>
 				<Button
-					colorScheme='brand.platinum'
+					variant={'default'}
 					color={'black'}
 					isDisabled={!adjacentMissions.nextMissionTracker}
 					onClick={handleNextNavigation}>
 					<MdArrowForward size={25} />
 				</Button>
 			</HStack>
-			<Button colorScheme='brand.platinum' color={'black'} onClick={handleCrewNavigations}>
+			<Button variant={'default'} color={'black'} onClick={handleCrewNavigations}>
 				Missions
 			</Button>
 		</HStack>

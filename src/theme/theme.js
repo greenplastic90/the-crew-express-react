@@ -176,6 +176,53 @@ const components = {
 				height: '20px',
 				width: '50px',
 				bg: colors.brand.platinum[500],
+				color: 'black',
+				_hover: {
+					bg: colors.brand.platinum[600],
+				},
+				_active: {
+					bg: colors.brand.platinum[700],
+				},
+			},
+			default: {
+				bg: colors.brand.platinum[500],
+				color: 'black',
+				_hover: {
+					bg: colors.brand.platinum[600],
+				},
+				_active: {
+					bg: colors.brand.platinum[700],
+				},
+			},
+			advance: {
+				bg: colors.brand.blueYale[500],
+				color: 'white',
+				_hover: {
+					bg: colors.brand.blueYale[600],
+				},
+				_active: {
+					bg: colors.brand.blueYale[700],
+				},
+			},
+			confirm: {
+				bg: colors.brand.greenPine[500],
+				color: 'white',
+				_hover: {
+					bg: colors.brand.greenPine[600],
+				},
+				_active: {
+					bg: colors.brand.greenPine[700],
+				},
+			},
+			negative: {
+				bg: colors.brand.brown[500],
+				color: 'white',
+				_hover: {
+					bg: colors.brand.brown[600],
+				},
+				_active: {
+					bg: colors.brand.brown[700],
+				},
 			},
 		},
 	},
