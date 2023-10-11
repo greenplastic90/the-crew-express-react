@@ -125,7 +125,7 @@ const components = {
 				fontFamily: 'Oswald, sans-serif',
 				fontSize: ['3xl', '4xl'],
 				letterSpacing: '5px',
-				background: `linear-gradient(to bottom, ${'black'}, ${'gray'})`,
+				background: `linear-gradient(to bottom, ${colors.brand.blueYale[800]}, ${colors.brand.blueYale[300]})`,
 				backgroundClip: 'text',
 				color: 'transparent',
 				position: 'absolute',
