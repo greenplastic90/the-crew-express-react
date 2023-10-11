@@ -47,6 +47,7 @@ const getAdventureById = async (req, res) => {
 	}
 }
 
+// Get a single Adventure by ID to be updated
 const getAdventureByIdToUpdate = async (req, res) => {
 	try {
 		const { id } = req.params
