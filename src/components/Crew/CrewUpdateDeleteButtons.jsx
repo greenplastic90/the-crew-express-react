@@ -66,10 +66,10 @@ function CrewUpdateDeleteButtons({ crew, setCrews }) {
 						</ModalBody>
 
 						<ModalFooter>
-							<Button colorScheme='brand.platinum' color={'black'} mr={3} onClick={onClose}>
+							<Button variant={'default'} mr={3} onClick={onClose}>
 								Cancel
 							</Button>
-							<Button colorScheme='brand.brown' onClick={() => deleteCrew()}>
+							<Button variant={'negative'} onClick={() => deleteCrew()}>
 								Delete
 							</Button>
 						</ModalFooter>

@@ -20,6 +20,11 @@ function AdventureDetails({ adventure, showPreviewButton = false }) {
 						<Text color={'brand.brown.500'}>{owner.username}</Text>
 					</HStack>
 				)}
+				<HStack>
+					<Button variant={'default'} onClick={() => handleNavigation(`/adventures/${_id}/edit`)}>
+						<MdEditSquare size={20} />
+					</Button>
+				</HStack>
 				<Text variant={'description'}>{parseBoldText(description)}</Text>
 				<HStack>
 					{showPreviewButton && (
@@ -35,10 +40,6 @@ function AdventureDetails({ adventure, showPreviewButton = false }) {
 						w={'100%'}
 						onClick={() => handleNavigation('/crews/new', 'north', { adventureId: _id })}>
 						Create Crew
-					</Button>
-
-					<Button variant={'default'}>
-						<MdEditSquare size={50} />
 					</Button>
 				</HStack>
 			</Stack>
