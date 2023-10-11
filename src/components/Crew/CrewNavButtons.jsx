@@ -40,7 +40,7 @@ function CrewNavButtons({ crew, setCrews }) {
 		}
 	}
 	function handleEditNavigation() {
-		handleNavigation(`/crew/${_id}/edit`, 'south')
+		handleNavigation(`/crews/${_id}/edit`, 'south')
 	}
 
 	return (

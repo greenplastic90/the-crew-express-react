@@ -27,9 +27,9 @@ function App() {
 						<Route path='/adventures' element={<Adventures />} />
 						<Route path='/adventures/:adventureId/preview' element={<AdventurePreview />} />
 						<Route path='/crews' element={<Crews />} />
-						<Route path='/crew/new' element={<NewCrew />} />
-						<Route path='/crew/:crewId/edit' element={<UpdateCrew />} />
-						<Route path='/crew/:crewId' element={<Crew />} />
+						<Route path='/crews/new' element={<NewCrew />} />
+						<Route path='/crews/:crewId/edit' element={<UpdateCrew />} />
+						<Route path='/crews/:crewId' element={<Crew />} />
 						<Route path='/mission/:missionTrackerId' element={<Mission />} />
 						{/* This will handle undefined routes */}
 						<Route path='*' element={<NotFoundPage />} />

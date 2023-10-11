@@ -11,7 +11,7 @@ function CrewDetails({ crew, setCrews }) {
 	const { name, memberNames, startDate, finishDate, totalAttempts, adventure } = crew
 	const { handleNavigation } = useNavigation()
 	function handleMissionNavigation() {
-		handleNavigation(`/crew/${crew._id}`, 'east')
+		handleNavigation(`/crews/${crew._id}`, 'east')
 	}
 	return (
 		<ElementCard>

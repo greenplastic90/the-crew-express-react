@@ -29,7 +29,7 @@ function AdventureDetails({ adventure, showPreviewButton = false }) {
 					)}
 					<Button
 						w={'100%'}
-						onClick={() => handleNavigation('/crew/new', 'north', { adventureId: _id })}>
+						onClick={() => handleNavigation('/crews/new', 'north', { adventureId: _id })}>
 						Create Crew
 					</Button>
 				</HStack>

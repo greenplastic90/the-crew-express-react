@@ -13,7 +13,7 @@ function AdjacentMissions({ adjacentMissions, crewId }) {
 		handleNavigation(`/mission/${adjacentMissions.prevMissionTracker}`, 'south-west')
 	}
 	function handleCrewNavigations() {
-		handleNavigation(`/crew/${crewId}`, 'south')
+		handleNavigation(`/crews/${crewId}`, 'south')
 	}
 	return (
 		<HStack justify={'space-between'}>
