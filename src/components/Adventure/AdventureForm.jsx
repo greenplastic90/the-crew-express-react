@@ -7,9 +7,10 @@ import {
 	updateAdventure,
 } from '../../utilities/adventure-api'
 import { getUser } from '../../utilities/users-service'
-import { Button, FormControl, FormLabel, Input, Stack, Textarea } from '@chakra-ui/react'
+import { Button, Checkbox, FormControl, FormLabel, Input, Stack, Textarea } from '@chakra-ui/react'
 import ElementCard from '../Miscellaneous/ElementCard'
 import FormWrapper from '../Miscellaneous/FormWrapper'
+import { set } from 'mongoose'
 
 function AdventureForm() {
 	const [adventure, setAdventure] = useState({
@@ -92,6 +93,7 @@ function AdventureForm() {
 								required
 							/>
 						</FormControl>
+
 						<FormControl>
 							<FormLabel>Description</FormLabel>
 							<Textarea
@@ -101,6 +103,13 @@ function AdventureForm() {
 								required
 							/>
 						</FormControl>
+						<Checkbox
+							isChecked={adventure.public}
+							value={adventure.public}
+							onChange={() => setAdventure({ ...adventure, public: !adventure.public })}>
+							Make Public
+						</Checkbox>
+
 						<Button type='submit' variant={'confirm'}>
 							Done
 						</Button>

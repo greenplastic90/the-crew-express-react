@@ -147,7 +147,7 @@ const components = {
 	FormLabel: {
 		baseStyle: {
 			// styles for the FormLabel component
-			fontSize: 'lg',
+			fontSize: '2xl',
 			fontWeight: 'bold',
 			fontFamily: 'Roboto Slab, sans-serif',
 			color: 'brand.blueDark',
@@ -176,6 +176,36 @@ const components = {
 		},
 		defaultProps: {
 			variant: 'default',
+		},
+	},
+	Checkbox: {
+		variants: {
+			default: {
+				control: {
+					borderColor: colors.brand.grayDark,
+					bg: 'white',
+					_hover: {
+						bg: colors.brand.blueYale[600],
+						// borderColor: colors.brand.blueYale[400],
+					},
+					_checked: {
+						bg: colors.brand.blueYale[500],
+						// borderColor: colors.brand.blueYale[500],
+						color: 'white',
+					},
+					// _focus: {
+					// 	boxShadow: `0 0 0 2px ${colors.brand.blueYale[300]}`, // or customize it as per your preference
+					// },
+				},
+				icon: {
+					size: '1.25em',
+					color: 'white',
+				},
+			},
+		},
+		defaultProps: {
+			variant: 'default',
+			colorScheme: 'greenPine',
 		},
 	},
 
