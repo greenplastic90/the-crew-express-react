@@ -10,7 +10,6 @@ import { getUser } from '../../utilities/users-service'
 import { Button, Checkbox, FormControl, FormLabel, Input, Stack, Textarea } from '@chakra-ui/react'
 import ElementCard from '../Miscellaneous/ElementCard'
 import FormWrapper from '../Miscellaneous/FormWrapper'
-import { set } from 'mongoose'
 
 function AdventureForm() {
 	const [adventure, setAdventure] = useState({
@@ -46,24 +45,12 @@ function AdventureForm() {
 		setIsLoading(false)
 	}, [adventureId])
 
-	async function handleCreate(evt) {
-		setIsLoading(true)
+	async function handleCreateAndUpdate(evt) {
 		evt.preventDefault()
 		try {
-			const res = await createAdventure(adventure)
-			if (res.ok) {
-				// const { crew } = await res.json()
-				handleNavigation('/adventures', 'south-east')
-			}
-		} catch (error) {
-			console.log(error)
-		}
-	}
-
-	async function handleUpdate(evt) {
-		evt.preventDefault()
-		try {
-			const res = await updateAdventure(adventure, adventureId)
+			const res = adventureId
+				? await updateAdventure(adventure, adventureId)
+				: await createAdventure(adventure)
 			if (res.ok) {
 				// const { crew } = await res.json()
 
@@ -81,7 +68,7 @@ function AdventureForm() {
 	return (
 		<Stack>
 			<ElementCard>
-				<form autoComplete='off' onSubmit={adventureId ? handleUpdate : handleCreate}>
+				<form autoComplete='off' onSubmit={handleCreateAndUpdate}>
 					<FormWrapper>
 						<FormControl>
 							<FormLabel>Adventure Name</FormLabel>
