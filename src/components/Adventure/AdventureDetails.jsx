@@ -14,17 +14,19 @@ function AdventureDetails({ adventure, showPreviewButton = false }) {
 
 	return (
 		<ElementCard>
-			<Stack spacing={8}>
-				<Heading variant={'adventure'}>{name}</Heading>
-				{!official && (
-					<HStack>
-						<Text>Author:</Text>
-						<Text color={'brand.brown.500'}>{owner.username}</Text>
-					</HStack>
-				)}
-
-				<Text variant={'description'}>{parseBoldText(description)}</Text>
+			<Stack flexGrow={1} justifyContent={'space-between'} spacing={8}>
 				<Stack>
+					<Heading variant={'adventure'}>{name}</Heading>
+					{!official && (
+						<HStack>
+							<Text>Author:</Text>
+							<Text color={'brand.brown.500'}>{owner.username}</Text>
+						</HStack>
+					)}
+
+					<Text variant={'description'}>{parseBoldText(description)}</Text>
+				</Stack>
+				<Stack justifyItems={'end'}>
 					{isOwner && (
 						<Box alignSelf={'end'}>
 							<UpdateDeleteButtons
