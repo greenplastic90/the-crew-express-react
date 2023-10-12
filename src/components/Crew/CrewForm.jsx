@@ -61,24 +61,14 @@ function CrewForm() {
 		setCrew({ ...crew, memberNames: newMembersInput })
 	}
 
-	async function handleCreate(evt) {
+	async function handleCreateAndUpdate(evt) {
 		setIsLoading(true)
 		evt.preventDefault()
 		try {
-			const res = await createCrew({ ...crew, adventure: location.state.adventureId })
-			if (res.ok) {
-				// const { crew } = await res.json()
-				handleNavigation('/crews', 'south-east')
-			}
-		} catch (error) {
-			console.log(error)
-		}
-	}
+			const res = crewId
+				? await updateCrew(crew, crewId)
+				: await createCrew({ ...crew, adventure: location.state.adventureId })
 
-	async function handleUpdate(evt) {
-		evt.preventDefault()
-		try {
-			const res = await updateCrew(crew, crewId)
 			if (res.ok) {
 				// const { crew } = await res.json()
 
@@ -90,7 +80,7 @@ function CrewForm() {
 	}
 
 	return (
-		<form autoComplete='off' onSubmit={crewId ? handleUpdate : handleCreate}>
+		<form autoComplete='off' onSubmit={handleCreateAndUpdate}>
 			<ElementCard>
 				<FormWrapper>
 					<FormControl>
