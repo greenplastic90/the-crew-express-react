@@ -95,12 +95,15 @@ function AdventureForm() {
 						<FormControl>
 							<FormLabel>Description</FormLabel>
 							<Textarea
-								name='name'
+								name='description'
 								value={adventure.description}
 								onChange={handleTextInput}
 								required
 							/>
 						</FormControl>
+						<Button type='submit' variant={'confirm'}>
+							Done
+						</Button>
 					</FormWrapper>
 				</form>
 				<Button variant={'advance'}>Add/Update Missions</Button>
