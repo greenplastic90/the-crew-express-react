@@ -6,6 +6,7 @@ module.exports = {
 	create,
 	login,
 	checkToken,
+	deleteUser,
 }
 
 function checkToken(req, res) {
@@ -67,4 +68,23 @@ function createJWT(user) {
 		process.env.SECRET,
 		{ expiresIn: '7d' }
 	)
+}
+
+async function deleteUser(req, res) {
+	try {
+		// Find the user by the ID passed in the request
+		const user = await User.findById(req.params.id)
+
+		// If user not found, send a 404 response
+		if (!user) return res.status(404).json({ error: 'User not found' })
+
+		// Remove the user
+		await user.remove()
+
+		// Send a successful response
+		res.status(200).json({ message: 'User deleted successfully' })
+	} catch (err) {
+		console.error(err)
+		res.status(500).json({ error: 'Internal Server Error' })
+	}
 }

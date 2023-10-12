@@ -1,6 +1,8 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const bcrypt = require('bcrypt')
+const Adventure = require('./adventure')
+const Crew = require('./crew')
 
 const SALT_ROUNDS = 6
 
@@ -37,6 +39,14 @@ userSchema.pre('save', async function (next) {
 	if (!this.isModified('password')) return next()
 	// the password is either new, or being updated
 	this.password = await bcrypt.hash(this.password, SALT_ROUNDS)
+})
+
+userSchema.pre('remove', async function (next) {
+	// Remove all Adventures that have this user as the owner
+	await Adventure.deleteMany({ owner: this._id })
+	// Remove all Crews that have this user
+	await Crew.deleteMany({ user: this._id })
+	next()
 })
 
 module.exports = mongoose.model('User', userSchema)

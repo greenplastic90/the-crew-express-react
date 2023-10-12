@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const Mission = require('./mission')
+const Crew = require('./crew')
 
 const adventureSchema = new mongoose.Schema(
 	{
@@ -31,7 +32,10 @@ const adventureSchema = new mongoose.Schema(
 )
 adventureSchema.pre('remove', async function (next) {
 	try {
-		await Mission.deleteMany({ adventure: this._id })
+		const missions = await Mission.find({ adventure: this._id })
+		await Promise.all(missions.map((mission) => mission.remove()))
+		const crews = await Crew.find({ adventure: this._id })
+		await Promise.all(crews.map((crew) => crew.remove()))
 		next()
 	} catch (error) {
 		next(error)

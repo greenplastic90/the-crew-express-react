@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const MissionTracker = require('./missionTracker')
 
 // Tile subdocument schema
 const TileSchema = new mongoose.Schema({
@@ -33,6 +34,12 @@ const MissionSchema = new mongoose.Schema({
 	description: {
 		type: String,
 	},
+})
+
+MissionSchema.pre('remove', async function (next) {
+	// Remove all MissionTracker documents that reference the removed Mission
+	await MissionTracker.deleteMany({ mission: this._id })
+	next()
 })
 
 module.exports = mongoose.model('Mission', MissionSchema)
