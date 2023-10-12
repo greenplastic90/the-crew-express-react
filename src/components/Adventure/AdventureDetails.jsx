@@ -6,7 +6,12 @@ import { parseBoldText } from '../../utilities/miscellaneous'
 import UpdateDeleteButtons from '../Miscellaneous/UpdateDeleteButtons'
 import { getUser } from '../../utilities/users-service'
 
-function AdventureDetails({ adventure, deleteAdventure, showPreviewButton = false }) {
+function AdventureDetails({
+	adventure,
+	deleteAdventure,
+	showOnlyMyAdventures,
+	showPreviewButton = false,
+}) {
 	const { _id, name, description, owner, official } = adventure
 	const { handleNavigation } = useNavigation()
 
@@ -27,7 +32,7 @@ function AdventureDetails({ adventure, deleteAdventure, showPreviewButton = fals
 					<Text variant={'description'}>{parseBoldText(description)}</Text>
 				</Stack>
 				<Stack justifyItems={'end'}>
-					{isOwner && (
+					{isOwner && showOnlyMyAdventures && (
 						<Box alignSelf={'end'}>
 							<UpdateDeleteButtons
 								name={name}

@@ -22,7 +22,7 @@ const getAllAdventures = async (req, res) => {
 }
 const getAllAdventuresForAUser = async (req, res) => {
 	try {
-		const adventures = await Adventure.find({ owner: req.user._id })
+		const adventures = await Adventure.find({ owner: req.user._id }).populate('owner')
 		res.status(200).json({ adventures })
 	} catch (error) {
 		res.status(400).json({ error: error.message })

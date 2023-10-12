@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from 'react'
-import { getAllAdventures } from '../../utilities/adventure-api'
-import { Stack, Text } from '@chakra-ui/react'
-import CustomSpinner from '../Miscellaneous/CustomSpinner'
+import React from 'react'
+
 import AdventureDetails from './AdventureDetails'
 import CustomGrid from '../Miscellaneous/CustomGrid'
 
-function AdventuresDisplay({ adventures, deleteAdventure }) {
+function AdventuresDisplay({ adventures, deleteAdventure, showOnlyMyAdventures }) {
 	return (
 		<CustomGrid>
 			{adventures.map((adventure) => (
@@ -14,6 +12,7 @@ function AdventuresDisplay({ adventures, deleteAdventure }) {
 					adventure={adventure}
 					deleteAdventure={deleteAdventure}
 					showPreviewButton={true}
+					showOnlyMyAdventures={showOnlyMyAdventures}
 				/>
 			))}
 		</CustomGrid>
