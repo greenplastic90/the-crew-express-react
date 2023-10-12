@@ -31,8 +31,8 @@ function AdventureForm() {
 			try {
 				const res = await getAdventureByIdToUpdate(adventureId)
 				const resJSON = await res.json()
-				const { adventure, missions } = resJSON
-				if (adventure && missions) {
+				const { adventure } = resJSON
+				if (adventure) {
 					setAdventure(adventure)
 				}
 			} catch (error) {

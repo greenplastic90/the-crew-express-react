@@ -55,11 +55,8 @@ const getAdventureByIdToUpdate = async (req, res) => {
 		if (!adventure) {
 			return res.status(404).json({ error: 'Adventure not found' })
 		}
-		const missions = await Mission.find({ adventure: id })
-		if (!missions) {
-			return res.status(404).json({ error: 'Missions not found' })
-		}
-		res.status(200).json({ adventure, missions })
+
+		res.status(200).json({ adventure })
 	} catch (error) {
 		res.status(400).json({ error: error.message })
 	}

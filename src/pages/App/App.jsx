@@ -35,6 +35,7 @@ function App() {
 						<Route path='/crews/:crewId/edit' element={<UpdateCrew />} />
 						<Route path='/crews/:crewId' element={<Crew />} />
 						<Route path='/missions/:missionTrackerId' element={<Mission />} />
+						<Route path='/missions/:missionTrackerId' element={<Mission />} />
 						{/* This will handle undefined routes */}
 						<Route path='*' element={<NotFoundPage />} />
 					</Routes>
