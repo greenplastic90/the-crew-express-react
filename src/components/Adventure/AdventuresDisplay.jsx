@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { getAllAdventures } from '../../utilities/adventure-api'
-import { Grid, Stack, Text } from '@chakra-ui/react'
+import { Stack, Text } from '@chakra-ui/react'
 import CustomSpinner from '../Miscellaneous/CustomSpinner'
 import AdventureDetails from './AdventureDetails'
+import CustomGrid from '../Miscellaneous/CustomGrid'
 
 function AdventuresDisplay() {
 	const [adventures, setAdventures] = useState([])
@@ -35,9 +36,7 @@ function AdventuresDisplay() {
 	return (
 		<Stack>
 			{!isLoading ? (
-				<Grid
-					templateColumns={['repeat(1, 1fr)', null, null, null, null, 'repeat(2, 1fr)']}
-					gap={2}>
+				<CustomGrid>
 					{adventures.map((adventure) => (
 						<AdventureDetails
 							key={adventure._id}
@@ -46,7 +45,7 @@ function AdventuresDisplay() {
 							showPreviewButton={true}
 						/>
 					))}
-				</Grid>
+				</CustomGrid>
 			) : (
 				<CustomSpinner />
 			)}

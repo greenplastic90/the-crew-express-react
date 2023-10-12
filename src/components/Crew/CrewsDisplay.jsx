@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { getAllCrews } from '../../utilities/crew-api'
 import CrewDetails from './CrewDetails'
-import { Grid, Stack, Text } from '@chakra-ui/react'
+import { Stack, Text } from '@chakra-ui/react'
 import CustomSpinner from '../Miscellaneous/CustomSpinner'
+import CustomGrid from '../Miscellaneous/CustomGrid'
 
 function CrewsDisplay() {
 	const [crews, setCrews] = useState([])
@@ -32,13 +33,11 @@ function CrewsDisplay() {
 	return (
 		<Stack>
 			{!isLoading ? (
-				<Grid
-					templateColumns={['repeat(1, 1fr)', null, null, null, null, 'repeat(2, 1fr)']}
-					gap={2}>
+				<CustomGrid>
 					{crews.map((crew) => (
 						<CrewDetails key={crew._id} crew={crew} setCrews={setCrews} />
 					))}
-				</Grid>
+				</CustomGrid>
 			) : (
 				<CustomSpinner />
 			)}
