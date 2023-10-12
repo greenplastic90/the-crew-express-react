@@ -18,7 +18,6 @@ function AdventureForm() {
 		description: '',
 		public: false,
 	})
-	const [isLoading, setIsLoading] = useState(true)
 
 	//* if adventureId is truthy, this page edits, else it creates
 	const { adventureId } = useParams()
@@ -26,7 +25,6 @@ function AdventureForm() {
 
 	useEffect(() => {
 		if (!adventureId) {
-			setIsLoading(false)
 			return
 		}
 		async function getAdventure() {
@@ -42,7 +40,6 @@ function AdventureForm() {
 			}
 		}
 		getAdventure()
-		setIsLoading(false)
 	}, [adventureId])
 
 	async function handleCreateAndUpdate(evt) {
@@ -51,6 +48,7 @@ function AdventureForm() {
 			const res = adventureId
 				? await updateAdventure(adventure, adventureId)
 				: await createAdventure(adventure)
+
 			if (res.ok) {
 				// const { crew } = await res.json()
 

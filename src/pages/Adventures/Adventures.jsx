@@ -31,7 +31,7 @@ function Adventures() {
 				const sortedAdventures = adventures.sort(
 					(a, b) => new Date(a.createdAt) - new Date(b.createdAt)
 				)
-				console.log('all', { sortedAdventures })
+
 				setAdventures(sortedAdventures)
 				setError('')
 			} else {
@@ -52,7 +52,7 @@ function Adventures() {
 				const sortedAdventures = adventures.sort(
 					(a, b) => new Date(b.createdAt) - new Date(a.createdAt)
 				)
-				console.log('My', { sortedAdventures })
+
 				setAdventures(sortedAdventures)
 				setError('')
 			} else {
