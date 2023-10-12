@@ -167,6 +167,18 @@ const components = {
 			variant: 'default',
 		},
 	},
+	Textarea: {
+		variants: {
+			default: {
+				border: `2px solid ${colors.brand.grayDark}`,
+				bg: 'white',
+			},
+		},
+		defaultProps: {
+			variant: 'default',
+		},
+	},
+
 	Button: {
 		baseStyle: {
 			size: 'sm',
