@@ -1,4 +1,4 @@
-import { Button, HStack, Heading, Stack, Text } from '@chakra-ui/react'
+import { Box, Button, HStack, Heading, Stack, Text } from '@chakra-ui/react'
 import React from 'react'
 import ElementCard from '../Miscellaneous/ElementCard'
 import { useNavigation } from '../Context/NavigationContext'
@@ -25,23 +25,24 @@ function AdventureDetails({ adventure, showPreviewButton = false }) {
 
 				<Text variant={'description'}>{parseBoldText(description)}</Text>
 				<Stack>
-					<HStack>
-						{showPreviewButton && (
-							<Button
-								variant={'default'}
-								w={'100%'}
-								onClick={() => handleNavigation(`/adventures/${_id}/preview`, 'south')}>
-								Preview
-							</Button>
-						)}
-						{isOwner && (
+					{isOwner && (
+						<Box alignSelf={'end'}>
 							<UpdateDeleteButtons
 								name={name}
 								updateFormPath={`/adventures/${_id}/edit`}
 								deleteFunc={() => console.log('Not implemented yet')}
 							/>
-						)}
-					</HStack>
+						</Box>
+					)}
+					{showPreviewButton && (
+						<Button
+							variant={'default'}
+							w={'100%'}
+							onClick={() => handleNavigation(`/adventures/${_id}/preview`, 'south')}>
+							Preview
+						</Button>
+					)}
+
 					<Button
 						variant={'advance'}
 						w={'100%'}
