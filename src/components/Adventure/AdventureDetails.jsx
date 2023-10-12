@@ -5,28 +5,12 @@ import { useNavigation } from '../Context/NavigationContext'
 import { parseBoldText } from '../../utilities/miscellaneous'
 import UpdateDeleteButtons from '../Miscellaneous/UpdateDeleteButtons'
 import { getUser } from '../../utilities/users-service'
-import { deleteAdventureById } from '../../utilities/adventure-api'
 
-function AdventureDetails({ adventure, setAdventures, showPreviewButton = false }) {
+function AdventureDetails({ adventure, deleteAdventure, showPreviewButton = false }) {
 	const { _id, name, description, owner, official } = adventure
 	const { handleNavigation } = useNavigation()
 
 	const isOwner = owner._id === getUser()._id
-
-	async function deleteAdventure() {
-		try {
-			const res = await deleteAdventureById(_id)
-			const { message } = await res.json()
-
-			if (message) {
-				setAdventures((adventures) => {
-					return adventures.filter((a) => a._id !== _id)
-				})
-			}
-		} catch (error) {
-			console.log(error)
-		}
-	}
 
 	return (
 		<ElementCard>
@@ -48,7 +32,7 @@ function AdventureDetails({ adventure, setAdventures, showPreviewButton = false 
 							<UpdateDeleteButtons
 								name={name}
 								updateFormPath={`/adventures/${_id}/edit`}
-								deleteFunc={deleteAdventure}
+								deleteFunc={() => deleteAdventure(_id)}
 							/>
 						</Box>
 					)}
