@@ -11,10 +11,12 @@ import {
 	Textarea,
 } from '@chakra-ui/react'
 import TaskToken from './TaskToken'
+import TaskTokenRadio from './TaskTokenRadios'
+import TaskTokenRadios from './TaskTokenRadios'
 
 function MissionForm({ missionData }) {
 	const [mission, setMission] = useState(missionData)
-	const taskTokens = ['1', '2', '3', '4', '5', '>', '>>', '>>>', '>>>>', 'Ω']
+
 	return (
 		<ElementCard>
 			<FormWrapper>
@@ -32,11 +34,8 @@ function MissionForm({ missionData }) {
 				</FormControl>
 				<FormControl>
 					<FormLabel>Task Tokens</FormLabel>
-					{taskTokens.map((token) => (
-						<Radio key={token}>
-							<TaskToken value={token} />
-						</Radio>
-					))}
+
+					<TaskTokenRadios />
 				</FormControl>
 				<FormControl>
 					<FormLabel>Mission Description</FormLabel>
