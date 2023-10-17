@@ -178,6 +178,19 @@ const components = {
 			variant: 'default',
 		},
 	},
+	NumberInput: {
+		variants: {
+			default: {
+				field: {
+					border: `2px solid ${colors.brand.grayDark}`,
+					bg: 'white',
+				},
+			},
+		},
+		defaultProps: {
+			variant: 'default',
+		},
+	},
 	Checkbox: {
 		variants: {
 			default: {
