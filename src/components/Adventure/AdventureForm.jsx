@@ -122,7 +122,7 @@ function AdventureForm() {
 				</VStack>
 			</ElementCard>
 			{missions.map((mission) => (
-				<MissionForm key={mission._id} mission={mission} />
+				<MissionForm key={mission._id} missionData={mission} />
 			))}
 		</Stack>
 	)
