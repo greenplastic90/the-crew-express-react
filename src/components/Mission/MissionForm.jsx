@@ -19,6 +19,12 @@ function MissionForm({ mission }) {
 						<NumberInputField />
 					</NumberInput>
 				</FormControl>
+				<FormControl>
+					<FormLabel>Number of Tasks</FormLabel>
+					<NumberInput>
+						<NumberInputField />
+					</NumberInput>
+				</FormControl>
 			</FormWrapper>
 		</ElementCard>
 	)
