@@ -7,12 +7,10 @@ import {
 	FormLabel,
 	NumberInput,
 	NumberInputField,
-	Radio,
 	Textarea,
 } from '@chakra-ui/react'
-import TaskToken from './TaskToken'
-import TaskTokenRadio from './TaskTokenRadios'
-import TaskTokenRadios from './TaskTokenRadios'
+
+import TaskTokenCheckboxs from './TaskTokenCheckboxs'
 
 function MissionForm({ missionData }) {
 	const [mission, setMission] = useState(missionData)
@@ -34,12 +32,11 @@ function MissionForm({ missionData }) {
 				</FormControl>
 				<FormControl>
 					<FormLabel>Task Tokens</FormLabel>
-
-					<TaskTokenRadios />
+					<TaskTokenCheckboxs taskTokens={mission.taskTokens} />
 				</FormControl>
 				<FormControl>
 					<FormLabel>Mission Description</FormLabel>
-					<Textarea />
+					<Textarea value={mission.description} />
 				</FormControl>
 				<FormControl>
 					<Checkbox isChecked={mission.fivePlayerRule} value={mission.fivePlayerRule}>

@@ -198,16 +198,16 @@ const components = {
 					borderColor: colors.brand.grayDark,
 					bg: 'white',
 					_hover: {
-						bg: colors.brand.greenPine[600],
-						// borderColor: colors.brand.greenPine[400],
+						bg: colors.brand.blueYale[600],
+						// borderColor: colors.brand.blueYale[400],
 					},
 					_checked: {
-						bg: colors.brand.greenPine[500],
-						// borderColor: colors.brand.greenPine[500],
+						bg: colors.brand.blueYale[500],
+						// borderColor: colors.brand.blueYale[500],
 						color: 'white',
 					},
 					// _focus: {
-					// 	boxShadow: `0 0 0 2px ${colors.brand.greenPine[300]}`, // or customize it as per your preference
+					// 	boxShadow: `0 0 0 2px ${colors.brand.blueYale[300]}`, // or customize it as per your preference
 					// },
 				},
 				icon: {
@@ -218,7 +218,7 @@ const components = {
 		},
 		defaultProps: {
 			variant: 'default',
-			colorScheme: 'greenPine',
+			colorScheme: 'blueYale',
 		},
 	},
 	Radio: {
