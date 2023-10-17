@@ -221,6 +221,32 @@ const components = {
 			colorScheme: 'greenPine',
 		},
 	},
+	Radio: {
+		variants: {
+			default: {
+				control: {
+					borderColor: colors.brand.grayDark,
+					bg: 'white',
+					_hover: {
+						bg: colors.brand.greenPine[600],
+					},
+					_checked: {
+						bg: colors.brand.greenPine[500],
+						color: 'white',
+					},
+				},
+
+				icon: {
+					size: '1.25em',
+					color: 'white',
+				},
+			},
+		},
+		defaultProps: {
+			variant: 'default',
+			colorScheme: 'greenPine',
+		},
+	},
 
 	Button: {
 		baseStyle: {
