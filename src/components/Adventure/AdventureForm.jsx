@@ -7,9 +7,20 @@ import {
 	updateAdventure,
 } from '../../utilities/adventure-api'
 import { getUser } from '../../utilities/users-service'
-import { Button, Checkbox, FormControl, FormLabel, Input, Stack, Textarea } from '@chakra-ui/react'
+import {
+	Button,
+	Checkbox,
+	FormControl,
+	FormLabel,
+	Heading,
+	Input,
+	Stack,
+	Textarea,
+	VStack,
+} from '@chakra-ui/react'
 import ElementCard from '../Miscellaneous/ElementCard'
 import FormWrapper from '../Miscellaneous/FormWrapper'
+import MissionForm from '../Mission/MissionForm'
 
 function AdventureForm() {
 	const [adventure, setAdventure] = useState({
@@ -18,6 +29,7 @@ function AdventureForm() {
 		description: '',
 		public: false,
 	})
+	const [missions, setMissions] = useState([])
 
 	//* if adventureId is truthy, this page edits, else it creates
 	const { adventureId } = useParams()
@@ -34,6 +46,7 @@ function AdventureForm() {
 				const { adventure, missions } = resJSON
 				if ((adventure, missions)) {
 					setAdventure(adventure)
+					setMissions(missions)
 				}
 			} catch (error) {
 				console.log(error)
@@ -102,6 +115,15 @@ function AdventureForm() {
 				</form>
 				<Button variant={'advance'}>Add/Update Missions</Button>
 			</ElementCard>
+
+			<ElementCard>
+				<VStack>
+					<Heading>Missions</Heading>
+				</VStack>
+			</ElementCard>
+			{missions.map((mission) => (
+				<MissionForm key={mission._id} mission={mission} />
+			))}
 		</Stack>
 	)
 }
