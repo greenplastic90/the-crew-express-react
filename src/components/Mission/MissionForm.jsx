@@ -11,12 +11,14 @@ import {
 } from '@chakra-ui/react'
 
 import TaskTokenCheckboxs from './TaskTokenCheckboxs'
+import Pentagon from './Pentagon'
 
-function MissionForm({ missionData }) {
+function MissionForm({ missionData, missionOrder }) {
 	const [mission, setMission] = useState(missionData)
 
 	return (
 		<ElementCard>
+			<Pentagon number={missionOrder} />
 			<FormWrapper>
 				<FormControl>
 					<FormLabel>Mission Number</FormLabel>
