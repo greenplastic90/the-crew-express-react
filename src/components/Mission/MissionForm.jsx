@@ -29,6 +29,29 @@ function MissionForm({ missionData }) {
 		setMission({ ...mission, tasks: number })
 	}
 
+	function handleAddAndRemoveTaskToken(value, isChecked) {
+		const TOKEN_ORDER = ['1', '2', '3', '4', '5', '>', '>>', '>>>', '>>>>', 'Ω']
+
+		function sortTokensByOrder(a, b) {
+			return TOKEN_ORDER.indexOf(a.value) - TOKEN_ORDER.indexOf(b.value)
+		}
+
+		let updatedTaskTokens
+
+		if (isChecked) {
+			// Add to the array if checked
+			updatedTaskTokens = [...mission.taskTokens, { value }]
+		} else {
+			// Remove from the array if unchecked
+			updatedTaskTokens = mission.taskTokens.filter((token) => token.value !== value)
+		}
+
+		// Sort taskTokens based on TOKEN_ORDER
+		updatedTaskTokens.sort(sortTokensByOrder)
+
+		setMission({ ...mission, taskTokens: updatedTaskTokens })
+	}
+
 	return (
 		<ElementCard>
 			<FormWrapper>
@@ -65,7 +88,10 @@ function MissionForm({ missionData }) {
 				</FormControl>
 				<FormControl>
 					<FormLabel>Task Tokens</FormLabel>
-					<TaskTokenCheckboxs taskTokens={mission.taskTokens} />
+					<TaskTokenCheckboxs
+						taskTokens={mission.taskTokens}
+						handleAddAndRemoveTaskToken={handleAddAndRemoveTaskToken}
+					/>
 				</FormControl>
 			</FormWrapper>
 		</ElementCard>
