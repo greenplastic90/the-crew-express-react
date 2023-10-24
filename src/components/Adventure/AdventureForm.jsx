@@ -72,8 +72,55 @@ function AdventureForm() {
 		}
 	}
 
-	function handleTextInput(evt) {
+	function handleAdventureTextInput(evt) {
 		setAdventure({ ...adventure, [evt.target.name]: evt.target.value })
+	}
+
+	function handleMissionTextInput(missionId, evt) {
+		const updatedMissions = missions.map((mission) =>
+			mission._id === missionId ? { ...mission, [evt.target.name]: evt.target.value } : mission
+		)
+		setMissions(updatedMissions)
+	}
+
+	function handleMissionTasksChange(missionId, num) {
+		const number = num <= 0 ? 0 : num
+		const updatedMissions = missions.map((mission) =>
+			mission._id === missionId ? { ...mission, tasks: number } : mission
+		)
+		setMissions(updatedMissions)
+	}
+
+	function handleMissionAddAndRemoveTaskToken(missionId, value, isChecked) {
+		const TOKEN_ORDER = ['1', '2', '3', '4', '5', '>', '>>', '>>>', '>>>>', 'Ω']
+
+		function sortTokensByOrder(a, b) {
+			return TOKEN_ORDER.indexOf(a.value) - TOKEN_ORDER.indexOf(b.value)
+		}
+
+		// Find the mission that needs updating
+		const missionToUpdate = missions.find((mission) => mission._id === missionId)
+		if (!missionToUpdate) return
+
+		let updatedTaskTokens
+
+		if (isChecked) {
+			// Add to the array if checked
+			updatedTaskTokens = [...missionToUpdate.taskTokens, { value }]
+		} else {
+			// Remove from the array if unchecked
+			updatedTaskTokens = missionToUpdate.taskTokens.filter((token) => token.value !== value)
+		}
+
+		// Sort taskTokens based on TOKEN_ORDER
+		updatedTaskTokens.sort(sortTokensByOrder)
+
+		// Replace the mission's taskTokens in the missions array
+		const updatedMissions = missions.map((mission) =>
+			mission._id === missionId ? { ...mission, taskTokens: updatedTaskTokens } : mission
+		)
+
+		setMissions(updatedMissions)
 	}
 
 	return (
@@ -87,7 +134,7 @@ function AdventureForm() {
 								type='text'
 								name='name'
 								value={adventure.name}
-								onChange={handleTextInput}
+								onChange={handleAdventureTextInput}
 								required
 							/>
 						</FormControl>
@@ -97,7 +144,7 @@ function AdventureForm() {
 							<Textarea
 								name='description'
 								value={adventure.description}
-								onChange={handleTextInput}
+								onChange={handleAdventureTextInput}
 								required
 							/>
 						</FormControl>
@@ -122,7 +169,13 @@ function AdventureForm() {
 				</VStack>
 			</ElementCard>
 			{missions.map((mission, i) => (
-				<MissionForm key={mission._id} missionData={{ ...mission, number: i + 1 }} />
+				<MissionForm
+					key={mission._id}
+					mission={{ ...mission, number: i + 1 }}
+					onInputChange={handleMissionTextInput}
+					onTasksChange={handleMissionTasksChange}
+					onTokenChange={handleMissionAddAndRemoveTaskToken}
+				/>
 			))}
 		</Stack>
 	)

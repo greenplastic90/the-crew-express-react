@@ -2,7 +2,8 @@ import { Checkbox } from '@chakra-ui/react'
 import React from 'react'
 import TaskToken from './TaskToken'
 
-function TaskTokenCheckboxs({ taskTokens, handleAddAndRemoveTaskToken }) {
+function TaskTokenCheckboxs({ mission, onTokenChange }) {
+	const { _id: missionId, taskTokens } = mission
 	const TOKEN_VALUES = ['1', '2', '3', '4', '5', '>', '>>', '>>>', '>>>>', 'Ω']
 	function tokenIsInTaskTokens(value) {
 		return taskTokens.some((token) => {
@@ -16,7 +17,7 @@ function TaskTokenCheckboxs({ taskTokens, handleAddAndRemoveTaskToken }) {
 					key={value}
 					value={value}
 					isChecked={tokenIsInTaskTokens(value)}
-					onChange={(e) => handleAddAndRemoveTaskToken(value, e.target.checked)}>
+					onChange={(e) => onTokenChange(missionId, value, e.target.checked)}>
 					<TaskToken value={value} />
 				</Checkbox>
 			))}
