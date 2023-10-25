@@ -130,6 +130,17 @@ function AdventureForm() {
 		setMissions(updatedMissions)
 	}
 
+	function addMission() {
+		const defaultMission = {
+			number: 0,
+			fivePlayerRule: false,
+			tasks: 0,
+			description: '',
+			taskTokens: [],
+			adventure: adventure._id,
+		}
+	}
+
 	return (
 		<Stack>
 			<ElementCard>

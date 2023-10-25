@@ -1,7 +1,7 @@
 import { Stack, Text } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { getMissionTrackerById } from '../../utilities/mission-api'
+import { getMissionTrackerById } from '../../utilities/mission-tracker-api'
 import MissionTrackerForm from '../../components/Mission/MissionTrackerForm'
 import ElementCard from '../../components/Miscellaneous/ElementCard'
 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { VStack, HStack, Text, Button, Stack } from '@chakra-ui/react'
-import { editTracker } from '../../utilities/mission-api'
+import { editTracker } from '../../utilities/mission-tracker-api'
 import DisstressSignal from './DisstressSignal'
 import { useNavigate } from 'react-router-dom'
 import Attempts from './Attempts'
