@@ -21,6 +21,7 @@ import {
 import ElementCard from '../Miscellaneous/ElementCard'
 import FormWrapper from '../Miscellaneous/FormWrapper'
 import MissionForm from '../Mission/MissionForm'
+import { createMission } from '../../utilities/mission-api'
 
 function AdventureForm() {
 	const [adventure, setAdventure] = useState({
@@ -54,6 +55,25 @@ function AdventureForm() {
 		}
 		getAdventure()
 	}, [adventureId])
+
+	async function addMission() {
+		const defaultMission = {
+			number: missions.length + 1,
+			fivePlayerRule: false,
+			tasks: 0,
+			description: '',
+			taskTokens: [],
+			adventure: adventure._id,
+		}
+
+		const res = await createMission(defaultMission)
+		const resJSON = await res.json()
+		const { mission: newMission } = resJSON
+
+		if (newMission) {
+			setMissions({ ...missions, newMission })
+		}
+	}
 
 	async function handleCreateAndUpdate(evt) {
 		evt.preventDefault()
@@ -130,17 +150,6 @@ function AdventureForm() {
 		setMissions(updatedMissions)
 	}
 
-	function addMission() {
-		const defaultMission = {
-			number: 0,
-			fivePlayerRule: false,
-			tasks: 0,
-			description: '',
-			taskTokens: [],
-			adventure: adventure._id,
-		}
-	}
-
 	return (
 		<Stack>
 			<ElementCard>
@@ -178,7 +187,6 @@ function AdventureForm() {
 						</Button>
 					</FormWrapper>
 				</form>
-				<Button variant={'advance'}>Add/Update Missions</Button>
 			</ElementCard>
 
 			<ElementCard>
@@ -196,6 +204,12 @@ function AdventureForm() {
 					onFivePlayerRuleChange={handleMissionFivePlayerRuleToggle}
 				/>
 			))}
+			<ElementCard>
+				<Button variant={'confirm'}>Save Changes</Button>
+				<Button onClick={addMission} variant={'advance'}>
+					Add Misson
+				</Button>
+			</ElementCard>
 		</Stack>
 	)
 }
