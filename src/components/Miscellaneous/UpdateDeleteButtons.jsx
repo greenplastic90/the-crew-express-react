@@ -17,7 +17,7 @@ import { MdDeleteForever, MdEditSquare } from 'react-icons/md'
 import ElementCard from './ElementCard'
 import { parseBoldText } from '../../utilities/miscellaneous'
 
-function UpdateDeleteButtons({ name, updateFormPath, deleteFunc }) {
+function UpdateDeleteButtons({ name, updateFormPath, deleteFunc, showEdit = true }) {
 	const { isOpen, onOpen, onClose } = useDisclosure()
 
 	const { handleNavigation } = useNavigation()
@@ -30,9 +30,11 @@ function UpdateDeleteButtons({ name, updateFormPath, deleteFunc }) {
 	return (
 		<>
 			<HStack>
-				<Button variant={'default'} onClick={() => handleNavigation(updateFormPath, 'south')}>
-					<MdEditSquare size={20} />
-				</Button>
+				{showEdit && (
+					<Button variant={'default'} onClick={() => handleNavigation(updateFormPath, 'south')}>
+						<MdEditSquare size={20} />
+					</Button>
+				)}
 				<Button variant={'default'} alignContent={'center'} onClick={onOpen}>
 					<MdDeleteForever size={24} />
 				</Button>

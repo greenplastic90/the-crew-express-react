@@ -21,7 +21,7 @@ import {
 import ElementCard from '../Miscellaneous/ElementCard'
 import FormWrapper from '../Miscellaneous/FormWrapper'
 import MissionForm from '../Mission/MissionForm'
-import { createMission } from '../../utilities/mission-api'
+import { createMission, deleteMissionById } from '../../utilities/mission-api'
 
 function AdventureForm() {
 	const [adventure, setAdventure] = useState({
@@ -69,10 +69,17 @@ function AdventureForm() {
 		const res = await createMission(defaultMission)
 		const resJSON = await res.json()
 		const { mission: newMission } = resJSON
-		console.log({ newMission })
 		if (newMission) {
 			setMissions([...missions, newMission])
 		}
+	}
+
+	async function deleteMission(missionId) {
+		const res = await deleteMissionById(missionId)
+		const resJSON = await res.json()
+		const { message, missions } = resJSON
+		console.log({ missions, message })
+		if (missions) setMissions(missions)
 	}
 
 	async function handleCreateAndUpdate(evt) {
@@ -198,6 +205,7 @@ function AdventureForm() {
 				<MissionForm
 					key={mission._id}
 					mission={{ ...mission, number: i + 1 }}
+					deleteMission={deleteMission}
 					onInputChange={handleMissionTextInput}
 					onTasksChange={handleMissionTasksChange}
 					onTokenChange={handleMissionTaskTokenToggle}

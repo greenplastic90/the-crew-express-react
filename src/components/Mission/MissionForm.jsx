@@ -17,9 +17,11 @@ import {
 import TaskTokenCheckboxs from './TaskTokenCheckboxs'
 import Tasks from '../Mission/Tasks'
 import Pentagon from './Pentagon'
+import UpdateDeleteButtons from '../Miscellaneous/UpdateDeleteButtons'
 
 function MissionForm({
 	mission,
+	deleteMission,
 	onInputChange,
 	onTasksChange,
 	onTokenChange,
@@ -28,16 +30,23 @@ function MissionForm({
 	return (
 		<ElementCard>
 			<FormWrapper>
-				<HStack spacing={8}>
-					<Pentagon number={mission.number} />
-					<FormControl>
-						<Checkbox
-							onChange={() => onFivePlayerRuleChange(mission._id)}
-							isChecked={mission.fivePlayerRule}
-							value={mission.fivePlayerRule}>
-							Five Player Rule
-						</Checkbox>
-					</FormControl>
+				<HStack justify={'space-between'}>
+					<HStack spacing={8}>
+						<Pentagon number={mission.number} />
+						<FormControl>
+							<Checkbox
+								onChange={() => onFivePlayerRuleChange(mission._id)}
+								isChecked={mission.fivePlayerRule}
+								value={mission.fivePlayerRule}>
+								Five Player Rule
+							</Checkbox>
+						</FormControl>
+					</HStack>
+					<UpdateDeleteButtons
+						name={`Mission ${mission.number}`}
+						deleteFunc={() => deleteMission(mission._id)}
+						showEdit={false}
+					/>
 				</HStack>
 				<FormControl>
 					<FormLabel>Mission Description</FormLabel>
