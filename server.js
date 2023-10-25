@@ -23,6 +23,7 @@ app.use(require('./config/checkToken'))
 app.use('/api/users', require('./routes/api/users'))
 app.use('/api/crews', ensureLoggedIn, require('./routes/api/crews'))
 app.use('/api/adventures', ensureLoggedIn, require('./routes/api/adventures'))
+app.use('/api/missions', ensureLoggedIn, require('./routes/api/mission'))
 app.use('/api/mission-tracker/', ensureLoggedIn, require('./routes/api/missionTracker'))
 
 // Catch-all route to always return the React app
