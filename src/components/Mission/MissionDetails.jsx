@@ -16,9 +16,7 @@ function MissionDetails({ mission }) {
 				</Box>
 				<VStack alignSelf={'start'}>
 					<HStack>
-						<Box alignSelf={'start'}>
-							<Tasks tasks={tasks} />
-						</Box>
+						<Box alignSelf={'start'}>{tasks > 0 && <Tasks tasks={tasks} />}</Box>
 						<TaskTokens tokens={taskTokens} />
 					</HStack>
 				</VStack>

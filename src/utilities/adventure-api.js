@@ -21,8 +21,8 @@ export function createAdventure(adventure) {
 	return sendRequest(BASE_URL, 'POST', adventure)
 }
 
-export function updateAdventure(adventure, adventureId) {
-	return sendRequest(`${BASE_URL}/${adventureId}`, 'PUT', adventure)
+export function updateAdventure(adventure, adventureId, missions) {
+	return sendRequest(`${BASE_URL}/${adventureId}`, 'PUT', { adventure, missions })
 }
 
 export function deleteAdventureById(id) {

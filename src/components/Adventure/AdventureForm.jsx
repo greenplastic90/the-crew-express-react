@@ -69,9 +69,9 @@ function AdventureForm() {
 		const res = await createMission(defaultMission)
 		const resJSON = await res.json()
 		const { mission: newMission } = resJSON
-
+		console.log({ newMission })
 		if (newMission) {
-			setMissions({ ...missions, newMission })
+			setMissions([...missions, newMission])
 		}
 	}
 
@@ -79,7 +79,7 @@ function AdventureForm() {
 		evt.preventDefault()
 		try {
 			const res = adventureId
-				? await updateAdventure(adventure, adventureId)
+				? await updateAdventure(adventure, adventureId, missions)
 				: await createAdventure(adventure)
 
 			if (res.ok) {
@@ -205,7 +205,7 @@ function AdventureForm() {
 				/>
 			))}
 			<ElementCard>
-				<Button variant={'confirm'}>Save Changes</Button>
+				<Button variant={'confirm'}>Save All Changes</Button>
 				<Button onClick={addMission} variant={'advance'}>
 					Add Misson
 				</Button>
