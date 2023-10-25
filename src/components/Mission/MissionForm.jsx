@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import ElementCard from '../Miscellaneous/ElementCard'
 import FormWrapper from '../Miscellaneous/FormWrapper'
 import {
@@ -18,14 +18,23 @@ import TaskTokenCheckboxs from './TaskTokenCheckboxs'
 import Tasks from '../Mission/Tasks'
 import Pentagon from './Pentagon'
 
-function MissionForm({ mission, onInputChange, onTasksChange, onTokenChange }) {
+function MissionForm({
+	mission,
+	onInputChange,
+	onTasksChange,
+	onTokenChange,
+	onFivePlayerRuleChange,
+}) {
 	return (
 		<ElementCard>
 			<FormWrapper>
 				<HStack spacing={8}>
 					<Pentagon number={mission.number} />
 					<FormControl>
-						<Checkbox isChecked={mission.fivePlayerRule} value={mission.fivePlayerRule}>
+						<Checkbox
+							onChange={() => onFivePlayerRuleChange(mission._id)}
+							isChecked={mission.fivePlayerRule}
+							value={mission.fivePlayerRule}>
 							Five Player Rule
 						</Checkbox>
 					</FormControl>
@@ -38,12 +47,6 @@ function MissionForm({ mission, onInputChange, onTasksChange, onTokenChange }) {
 						value={mission.description}
 					/>
 				</FormControl>
-				{/* <FormControl>
-					<FormLabel>Mission Number</FormLabel>
-					<NumberInput value={mission.number}>
-						<NumberInputField />
-					</NumberInput>
-				</FormControl> */}
 				<FormControl>
 					<FormLabel>Number of Tasks</FormLabel>
 					<HStack>

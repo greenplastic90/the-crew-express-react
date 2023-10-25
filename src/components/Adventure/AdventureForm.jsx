@@ -91,7 +91,7 @@ function AdventureForm() {
 		setMissions(updatedMissions)
 	}
 
-	function handleMissionAddAndRemoveTaskToken(missionId, value, isChecked) {
+	function handleMissionTaskTokenToggle(missionId, value, isChecked) {
 		const TOKEN_ORDER = ['1', '2', '3', '4', '5', '>', '>>', '>>>', '>>>>', 'Ω']
 
 		function sortTokensByOrder(a, b) {
@@ -120,6 +120,13 @@ function AdventureForm() {
 			mission._id === missionId ? { ...mission, taskTokens: updatedTaskTokens } : mission
 		)
 
+		setMissions(updatedMissions)
+	}
+
+	function handleMissionFivePlayerRuleToggle(missionId) {
+		const updatedMissions = missions.map((mission) =>
+			mission._id === missionId ? { ...mission, fivePlayerRule: !mission.fivePlayerRule } : mission
+		)
 		setMissions(updatedMissions)
 	}
 
@@ -174,7 +181,8 @@ function AdventureForm() {
 					mission={{ ...mission, number: i + 1 }}
 					onInputChange={handleMissionTextInput}
 					onTasksChange={handleMissionTasksChange}
-					onTokenChange={handleMissionAddAndRemoveTaskToken}
+					onTokenChange={handleMissionTaskTokenToggle}
+					onFivePlayerRuleChange={handleMissionFivePlayerRuleToggle}
 				/>
 			))}
 		</Stack>
