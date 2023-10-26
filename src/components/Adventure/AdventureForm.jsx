@@ -158,7 +158,7 @@ function AdventureForm() {
 	}
 
 	return (
-		<Stack>
+		<Stack spacing={4}>
 			<ElementCard>
 				<form autoComplete='off' onSubmit={handleCreateAndUpdate}>
 					<FormWrapper>
@@ -190,21 +190,23 @@ function AdventureForm() {
 						</Checkbox>
 
 						<Button type='submit' variant={'confirm'}>
-							Done
+							Save All Changes
 						</Button>
 					</FormWrapper>
 				</form>
 			</ElementCard>
 
-			<ElementCard>
-				<VStack>
-					<Heading>Missions</Heading>
-				</VStack>
-			</ElementCard>
+			{missions.length > 0 && (
+				<ElementCard>
+					<VStack>
+						<Heading>Missions</Heading>
+					</VStack>
+				</ElementCard>
+			)}
 			{missions.map((mission, i) => (
 				<MissionForm
 					key={mission._id}
-					mission={{ ...mission, number: i + 1 }}
+					mission={mission}
 					deleteMission={deleteMission}
 					onInputChange={handleMissionTextInput}
 					onTasksChange={handleMissionTasksChange}
@@ -213,7 +215,11 @@ function AdventureForm() {
 				/>
 			))}
 			<ElementCard>
-				<Button variant={'confirm'}>Save All Changes</Button>
+				{missions.length > 0 && (
+					<Button onClick={handleCreateAndUpdate} variant={'confirm'}>
+						Save All Changes
+					</Button>
+				)}
 				<Button onClick={addMission} variant={'advance'}>
 					Add Misson
 				</Button>
