@@ -38,7 +38,10 @@ const getById = async (req, res) => {
 
 		// Find the previous mission based on mission number (assuming mission has a 'number' field)
 		if (mission.number > 1) {
-			const prevMission = await Mission.findOne({ number: mission.number - 1 })
+			const prevMission = await Mission.findOne({
+				adventure: mission.adventure,
+				number: mission.number - 1,
+			})
 			if (prevMission) {
 				prevMissionTracker = await MissionTracker.findOne({
 					mission: prevMission._id,
@@ -48,7 +51,10 @@ const getById = async (req, res) => {
 		}
 
 		// Find the next mission based on mission number
-		const nextMission = await Mission.findOne({ number: mission.number + 1 })
+		const nextMission = await Mission.findOne({
+			adventure: mission.adventure,
+			number: mission.number + 1,
+		})
 		if (nextMission) {
 			nextMissionTracker = await MissionTracker.findOne({
 				mission: nextMission._id,
