@@ -90,9 +90,11 @@ function AdventureForm() {
 				: await createAdventure(adventure)
 
 			if (res.ok) {
-				// const { crew } = await res.json()
+				const { adventure } = await res.json()
 
-				handleNavigation('/adventures', 'south-east')
+				adventureId
+					? handleNavigation('/adventures', 'south-east')
+					: handleNavigation(`/adventures/${adventure._id}/edit`, 'north')
 			}
 		} catch (error) {
 			console.log(error)
@@ -190,7 +192,7 @@ function AdventureForm() {
 						</Checkbox>
 
 						<Button type='submit' variant={'confirm'}>
-							Save All Changes
+							{adventureId ? 'Save All Changes' : 'Create'}
 						</Button>
 					</FormWrapper>
 				</form>
@@ -214,16 +216,19 @@ function AdventureForm() {
 					onFivePlayerRuleChange={handleMissionFivePlayerRuleToggle}
 				/>
 			))}
-			<ElementCard>
-				{missions.length > 0 && (
-					<Button onClick={handleCreateAndUpdate} variant={'confirm'}>
-						Save All Changes
+			{/* can't add a mission until the adventure is saved and has an id */}
+			{adventureId && (
+				<ElementCard>
+					{missions.length > 0 && (
+						<Button onClick={handleCreateAndUpdate} variant={'confirm'}>
+							Save All Changes
+						</Button>
+					)}
+					<Button onClick={addMission} variant={'advance'}>
+						Add Misson
 					</Button>
-				)}
-				<Button onClick={addMission} variant={'advance'}>
-					Add Misson
-				</Button>
-			</ElementCard>
+				</ElementCard>
+			)}
 		</Stack>
 	)
 }

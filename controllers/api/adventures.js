@@ -6,7 +6,7 @@ const createAdventure = async (req, res) => {
 	try {
 		const adventure = new Adventure({ ...req.body, owner: req.user._id })
 		await adventure.save()
-		res.status(201).json(adventure)
+		res.status(201).json({ adventure })
 	} catch (error) {
 		res.status(400).json({ error: error.message })
 	}
