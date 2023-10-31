@@ -1,4 +1,4 @@
-import { Box, Center, Flex, Popover, PopoverTrigger, Text } from '@chakra-ui/react'
+import { Flex, Popover, PopoverTrigger } from '@chakra-ui/react'
 import React from 'react'
 import CustomPopover from '../Miscellaneous/CustomPopover'
 import TaskToken from './TaskToken'
@@ -39,14 +39,7 @@ function TaskTokens({ tokens }) {
 		}
 	}
 
-	const renderToken = (t) => (
-		<Popover key={t._id}>
-			<PopoverTrigger>
-				<TaskToken value={t.value} />
-			</PopoverTrigger>
-			<CustomPopover body={'All task tokens nessary for the current mission are listed here.'} />
-		</Popover>
-	)
+	const renderToken = (t) => <TaskToken key={t._id} value={t.value} />
 
 	return tokenCount > 0 && <Flex>{renderLayout()}</Flex>
 }
