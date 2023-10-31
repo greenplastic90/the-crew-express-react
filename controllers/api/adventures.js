@@ -14,12 +14,27 @@ const createAdventure = async (req, res) => {
 
 const getAllAdventures = async (req, res) => {
 	try {
-		const adventures = await Adventure.find({ public: true }).populate('owner')
+		// Fetch the official adventure
+		const officialAdventure = await Adventure.findOne({ public: true, official: true }).populate(
+			'owner'
+		)
+
+		// Fetch all other public adventures excluding the official one
+		const otherAdventures = await Adventure.find({ public: true, official: false }).populate(
+			'owner'
+		)
+
+		// Combine the results: official adventure first, followed by others
+		const adventures = officialAdventure
+			? [officialAdventure].concat(otherAdventures)
+			: otherAdventures
+
 		res.status(200).json({ adventures })
 	} catch (error) {
 		res.status(400).json({ error: error.message })
 	}
 }
+
 const getAllAdventuresForAUser = async (req, res) => {
 	try {
 		const adventures = await Adventure.find({ owner: req.user._id }).populate('owner')
