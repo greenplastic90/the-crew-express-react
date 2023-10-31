@@ -8,6 +8,7 @@ import {
 	ModalFooter,
 	ModalHeader,
 	ModalOverlay,
+	Stack,
 	Text,
 	useDisclosure,
 } from '@chakra-ui/react'
@@ -17,7 +18,13 @@ import { MdDeleteForever, MdEditSquare } from 'react-icons/md'
 import ElementCard from './ElementCard'
 import { parseBoldText } from '../../utilities/miscellaneous'
 
-function UpdateDeleteButtons({ name, updateFormPath, deleteFunc, showEdit = true }) {
+function UpdateDeleteButtons({
+	name,
+	updateFormPath,
+	deleteFunc,
+	showEdit = true,
+	showMissionWarning = false,
+}) {
 	const { isOpen, onOpen, onClose } = useDisclosure()
 
 	const { handleNavigation } = useNavigation()
@@ -47,7 +54,14 @@ function UpdateDeleteButtons({ name, updateFormPath, deleteFunc, showEdit = true
 						<ModalHeader>{`Delete ${name}?`}</ModalHeader>
 						<ModalCloseButton />
 						<ModalBody>
-							<Text>{parseBoldText('This action can [b]NOT[/b] be undone')}</Text>
+							<Stack>
+								<Text>{parseBoldText('This action can [b]NOT[/b] be undone')}</Text>
+								{showMissionWarning && (
+									<Text fontStyle={'italic'} fontSize={'xs'}>
+										{parseBoldText('Unsaved changes to other missions [b]WILL[/b] be lost')}
+									</Text>
+								)}
+							</Stack>
 						</ModalBody>
 
 						<ModalFooter>

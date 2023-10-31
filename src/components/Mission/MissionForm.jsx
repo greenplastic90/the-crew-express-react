@@ -46,6 +46,7 @@ function MissionForm({
 						name={`Mission ${mission.number}`}
 						deleteFunc={() => deleteMission(mission._id)}
 						showEdit={false}
+						showMissionWarning={true}
 					/>
 				</HStack>
 				<FormControl>
