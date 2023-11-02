@@ -55,6 +55,7 @@ function MissionForm({
 						onChange={(evt) => onInputChange(mission._id, evt)}
 						name='description'
 						value={mission.description}
+						placeholder='Use [b]text[/b] to make text bold.'
 					/>
 				</FormControl>
 				<FormControl>

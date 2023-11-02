@@ -181,6 +181,7 @@ function AdventureForm() {
 								name='description'
 								value={adventure.description}
 								onChange={handleAdventureTextInput}
+								placeholder='Use [b]text[/b] to make text bold.'
 								required
 							/>
 						</FormControl>
