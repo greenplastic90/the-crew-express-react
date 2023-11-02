@@ -2,7 +2,22 @@ import { Box, Center, Popover, PopoverTrigger, Text } from '@chakra-ui/react'
 import React from 'react'
 import CustomPopover from '../Miscellaneous/CustomPopover'
 
+const tokenDescriptions = {
+	1: 'The task must be fulfilled [b]first[/b].',
+	2: 'The task must be fulfilled [b]second[/b].',
+	3: 'The task must be fulfilled [b]third[/b].',
+	4: 'The task must be fulfilled [b]fourth[/b].',
+	5: 'The task must be fulfilled [b]fifth[/b].',
+	Ω: 'The task must be fulfilled [b]last[/b].',
+	'>': 'The task must be fulfilled anytime [b]before[/b] >>.',
+	'>>': 'The task must be fulfilled anytime [b]after[/b] >.',
+	'>>>': 'The task must be fulfilled anytime [b]after[/b] >>.',
+	'>>>>': 'The task must be fulfilled anytime [b]after[/b] >>>.',
+}
+
 function TaskToken({ value }) {
+	const description = tokenDescriptions[value] || 'Description not available'
+
 	return (
 		<Popover>
 			<PopoverTrigger>
@@ -14,7 +29,7 @@ function TaskToken({ value }) {
 					</Center>
 				</Box>
 			</PopoverTrigger>
-			<CustomPopover body={'All task tokens nessary for the current mission are listed here.'} />
+			<CustomPopover body={description} />
 		</Popover>
 	)
 }

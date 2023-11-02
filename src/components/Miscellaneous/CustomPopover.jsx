@@ -1,6 +1,7 @@
 import { PopoverArrow, PopoverCloseButton, PopoverContent, Text } from '@chakra-ui/react'
 import React from 'react'
 import ElementCard from './ElementCard'
+import { parseBoldText } from '../../utilities/miscellaneous'
 
 function CustomPopover({ body }) {
 	return (
@@ -8,7 +9,7 @@ function CustomPopover({ body }) {
 			<PopoverArrow bg={'brand.grayDark'} />
 			<PopoverCloseButton mt={1} />
 			<ElementCard>
-				<Text>{body}</Text>
+				<Text>{parseBoldText(body)}</Text>
 			</ElementCard>
 		</PopoverContent>
 	)
