@@ -8,7 +8,7 @@ require('dotenv').config()
 
 async function seedAdventureAndMissions() {
 	try {
-		// First, find the user by username
+		// Find the user by username
 		const user = await User.findOne({ username: 'Greenplastic90' })
 		if (!user) {
 			throw new Error('User not found')
