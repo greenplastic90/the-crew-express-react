@@ -1,21 +1,28 @@
 const mongoose = require('mongoose')
 const Adventure = require('../models/adventure')
 const Mission = require('../models/mission')
-const Crew = require('../models/crew') // Import the Crew model
+const Crew = require('../models/crew')
+const User = require('../models/user')
 
 require('dotenv').config()
 
 async function seedAdventureAndMissions() {
-	// Create the new Adventure
-	const newAdventure = new Adventure({
-		name: 'The Quest For Planet Nine',
-		description: 'Official Adventure',
-		owner: '65193546861d4fa8f9642894',
-		official: true,
-		public: true,
-	})
-
 	try {
+		// First, find the user by username
+		const user = await User.findOne({ username: 'Greenplastic90' })
+		if (!user) {
+			throw new Error('User not found')
+		}
+
+		// Create the new Adventure
+		const newAdventure = new Adventure({
+			name: 'The Quest For Planet Nine',
+			description: 'Official Adventure',
+			owner: user._id,
+			official: true,
+			public: true,
+		})
+
 		const savedAdventure = await newAdventure.save()
 		console.log('Adventure saved:', savedAdventure)
 
