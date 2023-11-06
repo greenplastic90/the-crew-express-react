@@ -13,13 +13,13 @@ import CustomSpinner from '../../components/Miscellaneous/CustomSpinner'
 
 function Adventures() {
 	const [adventures, setAdventures] = useState([])
-	const [showOnlyMyAdventures, setShowOnlyMyAdventures] = useState(true)
+	const [showOnlyMyAdventures, setShowOnlyMyAdventures] = useState(false)
 	const [error, setError] = useState('')
 	const [isLoading, setIsLoading] = useState(true)
 	const { handleNavigation } = useNavigation()
 
 	useEffect(() => {
-		getMyAdventures()
+		getAllAvilableAdventures()
 	}, [])
 
 	async function getAllAvilableAdventures() {
@@ -88,11 +88,11 @@ function Adventures() {
 		<Stack>
 			<ElementCard>
 				<Button
-					variant={showOnlyMyAdventures ? 'negative' : 'advance'}
+					variant={showOnlyMyAdventures ? 'advance' : 'negative'}
 					onClick={handleAdventureToggle}>
 					{showOnlyMyAdventures ? 'Show All Adventures' : 'Show My Adventures'}
 				</Button>
-				<Button variant={'advance'} onClick={() => handleNavigation('/adventures/new', 'north')}>
+				<Button variant={'confirm'} onClick={() => handleNavigation('/adventures/new', 'north')}>
 					Create Adventure
 				</Button>
 			</ElementCard>
