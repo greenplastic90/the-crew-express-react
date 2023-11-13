@@ -48,7 +48,7 @@ const getAllAdventuresForAUser = async (req, res) => {
 const getAdventureById = async (req, res) => {
 	try {
 		const { id } = req.params
-		const adventure = await Adventure.findOne({ _id: id, public: true }).populate('owner')
+		const adventure = await Adventure.findOne({ _id: id }).populate('owner')
 		if (!adventure) {
 			return res.status(404).json({ error: 'Adventure not found' })
 		}
