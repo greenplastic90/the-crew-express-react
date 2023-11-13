@@ -103,7 +103,7 @@ const components = {
 	Heading: {
 		baseStyle: {
 			textShadow: '-1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff, 1px 1px 0 #ffffff',
-			color: 'brand.blueDark',
+			color: 'brand.blueYale.500',
 		},
 		variants: {
 			crew: { color: 'brand.brown.500' },

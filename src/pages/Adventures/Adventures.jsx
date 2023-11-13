@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
 import AdventuresDisplay from '../../components/Adventure/AdventuresDisplay'
-import { Button, Stack, Text } from '@chakra-ui/react'
+import { Button, Heading, Stack, Text, VStack } from '@chakra-ui/react'
 import { useNavigation } from '../../components/Context/NavigationContext'
 import ElementCard from '../../components/Miscellaneous/ElementCard'
 import {
@@ -95,6 +95,11 @@ function Adventures() {
 				<Button variant={'confirm'} onClick={() => handleNavigation('/adventures/new', 'north')}>
 					Create Adventure
 				</Button>
+			</ElementCard>
+			<ElementCard>
+				<VStack>
+					<Heading>{showOnlyMyAdventures ? 'My Adventures' : 'All Adventures'}</Heading>
+				</VStack>
 			</ElementCard>
 			{!isLoading ? (
 				<>
